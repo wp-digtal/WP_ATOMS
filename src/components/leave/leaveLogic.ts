@@ -19,22 +19,18 @@ import {
   EMPLOYEE_ENTITLEMENTS,
   ENTITLEMENT_OVERRIDES,
   LEAVE_APPLICATIONS,
-  LEAVE_PUBLIC_HOLIDAYS,
   LEAVE_TYPES,
   consumesBalance,
   type EntitlementUnit,
-  type HalfDay,
   type LeaveApplication,
   type LeaveEmployee,
   type LeaveType,
 } from './leaveData'
+import { ISO, deductionDays, type HalfDay } from './leaveDeduction'
 
-export const ISO = 'YYYY-MM-DD'
+export { ISO }
 
 export const leaveTypeById = (id: string): LeaveType | undefined => LEAVE_TYPES.find((t) => t.id === id)
-
-const isPublicHoliday = (d: Dayjs) => LEAVE_PUBLIC_HOLIDAYS.some((h) => h.date === d.format(ISO))
-const isWeekendDay = (d: Dayjs) => d.day() === 0 || d.day() === 6
 
 /** MOVE-1975 / MOVE-3890 — "active" for leave means active or suspended. */
 export function isActiveForLeave(e: LeaveEmployee): boolean {
@@ -429,53 +425,7 @@ export function deductionFor(
   startHalf: HalfDay,
   endHalf: HalfDay,
 ): number {
-  const start = dayjs(startDate)
-  const end = dayjs(endDate)
-  if (end.isBefore(start)) return 0
-
-  const sixDayWeek = employee.workingDaysPerWeek >= 5.5
-
-  let total = 0
-  const weekendRun: Dayjs[] = []
-
-  const flushWeekend = () => {
-    if (!sixDayWeek || weekendRun.length === 0) {
-      weekendRun.length = 0
-      return
-    }
-    // Consecutive pairs cost a day each; a pair with a PH in it costs nothing,
-    // and a trailing lone day costs nothing either.
-    for (let i = 0; i + 1 < weekendRun.length; i += 2) {
-      const a = weekendRun[i]
-      const b = weekendRun[i + 1]
-      if (!isPublicHoliday(a) && !isPublicHoliday(b)) total += 1
-    }
-    weekendRun.length = 0
-  }
-
-  for (let d = start; !d.isAfter(end); d = d.add(1, 'day')) {
-    if (isWeekendDay(d)) {
-      // Only a Sat immediately followed by a Sun is a "consecutive" pair.
-      const prev = weekendRun[weekendRun.length - 1]
-      if (prev && d.diff(prev, 'day') !== 1) flushWeekend()
-      weekendRun.push(d)
-      continue
-    }
-    flushWeekend()
-    // MOVE-3777 — a weekday public holiday deducts nothing.
-    if (isPublicHoliday(d)) continue
-    total += 1
-  }
-  flushWeekend()
-
-  // Half-day markers only ever trim weekdays, and only at the ends.
-  if (start.isSame(end, 'day')) {
-    if (!isWeekendDay(start) && !isPublicHoliday(start) && startHalf === endHalf) return 0.5
-    return total
-  }
-  if (startHalf === 'PM' && !isWeekendDay(start) && !isPublicHoliday(start)) total -= 0.5
-  if (endHalf === 'AM' && !isWeekendDay(end) && !isPublicHoliday(end)) total -= 0.5
-  return Math.max(0, total)
+  return deductionDays(employee.workingDaysPerWeek, startDate, endDate, startHalf, endHalf)
 }
 
 /**

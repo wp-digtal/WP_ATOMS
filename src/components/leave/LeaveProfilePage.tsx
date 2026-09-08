@@ -21,6 +21,7 @@ import {
 } from './leaveData'
 import {
   balancesFor,
+  deductionInYear,
   formatDays,
   formatEntitlement,
   formatValidity,
@@ -199,9 +200,23 @@ export default function LeaveProfilePage({
     {
       title: 'Days Used',
       key: 'days',
-      width: 110,
-      // Biz req 3 — Time Off has no day count.
-      render: (_, a) => <Text style={{ fontSize: 13 }}>{a.leaveTypeId === 'lt-timeoff' ? '-' : formatDays(a.days)}</Text>,
+      width: 130,
+      // Biz req 3 — the figure is the application's own deduction, so a
+      // cross-year application shows the same total in both years. That reads
+      // as a contradiction next to the balances table, which counts only this
+      // year's share — so when the two differ, the share is named underneath.
+      render: (_, a) => {
+        if (a.leaveTypeId === 'lt-timeoff') return <Text style={{ fontSize: 13 }}>-</Text>
+        const inYear = deductionInYear(employee, a.startDate, a.endDate, a.startHalf, a.endHalf, year)
+        return (
+          <div>
+            <Text style={{ fontSize: 13, display: 'block' }}>{formatDays(a.days)}</Text>
+            {inYear !== a.days && (
+              <Text style={{ fontSize: 11, color: '#8c8c8c' }}>{formatDays(inYear)} in {year}</Text>
+            )}
+          </div>
+        )
+      },
     },
     {
       title: 'Applied On',

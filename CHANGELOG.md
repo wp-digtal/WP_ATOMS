@@ -14,6 +14,60 @@ minor).
 
 ## [Unreleased]
 
+### Changed — a much larger Leave dataset, and seed data that computes its own day counts
+
+**The structural part first, because it is the reason the rest can be trusted.**
+`deductionFor` moved into a new `leaveDeduction.ts` that sits below both
+`leaveData` and `leaveLogic` and takes `workingDaysPerWeek` rather than an
+employee. That breaks the import cycle, which lets **every seed application
+compute its own `days` through the same function the apply drawer uses**. The
+counts were hand-typed before and were free to drift from the rule — the kind
+of mock data that quietly makes a prototype lie about its own arithmetic. A
+wrong number is now not expressible.
+
+**Dataset, roughly tripled:**
+
+| | Was | Now |
+| --- | --- | --- |
+| Employees (listed / total) | 19 / 22 | **33 / 37** |
+| Leave applications | 10 | **70** |
+| Custom leave types | 0 | **3** |
+| Manually added entitlements | 2 | **10** |
+| Entitlement change history | 2 | **14** |
+| Entitlement overrides | 0 | **2** |
+
+**Carry-forward now varies, which was the point.** Every profile previously
+showed the full 7 days carried in, because no employee had any 2025 usage — the
+rule looked like a constant. With a year of prior applications seeded, page one
+of the listing alone now runs Joko 4, Bella 9, Dedi 12, Farhan 14, Gita 17,
+Citra 19.
+
+**Coverage the old set had none of:**
+
+- **Three custom leave types**, chosen to exercise MOVE-3559's four-way edit
+  rule: Volunteer Leave is still in the future, Study Leave is running, and
+  Marriage Leave ended in 2025 so its entitlement is locked.
+- **A cross-year application** (Andi Nugroho, 24 Dec 2026 – 5 Jan 2027) —
+  MOVE-3494's own worked example, now visible in the seed rather than only
+  reachable by typing it in.
+- **Two entitlement overrides with matching history rows**, one applied forward
+  and one for a single year, so both settings of MOVE-3775's checkbox are
+  represented and the history agrees with the balances table.
+- Four **Edit** rows in the change history across three users, so MOVE-3888's
+  Edit Type / User / Field Edited filters finally have something to filter.
+- Retired added to the excluded statuses, alongside Terminated, Resigned and
+  Future Employee.
+- Every leave type is now exercised by at least one application, including NS,
+  Compassionate, Unpaid, Shared Parental, Adoption, Unpaid Infant Care and both
+  Time Off entries with real times.
+
+**One clarity fix the new data forced.** The applications table's Days Used
+column shows the application's own deduction, so a cross-year row reads "7 days"
+in both years — which contradicts the balances table beside it, counting 5 in
+2026 and 2 in 2027. When the two differ the row now names the year's share
+underneath ("5 days in 2026"). The headline figure still follows MOVE-3494 biz
+req 3 literally.
+
 ### Fixed — Leave module CTA audit against the tickets
 
 Every button in the module walked back to the line of the ticket that specifies
