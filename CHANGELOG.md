@@ -14,6 +14,36 @@ minor).
 
 ## [Unreleased]
 
+### Added — HR Claims screens in Figma (Section 7); status tags aligned to the design system
+
+At the user's request, the new "Claims" menu (epic MOVE-4021) was pushed into
+Figma file `1FCRdGhHru6czP5P6h06kH`, Section 7 (`41067:85352`), "complete".
+That is 14 full-page frames under their own heading, below the Personal
+Dashboard Claims frames:
+- 3 listing states: default, filter open, Pending Approval highlight active.
+- 2 Submit Claim states: Toll (ERP) filled, and submitted empty with errors.
+- 5 claim-details statuses: Pending Approval and Pending Payment (both with
+  the Actions menu open), Paid, Rejected, Cancelled.
+- 4 modals: Approve, Reject, Cancel, Mark as Paid.
+
+They're built by cloning the Production page's own HR Leave screens (full
+page + sidebar, drawer and modal overlays), not drawn from scratch. Node IDs
+are in `FIGMA_COMPONENT_INDEX.md`; techniques and gotchas are in
+`FIGMA_DESIGN_SYSTEM.md` §4.6.
+
+**Code change from what Figma showed**: `HR_CLAIM_STATUS_COLOR` moved from
+free colours (gold/cyan/blue/red) to AntD's preset statuses
+(warning/processing/success/error/default). The design system's
+`Tag / Status` component only has those five, so code and Figma tags now
+match. Verified in the browser.
+
+**Correction recorded**: §4.5 said no RangePicker component exists. It does,
+as the `Range=True` variant of `_DatePicker / DatePicker Input / Outlined`.
+
+**Open item**: the Leave Production modal designs show a primary-blue Confirm
+on reject/cancel, but both the Leave and HR Claims code use a red `danger`
+Confirm. This needs a design decision, logged in `FIGMA_DESIGN_SYSTEM.md` §7.
+
 ### Added — HR Claims module (epic MOVE-4021): new "Claims" sidebar menu
 
 At the user's request, a new top-level **Claims** menu that builds all seven

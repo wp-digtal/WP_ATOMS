@@ -45,11 +45,14 @@ import { claimApproverOf, disabledReceiptTime, isSelectableReceiptDate } from '.
 
 const { Text } = Typography
 
+// The Figma `Tag / Status` component only offers AntD's preset statuses
+// (Default/Error/Processing/Success/Warning), so these use the same presets
+// rather than free colours — FIGMA_DESIGN_SYSTEM.md §4.6.
 export const HR_CLAIM_STATUS_COLOR: Record<HrClaimStatus, string> = {
-  'Pending Approval': 'gold',
-  'Pending Payment': 'cyan',
-  Paid: 'blue',
-  Rejected: 'red',
+  'Pending Approval': 'warning',
+  'Pending Payment': 'processing',
+  Paid: 'success',
+  Rejected: 'error',
   Cancelled: 'default',
 }
 

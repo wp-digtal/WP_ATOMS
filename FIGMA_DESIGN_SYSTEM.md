@@ -328,9 +328,49 @@ so no change was needed there.
 - **Checked the "🧭 COMPASS - Westpoint ATOM Design System 2.0" file** (`gbSCJ7q9FcMZsZ6d5dbrRN`, node `388:11438`, page literally named "Form") **for a dedicated FilterBar/RangePicker component — there isn't one here.** This page turned out to be the *source* page for the same `_Form / Form Item / Vertical` component (with the identical `Type` variant list from §4.4) already being reused via the Personal Dashboard file — confirming it's the same component, not a new one, and saving a future session from re-searching this file for the same thing. No new row needed in the component index for it; this paragraph *is* the mapping.
 - **`_Form / Form Item / Vertical` collapses to a bare, label-less input when its `Label#515:279` property is set `false`** — `instance.setProperties({ "Label#515:279": false })` (note the `#515:279` suffix; the bare property name alone throws "Could not find a component property"). This shrinks the instance from the full label+input block down to just the input control at a clean **32px tall**, matching the `FilterBar 3.0` spec's "every control 32px tall" rule exactly — this is the actual building block for any bare filter-row control (search box, a lone Select), not a new component.
 - **The real display text is a specific *named* text node, not "the first `TEXT` node found."** `findFirst(item, n => n.type === "TEXT")` on a Select-type item grabbed the required-asterisk `*` instead of the value text — because the label row's `*` is still a real (if invisible-once-`Label`-is-hidden) `TEXT` node earlier in traversal order than the actual value. The value text is reliably named `"Select"` for `Type: "Select"` items and `"Input"` for `Type: "Text"` items — search by that exact name, confirmed once via a full `findAllText` dump on one instance, not by type alone.
+- **Correction (HR Claims build, §4.6): a RangePicker *does* exist** — `_DatePicker / DatePicker Input / Outlined` has a `Range` variant (`False`/`True`). `Range=True` renders the real "Start date → End date" input with a calendar icon. It is reachable inside any `_Form / Form Item / Vertical` with `Type: "DatePicker"`, and inside the filter popover's `Table Filter Multiselect` `Type=Date` slot. The hand-built date ranges below predate this finding; swap them for the real one whenever those frames are next touched. **No Segmented component was found** — the original note, kept for the year toggle:
 - **No RangePicker or Segmented component was found either** — both were hand-built as plain frames: the date range as a bordered auto-layout row (`"Applied From" + "→" + "Applied To" + a cloned `Icon / CalendarOutlined`), the year toggle as a light-gray auto-layout track holding two pill sub-frames (the active one white-filled with a 1px/2px drop shadow and semi-bold text, the inactive one transparent). Named both frames with a `"(hand-built, no X component found)"` suffix so a later session doesn't mistake them for real library instances and can swap them out the moment a real component turns up.
 - **A freshly-`createFrame()`'d auto-layout frame can report `height: 1` even with `counterAxisSizingMode: "AUTO"` set and real children inside it** — hit while adding the AM/PM half-day Select beside each date in the Apply for Leave drawer (a gap flagged, then filled in, from §4.4's own "known simplification" note) and again building the Balance block. Setting the sizing mode *before* `appendChild`-ing the children doesn't get retroactively applied; re-set `frame.counterAxisSizingMode = "AUTO"` (same value, just assigned again) *after* all children exist, and the real height resolves. Bottom-aligning a short bare control (the AM/PM select) next to a taller labelled one (the date field) in the same row is `counterAxisAlignItems: "MAX"` on their shared parent — the short one's missing "label row" becomes blank space above it rather than the two controls' inputs landing at different heights.
 - **A table maxes out at 6 cell slots per row (§4.1)** — Claims' "Pending My Approval" sub-tab needed **7** columns (Employee/Department/Applied On/Claims Type/Amount/Remarks/Last Updated On). Fixed by cloning the row's own first cell as a 7th, same technique as adding a 6th column in §4.1, just one step further — the ceiling is "however many cells you're willing to clone," not a hard 6.
+
+**4.6 HR Claims (epic MOVE-4021) pushed into Section 7: HR-module flows are full pages, built from the Production page's own Leave screens.** The user asked for the new "Claims" menu to be dropped into Section 7 (`41067:85352`), complete. That makes 14 frames under a "HR Claims" heading, below the Personal Dashboard Claims frames. See `FIGMA_COMPONENT_INDEX.md` for every node ID. Reusable findings:
+
+- **The HR-module convention differs from Personal Dashboard's.** Production's Leave screens are full **1440×1024 pages with the `Side Navbar`**. A drawer slides over a 40%-black full-frame overlay (`Frame 2608968`), and a modal sits in a second overlay (`Frame 2608969`). Sources in `🏭 Production`:
+  - `Leave Listing` (`39281:84757`) for the listing with the filter popover.
+  - `Profile Detail Pages - Approve/Reject/Cancel Leave (Modal)` (`39324:89440` / `39312:44836` / `39312:25020`) for the drawer-plus-modal flows.
+
+  These were cloned and re-themed; nothing was hand-drawn except where noted below. An HR-side screen should follow this full-page shape, not the content-only frames used for Personal Dashboard.
+- **Table cells** (`Table / Table cell` and `_Table / Table cell` sets):
+  - `_Table` has no `Text Right` variant. A `setProperties` naming a missing variant fails *after* partly applying, and can leave a cell stuck on an unrelated variant.
+  - So swap each cell explicitly with `swapComponent(set.children.find(c => c.name === 'Type=Text, Size=Default, …'))` rather than `setProperties({Type})`.
+  - `Type=Tag` cells hold two `Tag / Status` instances. Hide the second via `Tag 2`, then set `Status` (Default/Error/Processing/Success/Warning) and the tag text.
+  - Truncate long values with `textTruncation='ENDING'` + `maxLines=1` on `FILL`-width text.
+  - In `Text Right` cells a visible-but-empty `Frame 1` sibling pushes the value left. Hide it and set the `Text Wrapper` to `primaryAxisAlignItems='MAX'`.
+  - The source table's "sorted column" header and cell fills are overrides; normalise them to column 0's fills.
+  - 9 columns at the page's 1155px fit with widths `[115,150,125,120,125,135,85,140,160]`. Narrower widths make "Submission Date" / "Department" / "Last Updated On" headers wrap.
+- **The filter popover isn't controlled by `Leave/Filter`'s own `State`.**
+  - It's the nested `Filter Bar 3.0 → Table Filter with Buttons` `Active=True/False`.
+  - Its `Table Filter Group` (`layoutWrap: WRAP`) holds 6 `Table Filter Multiselect` slots: show or hide them, and set `Input Label` + the `Select` placeholder text.
+  - Changing a slot's `Type` usually also needs a matching `Sub-Module`, so use `swapComponent` to the exact variant.
+  - The search placeholder (`Input` text) and the primary button (`Button Text`, plus `Icon Start=true`, whose default swap is already `PlusOutlined`) live in the same bar.
+- **The production details drawer (`Employee` instance) must be detached and trimmed before editing.** It carries four hidden heavy sections (3–6), and every property edit re-lays-out all of them. `figma_execute` calls timed out at 30s until `detachInstance()` and deleting the hidden sections; afterwards the same edits ran in under a second.
+  - Navigate with `.children.find(...)` paths (`Drawers Template → Section 1 → Sales/Row Content → Frame 450 → Group Content Cell`), not `findAll` over the whole drawer.
+  - Don't `getNodeByIdAsync` deep `I…;…` IDs; that's the same timeout as §4.2.
+  - Inside, `Content Cell` takes `Label#…`/`Value#…` text properties. Its `Sub-body content wrapper → Text 2` (`Text#…`) is the grey sub-line, used for Department under Employee and the time under Receipt Date.
+  - A cell's blue-underlined "link" look is a *text-level override*, not the `Long Text` variant, so it survives a variant swap. Copy fills/decoration between cells explicitly.
+  - Multi-line values need the row's `counterAxisSizingMode='AUTO'` plus the value text `FILL` + `textAutoResize='HEIGHT'` up the whole chain. Otherwise text either overlaps the divider or collapses to a one-word-wide column.
+- **Actions dropdown**: `BusCom-Details Action Button 2.0` `Property 1` is `Active` (open, focused outline) or `Normal` (closed). Its items are `_Dropdown Menu / Dropdown Menu Item` with `Text`, `State` (`Default/Hover/Disabled/Selected`) and `Danger`. Set all four used items explicitly by index each time; cloning one frame from another once left an item hidden.
+- **No Tooltip component exists** in this file (checked Page 9 and `🧩 Component`). The disabled-action tooltip was hand-built in AntD's style (rgba(0,0,0,.85), radius 6, 13/20 Inter, white) and named `(hand-built, no Tooltip component found)`.
+- **Modals**: the Leave modals' `Wrapper → Head` / `Content Wrapper` text nodes are `{See copy master list}` placeholders, set to the code's copy. `Mark as Paid` reuses `Add Leave Entitlement` (`39098:56292`): detached, Leave Type and Entitlement rows deleted, and the date pair re-labelled with its second item switched to `Type: "Text"`.
+- **Form validation states**:
+  - `_Form / Form Item / Vertical` has a `Caption#515:251` boolean. Its `_Input / Input Caption` takes `Text` + `Status=Error` for the red message.
+  - The inner `_Select / Select Input` and `_DatePicker / DatePicker Input / Outlined` take `Status=Error`.
+  - `InputNumber` has **no** Status variant, so it gets a `#ff4d4f` stroke override.
+  - A paired row needs both items `layoutSizingVertical='HUG'` before the row grows to fit a caption.
+  - The `Currency` form type renders a `+48 ▾ / $ ▾` phone-style addon pair. That isn't the code's plain `$` prefix, so Amount stays `InputNumber` with "$ 0.00".
+  - The error toast is the page's own `Toaster Pop-up Message` (`Message` `Type=Error`), moved to the top of the z-order with `appendChild`.
+  - An uploaded-file row comes from `Leave/Modal Upload`'s `Uploaded` variant (`Name Wrapper`, `33056:32130`: paperclip + filename + ×). The `Upload / Drag and Drop` component itself has no file list.
+- **Code aligned to Figma**: the `Tag / Status` component only offers AntD's preset statuses. So `HR_CLAIM_STATUS_COLOR` (`hrclaims/HrClaimDrawers.tsx`) moved from free colours (gold/cyan/blue) to the presets: Pending Approval `warning`, Pending Payment `processing`, Paid `success`, Rejected `error`, Cancelled `default`. Code and Figma tags now match 1:1.
 
 <!-- fill in further as discovered:
      - Variant naming convention (e.g. `state=default/hover/disabled`)
@@ -371,6 +411,17 @@ during the next Figma-vs-code comparison pass.
 
 <!-- fill in, e.g. -->
 - <!-- ticket / area --> — code does X, Figma shows Y, because <!-- reason -->.
+- HR Claims reject/cancel modals and the drawer's "Cancel" action
+  (`hrclaims/HrClaimDrawers.tsx`, same as `leave/LeaveApplicationDrawers.tsx`):
+  - In code, the confirm button is `danger` (red) and stays disabled until a
+    reason is typed; the "Cancel" menu item is `danger` too.
+  - The Production Leave modal designs (`39312:44836` / `39312:25020`) show a
+    plain primary-blue "Confirm" and a non-red "Cancel" item.
+  - The Section 7 HR Claims frames keep the modal component as designed (blue
+    Confirm) but show the menu item red, as in code.
+  - Unresolved: it's a PM/design call whether destructive confirms should be
+    red app-wide. If yes, the Figma modal needs a danger variant; if no, both
+    modules' code drops `danger`.
 - `MOVE-3221`/`MOVE-3559` drawers (`LeaveTypeDrawers.tsx`) — code uses the
   app-wide 480/520 drawer-width convention; the "Create Leave Type" Figma
   component's own frame is 684px wide with 32px padding. Treated as that
