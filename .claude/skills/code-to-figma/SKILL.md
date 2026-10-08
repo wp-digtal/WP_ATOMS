@@ -116,6 +116,15 @@ For each screen and flow in the module, include:
   list, code path, the status legend (tag colour → meaning), and the
   last-updated date.
 - Frame names follow `<Module> - <Screen> - <State> (<TICKETS>)`.
+- **Reference build**: the Claim (HR Module) file, section `29013:27819`. Its
+  grid, caption recipe, arrow recipe and the `Docs/*` component props are in
+  `FIGMA_DESIGN_SYSTEM.md` §4.7. Copy that layout unless the user says
+  otherwise.
+- Text on the canvas must be readable at section zoom:
+  - Captions are 44px title + 30px sub-line.
+  - Use white/light text when the section background is dark.
+- **Every note and caption is checked against the code** (field names,
+  conditional fields, toast copy verbatim), not written from memory.
 - Spacing:
   - 100px between frames in a row; ~300px between rows (room for headers).
   - Nothing overlaps.

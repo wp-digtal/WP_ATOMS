@@ -14,6 +14,20 @@ minor).
 
 ## [Unreleased]
 
+### Added — Claim (HR Module) Figma file: missing states, flow rows, titles and notes; `code-to-figma` skill
+
+At the user's request ("cek kembali tiket claim … tambahkan state/flow yang kurang, susun rapi, beri title dan informasi"), the HR Claims section
+(`Gp7MfEP0XEv8YqZ9q474sj`, `29013:27819`) was audited against MOVE-4021's tickets and their latest edits, then completed:
+
+- **New states**: empty search result; submitted-back-on-listing; the Others variant; approved and rejected results (stays on drawer);
+  reject/cancel reason filled; cancelled (drawer closes to listing); Mark as Paid missing fields, filled and paid (with the
+  MOVE-3801 Mark as Paid On/By rows).
+- **Layout**: six flow rows (Listing · Submit · Details by status · Approve/Reject · Cancel · Mark as Paid). Each row has a
+  `Docs/Big Title` + `Docs/Notes` header with the ticket keys and rules, every frame a step caption, and arrows between steps.
+  There is also a section title block with the status legend. Notes copy was re-checked against the code.
+- **Why a skill**: the user asked for this standard to be remembered for every future "code / screen / HTML to Figma" request.
+  It lives in `.claude/skills/code-to-figma/SKILL.md`; the layout techniques are in `FIGMA_DESIGN_SYSTEM.md` §4.7.
+
 ### Changed — HR Claims: "Mark as Paid On/By" (MOVE-3801, 7 Oct 2026 edit)
 
 MOVE-3801's 7 Oct edit adds two rows to the details drawer's Additional
