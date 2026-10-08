@@ -34,6 +34,13 @@ elsewhere" was once under-scoped to a surface-level spacing fix while the
 target's own ticket required a full structural match to a sibling
 implementation — don't repeat that.
 
+The `code-to-figma` skill (`.claude/skills/code-to-figma/SKILL.md`) is the
+user's standard for pushing code / a built screen / HTML into Figma. It
+covers every state and flow, titled rows with notes and arrows, real
+components and data, and ticket edits re-checked first. Invoke it for any
+"put this in Figma" request, and update it whenever the user corrects how
+such a push should look.
+
 For the "👩🏻‍🚀 Personal Dashboard - HR Module" file (`1FCRdGhHru6czP5P6h06kH`),
 use the **Figma Desktop Bridge plugin** (`mcp__Figma_Southleft__*` —
 `figma_execute`/`figma_capture_screenshot`/`figma_pair_plugin`) for writes and
