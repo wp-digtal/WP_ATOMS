@@ -457,6 +457,8 @@ export function HrClaimDetailsDrawer({
     c.status = 'Paid'
     c.paymentDate = v.paymentDate.format('YYYY-MM-DD')
     c.paymentRefNo = v.paymentRefNo.trim()
+    c.markedPaidOn = now
+    c.markedPaidBy = CURRENT_USER
     c.lastUpdatedOn = now
     closeModal()
     onChanged(`Claim ${c.claimNo} marked as paid.`)
@@ -565,6 +567,11 @@ export function HrClaimDetailsDrawer({
           wasApproved && [
             { label: 'Approved On', value: fmtDateTime(c.approvedOn) },
             { label: 'Approved By', value: c.approvedBy ?? '-' },
+          ],
+          // MOVE-3801 (7 Oct 2026 edit) — paid claims also show who marked them paid, and when.
+          c.status === 'Paid' && [
+            { label: 'Mark as Paid On', value: fmtDateTime(c.markedPaidOn) },
+            { label: 'Mark as Paid By', value: c.markedPaidBy ?? '-' },
           ],
           c.status === 'Rejected' && [
             { label: 'Rejected On', value: fmtDateTime(c.rejectedOn) },

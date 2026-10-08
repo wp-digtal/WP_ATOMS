@@ -70,6 +70,9 @@ export interface HrClaim {
   /** MOVE-3957 — set when the claim is marked as paid. */
   paymentDate?: string
   paymentRefNo?: string
+  /** MOVE-3801 (7 Oct 2026 edit) — when, and by whom, the claim was marked as paid. */
+  markedPaidOn?: string
+  markedPaidBy?: string
   lastUpdatedOn: string
 }
 
@@ -157,6 +160,7 @@ export const HR_CLAIMS: HrClaim[] = [
     status: 'Paid', createdOn: '2025-12-22T09:00:00', createdBy: 'Maya Anggraini',
     approvedOn: '2025-12-23T10:30:00', approvedBy: 'Maya Anggraini',
     paymentDate: '2026-01-05', paymentRefNo: 'PAY-2026-0005',
+    markedPaidOn: '2026-01-05T10:00:00', markedPaidBy: 'Nadia Rahmawati',
     lastUpdatedOn: '2026-01-05T10:00:00',
   },
   {
@@ -176,6 +180,7 @@ export const HR_CLAIMS: HrClaim[] = [
     status: 'Paid', createdOn: '2026-01-15T08:45:00', createdBy: 'Heikke Ekkieh',
     approvedOn: '2026-01-16T11:00:00', approvedBy: 'Maya Anggraini',
     paymentDate: '2026-01-31', paymentRefNo: 'PAY-2026-0031',
+    markedPaidOn: '2026-01-31T16:00:00', markedPaidBy: 'Nadia Rahmawati',
     lastUpdatedOn: '2026-01-31T16:00:00',
   },
   {
@@ -186,6 +191,7 @@ export const HR_CLAIMS: HrClaim[] = [
     status: 'Paid', createdOn: '2026-03-04T09:05:00', createdBy: 'Heikke Ekkieh',
     approvedOn: '2026-03-05T14:00:00', approvedBy: 'Maya Anggraini',
     paymentDate: '2026-03-31', paymentRefNo: 'PAY-2026-0118',
+    markedPaidOn: '2026-03-31T15:30:00', markedPaidBy: 'Nadia Rahmawati',
     lastUpdatedOn: '2026-03-31T15:30:00',
   },
   {

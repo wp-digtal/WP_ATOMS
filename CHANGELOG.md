@@ -14,6 +14,26 @@ minor).
 
 ## [Unreleased]
 
+### Changed — HR Claims: "Mark as Paid On/By" (MOVE-3801, 7 Oct 2026 edit)
+
+MOVE-3801's 7 Oct edit adds two rows to the details drawer's Additional
+Information. They show only when status = Paid: **Mark as Paid On** (date and
+time) and **Mark as Paid By** (user). `HrClaim` gains
+`markedPaidOn`/`markedPaidBy`, set by the Mark as Paid modal. The seeded paid
+claims carry them too (Nadia Rahmawati, Finance).
+
+The same day's edits to MOVE-3798 and MOVE-3957 needed no code change:
+- MOVE-3957 only named the modal header "Mark Claim as Paid", already used.
+- MOVE-3798 adds a note that claims by inactive employees stay visible in the
+  listing; they just can't be picked in the Employee filter. That is already
+  how the listing behaves.
+
+**Open item**: MOVE-3798's new wording says the Employee filter lists
+"employee status = active / inactive". That reads like a slip for "active /
+suspended" (MOVE-3799's definition of active), given the very next sentence
+says inactive employees *can't* be filtered. The code keeps
+Active + Suspended.
+
 ### Added — HR Claims screens in Figma (Section 7); status tags aligned to the design system
 
 At the user's request, the new "Claims" menu (epic MOVE-4021) was pushed into
