@@ -17,7 +17,7 @@ import {
 } from 'antd'
 import type { UploadFile } from 'antd'
 import dayjs, { type Dayjs } from 'dayjs'
-import { DownOutlined, InboxOutlined, PaperClipOutlined } from '@ant-design/icons'
+import { DownOutlined, PaperClipOutlined, UploadOutlined } from '@ant-design/icons'
 import {
   CURRENT_USER,
   HR_CLAIMS,
@@ -312,9 +312,16 @@ export function SubmitHrClaimDrawer({
           label="Attachments"
           required
           validateStatus={filesMissing ? 'error' : undefined}
-          help={filesMissing ? 'Upload at least one attachment.' : 'PNG, JPG/JPEG or PDF, up to 2MB each. More than one file is allowed.'}
+          help={filesMissing ? 'Upload at least one attachment.' : undefined}
+          // Figma (Claim (HR Module) file): an `Upload / Button` + file list + this
+          // two-line helper, not a drag-and-drop box.
+          extra={
+            <span style={{ fontSize: 12, whiteSpace: 'pre-line' }}>
+              {'Maximum file size: 2MB\nAccepted file types: .jpg, .jpeg, .png, .pdf'}
+            </span>
+          }
         >
-          <Upload.Dragger
+          <Upload
             multiple
             accept=".png,.jpg,.jpeg,.pdf"
             fileList={files}
@@ -333,9 +340,8 @@ export function SubmitHrClaimDrawer({
             }}
             onChange={({ fileList }) => setFiles(fileList.map((f) => ({ ...f, status: 'done' as const })))}
           >
-            <p className="ant-upload-drag-icon"><InboxOutlined /></p>
-            <p className="ant-upload-text">Click or drag files to this area to upload</p>
-          </Upload.Dragger>
+            <Button icon={<UploadOutlined />}>Upload</Button>
+          </Upload>
         </Form.Item>
       </Form>
     </Drawer>

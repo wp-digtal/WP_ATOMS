@@ -386,6 +386,30 @@ so no change was needed there.
 - **Re-check every note against the code before calling it done.** The first draft of the Submit Claim note was written from memory and wrong: it listed "Expense Date", and had Vehicle Plate on Parking/Mileage and Trip on Taxi. The code has Carpark / Taxi / Toll (ERP) / Others, plate on Carpark + Toll (ERP), and trip on Toll (ERP) only. Copy toasts verbatim from the code's `message.*` / `onChanged` strings.
 - **The section had a hidden pre-existing `Employee/Drawer` (`39280:84433`) at x≈10551.** It's not ours, so it was left alone, and the section's resize keeps it inside the bounds.
 
+**4.8 House patterns the user taught on the Claim (HR Module) file (9 Oct 2026). Use these by default on every HR form or modal.** The user reworked the Submit Claim drawers and the modals by hand, then asked for a required-field audit. What their edits teach:
+
+- **File upload is NOT `Upload / Drag and Drop`.** The house pattern is a vertical stack (`Frame 2608987`, spacing 4):
+  1. `_Form / Form Label Vertical` with the field name, `Mark=Required` when required. A bare upload with no label was a miss: the ticket's "Attachments, Required" had no visible label or asterisk.
+  2. `Upload / Button` (`Text#1233:41` = "Upload", upload icon).
+  3. The uploaded-file row (paperclip + blue file name + ×). In an error state, hide it and add a red `_Input / Input Caption` (`Status=Error`, e.g. "Upload at least one attachment.").
+  4. A two-line 12px grey helper: `Maximum file size: <N>MB` / `Accepted file types: .jpg, .jpeg, .png, .pdf`. **The size and types come from the ticket.** The user's first draft said 5MB, but MOVE-3799 says 2MB.
+
+  Code mirrors it: AntD `Upload` + `Button icon={<UploadOutlined />}`, and the helper goes in `Form.Item extra` (renders after the error `help`, same order as Figma). See `hrclaims/HrClaimDrawers.tsx`.
+- **Modal body copy is the placeholder `{{copy to master}}`**, because real copy lives in the Lark copy master list. The modal **header** keeps the real title ("Reject claim?"); field labels stay real. Don't paste the code's draft sentence into the Figma body. The code still needs *some* sentence, so code ↔ Figma differ here on purpose.
+- **Textarea fields** (Remarks, reasons) are `_Form / Form Label Vertical` + `Input / Textarea` with `Show Count#5012:0` on. The counter's max text node must equal the ticket's max length. Remarks is 240 (MOVE-3799); the draft showed 120. The current-count node must match the sample text's real length. The value text needs fill `rgba(0,0,0,.88)`: setting `Text#533:4` alone can leave it in placeholder grey.
+- **"Others → manual text input"** sits directly under Claim Type as a label-less `Type=Text` Form Item (`Label#515:279=false`), not a separately labelled "Specify Claim Type" row. Code still labels it. Fill it with a sample value ("air freshener") in the Others frame.
+- **Required-field audit method that found these**:
+  1. For each form frame, list the ticket table's rows (label, required/optional, max length, size/type limits, conditional visibility).
+  2. Tick each against the frame: the field is present, the asterisk matches, the counter max and helper text match.
+  3. Check the error frame: every required field shows its error, including upload.
+  4. Check the variant frames (e.g. Others): every unconditional field is still present. The Others frame had lost Remarks entirely.
+- **The user's own tidy-up of the section (8 Oct)**:
+  - Removed every `Docs/Notes` card and most caption sub-lines, keeping plain step-title text.
+  - Re-numbered the Submit row so the validation-error frame comes **last** (filled → submitted → Others → errors).
+  - Shifted frames to x≈350–420.
+
+  Don't re-add the Notes cards here, and keep to their numbering when adding frames.
+
 <!-- fill in further as discovered:
      - Variant naming convention (e.g. `state=default/hover/disabled`)
      - Any boolean/instance-swap props worth knowing about

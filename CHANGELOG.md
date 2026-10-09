@@ -14,6 +14,24 @@ minor).
 
 ## [Unreleased]
 
+### Fixed — HR Claims Submit Claim: required-field audit against MOVE-3799; upload aligned to the Figma component
+
+At the user's request ("cek tiket 2 hari lalu, double check required field"), the tickets were re-diffed since 7 Oct:
+- MOVE-3801 (8 Oct): show Others as "others (manual text)".
+- MOVE-3798 (8 Oct): full-text search must also match that manual text.
+
+The code already does both via `hrClaimTypeLabel`, so no code change was needed for them.
+
+The Figma audit against MOVE-3799's field table found:
+- **Attachments (required) had no label or asterisk.** Added a `Form Label Vertical` (`Mark=Required`) to every Submit frame.
+- **The upload helper said 5MB**; the ticket says 2MB. Fixed.
+- **The Remarks counter said /120**; the ticket says 240. Fixed.
+- **The error frame showed an uploaded file and no upload error.** The file is now hidden and "Upload at least one attachment." is shown.
+- **The Others frame had no Remarks field**, and its manual-input box was empty. Remarks was added and the box filled.
+- **Approve modal body** changed to `{{copy to master}}`, matching the user's Reject/Cancel modals.
+
+Code: the Submit drawer's `Upload.Dragger` became `Upload` + "Upload" button. The size/type helper moved into `Form.Item extra`, matching the user's new Figma upload pattern. The user's patterns are recorded in `FIGMA_DESIGN_SYSTEM.md` §4.8 and in the `code-to-figma` skill's checklist.
+
 ### Added — Claim (HR Module) Figma file: missing states, flow rows, titles and notes; `code-to-figma` skill
 
 At the user's request ("cek kembali tiket claim … tambahkan state/flow yang kurang, susun rapi, beri title dan informasi"), the HR Claims section

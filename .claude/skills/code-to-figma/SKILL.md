@@ -91,6 +91,13 @@ For each screen and flow in the module, include:
       lands on (stays on drawer vs. drawer closes back to the listing). A
       flow without its outcome is not a flow.
 - [ ] Anything a ticket edit added since the last push.
+- [ ] **Required-field audit, per form frame against the ticket's field table.**
+  - Every field is present, including in variant frames.
+  - Required asterisk on each required field, including upload.
+  - Textarea counter max = the ticket's max length.
+  - Upload helper size/types = the ticket's.
+  - The error frame shows every required field's error.
+  - Use the house patterns in `FIGMA_DESIGN_SYSTEM.md` §4.8: `Upload / Button` + label + helper (not drag-and-drop), and modal body `{{copy to master}}`.
 
 ## 4. Layout — how the section must read
 
@@ -100,6 +107,7 @@ For each screen and flow in the module, include:
   2. Create.
   3. Details by status.
   4. One row per action flow (approve/reject, cancel, mark as paid, …).
+- **The user's own later rearrangement wins.** If they've edited the section since the last push (moved frames, removed notes, renumbered), keep their version and extend it in the same style; don't restore what they removed. Their 8 Oct edit of the Claim file removed the `Docs/Notes` cards (§4.8).
 - **Every row has a header block** above its first frame:
   - A number and flow name, e.g. "3 · Approve / Reject claim".
   - The ticket keys it implements.
