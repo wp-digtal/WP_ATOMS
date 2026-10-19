@@ -14,6 +14,15 @@ minor).
 
 ## [Unreleased]
 
+### Docs — working rules: keep the Figma Desktop Bridge stable; PD product notes and decisions (19 Oct 2026)
+
+- `CLAUDE.md`: a new standing rule from the user ("pastikan biar stabil dan selalu simpan dalam memori").
+  - The bridge kept dropping after heavy `figma_execute` calls.
+  - Rule: small calls, no `findAll` over big sections, no library imports in the PD file, inspect after a timeout, and re-pair straight away.
+- `PERSONAL_DASHBOARD_KNOWLEDGE.md` §4–5 (committed earlier in `67bed6b` without its own changelog line; recorded here):
+  - product's 16 Oct notes;
+  - the user's decisions on the header bar, Recent Activity (max 6 + View all), My Next Leave, and PD ≠ HR (Remarks stays on Approvals per MOVE-3943).
+
 ### Changed — Personal Dashboard: My Claims table drops Remarks (MOVE-3943, 16 Oct 2026 edit) + Figma Section 7 audit started (19 Oct 2026)
 
 - **Code.** MOVE-3943's 16 Oct edit removed Remarks from the own-claims table only.

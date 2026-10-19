@@ -68,6 +68,13 @@ Don't build the feature in code instead and offer Figma "next". The web-tracking
 - To work on two files, finish one, then have the user open the plugin in the other file and give them a fresh pairing code.
 - Always confirm the connected file with `figma_diagnose` before editing.
 
+**Keep the Desktop Bridge stable: small calls only (user, 19 Oct 2026).** The bridge disconnected again and again in the Personal Dashboard file. Each drop happened right after a heavy `figma_execute`: several components created and `combineAsVariants` in one call, big frame clones, or a `findAll` over a large section (Production `29013:27819` has 174 children). Figma runs plugins on the editor's thread, so a call that blocks for about 30 s freezes the plugin and drops the cloud relay. After that, even `return 1` times out until the user re-pairs.
+- **One small step per call:** one component, one frame, or one property batch. Build a component set over several calls (create A → create B → combine), not in one.
+- **Never `findAll` over a big section or page.** Navigate from a known node id, or search inside one frame.
+- **Imports from libraries (`importComponentByKeyAsync`) time out in this file.** Reuse instances already in the file. If nothing fits, hand-build and name it `(hand-built …)`.
+- **After a timeout, inspect before retrying.** The change may have half-applied, so a blind rerun creates duplicates.
+- If the bridge hangs, call `figma_pair_plugin` straight away and give the user the code. Ask them to keep Figma Desktop in the foreground and the laptop awake while you work; a background or sleeping window throttles the plugin.
+
 **Save a Figma restore point before bulk edits (user, 15 Oct 2026).** Before changing more than a couple of frames in any Figma file, run `figma.saveVersionHistoryAsync(title, description)` through the bridge. Tell the user the version title so they can undo from File → Version history. Details: `FIGMA_DESIGN_SYSTEM.md` §4.10.
 
 ## Changelog
