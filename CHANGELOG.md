@@ -14,6 +14,11 @@ minor).
 
 ## [Unreleased]
 
+### Docs — `DRIVER_LEAVE_KNOWLEDGE.md` (Driver app Manage Leave, MOVE-4113 leave stories edited 19 Oct 2026)
+
+The user asked for a re-check of the Driver-app Leave section (`8515:13884`) against Jira before updating it in the `Fixing` section (`8590:7558`). The new file holds the 19 Oct specs for MOVE-2481 / 4073 / 4074 / 4075 and an audit of the current frames (§5).
+- The Figma comments could not be read (REST 401), so the user is being asked for their text.
+
 ### Added — Figma (Live Tracking 2.0 file): web (desktop) versions of the driver / passenger tracking pages (19 Oct 2026)
 
 The user asked to re-check the web tracking link case and to add a web display alongside mobile, reusing patterns from other pages. Work is in Archive › "Web Tracking Links" (`39443:75325`), where the section now lives. Restore point: "Before web (desktop) tracking pages (Claude, 19 Oct 2026)".
