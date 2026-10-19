@@ -55,3 +55,49 @@ The My Claims frame in Figma already had no Remarks column, so it matched the 16
 - **Toast:** clone `Toaster Pop-up Message (success)` (e.g. `41092:472907`); its text is `{{refer to copy}}`.
 - Hidden rows in the drawer's `RT-Details Content Sub-Section` are leftovers from the template (Suspension, Approved On …). Unhide and relabel them; don't add new ones.
 - **`findAll` over the 174-child Production section times out and hangs the bridge.** Search inside one frame, or use a known id.
+
+## 4. Product-team notes, 16 Oct 2026 (Denise T. → Daniel Roy; screenshot from the user, 19 Oct)
+
+These come from product, not a ticket. Apply them in Figma; the tickets lag behind.
+
+**Home (MOVE-3949)**
+- An upcoming-leave card **"My Next Leave"** is optional ("if you want, low effort for devs").
+- Pay slips already appear in Recent Activity: a new pay slip generated in the past 7 days.
+- Add more sample data to Recent Activity to see how it looks. An ops manager who approves drivers' leave and claims could get a lot of items.
+  - Consider a max height / max number of rows, or a collapsible / expandable section.
+- Don't add non-essential info just to fill the page: every addition is dev work, and the team deadline is **end Jan 2027** for all HR modules + live tracking.
+- Daniel will make a sample first for product to review.
+
+**Leave details page (MOVE-3948)**
+- The **year toggle** should look like the one on the Leave module's employee leave profile page, and sit **above the tabs**.
+- Align the Leave Applications and Leave Balances tables with the Leave module (check its Figma). The only differences:
+  - Leave Applications shows max **5** records per page (Leave module: 10).
+  - **Leave Applications table above, Leave Balances below.** The Leave module has them the other way round.
+
+**Claims details page (MOVE-3943)**
+- **Remove the Remarks column from the table.** The claims module ticket was updated; product forgot the PD ticket.
+
+**Entry to the dashboard (MOVE-3949 biz req 1 + 4)**
+- User profile dropdown in the top header bar → "Personal Dashboard"; the default view is Home.
+- Inside the dashboard, the same dropdown has "Work space" → back to the main workspace (ops, sales, HR modules …).
+- The main app's header bar (from the user's screenshot, Operations Calendar), left to right:
+  - collapse icon;
+  - Search…;
+  - language select "English";
+  - help (?);
+  - bell;
+  - divider;
+  - avatar + chevron.
+
+## 5. Decisions from the user (19 Oct 2026)
+
+- **Personal Dashboard ≠ HR module.** Read only the MOVE-3412 children for PD rules; never the HR Claims / Leave module tickets (user: "jangan baca yang HR lho ya, ini beda ya"). Where a PD ticket says "same as leave/claims module", follow that pointer only as far as the PD ticket says.
+  - Example: **Remarks** — the PD ticket MOVE-3943 (16 Oct) removes it from **My Claims only**. The **Approvals** table keeps Remarks, even though product's chat note said "remove remarks column from table".
+- **Header bar like the main app (SS1).**
+  - Top header bar over the content column: collapse icon, Search…, English, ?, bell, avatar + chevron.
+  - The profile dropdown holds "Personal Dashboard" (from the workspace) and "Work space" (from inside PD).
+  - The PD sidebar becomes logo + menu only (Home / Leave / Claims / Pay Slip); avatar and notifications move to the header bar.
+  - Built as local components `Header Bar` + `Profile Dropdown`.
+- **Recent Activity:** max **6 cards** (2 rows of 3) + **"View all (N)"** to expand. Show both the collapsed and the expanded state, with lots of data, including approver-side items.
+- **"My Next Leave" card on Home:** yes. Next approved upcoming leave (type, dates, days), with an empty state.
+- **When unsure, ask.** The goal is that a Jira → Figma request is understood without hand-holding.
