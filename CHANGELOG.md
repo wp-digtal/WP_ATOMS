@@ -14,6 +14,20 @@ minor).
 
 ## [Unreleased]
 
+### Docs — the house documentation style for HR sections; PD Figma progress (19 Oct 2026)
+
+- The user showed the Production section's Leave flows ("harusnya ada keterangan seperti ini dong"):
+  - a pink `Docs/Big Title` per screen group;
+  - blue `Docs/Notes` with a ⚡ heading and rule bullets beside the frame they explain;
+  - connector lines for navigation.
+- Recorded in `FIGMA_DESIGN_SYSTEM.md` §4.12 and the `code-to-figma` skill: a section without these isn't done.
+- PD Section 7 progress, also in `PERSONAL_DASHBOARD_KNOWLEDGE.md` §6 (commit `22fd1dd` had no changelog line; recorded here):
+  - Approvals empty states (MOVE-3948);
+  - Home default frame with Recent Activity (max 6 + View all), Annual + Medical balances + View more, and My Next Leave (MOVE-3949 + product note).
+- **Open — confirm with product:**
+  - wording of approver-side Recent Activity cards (not in the ticket's table);
+  - whether pending leave counts as "My Next Leave".
+
 ### Changed — Figma (Personal Dashboard file, Section 7): header bar + profile dropdown on every PD screen; year toggle above the tabs (19 Oct 2026)
 
 - The user asked how a user gets into the dashboard, which MOVE-3949 biz req 1/4 describes: user profile dropdown → Personal Dashboard; inside it → Work space.

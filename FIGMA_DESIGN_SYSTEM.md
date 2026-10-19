@@ -527,6 +527,19 @@ so no change was needed there.
 - **Reason modal.** Use the Reject Leave overlay `39312:45655`. `Input / Textarea` has no error state: set a red stroke (`#ff4d4f`) on the instance and append a cloned error `_Input / Input Caption` under it.
 - **Layout used.** Rows sit 1850px apart. In each row, a `Docs/Big Title` (row name) is followed by a `Docs/Notes` resized to 2600 wide, so its rules fit in ~340px of height. A `Docs/Flow Label` caption goes 100px above each frame. Arrows are 4px red vectors with `strokeCap: ARROW_LINES` on the end vertex, at frame mid-height.
 
+
+**4.12 The documentation the user expects on every HR section — read off the Production section's Leave flows (Personal Dashboard file `1FCRdGhHru6czP5P6h06kH`, section `29013:27819`; the user's screenshot, 19 Oct 2026: "harusnya ada keterangan seperti ini dong").** A section of bare frames, even complete and correct ones, is not done. The reference layout:
+- **One pink `Docs/Big Title` (`Size=Small`) per flow or screen group**, top-left of its group. Examples: "Leave Listing", "Manage Leave Type - Detail Page", "Apply Leave Drawer", "Cancel Leave (Modal)".
+  - The title names the surface (page / drawer / modal) the way the product talks about it, not the ticket key.
+  - The section is a grid of these groups: the listing on the left, then detail pages, then drawers, then modals to the right and below.
+- **Blue `Docs/Notes` (`Size=Big, Type=Flow`) next to the frame they explain.** One note per rule or state, not one wall of text per flow.
+  - The heading (the nested `Important` text, after ⚡) names the trigger or state, e.g. "After select start and end dates".
+  - The bullets (`Information#22:0`, newline = bullet) give the ticket rule in product language. Cite the ticket key inside a bullet when it helps.
+  - Notes sit beside or under their frame, close enough that it's obvious which one they annotate.
+- **Thin connector lines between groups** show navigation (listing → detail page → drawer → modal). Use orange/red, 2–4px, elbow-routed through the gaps, no overlap with frames.
+- Frames inside a group are scaled-down full pages placed side by side (states left → right), with their own small `Docs/Flow Label` caption where the state isn't obvious.
+- Personal Dashboard Section 7 follows the same scheme. Its groups and notes are listed in `PERSONAL_DASHBOARD_KNOWLEDGE.md`.
+
 ## 5. States & interaction patterns
 
 <!-- fill in the standard treatment for these, so every new drawer/table/form

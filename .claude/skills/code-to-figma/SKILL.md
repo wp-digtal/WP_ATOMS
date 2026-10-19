@@ -145,6 +145,13 @@ For each screen and flow in the module, include:
 - Remove stale duplicates you created. Ask before deleting anything you
   didn't create.
 
+**House documentation style (user, 19 Oct 2026):** in the WP ATOMS HR files, match the Production section (`FIGMA_DESIGN_SYSTEM.md` §4.12):
+- a pink `Docs/Big Title` per screen group (page / drawer / modal);
+- blue `Docs/Notes` (⚡ heading + rule bullets) beside the exact frame they explain;
+- connector lines for navigation between groups.
+
+A section without these is not done, however complete the frames are.
+
 ## 5. Verify
 
 - `figma_capture_screenshot` every new or changed frame and read it. Check:
