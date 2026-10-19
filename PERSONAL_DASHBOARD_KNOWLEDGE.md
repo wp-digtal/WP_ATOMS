@@ -101,3 +101,18 @@ These come from product, not a ticket. Apply them in Figma; the tickets lag behi
 - **Recent Activity:** max **6 cards** (2 rows of 3) + **"View all (N)"** to expand. Show both the collapsed and the expanded state, with lots of data, including approver-side items.
 - **"My Next Leave" card on Home:** yes. Next approved upcoming leave (type, dates, days), with an empty state.
 - **When unsure, ask.** The goal is that a Jira → Figma request is understood without hand-holding.
+
+## 6. Build log, 19 Oct 2026 (Section 7)
+
+- **Local components** (in Section 7, top-left):
+  - **`Header Bar`** `41104:372264`, 1204×56, white with a bottom stroke. Left: `Sidebar Icon` (collapse). Right: search `Input` "Search…", language select "English", help "?" (hand-built: no QuestionCircle icon in the file and the COMPASS import timed out), `Icon / BellOutlined`, divider, `Avatar` "CD" + `Icon / DownOutlined`.
+  - **`Profile Dropdown`** set `41104:372371`, `Context` = `Workspace` (item "Personal Dashboard") / `Personal Dashboard` (item "Work space"), plus "Log out". User block: Avatar + Citra Dewi + email. Items are `_Dropdown Menu / Dropdown Menu Item` (the first one `State=Hover`).
+- **Applied to all 39 PD frames:**
+  - a `Header Bar` instance as the first child of the content column;
+  - `HR General Screen.paddingTop=0` on leave frames; claims frames use `RT-Page Interaction Section`, padding already 0;
+  - the sidebar's `Navbar Items` (avatar + Notifications) hidden;
+  - the sidebar's `Sidebar Icon` hidden, because it moved to the header.
+- **Year toggle moved above the tabs** (product note) on every Leave frame: `Form` children reordered `Frame 194` → `Tab/Tab Group (My Leave / Approvals)`.
+  - It is also shown on the Approvals-tab frames; it was hidden there before.
+  - Reading: the year toggle is a page-level control above both tabs.
+- **Gotcha:** `form.insertChild(1, form.children[0])` is a no-op, because the index is resolved before the node is removed. To move child 0 below child 1, use `insertChild(2, …)`.

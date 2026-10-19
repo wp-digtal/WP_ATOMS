@@ -14,6 +14,14 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Figma (Personal Dashboard file, Section 7): header bar + profile dropdown on every PD screen; year toggle above the tabs (19 Oct 2026)
+
+- The user asked how a user gets into the dashboard, which MOVE-3949 biz req 1/4 describes: user profile dropdown → Personal Dashboard; inside it → Work space.
+  - New local components: `Header Bar` (from the user's screenshot of the main app header) and `Profile Dropdown` (Workspace / Personal Dashboard variants).
+  - All 39 PD frames now use the header bar. The sidebar is reduced to logo + menu.
+- Product note (16 Oct): the year toggle moved above the My Leave / Approvals tabs on every Leave frame.
+- Details and ids: `PERSONAL_DASHBOARD_KNOWLEDGE.md` §6.
+
 ### Docs — working rules: keep the Figma Desktop Bridge stable; PD product notes and decisions (19 Oct 2026)
 
 - `CLAUDE.md`: a new standing rule from the user ("pastikan biar stabil dan selalu simpan dalam memori").
