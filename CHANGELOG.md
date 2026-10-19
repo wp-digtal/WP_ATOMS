@@ -14,6 +14,16 @@ minor).
 
 ## [Unreleased]
 
+### Added — Figma (Live Tracking 2.0 file): web (desktop) versions of the driver / passenger tracking pages (19 Oct 2026)
+
+The user asked to re-check the web tracking link case and to add a web display alongside mobile, reusing patterns from other pages. Work is in Archive › "Web Tracking Links" (`39443:75325`), where the section now lives. Restore point: "Before web (desktop) tracking pages (Claude, 19 Oct 2026)".
+- **Ticket re-check:** MOVE-3676 and its sub-tasks MOVE-4347 / MOVE-4334 were last edited 13 Oct 10:28, before the original build; MOVE-1685 was last edited 8 Oct 2025. No changes to apply.
+- **Added:**
+  - Row 4, Driver web: live, register confirm, point registered, location off, expired.
+  - Row 5, Passenger web: live + ETA, driver offline, expired.
+- **Layout:** each 1440 frame is derived from its mobile twin (same data and states). It follows Production's Live Tracking layout: a map card on the left with the Map component's own controls and Traffic toggle, and the trip details on the right as a panel.
+- **Docs:** each row has a title, captions 4.1–5.3, and arrows. Recipe in `FIGMA_DESIGN_SYSTEM.md` §4.9; node ids in `FIGMA_COMPONENT_INDEX.md`.
+
 ### Added — Figma (Account Management file): MOVE-4449 module built in Section 7 (15 Oct 2026)
 
 The user asked for the Account Management working area (`41001:22331`) to be prepared from MOVE-4449. It is built from the file's own Production Leave template, per the code-to-figma skill. There is no code for this module yet, so the tickets are the only source. Restore point saved first.

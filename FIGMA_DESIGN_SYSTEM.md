@@ -446,6 +446,14 @@ so no change was needed there.
   - `Docs/Big Title` / `Docs/Notes` are the row headers.
   - Captions are 570–1230px wide, so 390px mobile frames need a **900px column pitch** or the captions overlap.
 - Arrows reuse the file's own style (red, `ARROW_LINES`), thickened to 6.
+- **Web (desktop) tracking page recipe (19 Oct 2026).** The user asked for a web display alongside mobile, built from patterns on other pages. It mirrors Production's Live Tracking layout: a map card with fullscreen, zoom and Traffic controls on the left, details on the right (cf. `Live Tracking - Click Map` `39348:51435` and `Trip Drawer` `39211:237434`). Build each 1440×1024 frame from its mobile twin, so data and states stay identical:
+  - **Page and header:** a grey (`#f5f5f5`) page frame. Clone the mobile `Header` (and `Banner`, if present) and resize it to 1440. Give the header a white fill and a 1px bottom border.
+  - **Map card** (960 × rest, radius 8, clipped, `#f0f0f0` stroke): clone the mobile `Map` frame and `rescale(960/390)`. Then undo the scale on every overlay (route-point markers, passenger dot): store each centre, `rescale(1/k)`, then re-centre. Set route vector `strokeWeight /= k`.
+  - **Inside the scaled `Map` instance**, hide the bus (`;39048:39923`), fullscreen (`;40092`), camera + zoom (`;40096`), Google logo (`;40113`) and footer (`;40123`). Clone the same sublayers from the *unscaled* mobile instance into the card. Place the bus at the scaled bus's centre, fullscreen at top-right 12, and the zoom stack at bottom-right. Move the Traffic toggle to bottom-left 12 and the my-location button to the right edge.
+  - **Details panel** (408 wide, white, radius 8, at x 1008): clone the mobile `Sheet`, set its width to 408 and hide `Handle`.
+  - **Modals:** clone the mobile `Modal overlay`, resize it to 1440×1024 and centre the modal.
+  - **Expired:** clone the mobile frame and resize it; its vertical auto-layout keeps it centred.
+- **Sections can move.** On 19 Oct, the 13 Oct Production Section 1 had been moved by the user to the `Archive` page (`39443:75325`), and its desktop rows were deleted. Always resolve the user's link first instead of trusting stored node ids. `getNodeByIdAsync` on an unloaded page can stall the bridge ("Unable to establish connection"); `await page.loadAsync()` first.
 
 <!-- fill in further as discovered:
      - Variant naming convention (e.g. `state=default/hover/disabled`)
