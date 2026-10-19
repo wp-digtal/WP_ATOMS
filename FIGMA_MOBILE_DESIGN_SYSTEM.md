@@ -140,14 +140,14 @@ Weights are variables: `Weight/Regular` (value "Reguler"), `Medium`, `Semibold`,
 | Chip / tag / pill | **`Chips/Normal`** (key `e5bd12e21ff41a0bd19c67a09e3142aed6062c6e`) | `Variant` Neutral_1 / Neutral_2 / Primary / Secondary / Info / Success / Warning / Danger · `Size` Small / Medium / Large / Xtra Large · `States` Default / Hovered / Disabled / Active / Default Transparent · `Text#10472:0` · icon left / right · Image, Social media | Feedback experience chips, route chips, "Dyson" customer pill |
 | Icon | **`Icon Wrapper`** (key `7d19651f…`; `Icon` instance-swap, `Size` super-small … super-large) and `◈ IconWrapper 2.0` (`Size` Tiny … Huge). Glyphs are **Tabler icons** (`user`, `hexagon`, `steering-wheel`, `bell`, `clock`, `map-pin-star`, `sos`, `navigation` …) | — | everywhere |
 | Modal / dialog | `Modal Basic`, `Modal Pre Build`, `ModalHeader`, `ModalHeaderContent`, `IconModal` | — | — |
-| Toast | `ToastContainer` | — | — |
+| Toast | **`ToastContainer`** (set key `6de3b77adddf7d0f9bddac1d5ab6a6ce281b97bb`) | `State` Danger / Brand / Info / Success / Warning · `IsTransparent` · `CTA`. For a one-line toaster: `Subtitle#12467:30=false`, `Call to Action Box#12493:0=false`, `resize(358,h)`, place at `x=16, y=52` (under the status bar) | Driver Leave fixes: success + error toasters |
 | Avatar | `Avatar`, `Avatar Group`, `Online Indicator`, `Verification Badge` | — | — |
-| Checkbox / radio / toggle | `Checkbox Atom` / `Checkbox Pre Build`, `RadioButton Atom` / `RadioButton Pre Build`, `◈ Toggle / Base` / `◈ Toggle / Prebuild` | — | — |
+| Checkbox / radio / toggle | `Checkbox Atom` / `Checkbox Pre Build`, **`RadioButton Atom`** (set key `35ad146310d1343bcbdfc50e18479009bee255cf`) / `RadioButton Pre Build`, `◈ Toggle / Base` / `◈ Toggle / Prebuild` | RadioButton Atom: `Size=Medium`; `Type=Radiobox` = selected dot, `Default` = unselected (`Checked` is a checkmark, not a radio); `State=Disabled` | Apply Leave AM/PM |
 | Tabs | `Tab base`, `Tab Group` | — | — |
 | Navigation | `◈ Navigation / Nav Item`, `Nav Item`, `Nav Child Item`, `Top Navigation & Float Navigation`, `Bottom Menu`, `Right Menu`, `Side Navigation Bar` | — | (the production tab bar is hand-built; see §2) |
 | Floating action | `FloatingButton Pre Build`, `FloatingButtonChild Atom` | — | — |
 | Progress | `Progress bar`, `Progress circle`, `Circular progress indicator` | — | — |
-| Empty state | `Empty State` | — | — |
+| Empty state | **`Empty State`** (set key `8f7e8d9772a307e793c18109f0bc3d3d4c7b34dc`) | `Variant=Vertical`; `Show buttons#12148:6=false`; set the heading text, hide the body text when the ticket gives one line only | Manage Leave "No leave applications." |
 | Cards / metrics | `Metrics Card`, `Label Ticket`, `Ticket Group`, `Urgency` | — | — |
 | Pagination / table | `Pagination`, `Table`, `Table Cell`, `Table Header Cell` | — | — |
 | Rich text editor | `Rich Component / Base`, `Toolbar / Arrows / Paragraph / Formatting` | — | Feedback "Other Feedback" (hidden toolbar) |
@@ -197,6 +197,7 @@ Use this table when a feature exists on web and needs a mobile screen, e.g. Leav
 | Feature | Where | Frames | Notes |
 |---|---|---|---|
 | **Claims — Manage Claims** (Driver app; epic MOVE-4113 stories MOVE-4431/4432/4433/4434, form per MOVE-4021) | Production - Driver → `Section 2` (`8524:13453`) | `8524:13458` Account (Quick Actions → **Manage Claims**), `8524:13615` Manage Claims list, `8524:13570` Submit Claim form, details `8524:14017` Pending Approval / `8524:14069` Pending Payment / `8524:14125` Paid / `8524:14181` Rejected / `8524:14240` Cancelled, `8524:15021` Cancel Claim sheet | **Current version (user, 14 Oct 2026), modelled on Manage Leave; fields / statuses aligned to HR Claims on 15 Oct 2026 (see `CLAIMS_KNOWLEDGE.md` §6). Extra frame: Submit filled `8545:15279`.** List = year dropdown + claim cards (type, amount, claim no. chip, "Submitted on …", status chip) + "Submit New Claim". Details = Leave's detail page + claim rows (Date, Full Name, Bus Number, Route), Remarks, Attachment(s), audit rows per status. Cancel only while Pending Approval, reason required (web MOVE-3731). Docs: `Docs/Big Title` `8524:13454`, notes `8524:15113` / `8524:15120`, flow labels per row, captions 2.x / 3.1, orange arrows. |
+| **Leave — fixes** (Driver app; MOVE-2481/4073/4074/4075 edited 19 Oct 2026 + two user comments) | Production - Driver → `Fixing` (`8590:7558`) | 10 frames, listed in `DRIVER_LEAVE_KNOWLEDGE.md` §7 | AM/PM, time-off detail, locked End Date, balance box hidden, field errors + Danger toast, Success toast, Empty State, Cancel hidden once dates passed, cancelled reason "-", offline banner. |
 | **Claims — submission only** (superseded) | Production - Driver → `Section 1` (`8521:9653`) | `8522:12503` Account (Quick Actions → Submit Claim), `8522:12658` Submit Claim | Earlier version, from when the user said mobile is submission only. Superseded by Section 2 after the MOVE-4113 claims stories appeared; kept untouched. |
 
 Techniques and gotchas from the Claims build:
@@ -218,6 +219,10 @@ Techniques and gotchas from the Claims build:
   - `Line 38`.
 
   Remove the bottom `Button` where the status has no action. Then set the body's parent `Frame 43196` to `primaryAxisAlignItems='MIN'`. Clones of Approved/Pending leave use `SPACE_BETWEEN`, which floats the content down once the button is gone.
+- **Library imports work in this file** (`importComponentSetByKeyAsync` for RadioButton Atom, ToastContainer, Empty State, 19 Oct 2026); wrap them in `Promise.race` with a timeout anyway. Imported node ids don't survive a re-pair, so re-import by key instead of reusing an old id.
+- **Offline banner (no Integral component):** clone the Account page's red info banner `5384:8950` (alert-triangle + text). Make it a fixed bar: `resize(390, 40)`, `cornerRadius=0`, centred, hide its `x` close icon (the ticket hides it on reconnect, not by tap), place it at `y=44` directly under the status bar, and push the page content down by 40. A floating pill at y≈92 sits on top of the year dropdown.
+- **Locked field + time-off text:** `Input/Input Border Style` `State=Disable` for a system-filled field (time-off End Date). When re-using a placeholder text node for a value, copy the fills from a filled value (e.g. the Start Date text) or it stays placeholder grey.
+- **AM/PM under a date:** wrap the date `Input` in a vertical auto-layout frame (gap 10). Set the input `layoutSizingHorizontal='FILL'`, `layoutSizingVertical='HUG'` and the column `primaryAxisSizingMode='AUTO'`, or the input collapses.
 - Keep the person consistent: the Account page's logged-in driver is **John Mit**, so Created By / Full Name on that driver's records use the same name.
 - `Docs/Big Title`'s `Brief` description is ~180px type. Don't put notes there. Use a `Docs/Notes` clone (`2367:23027`) instead.
 - Instance property edits on these library components are slow. Do **one card or one screen per `figma_execute`**, or the call times out after half-applying.

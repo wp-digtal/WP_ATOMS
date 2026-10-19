@@ -165,33 +165,26 @@ Figma comments on this section could not be read: the REST API returns 401, the 
 
 ## 7. Fixes built in `Fixing` (`8590:7558`)
 
-Restore point: "Before Driver Leave fixes in Fixing section (Claude, 19 Oct 2026)".
+Restore point: "Before Driver Leave fixes in Fixing section (Claude, 19 Oct 2026)" (version id `2411969985763602919`).
 
-| Frame | What changed |
-|---|---|
-| `8600:143870` Apply Leave – Annual | AM/PM under Start and End Date (24 Jan AM – 25 Jan PM). To Deduct 2 days, Balance 6 days. |
-| `8600:144068` Apply Leave – Time Off | End Date `State=Disable` and equal to Start Date, with AM/PM disabled. Time "10:00 AM - 12:00 PM". Balance box hidden. |
+| # | Frame | Position | What it shows | Source |
+|---|---|---|---|---|
+| 1.1 | `8600:143870` Apply Leave – Annual with AM/PM | (80, 500) | AM/PM under Start and End Date (24 Jan AM – 25 Jan PM). To Deduct 2 days, Balance 6 days. | Comment 2, MOVE-4074 |
+| 1.2 | `8600:144068` Apply Leave – Time Off | (600, 500) | End Date `State=Disable` = Start Date; AM/PM disabled; Time "10:00 AM - 12:00 PM"; balance box hidden. | MOVE-4074 |
+| 1.3 | `8613:7774` Leave Details – Time Off | (1120, 500) | 30 Oct 2026 + sub-text "10:00 AM - 12:00 PM"; Days chip "-"; Cancel Leave shown (pending, date not passed). | Comment 1, MOVE-4073 |
+| 2.1 | `8613:7888` Leave Details – Approved, dates passed | (80, 1550) | 6 Oct 2026, no Cancel button (hidden, not disabled). | MOVE-4073/4075 |
+| 2.2 | `8613:7992` Leave Details – Cancelled result | (600, 1550) | 3–5 Nov 2026, Cancelled By Aldi Iksandar, Reason for Cancellation "-". | MOVE-4075 |
+| 2.3 | `8613:8089` Apply Leave – Empty | (1120, 1550) | Balance box hidden until required fields are filled; AM/PM disabled. | MOVE-4074 |
+| 3.1 | `8613:8276` Apply Leave – Missing required fields | (80, 2650) | Leave Type / Start Date / End Date in `State=Error` with "X is required." + Danger toast "Some required fields are missing. Please check and try again." | MOVE-4074 |
+| 3.2 | `8613:8843` Manage Leave – Submitted | (600, 2650) | Success toast "Leave submitted successfully." | MOVE-4074 |
+| 3.3 | `8613:9111` Manage Leave – Empty | (1120, 2650) | Integral Empty State "No leave applications." | MOVE-2481 |
+| 4.1 | `8613:9554` Manage Leave – Offline | (80, 3750) | Fixed red bar "You are currently offline" under the status bar; content pushed down 40. | MOVE-2481/4073/4074 |
 
-**Technique:**
-- AM/PM is built from Integral **`RadioButton Atom`**, imported with `importComponentSetByKeyAsync('35ad146310d1343bcbdfc50e18479009bee255cf')`.
-  - Selected = `Size=Medium, Type=Radiobox`; unselected = `Type=Default`; locked = `State=Disabled`.
-  - `Type=Checked` is a checkmark, not a radio dot, so don't use it here.
-  - Each date `Input` is wrapped in a vertical frame (gap 10) with an AM/PM row underneath (gap 24; option gap 8).
-  - The labels use the form's own label font, 14 px.
-- `ToastContainer` (`6de3b77adddf7d0f9bddac1d5ab6a6ce281b97bb`) also imports fine here. It has `State` Danger / Brand / Info / Success / Warning; use it for the success and error toasters.
+**Technique:** see `FIGMA_MOBILE_DESIGN_SYSTEM.md` §4.1 (RadioButton Atom / ToastContainer / Empty State keys and props) and §5.1 (offline banner, locked field, AM/PM wrapper, Leave detail without a bottom button → `Frame 43196` `primaryAxisAlignItems='MIN'`).
 
 ## 8. Still to do
 
-- Time-off text colour: "10:00 AM - 12:00 PM" still renders in the placeholder grey. Copy the fills from the Start Date value.
-- Apply Leave:
-  - Empty form with the balance box hidden.
-  - Error state: field errors "[Field label] is required." + Danger toaster "Some required fields are missing. Please check and try again."
-- Manage Leave:
-  - Success toaster "Leave submitted successfully."
-  - Empty state "No leave applications."
-- Leave Details:
-  - Time-off detail: Dates + time sub-text, Days Used "-".
-  - Approved leave whose dates have passed: no Cancel button.
-  - Cancelled result: Reason "-".
-- Offline banner.
-- Docs: titles, captions and notes.
+- Docs layer in `Fixing`: section title, row titles, captions 1.1–4.1, arrows; resize the section (it was 1677×4616). This was interrupted by a bridge disconnect.
+- Not built yet: the "You are back online" / "Unable to access due to no internet connection" pop-ups, the Leave Balances overlay with Carried Forward (MOVE-4137), and a time-off card on the Manage Leave list with Days "-".
+- Not checked: whether the original Cancelled detail in `8515:13884` still says "Not inputted" (the ticket says "-"). The fix frame 2.2 uses "-".
+- The Mobile Claims tickets (MOVE-4431–4434) were also edited on 19 Oct; they need a separate check.

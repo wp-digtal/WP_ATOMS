@@ -14,9 +14,27 @@ minor).
 
 ## [Unreleased]
 
-### Changed — Figma (Mobile Apps Design): Driver Leave fixes started in `Fixing` (`8590:7558`) (19 Oct 2026)
+### Changed — Figma (Mobile Apps Design): Driver Leave fixes built in `Fixing` (`8590:7558`) (19 Oct 2026)
 
-The user forwarded two Figma comments: Apply Leave is missing AM/PM, and Leave Details needs a time-off example. Two frames are built so far, using Integral `RadioButton Atom`; see `DRIVER_LEAVE_KNOWLEDGE.md` §6–§8. The Desktop Bridge froze mid-build, and the remaining items are listed in §8.
+The user forwarded two Figma comments: Apply Leave is missing AM/PM, and Leave Details needs a time-off example. They also asked for a re-check against Jira; MOVE-2481/4073/4074/4075 were all edited on 19 Oct. The `Fixing` section now holds 10 frames, built from Integral (`RadioButton Atom`, `ToastContainer`, `Empty State`, `Input Border Style` Error/Disable). Frame list in `DRIVER_LEAVE_KNOWLEDGE.md` §7.
+- **Comment fixes:** AM/PM on Start and End Date; a time-off detail with "10:00 AM - 12:00 PM" and Days "-".
+- **Missing states from the tickets:**
+  - Time-off End Date locked; balance box hidden.
+  - Empty Apply Leave form.
+  - Field errors + Danger toaster.
+  - Success toaster.
+  - "No leave applications." empty state.
+  - Approved leave whose dates passed: Cancel hidden.
+  - Cancelled result with reason "-".
+  - Offline banner.
+- **Judgment call:** the offline banner was first placed as a floating pill and covered the year dropdown. It is now a fixed full-width bar under the status bar with no close icon, since the ticket hides it on reconnect, not by tap.
+- **Open:**
+  - Docs layer (titles/captions/arrows), interrupted by a bridge disconnect.
+  - Back-online / no-connection pop-ups.
+  - Balance overlay.
+  - Mobile Claims 19 Oct edits.
+
+  See §8.
 
 ### Docs — `DRIVER_LEAVE_KNOWLEDGE.md` (Driver app Manage Leave, MOVE-4113 leave stories edited 19 Oct 2026)
 
