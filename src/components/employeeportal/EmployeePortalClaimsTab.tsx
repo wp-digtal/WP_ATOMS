@@ -141,22 +141,24 @@ function ClaimsTable({
     },
     { title: 'Submission Date', width: 155, ...sortable('createdOn'), render: (_, c) => cell(fmtDate(c.createdOn)) },
     { title: 'Claim Type', width: 150, ...sortable('type'), render: (_, c) => cell(hrClaimTypeLabel(c)) },
-    {
-      // MOVE-3943 still lists Remarks (incl. the appended plate / trip), unlike
-      // the HR listing, which dropped the column on 14 Oct 2026.
-      title: 'Remarks',
-      key: 'remarks',
-      width: 180,
-      // Column-level ellipsis switches the table to fixed layout, so long
-      // remarks truncate (full text on hover) instead of widening the table.
-      ellipsis: { showTitle: false },
-      render: (_, c) => {
-        const lines = remarksLines(c)
-        return lines.length
-          ? <Tooltip title={lines.join(' | ')}><Text style={{ fontSize: 13 }}>{lines.join(' | ')}</Text></Tooltip>
-          : <Text style={{ fontSize: 13, color: '#bfbfbf' }}>-</Text>
-      },
-    },
+    // MOVE-3943's 16 Oct 2026 edit dropped Remarks from the own-claims table
+    // only; the Approvals table still lists it (incl. the appended plate / trip).
+    ...(withEmployee
+      ? [{
+          title: 'Remarks',
+          key: 'remarks',
+          width: 180,
+          // Column-level ellipsis switches the table to fixed layout, so long
+          // remarks truncate (full text on hover) instead of widening the table.
+          ellipsis: { showTitle: false },
+          render: (_: unknown, c: HrClaim) => {
+            const lines = remarksLines(c)
+            return lines.length
+              ? <Tooltip title={lines.join(' | ')}><Text style={{ fontSize: 13 }}>{lines.join(' | ')}</Text></Tooltip>
+              : <Text style={{ fontSize: 13, color: '#bfbfbf' }}>-</Text>
+          },
+        }]
+      : []),
     { title: 'Amount', key: 'amount', width: 100, align: 'right', render: (_, c) => cell(formatClaimAmount(c.amount)) },
     { title: 'Status', width: 140, ...sortable('status'), render: (_, c) => <HrClaimStatusTag status={c.status} /> },
     { title: 'Last Updated On', width: 155, ...sortable('lastUpdatedOn'), render: (_, c) => cell(fmtDate(c.lastUpdatedOn)) },
@@ -241,7 +243,7 @@ function ClaimsTable({
         rowKey="id"
         pagination={false}
         // Fits the ~1090px body inside the page card; wider screens just stretch.
-        scroll={{ x: withEmployee ? 1150 : 1000 }}
+        scroll={{ x: withEmployee ? 1150 : 900 }}
         onChange={(_, __, sorter) => {
           const s = Array.isArray(sorter) ? sorter[0] : sorter
           setSort(s?.order ? { key: s.columnKey as SortKey, order: s.order } : null)

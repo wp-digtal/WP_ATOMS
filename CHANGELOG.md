@@ -14,6 +14,25 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Personal Dashboard: My Claims table drops Remarks (MOVE-3943, 16 Oct 2026 edit) + Figma Section 7 audit started (19 Oct 2026)
+
+- **Code.** MOVE-3943's 16 Oct edit removed Remarks from the own-claims table only.
+  - `EmployeePortalClaimsTab.tsx` now shows Remarks only on the Approvals table (`withEmployee`).
+  - Search still covers remarks.
+  - Own-table scroll width is now 900.
+  - `tsc` clean. Checked in Chromium: My Claims has no Remarks column; Approvals keeps it.
+- **Figma (Personal Dashboard file, Section 7).** The user said the section didn't match the tickets and had no notes.
+  - Restore point: "Before PD Section 7 audit fixes + docs (Claude, 19 Oct 2026)".
+  - Fixed: leave approve/reject modal copy, plus a closed Actions menu behind those modals.
+  - Added leave approved / rejected / disabled + tooltip frames.
+  - Added 5-per-page pagination on the leave tables (MOVE-3948).
+  - Made the balance numbers consistent.
+  - Hid a leftover "1 month ago" text.
+  - Details: `PERSONAL_DASHBOARD_KNOWLEDGE.md` (new).
+- **Open:**
+  - Approvals empty states, the Home row (MOVE-3949) and the docs layer. The bridge hung mid-build.
+  - Pay Slip tickets MOVE-3953/3954 have no description yet.
+
 ### Changed — Figma (Mobile Apps Design): Driver Leave fixes built in `Fixing` (`8590:7558`) (19 Oct 2026)
 
 The user forwarded two Figma comments: Apply Leave is missing AM/PM, and Leave Details needs a time-off example. They also asked for a re-check against Jira; MOVE-2481/4073/4074/4075 were all edited on 19 Oct. The `Fixing` section now holds 10 frames, built from Integral (`RadioButton Atom`, `ToastContainer`, `Empty State`, `Input Border Style` Error/Disable). Frame list in `DRIVER_LEAVE_KNOWLEDGE.md` §7.
