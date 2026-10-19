@@ -155,3 +155,43 @@ To check, not yet verified:
 - Cancelled detail shows "Not inputted"; the ticket says **"-"**.
 
 Figma comments on this section could not be read: the REST API returns 401, the same as before. Ask the user for the comment text instead of guessing.
+
+## 6. User comments on the Leave section (read from the user's screenshots, 19 Oct 2026)
+
+1. Leave Details, Time-off frame (`8484:6706`), from Westpoint Digital: "Daniel can show a example if there is time? so leave type is time off".
+   - The time-off detail needs a time-range example: Dates sub-text "10:00 AM - 12:00 PM".
+   - Days Used should be **"-"** (MOVE-4073), not "1 Days".
+2. Apply Leave, Annual frame (`8484:6541`), from Westpoint Digital: "Daniel missing AM/PM option".
+
+## 7. Fixes built in `Fixing` (`8590:7558`)
+
+Restore point: "Before Driver Leave fixes in Fixing section (Claude, 19 Oct 2026)".
+
+| Frame | What changed |
+|---|---|
+| `8600:143870` Apply Leave – Annual | AM/PM under Start and End Date (24 Jan AM – 25 Jan PM). To Deduct 2 days, Balance 6 days. |
+| `8600:144068` Apply Leave – Time Off | End Date `State=Disable` and equal to Start Date, with AM/PM disabled. Time "10:00 AM - 12:00 PM". Balance box hidden. |
+
+**Technique:**
+- AM/PM is built from Integral **`RadioButton Atom`**, imported with `importComponentSetByKeyAsync('35ad146310d1343bcbdfc50e18479009bee255cf')`.
+  - Selected = `Size=Medium, Type=Radiobox`; unselected = `Type=Default`; locked = `State=Disabled`.
+  - `Type=Checked` is a checkmark, not a radio dot, so don't use it here.
+  - Each date `Input` is wrapped in a vertical frame (gap 10) with an AM/PM row underneath (gap 24; option gap 8).
+  - The labels use the form's own label font, 14 px.
+- `ToastContainer` (`6de3b77adddf7d0f9bddac1d5ab6a6ce281b97bb`) also imports fine here. It has `State` Danger / Brand / Info / Success / Warning; use it for the success and error toasters.
+
+## 8. Still to do
+
+- Time-off text colour: "10:00 AM - 12:00 PM" still renders in the placeholder grey. Copy the fills from the Start Date value.
+- Apply Leave:
+  - Empty form with the balance box hidden.
+  - Error state: field errors "[Field label] is required." + Danger toaster "Some required fields are missing. Please check and try again."
+- Manage Leave:
+  - Success toaster "Leave submitted successfully."
+  - Empty state "No leave applications."
+- Leave Details:
+  - Time-off detail: Dates + time sub-text, Days Used "-".
+  - Approved leave whose dates have passed: no Cancel button.
+  - Cancelled result: Reason "-".
+- Offline banner.
+- Docs: titles, captions and notes.

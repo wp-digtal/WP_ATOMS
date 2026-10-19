@@ -14,6 +14,10 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Figma (Mobile Apps Design): Driver Leave fixes started in `Fixing` (`8590:7558`) (19 Oct 2026)
+
+The user forwarded two Figma comments: Apply Leave is missing AM/PM, and Leave Details needs a time-off example. Two frames are built so far, using Integral `RadioButton Atom`; see `DRIVER_LEAVE_KNOWLEDGE.md` §6–§8. The Desktop Bridge froze mid-build, and the remaining items are listed in §8.
+
 ### Docs — `DRIVER_LEAVE_KNOWLEDGE.md` (Driver app Manage Leave, MOVE-4113 leave stories edited 19 Oct 2026)
 
 The user asked for a re-check of the Driver-app Leave section (`8515:13884`) against Jira before updating it in the `Fixing` section (`8590:7558`). The new file holds the 19 Oct specs for MOVE-2481 / 4073 / 4074 / 4075 and an audit of the current frames (§5).
