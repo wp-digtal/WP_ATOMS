@@ -14,6 +14,30 @@ minor).
 
 ## [Unreleased]
 
+### Added — Figma (Personal Dashboard file, Section 7): Home, entry flow, empty states, and full documentation (19 Oct 2026)
+
+The user said Section 7 "has no information or documentation" and showed the Production section's style.
+
+**New frames**
+- Home (MOVE-3949), three states: default, View all expanded, and empty.
+  - Recent Activity: max 6 + View all (product note).
+  - Annual + Medical balances + View more.
+  - My Next Leave (product note).
+- Entry flow (biz req 1 & 4): workspace → Profile Dropdown "Personal Dashboard"; inside PD → "Work space".
+
+**Layout and documentation**
+- The section is re-laid out into 12 groups.
+- Each group has a pink `Docs/Big Title`, blue `Docs/Notes` with the ticket rules, red arrows between states, an elbow arrow for the Reject branch, and dashed connectors between groups.
+- Frames were reordered so the arrows follow real flows.
+- Restore point: "Before PD Section 7 relayout + docs layer (Claude, 19 Oct 2026)".
+- Details: `PERSONAL_DASHBOARD_KNOWLEDGE.md` §7, plus a new `FIGMA_COMPONENT_INDEX.md` row.
+
+**Open — confirm with product**
+- Approver-side activity card wording.
+- Whether pending leave counts as next leave.
+- Home empty-state copy.
+- Pay Slip tickets are still empty.
+
 ### Docs — the house documentation style for HR sections; PD Figma progress (19 Oct 2026)
 
 - The user showed the Production section's Leave flows ("harusnya ada keterangan seperti ini dong"):

@@ -132,3 +132,39 @@ These come from product, not a ticket. Apply them in Figma; the tickets lag behi
     - Pending is shown because Citra has no approved upcoming leave in the data.
     - Whether pending leave counts as "next leave" is to confirm with product.
 - Home expanded frame `41107:271607`: clone of default; "View all" → "Show less" and 12 cards. Interrupted by a bridge drop; finish it on reconnect.
+
+## 7. Section 7 layout + documentation (finished 19 Oct 2026)
+
+Restore point before the relayout: "Before PD Section 7 relayout + docs layer (Claude, 19 Oct 2026)". The section is 11700×23700.
+
+Every group has:
+- a pink `Docs/Big Title` (clone of `39082:10687`) at x=1755, above the frames;
+- blue `Docs/Notes` (clone of `39324:88813`) in the left column, x=100, w=1550. After setting `Information#22:0`, re-apply `setRangeListOptions(…,{type:'UNORDERED'})` on the `Description` text, or the bullets are lost.
+
+Frames sit at x = 1755 + i·1640.
+- Red 4px arrows join consecutive states.
+- In the approver rows, an elbow arrow under the frames shows the Reject branch.
+- Grey dashed connectors at x=1700 lead from one group to the next.
+
+| Row y | Big Title | Frames, left → right |
+|---|---|---|
+| 500 | Personal Dashboard — Local Components | `Header Bar` 41104:372264 · `Profile Dropdown` 41104:372371 · `Activity Card` 41107:271227, with their notes underneath |
+| 1400 | Entry – Profile Dropdown | 41108:278794 workspace → "Personal Dashboard" · 41108:283731 inside PD → "Work space" |
+| 3200 | Personal Dashboard Homepage | 41107:267249 default · 41107:271607 View all expanded · 41108:274758 empty |
+| 5150 | Leave Details Page | 41092:364801 non-approver · 357820 approver My Leave · 374451 filter · 385461 balance drawer |
+| 7650 | Leave Details Page – Approvals Tab | 396180 · 399456 filter · 41107:264186 empty |
+| 9950 | Apply Leave Drawer | 414340 empty · 414579 filled · 421184 sent · 414815 time off · 415054 insufficient |
+| 12450 | Leave Application Details Drawer (Own) + Cancel | 450009 · 464616 modal · 465601 cancelled · 457308 started → Cancel disabled |
+| 14350 | … (Approver) + Approve / Reject | 475837 · 485616 approve · 41099:154273 approved · 489811 reject · 41099:161302 rejected · 41099:169816 disabled |
+| 16250 | Claims Details Page | 111950 non-approver · 109304 My Claims · 113871 Approvals · 116474 filter |
+| 18150 | Submit Claim Drawer | 300597 missing fields · 299784 filled · 303206 sent |
+| 20050 | Claim Details Drawer (Own) + Cancel | 305164 · 307743 · 307953 · 309614 · 312075 |
+| 21950 | Claim Details Drawer (Approver) + Approve / Reject | 314570 · 316841 · 324952 · 319302 · 327572 · 330231 |
+
+(Bare numbers are `41092:` ids.)
+
+**Open with product:**
+1. Approver-side Recent Activity card wording.
+2. Whether pending leave counts as "My Next Leave".
+3. Home empty-state copy (`{{refer to copy}}`).
+4. Pay Slip tickets (MOVE-3953/3954) are still empty.
