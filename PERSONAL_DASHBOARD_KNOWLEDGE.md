@@ -116,3 +116,19 @@ These come from product, not a ticket. Apply them in Figma; the tickets lag behi
   - It is also shown on the Approvals-tab frames; it was hidden there before.
   - Reading: the year toggle is a page-level control above both tabs.
 - **Gotcha:** `form.insertChild(1, form.children[0])` is a no-op, because the index is resolved before the node is removed. To move child 0 below child 1, use `insertChild(2, …)`.
+- **Approvals empty states** `41107:264186`. Approvals tab with both tables empty:
+  - Pending Approval: "There are currently no leave applications pending your approval".
+  - History: "You have not rejected or approved any leave applications".
+  - The tab badge is hidden.
+  - The empty block is hand-built (text only), because the COMPASS `Empty / Image` import times out in this file.
+- **Home** (MOVE-3949), default frame `41107:267249`, built from the Leave page clone:
+  - Nav "Home" active; breadcrumb Personal Dashboard / Home; title "Home".
+  - CTAs Apply Leave + Submit Claim, both primary (ticket: both "Primary CTA").
+  - **Recent Activity** card: "Last 7 days" sub-header, "View all (12)" link, and a grid of 6 local `Activity Card` component instances (`41107:271227`, props Card Title / Line 1 / Line 2 / Show status).
+    - Includes approver items "Leave pending your approval" / "Claim pending your approval". These come from product's 16 Oct comment (ops managers will receive all drivers' leave and claims).
+    - **The ticket's activity table has no approver-side card titles yet. Those card titles are our wording, to confirm with product.**
+  - **Leave Balances:** Annual + Medical only (detached table, columns refit), with "View more" (→ Leave page, scrolled to Leave Balances).
+  - **My Next Leave:** next upcoming leave (type, dates · days, "Starts in N days", status tag).
+    - Pending is shown because Citra has no approved upcoming leave in the data.
+    - Whether pending leave counts as "next leave" is to confirm with product.
+- Home expanded frame `41107:271607`: clone of default; "View all" → "Show less" and 12 cards. Interrupted by a bridge drop; finish it on reconnect.
