@@ -14,6 +14,22 @@ minor).
 
 ## [Unreleased]
 
+### Docs — Account Management Section 7 coverage audit (20 Oct 2026)
+
+The user asked whether every MOVE-4449 ticket, including the data, is covered in Section 7 (`41001:22331`). Recorded in `ACCOUNT_MANAGEMENT_KNOWLEDGE.md` §11. It was a read-only audit; nothing was changed in Figma.
+
+- **Covered:** 20 frames across Listing, Create, Details, Edit, Suspend and Unsuspend.
+- **Gaps:**
+  - module tabs (Accounts / Activity) and the Activity tab;
+  - the sidebar still says Staff;
+  - Edit error / sub-con states;
+  - the listing behind the drawers lacks the new record (24 vs 25);
+  - auto-suspend and auto-created employee examples;
+  - the verify email (scope question);
+  - 1476×1096 frame size glitch;
+  - no Notes, numbered titles;
+  - invented role names.
+
 ### Docs — Flow Label on every frame; screen categories and their frame recipes (20 Oct 2026)
 
 - The user's correction: "flow label kedepan harus dipake". `FIGMA_DESIGN_SYSTEM.md` §4.13 point 6 now says a Flow Label goes on **every** frame, not only on variants.

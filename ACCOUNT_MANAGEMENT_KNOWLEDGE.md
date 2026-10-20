@@ -133,3 +133,51 @@ Section 7 `41001:22331` now holds the module as 20 frames in 6 rows: Listing, Cr
 3. The Activity tab (MOVE-4458) has no spec beyond "similar to current staff activity log".
 4. Username duplicate check: the ticket ends with "?", so it's unconfirmed.
 5. Should Access Roles be read-only in the Employees module once accounts own them? (raised in MOVE-4451)
+
+## 11. Coverage audit of Section 7 against the tickets (20 Oct 2026)
+
+**Re-check of the tickets:** every MOVE-4449 child was last edited on 15 Oct (latest 15:36). Re-reading all of them found no rule beyond §1–8 except these details:
+- MOVE-4456: Edit is enabled only for active / suspended accounts. Otherwise it is disabled with a tooltip.
+- MOVE-4456: Cancel in Edit → "redirect to listing page".
+- MOVE-4456: Save with missing fields or a duplicate username → error toast + field errors, same as Create.
+
+Read-only audit with the official Figma MCP; the bridge was not connected.
+
+**Covered (20 frames)**
+- MOVE-4452 Listing: default, filter open, no result.
+  - All 5 columns, sort icons only on the sortable columns, "Search Accounts", the 3 filters, Last Updated On range, Create Account CTA.
+- MOVE-4450 Create:
+  - empty;
+  - Employee filled;
+  - Sub-con filled (Work Email + Access Roles hidden);
+  - missing fields;
+  - duplicate username;
+  - created → listing + toast, with Rudi on top and 25 records.
+- MOVE-4455 Details:
+  - Active, with Unsuspend disabled + tooltip;
+  - Suspended, with Suspend disabled, Suspended On / By / Reason, and the Suspend row disabled;
+  - Sub-con auto-created ("System", Access Roles / Work Email "-").
+- MOVE-4456 Edit: Employee (Account Type disabled) and Saved.
+- MOVE-4453 Suspend: empty, reason error, filled, back on listing.
+- MOVE-4457 Unsuspend: confirm, back on listing.
+
+**Gaps found**
+1. **Module tabs missing.** MOVE-4452 says "Account Management home → tab 'Accounts'". The listing has no Accounts / Activity tab bar.
+2. **MOVE-4458 Activity tab not drawn.** The only spec is "similar to current staff activity log", which is open with PM.
+3. **Sidebar still shows the old menu.** It has "Staff", and Account Management is not in the menu or active, but this module replaces Staff (epic).
+4. **Edit flow incomplete** (MOVE-4456): no missing-required / duplicate-username error frames, and no Sub-con edit (no Work Email / Access Roles). "Saved" shows no visible change, so the edit isn't demonstrated.
+5. **Data inconsistency.** In every drawer / modal frame (Details, Edit, Suspend, Unsuspend) the listing behind shows "1–10 of 24" without Rudi Hartono, although the Create result already shows him on top and 25 records.
+6. **Auto-suspend not shown** (MOVE-4453 biz req 2): a details drawer where Suspended By = the user who suspended the employee in the Employees module, and the reason comes from there.
+7. **Auto-created employee not shown** (MOVE-4451): only the sub-con shows Created By "System".
+8. **MOVE-4463 verify / set-password email:** no email or set-password screen anywhere. To confirm whether it's in design scope.
+9. **Frame size glitch.** The drawer / modal frames are 1476×1096 instead of 1440×1024, leaving dark margins at the top and right.
+10. **Documentation:**
+    - no `Docs/Notes` at all;
+    - titles are numbered ("1 · Accounts Listing") instead of surface names;
+    - rows layout instead of a navigation map;
+    - frame-to-frame arrows.
+
+    All per `FIGMA_DESIGN_SYSTEM.md` §4.13.
+11. **Access role names are invented** (HR Admin, Leave Approver, Dispatcher …). The ticket says the options = role titles from the Roles & Permissions module, so real titles are needed.
+
+KIV items (Reset Password, Change History, Deactivate / Reactivate, SMS verify) are correctly not drawn. Their menu entries exist.
