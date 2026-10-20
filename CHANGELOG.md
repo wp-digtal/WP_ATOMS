@@ -14,6 +14,16 @@ minor).
 
 ## [Unreleased]
 
+### Docs — Flow Label on every frame; screen categories and their frame recipes (20 Oct 2026)
+
+- The user's correction: "flow label kedepan harus dipake". `FIGMA_DESIGN_SYSTEM.md` §4.13 point 6 now says a Flow Label goes on **every** frame, not only on variants.
+- The user also asked us to look at layout, components and screen categories. §4.13 gains a table with the frame composition and components per category:
+  - **listing:** Side Navbar + RT-Page Interaction Section;
+  - **detail page:** HR General Screen; result pages may be taller than 1024;
+  - **drawer:** context page + overlay + drawer, then standalone 684×1024 drawers for the other states;
+  - **modal:** page + overlays + `Modals`, then the result page, then the updated drawer.
+- The `code-to-figma` skill is updated to match.
+
 ### Docs — Production section documentation grammar studied (Account Management file, 20 Oct 2026)
 
 The user asked for a study of the patterns on the Account Management `🏭 Production` page ("pelajari pattern yang ada… saya mau mencoba improve kemampuan kamu"). Recorded in `FIGMA_DESIGN_SYSTEM.md` §4.13 and the `code-to-figma` skill:

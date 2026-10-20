@@ -558,10 +558,25 @@ so no change was needed there.
    - The body is the business rule in product language: short sentences, "→" for conditions, nested bullets for sub-cases.
    - Many small notes beat one big note. The ticket key appears only as an inline link when it points to more detail ("See 4137, biz req 1.3").
 5. **Orange `Docs/Notes` = an open question / pending decision**, e.g. "Used section — … pending dev input". Blue = a decided rule. Use orange for anything awaiting product or dev, e.g. PD's approver activity-card wording or "does pending count as next leave".
-6. **`Docs/Flow Label` = a dark pill above a frame naming the variant shown** ("System leave type", "Custom leave type"). Use it only where frames differ by data or variant, not on every frame.
+6. **`Docs/Flow Label` on every frame (user, 20 Oct 2026: "flow label kedepan harus dipake").** A dark pill about 80px above each frame names the state or variant shown, e.g. "System leave type", "Custom leave type", "Reason filled", "Cancelled". The Production page uses it sparingly, but the user's standard from now on is **always**. It replaces the frame-name caption.
 7. **Frames per group are few and purposeful.**
    - A page shows its main states side by side, with variants stacked below (Leave Listing: 2 frames stacked; Apply Leave Drawer: 4 across, then extra states stacked down one column).
    - A modal group shows: page + modal, then the result.
+
+**Screen categories and how each is composed** (read from the frame metadata; frames are 1440 wide unless noted):
+
+| Category | Frame composition | Components |
+|---|---|---|
+| **Listing page** (e.g. "Leave Listing" `39281:84757`) | `Side Navbar` (236) + `RT-Page Interaction Section` (1204): `BusCom-HeaderWrapper` (124: breadcrumb, title, CTA) + `Content Wrapper` holding the table component (`Leave Employee`: filter bar + table + `Table Footer`). Two `Toaster Pop-up Message` instances at the top centre (y≈73–80), one hidden. | Side Navbar, BusCom-HeaderWrapper, Filter Bar 3.0, Table Filter Dropdown (popover), Table, Table Footer, Toaster |
+| **Detail page** (e.g. "Employee Leave Profile – Detail Page" `39049:74913`) | `Side Navbar` + one **`HR General Screen`** instance (1194; set variants `Manage Leave Type` / `Leave Profile` V0 / V1) + toasters. A result page is allowed to be **taller than 1024** (`39312:26247` is 1262), so the whole updated page shows. | HR General Screen (header with breadcrumb, title, "Return to Listing", CTAs; year toggle; table cards) |
+| **Drawer** (detail / create / edit / apply) | First, in context: the page + overlay frame `Frame 2608967` (40% black) + the drawer at x=756 (684×1024). In the Manage Leave Type group, the same drawer is also placed beside it at x=1450. Other states of the drawer are shown as **standalone 684×1024 drawer frames** (Apply Leave group: 4 across, more states stacked down one column), not as full pages. | `Drawers Template`: `Button Close`, `BusCom-Detail Header Content` (title + `Detail Drawer Status` tag + Actions), `Section 1–6` slots, `RT-Details Content Sub-Section` → `RT-Section Header` + `Group Content Cell` rows (hide/show rows, don't add new) |
+| **Modal** (Cancel / Approve / Reject, Add / Edit Entitlement) | Page + drawer overlay (when opened from a drawer) + modal overlay `Frame 2608968` + `Modals` (684 wide, centred at x=378). Then **the result**: the full page with a success toast. Then the standalone drawer showing the new status. | Modals (header icon + title, body `{{copy to master}}`, optional Textarea with counter, Cancel / Confirm), Toaster |
+
+Building rules that follow from this:
+- Pick the frame recipe by category before cloning.
+- Use standalone 684 drawers for drawer states, so a group doesn't fill with near-identical full pages.
+- Let result pages grow to their real height.
+- Always end an action flow on its result.
 
 Self-check against our own builds:
 - Account Management Section 7 (`41001:22331`) has numbered titles, flow labels on every frame and **no Notes**.

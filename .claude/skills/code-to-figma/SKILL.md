@@ -156,7 +156,8 @@ A section without these is not done, however complete the frames are. The detail
 - connectors that start at the triggering element;
 - one note per field or rule beside it;
 - orange notes for open questions;
-- flow labels only for variants.
+- a `Docs/Flow Label` on **every** frame (user, 20 Oct 2026);
+- the frame recipe chosen by screen category (listing / detail page / drawer = context page + standalone 684 drawers / modal = page + overlay + modal → result page → updated drawer).
 
 ## 5. Verify
 
