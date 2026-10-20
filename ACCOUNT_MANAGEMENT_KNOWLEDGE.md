@@ -198,3 +198,13 @@ Restore point: "Before Account Mgmt Section 7 audit fixes (Claude, 20 Oct 2026)"
   - after Create (`41003:169536`: Rudi on top, 25 records) for Details Active, Sub-con Details, Edit, and the Suspend modal frames;
   - after Suspend (`41003:222244`) for Details Suspended and the Unsuspend modal.
   - The frames before Create correctly keep 24.
+- **New frames (20 Oct):**
+  - Edit row (y=6950):
+    - `41018:67243` Edit – missing required: Given Name + Mobile in error, error toast.
+    - `41018:69631` Edit – duplicate username: "ahmadfauzi", error toast.
+    - `41018:71993` Edit – Sub-contractor Driver: Account Type disabled, no Work Email / Access Roles.
+  - Details row: `41018:76639` Details – auto-suspended via the Employees module. Reason text from the employee profile; **Suspended By "Diana Han" / Last Updated By "System" may not have applied — the bridge dropped mid-call. Verify on reconnect.**
+- **Still to do:**
+  - auto-created employee details (Created By "System");
+  - Activity tab frame with an orange note;
+  - docs pass: titles without numbers, Notes per field, orange open questions (real role names, MOVE-4463 email scope), connectors, Flow Labels for the new frames.
