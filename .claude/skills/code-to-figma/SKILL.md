@@ -150,7 +150,13 @@ For each screen and flow in the module, include:
 - blue `Docs/Notes` (⚡ heading + rule bullets) beside the exact frame they explain;
 - connector lines for navigation between groups.
 
-A section without these is not done, however complete the frames are.
+A section without these is not done, however complete the frames are. The detailed grammar is in `FIGMA_DESIGN_SYSTEM.md` §4.13:
+- a navigation-map layout;
+- surface-name titles without numbers;
+- connectors that start at the triggering element;
+- one note per field or rule beside it;
+- orange notes for open questions;
+- flow labels only for variants.
 
 ## 5. Verify
 

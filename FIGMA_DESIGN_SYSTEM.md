@@ -540,6 +540,35 @@ so no change was needed there.
 - Frames inside a group are scaled-down full pages placed side by side (states left → right), with their own small `Docs/Flow Label` caption where the state isn't obvious.
 - Personal Dashboard Section 7 follows the same scheme. Its groups and notes are listed in `PERSONAL_DASHBOARD_KNOWLEDGE.md`.
 
+
+**4.13 Studied in detail: the Production section's documentation grammar (Account Management file `kI1rSu1FAsPpV5K1EI2HvM`, page `🏭 Production` `23691:148675`, section `29013:27819`; the user asked "pelajari pattern yang ada", 20 Oct 2026).** This extends §4.12 with what a close read shows.
+
+1. **Canvas = a navigation map, not a grid of rows.**
+   - The listing sits top-left.
+   - The pages it opens sit to its right (Manage Leave Type – Detail Page) or below it (Employee Leave Profile – Detail Page).
+   - Each page's drawers and modals cluster next to that page (Detail → Drawer → Create / Edit; Profile → Add / Edit Entitlement modals, Balance drawer, Apply Leave drawer, Application drawer → Cancel / Approve / Reject modals).
+   - Groups are placed where the user would go next, so the layout itself explains the IA.
+2. **Big Title = the surface name in product words, with its type in brackets:** "Leave Listing", "Manage Leave Type - Detail Page", "Manage Leave Type - Detail - Drawer", "Add Leave Entitlement (Modal)", "Apply Leave Drawer". **No step numbers and no ticket keys** in the title.
+3. **Navigation connectors start at the element that triggers them.**
+   - Thin red elbow lines (`Arrow n` vectors) run from the clicked button or row (e.g. "Manage Leave Types" button → Manage Leave Type page; a table row → Employee Leave Profile) to the target group.
+   - They are not drawn from frame edge to frame edge.
+   - Long elbows run through the gutters between groups.
+4. **Notes annotate one field or rule each, right next to it.**
+   - The ⚡ heading names the field or concept ("Hiring company", "Supporting document", "1 row = 1 employee", "Additional field (checkbox)", "After select start and end dates").
+   - The body is the business rule in product language: short sentences, "→" for conditions, nested bullets for sub-cases.
+   - Many small notes beat one big note. The ticket key appears only as an inline link when it points to more detail ("See 4137, biz req 1.3").
+5. **Orange `Docs/Notes` = an open question / pending decision**, e.g. "Used section — … pending dev input". Blue = a decided rule. Use orange for anything awaiting product or dev, e.g. PD's approver activity-card wording or "does pending count as next leave".
+6. **`Docs/Flow Label` = a dark pill above a frame naming the variant shown** ("System leave type", "Custom leave type"). Use it only where frames differ by data or variant, not on every frame.
+7. **Frames per group are few and purposeful.**
+   - A page shows its main states side by side, with variants stacked below (Leave Listing: 2 frames stacked; Apply Leave Drawer: 4 across, then extra states stacked down one column).
+   - A modal group shows: page + modal, then the result.
+
+Self-check against our own builds:
+- Account Management Section 7 (`41001:22331`) has numbered titles, flow labels on every frame and **no Notes**.
+- Personal Dashboard Section 7 has notes in a left column per row, not next to the elements, and frame-to-frame arrows rather than element-to-target connectors.
+
+Both use a row layout instead of a navigation map. Next time, follow 1–7 above.
+
 ## 5. States & interaction patterns
 
 <!-- fill in the standard treatment for these, so every new drawer/table/form

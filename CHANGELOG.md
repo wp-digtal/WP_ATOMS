@@ -14,6 +14,18 @@ minor).
 
 ## [Unreleased]
 
+### Docs — Production section documentation grammar studied (Account Management file, 20 Oct 2026)
+
+The user asked for a study of the patterns on the Account Management `🏭 Production` page ("pelajari pattern yang ada… saya mau mencoba improve kemampuan kamu"). Recorded in `FIGMA_DESIGN_SYSTEM.md` §4.13 and the `code-to-figma` skill:
+- a navigation-map layout;
+- surface-name Big Titles, without numbers or keys;
+- red connectors that start at the triggering button or row;
+- one blue note per field or rule, placed beside it;
+- orange notes for open questions;
+- dark Flow Labels only for variants.
+
+It also records a self-check: our Account Management and Personal Dashboard Section 7 builds don't yet follow this. No Figma change was made in this step.
+
 ### Added — Figma (Personal Dashboard file, Section 7): Home, entry flow, empty states, and full documentation (19 Oct 2026)
 
 The user said Section 7 "has no information or documentation" and showed the Production section's style.
