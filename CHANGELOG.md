@@ -14,6 +14,16 @@ minor).
 
 ## [Unreleased]
 
+### Fixed — Figma (Account Management Section 7): tabs, sidebar, frame clipping, listing data (20 Oct 2026)
+
+From the 20 Oct coverage audit, with the user's tab component (`41017:45839`):
+- **Accounts / Activity tabs** on all 20 frames (MOVE-4452 "select tab 'accounts'").
+- **Sidebar:** "Account Management" active, replacing Staff, as the epic says.
+- **Clipping:** `clipsContent` on, which removes the shadow overspill that looked like 1476×1096 frames.
+- **Listing data:** the listing behind the drawers and modals now includes Rudi Hartono (25 records) at the right stage of the flow.
+
+Details in `ACCOUNT_MANAGEMENT_KNOWLEDGE.md` §12.
+
 ### Docs — Account Management Section 7 coverage audit (20 Oct 2026)
 
 The user asked whether every MOVE-4449 ticket, including the data, is covered in Section 7 (`41001:22331`). Recorded in `ACCOUNT_MANAGEMENT_KNOWLEDGE.md` §11. It was a read-only audit; nothing was changed in Figma.

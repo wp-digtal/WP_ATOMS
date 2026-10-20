@@ -181,3 +181,20 @@ Read-only audit with the official Figma MCP; the bridge was not connected.
 11. **Access role names are invented** (HR Admin, Leave Approver, Dispatcher …). The ticket says the options = role titles from the Roles & Permissions module, so real titles are needed.
 
 KIV items (Reset Password, Change History, Deactivate / Reactivate, SMS verify) are correctly not drawn. Their menu entries exist.
+
+## 12. Fixes applied in Section 7 (20 Oct 2026)
+
+Restore point: "Before Account Mgmt Section 7 audit fixes (Claude, 20 Oct 2026)".
+
+- **Module tabs.** The user's Tab component `41017:45839` (a `Container` with 6 `Tab/Tab Item`; props `Text#11488:0`, `State` Active / Default, `Counter#11488:3`) is cloned into every frame's `RT-Page Interaction Section`, between `BusCom-HeaderWrapper` and `Content Wrapper`.
+  - It sits in a wrapper `Tabs — Accounts / Activity`, padded 0/24/8.
+  - Item 1 is "Accounts" (Active), item 2 "Activity"; items 3–6 are hidden.
+- **Sidebar.** The epic replaces Staff, so in every `Side Navbar` instance:
+  - the "Staff" `_Menu / Menu / Submenu` is hidden;
+  - the hidden second `Menu Items` block is shown, with its first item set to "Account Management", `State=Active`, user icon `3004:4487`; the other items are hidden.
+  - Gotcha: setting the Staff submenu `Active=True` expands it with placeholder "Navigation Item" children and truncates the label, so don't.
+- **"1476×1096" frames:** the frames were actually 1440×1024 with `clipsContent=false`, so the drawer and overlay shadows spilled out. Fixed with `clipsContent=true` on all 20 frames.
+- **Data consistency:** the listing behind each drawer / modal now matches the timeline. The `Content Wrapper` was swapped for a clone of the right stage:
+  - after Create (`41003:169536`: Rudi on top, 25 records) for Details Active, Sub-con Details, Edit, and the Suspend modal frames;
+  - after Suspend (`41003:222244`) for Details Suspended and the Unsuspend modal.
+  - The frames before Create correctly keep 24.
