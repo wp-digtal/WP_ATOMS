@@ -578,6 +578,11 @@ Building rules that follow from this:
 - Let result pages grow to their real height.
 - Always end an action flow on its result.
 
+**Docs component mechanics (Account Management file, 20 Oct 2026):**
+- `Docs/Flow Label` text is a **component property**, `Current Flow#44:4`; `Parent Flow#44:0` is a hidden alternate. Editing the visible `Title` text node after cloning does nothing visible, so use `setProperties`.
+- `Docs/Notes`: the orange variant can be cloned from `39443:44805` and the blue one from `39432:22203` (same props: `Information#22:0`, heading text `Important`). Re-apply `setRangeListOptions(UNORDERED)` after setting the text.
+- Connectors are plain vectors built with `setVectorNetworkAsync` (elbow vertices, last vertex `strokeCap:'ARROW_LINES'`). They start at the trigger element's position in section coordinates.
+
 Self-check against our own builds:
 - Account Management Section 7 (`41001:22331`) has numbered titles, flow labels on every frame and **no Notes**.
 - Personal Dashboard Section 7 has notes in a left column per row, not next to the elements, and frame-to-frame arrows rather than element-to-target connectors.

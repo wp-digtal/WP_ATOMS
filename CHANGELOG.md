@@ -14,6 +14,29 @@ minor).
 
 ## [Unreleased]
 
+### Added — Figma (Account Management Section 7): missing states and documentation (20 Oct 2026)
+
+Continues the 20 Oct coverage audit; the user said "tolong perbaiki yang masih salah".
+
+**New frames**
+- Edit:
+  - missing required fields;
+  - duplicate username;
+  - Sub-contractor Driver (MOVE-4456).
+- Details:
+  - auto-suspended via the Employees module (MOVE-4453 biz req 2);
+  - employee auto-created by System (MOVE-4451).
+- Activity tab, with a spec-pending placeholder (MOVE-4458).
+
+**Docs pass** (per `FIGMA_DESIGN_SYSTEM.md` §4.13)
+- Titles without numbers.
+- Flow Labels on the new frames.
+- Blue rule notes beside every row.
+- Orange notes for open questions: real role names, MOVE-4463 email scope, Activity spec, post-action landing.
+- Red connectors from the triggering element.
+
+The Flow Label property gotcha is recorded in §4.13. Details in `ACCOUNT_MANAGEMENT_KNOWLEDGE.md` §12.
+
 ### Fixed — Figma (Account Management Section 7): tabs, sidebar, frame clipping, listing data (20 Oct 2026)
 
 From the 20 Oct coverage audit, with the user's tab component (`41017:45839`):

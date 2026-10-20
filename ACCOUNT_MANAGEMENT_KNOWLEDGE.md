@@ -204,7 +204,18 @@ Restore point: "Before Account Mgmt Section 7 audit fixes (Claude, 20 Oct 2026)"
     - `41018:69631` Edit – duplicate username: "ahmadfauzi", error toast.
     - `41018:71993` Edit – Sub-contractor Driver: Account Type disabled, no Work Email / Access Roles.
   - Details row: `41018:76639` Details – auto-suspended via the Employees module. Reason text from the employee profile; **Suspended By "Diana Han" / Last Updated By "System" may not have applied — the bridge dropped mid-call. Verify on reconnect.**
-- **Still to do:**
-  - auto-created employee details (Created By "System");
-  - Activity tab frame with an orange note;
-  - docs pass: titles without numbers, Notes per field, orange open questions (real role names, MOVE-4463 email scope), connectors, Flow Labels for the new frames.
+- **Done after reconnect:**
+  - **Auto-suspend frame** (`41018:76639`): Suspended By "Diana Han", Last Updated By "System".
+  - **New frames:**
+    - `41019:84413`: employee auto-created (Ahmad Fauzi; Created On 01 Mar 2026, 12:00am, By "System").
+    - `41019:89165`: Activity tab active, with a dashed placeholder "spec pending (MOVE-4458)".
+  - **Docs:**
+    - Big Titles without numbers: "Accounts Listing", "Create Account (Drawer)", "Account Details (Drawer)", "Edit Account (Drawer)", "Suspend Account (Modal)", "Unsuspend Account (Modal)".
+    - Flow Labels 1.4, 3.4, 3.5, 4.3–4.5 for the new frames.
+    - `Docs/Notes` beside each row: blue = rules, orange = open questions. The orange ones cover: Activity spec pending, placeholder role names, MOVE-4463 email scope, and where the user lands after an action.
+    - 5 red elbow connectors that start at the triggering element: Create Account button → Create; listing row → Details; Edit button → Edit; Actions → Suspend; Actions on the suspended drawer → Unsuspend.
+- **Still open (PM / user):**
+  - real role names;
+  - MOVE-4463 email scope;
+  - the Activity tab spec;
+  - the landing after Suspend / Unsuspend / Edit.
