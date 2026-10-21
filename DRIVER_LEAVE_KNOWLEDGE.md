@@ -162,6 +162,13 @@ Figma comments on this section could not be read: the REST API returns 401, the 
    - The time-off detail needs a time-range example: Dates sub-text "10:00 AM - 12:00 PM".
    - Days Used should be **"-"** (MOVE-4073), not "1 Days".
 2. Apply Leave, Annual frame (`8484:6541`), from Westpoint Digital: "Daniel missing AM/PM option".
+3. Apply Leave – Annual with AM/PM (`8600:143870`), 21 Oct: "Daniel this mean it is selected by default?"
+   - **Answer:** no. The frame is a filled example (24 Jan AM → 25 Jan PM = 2 days). MOVE-4074 sets no default AM/PM.
+   - **Proposal (pending PM):** default Start = AM and End = PM, i.e. a full day, like the web leave module (`LeaveApplicationDrawers.tsx`). If agreed, the Empty frame (`8613:8089`) should show AM/PM preselected instead of empty.
+4. Apply Leave – Time Off (`8600:144068`), 21 Oct: "Daniel no need for here?"
+   - **Answer:** right, AM/PM is not needed for time off. The Time range field (max 2 h) already says which part of the day, and End Date is locked to Start Date. The web module also disables it.
+   - **Proposal:** hide the AM/PM radios entirely for time off instead of showing them disabled.
+   - **Ticket wording to confirm:** MOVE-4074's End Date row still says "Select AM/PM" right after the time-off rule. Read it as applying to non-time-off types only.
 
 ## 7. Fixes built in `Fixing` (`8590:7558`)
 
@@ -184,6 +191,7 @@ Restore point: "Before Driver Leave fixes in Fixing section (Claude, 19 Oct 2026
 
 ## 8. Still to do
 
+- Apply comments 3 and 4 (§6) in Figma once PM agrees: hide AM/PM on `8600:144068`, and preselect AM/PM on the Empty frame if the default is accepted. This needs pairing to the Mobile file.
 - Docs layer in `Fixing`: section title, row titles, captions 1.1–4.1, arrows; resize the section (it was 1677×4616). This was interrupted by a bridge disconnect.
 - Not built yet: the "You are back online" / "Unable to access due to no internet connection" pop-ups, the Leave Balances overlay with Carried Forward (MOVE-4137), and a time-off card on the Manage Leave list with Days "-".
 - Not checked: whether the original Cancelled detail in `8515:13884` still says "Not inputted" (the ticket says "-"). The fix frame 2.2 uses "-".

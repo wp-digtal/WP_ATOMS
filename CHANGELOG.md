@@ -14,6 +14,12 @@ minor).
 
 ## [Unreleased]
 
+### Docs — Driver Leave: answers to two Figma comments on Apply Leave (21 Oct 2026, MOVE-4074)
+
+- "Selected by default?" on the Annual AM/PM frame: no. The frame is a filled example, and the ticket sets no default. Proposed default Start AM / End PM, matching the web leave module; pending PM.
+- "No need for here?" on the Time Off frame: correct. The time range already defines the hours. Proposed hiding AM/PM for time off rather than disabling it. The ticket's End Date "Select AM/PM" line is ambiguous, so this is flagged for PM.
+- Recorded in `DRIVER_LEAVE_KNOWLEDGE.md` §6 and §8. Figma is not changed yet.
+
 ### Added — Figma (Account Management Section 7): missing states and documentation (20 Oct 2026)
 
 Continues the 20 Oct coverage audit; the user said "tolong perbaiki yang masih salah".
