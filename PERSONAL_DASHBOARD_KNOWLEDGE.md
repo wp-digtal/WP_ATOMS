@@ -168,3 +168,57 @@ Frames sit at x = 1755 + i·1640.
 2. Whether pending leave counts as "My Next Leave".
 3. Home empty-state copy (`{{refer to copy}}`).
 4. Pay Slip tickets (MOVE-3953/3954) are still empty.
+
+## 8. Pre-handoff review, 22 Oct 2026 (in progress)
+
+The user asked for one more full check before handing the file to product: match every ticket, check the attachments, check states, and add the missing red arrows.
+
+- Restore point: "Before PD Section 7 final review (Claude, 22 Oct 2026)".
+- **Tickets edited on 20 Oct** (MOVE-3945, 3950, 3952, 3958): only copy-key names were added (`Tooltip: disable approve/reject button`, `Tooltip: disable cancel button`, `Modal: cancel leave application`, `Modal: cancel claim`). No rule changes.
+- **Attachments:** only MOVE-3949 has images (3 PNGs: entry via profile dropdown, side-nav navigation, activity-card layout). The Jira attachment API returns 403 from this session, so ask the user for screenshots.
+- **MOVE-3777** (the pointer from MOVE-3946) says:
+  - AM/PM "hide if leave type = time off";
+  - only Leave Type is enabled until it is chosen;
+  - the balance box shows "-" until dates are entered;
+  - missing required fields show an error toast plus field errors.
+
+### Fixed so far
+
+| Fix | Frames |
+|---|---|
+| Confirm disabled while a required reason is empty | Reject Leave `41092:489811`, Reject Claim `41092:319302`, Cancel Claim `41092:307743` |
+| New "reason filled, Confirm enabled" states, stacked under the empty modal | `41114:124024` (leave), `41114:125100` (claim) |
+| Room for the new states: section children with y ≥ 21000 moved down 1400 | section |
+| Cancelled leave drawer gains "Reason for Cancellation: -" | `41092:465601` |
+| Time Off apply drawer: AM/PM hidden; Time filled 10:00 AM → 12:00 PM | `41092:414815` |
+| Leftover "1 month ago" under Reason for Rejection hidden | `41092:327572` |
+
+**Annual balance data was inconsistent.** The 3–5 Nov application (3 days) is pending, but the table showed Pending 0.5. Changed across every Home and Leave frame:
+
+| Field | Before | After |
+|---|---|---|
+| Pending | 0.5 | 3 |
+| Balance | 15.5 | 13 |
+| After sending 8 days: Pending | 8.5 | 11 |
+| After sending 8 days: Balance | 7.5 | 5 |
+| Apply box: Available / Deduct / Balance | | 13 / 8 / 5 |
+
+### Still to do
+
+- Leave Approvals tab badge "5" → "7" (Pending Approval shows "1–5 of 7"). Frames: `357820`, `374451`, `385461`, `396180`, `399456`, and the apply-leave frames.
+- Apply Leave "missing required fields" state (error toast + field errors).
+- Home expanded: the "Claim rejected – Others (printer ink) 10 Oct" card contradicts My Claims (that claim is cancelled, Dec 2025). Replace it with "Leave rejected – Time Off 1 Oct".
+- `Docs/Flow Label` on every frame.
+- Red trigger arrows (element → target):
+  - Home CTAs → drawers; card → drawer; View more → Leave;
+  - profile dropdown item → Home / workspace;
+  - table row → details drawer; Apply Leave / Submit Claim buttons → drawers;
+  - balance row → balance drawer.
+  - Also fix the wrong arrow from filter-open → balance drawer.
+- Orange notes for the open questions.
+
+### Bridge lessons (22 Oct)
+
+- Set `figma.skipInvisibleInstanceChildren = true` and use `findAllWithCriteria({types:['TEXT']})`. A text search in one 1440 frame then takes 30–150 ms; plain `findAll` timed out.
+- **Never `await figma.loadFontAsync(t.fontName)` per node.** The fontName carries `variationSettings` and it hung the plugin. Load `{family:'Inter', style:'Regular'}` once.
+- Loops over 10 frames still dropped the bridge. Keep it to 2–3 frames per call.
