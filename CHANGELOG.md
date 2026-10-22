@@ -14,6 +14,12 @@ minor).
 
 ## [Unreleased]
 
+### Docs — `LIVE_TRACKING_KNOWLEDGE.md` (22 Oct 2026)
+
+The user pointed at the Live Tracking 2.0 Archive page (`39443:75324`) ahead of sending review comments.
+- New knowledge file covering the Web Tracking Links section layout, frame ids, the demo data, and the reviewers' comment-tag legend (#CR / #Req / #Logic / #Data / #UI/UX / #Copy / #Std), which is in frame `39469:10540`.
+- Comments can't be read via the API (401), so screenshots are needed.
+
 ### Added — Figma (Personal Dashboard): draft business components page (22 Oct 2026)
 
 The user asked for repeated, similar elements in Section 7 to be turned into business components with variants on a separate page, **without replacing anything yet**, so they can review first.
