@@ -14,6 +14,30 @@ minor).
 
 ## [Unreleased]
 
+### Fixed — Figma (Personal Dashboard Section 7): pre-handoff review (22 Oct 2026)
+
+The user asked for one final check against the tickets before handing the file to product. Details and node ids are in `PERSONAL_DASHBOARD_KNOWLEDGE.md` §8.
+
+**States**
+- Confirm is now disabled while a required reason is empty, on Reject Leave, Reject Claim and Cancel Claim.
+- New "reason filled" frames for Reject Leave and Reject Claim.
+- New Apply Leave "missing Leave Type" error state, following MOVE-3777 biz req 4 as pointed to by MOVE-3946.
+- The Cancelled leave drawer now shows "Reason for Cancellation".
+- Time Off apply drawer: AM/PM hidden (MOVE-3777) and the time range filled in.
+
+**Data consistency**
+- Annual leave: Pending 3 / Balance 13, because the 3–5 Nov application is pending.
+- Leave Approvals badge is 7.
+- The Home "Claim rejected" card contradicted My Claims and was replaced.
+
+**Docs**
+- `Docs/Flow Label` on all 48 frames.
+- Grey group connectors and 3 stale arrows removed; red trigger arrows are being added.
+
+**Tickets edited 20 Oct (MOVE-3945/3950/3952/3958):** copy-key names only, no rule change.
+
+**Open:** MOVE-3949 attachments return 403 to this session, so screenshots were requested from the user.
+
 ### Docs — Driver Leave: answers to two Figma comments on Apply Leave (21 Oct 2026, MOVE-4074)
 
 - "Selected by default?" on the Annual AM/PM frame: no. The frame is a filled example, and the ticket sets no default. Proposed default Start AM / End PM, matching the web leave module; pending PM.

@@ -203,9 +203,22 @@ The user asked for one more full check before handing the file to product: match
 | After sending 8 days: Balance | 7.5 | 5 |
 | Apply box: Available / Deduct / Balance | | 13 / 8 / 5 |
 
+### Done after re-pairing (22 Oct, round 2)
+
+- **Leave Approvals tab badge:** now 7 on every frame, and 6 on the Approve/Reject result frames.
+- **Home expanded:** the "Claim rejected" card is now "Leave rejected – Time Off – 1 Oct 2026 · 10:00 AM – 12:00 PM" (`41108:273317`), which matches the Leave Applications data.
+- **New frame `41116:48919`** at (9955, 14482): Apply Leave sent with Leave Type empty.
+  - The Select is `Status=Error` and the caption reads "{{refer to copy}} – Leave Type is required". The Form Item had to be set to `layoutSizingVertical='HUG'`, otherwise the caption overlaps the next field.
+  - The error toast is cloned from Submit Claim `41092:300747` and set to `layoutPositioning='ABSOLUTE'`.
+- **`Docs/Flow Label` on all 48 frames:** cloned from `39311:53804`, prop `Current Flow#44:4`, placed 30px above each frame.
+- **Removed:**
+  - the 10 grey "next screen group" connectors, which the red trigger arrows replace;
+  - 3 stale arrows: filter → balance drawer, and the two reject → rejected arrows that skipped the new reason-filled step.
+- **Moved:** the stacked reason-filled frames, with their labels, down 120 so they clear the reject-branch elbow.
+
 ### Still to do
 
-- Leave Approvals tab badge "5" → "7" (Pending Approval shows "1–5 of 7"). Frames: `357820`, `374451`, `385461`, `396180`, `399456`, and the apply-leave frames.
+- Leave Approvals tab badge (done, see above) "5" → "7" (Pending Approval shows "1–5 of 7"). Frames: `357820`, `374451`, `385461`, `396180`, `399456`, and the apply-leave frames.
 - Apply Leave "missing required fields" state (error toast + field errors).
 - Home expanded: the "Claim rejected – Others (printer ink) 10 Oct" card contradicts My Claims (that claim is cancelled, Dec 2025). Replace it with "Leave rejected – Time Off 1 Oct".
 - `Docs/Flow Label` on every frame.
@@ -218,6 +231,10 @@ The user asked for one more full check before handing the file to product: match
 - Orange notes for the open questions.
 
 ### Bridge lessons (22 Oct)
+
+- `figma.skipInvisibleInstanceChildren` is **global and persists across calls**. Reset it to `false` before inspecting hidden layers (e.g. hidden Form Items), or `children` comes back empty.
+- Text in this file also uses "SF Pro" and "SF Pro Text" Regular. Load them in a try/catch along with Inter before setting characters.
+- Creating 4 long vectors (up to 20,000px) plus dots in one call hung the bridge. Draw **one arrow per call**.
 
 - Set `figma.skipInvisibleInstanceChildren = true` and use `findAllWithCriteria({types:['TEXT']})`. A text search in one 1440 frame then takes 30–150 ms; plain `findAll` timed out.
 - **Never `await figma.loadFontAsync(t.fontName)` per node.** The fontName carries `variationSettings` and it hung the plugin. Load `{family:'Inter', style:'Regular'}` once.
