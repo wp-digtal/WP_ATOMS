@@ -165,6 +165,12 @@ Figma comments on this section could not be read: the REST API returns 401, the 
 3. Apply Leave – Annual with AM/PM (`8600:143870`), 21 Oct: "Daniel this mean it is selected by default?"
    - **Answer:** no. The frame is a filled example (24 Jan AM → 25 Jan PM = 2 days). MOVE-4074 sets no default AM/PM.
    - **Proposal (pending PM):** default Start = AM and End = PM, i.e. a full day, like the web leave module (`LeaveApplicationDrawers.tsx`). If agreed, the Empty frame (`8613:8089`) should show AM/PM preselected instead of empty.
+   - Default rules proposed to the user on 22 Oct (all pending PM):
+     - Start = AM and End = PM are preselected but disabled until a Leave Type is chosen. Changing the Leave Type resets them.
+     - On the same day: AM→PM = 1 day, AM→AM or PM→PM = 0.5 day. PM→AM is impossible, so End "AM" is disabled when the start is that day's PM.
+     - Off-in-lieu: End is locked to PM because the ticket disables "AM". Proposed: also lock Start to AM, because Start PM would still create a half day. The ticket only mentions End, so this is a question for PM.
+     - Time off: AM/PM is hidden, and the Time field sets the hours.
+     - Deduction recalculates every time AM/PM changes.
 4. Apply Leave – Time Off (`8600:144068`), 21 Oct: "Daniel no need for here?"
    - **Answer:** right, AM/PM is not needed for time off. The Time range field (max 2 h) already says which part of the day, and End Date is locked to Start Date. The web module also disables it.
    - **Proposal:** hide the AM/PM radios entirely for time off instead of showing them disabled.

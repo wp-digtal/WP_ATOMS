@@ -19,6 +19,7 @@ minor).
 - "Selected by default?" on the Annual AM/PM frame: no. The frame is a filled example, and the ticket sets no default. Proposed default Start AM / End PM, matching the web leave module; pending PM.
 - "No need for here?" on the Time Off frame: correct. The time range already defines the hours. Proposed hiding AM/PM for time off rather than disabling it. The ticket's End Date "Select AM/PM" line is ambiguous, so this is flagged for PM.
 - Recorded in `DRIVER_LEAVE_KNOWLEDGE.md` §6 and §8. Figma is not changed yet.
+- 22 Oct: wrote out the full AM/PM default proposal in §6: same-day combinations, the off-in-lieu Start lock (a question for PM), and reset on a Leave Type change.
 
 ### Added — Figma (Account Management Section 7): missing states and documentation (20 Oct 2026)
 
