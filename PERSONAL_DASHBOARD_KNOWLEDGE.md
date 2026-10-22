@@ -216,6 +216,41 @@ The user asked for one more full check before handing the file to product: match
   - 3 stale arrows: filter → balance drawer, and the two reject → rejected arrows that skipped the new reason-filled step.
 - **Moved:** the stacked reason-filled frames, with their labels, down 120 so they clear the reject-branch elbow.
 
+### Round 3 (22 Oct): red trigger arrows and open questions
+
+**20 red trigger arrows**, named `Arrow — …`. Each starts at the trigger element, marked with a 14px red dot named `Arrow start — …`.
+- **Routing:**
+  - Long routes run down the left gutter on lanes x = 1660, 1684, 1696, 1708, 1720, 1732, 1744.
+  - Across a group they run in the band between the Big Title bottom and the Flow Labels (frameTop − 140 … −100).
+  - Within a row they go through the 200px gutters between frames.
+- **Entry and Home:**
+  - "Personal Dashboard" item → Home; "Work space" item → workspace.
+  - Home Apply Leave / Submit Claim → the drawers.
+  - View more → Leave page; activity card → leave drawer.
+- **Leave:**
+  - Apply Leave button → drawer; Applications row → own drawer.
+  - Approvals tab → Approvals; Pending row → approver drawer.
+  - Balances row → balance drawer.
+  - Send with Leave Type empty → error state.
+  - Reject modal → reason filled → Rejected.
+- **Claims:**
+  - Submit Claim → drawer; My Claims row → own drawer.
+  - Approvals row → approver drawer; Approvals tab → Approvals.
+  - Reject modal → reason filled → Rejected.
+
+**Orange `Docs/Notes`** (`Type=Important`) for open questions:
+- `41116:147347` Home (y = 7420):
+  - approver activity cards are not in the ticket;
+  - does pending count as My Next Leave;
+  - empty-state copy;
+  - the pay slip card's "Generated on" line is not in the ticket;
+  - the Pay Slip tickets are empty.
+- `41116:147362` Apply Leave (y = 14960):
+  - the Time Off End Date lock is not explicit in MOVE-3777;
+  - missing-fields copy.
+
+**Blue notes rewritten** in the last call before a bridge drop: Apply Leave `41108:314324`, Leave approver `41108:314345`, Claim approver `41108:314373`. **Verify on reconnect** that the text and bullets applied, and move the orange Apply note below the taller blue note if they overlap.
+
 ### Still to do
 
 - Leave Approvals tab badge (done, see above) "5" → "7" (Pending Approval shows "1–5 of 7"). Frames: `357820`, `374451`, `385461`, `396180`, `399456`, and the apply-leave frames.
