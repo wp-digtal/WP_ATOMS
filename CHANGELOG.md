@@ -36,6 +36,12 @@ The user asked for one final check against the tickets before handing the file t
 
 **Tickets edited 20 Oct (MOVE-3945/3950/3952/3958):** copy-key names only, no rule change.
 
+- **20 red trigger arrows**, each starting at the trigger element (a CTA, table row, card, tab, dropdown item or View more) and routed through gutters to the target. This answers the user's "arrow merah masih missing".
+- **Orange open-question notes** on Home and Apply Leave.
+- **Blue notes** for Apply Leave and both approver drawers rewritten to the current rules.
+- **Docs:** `FIGMA_DESIGN_SYSTEM.md` §4.14 (bulk-edit and connector techniques for the bridge) and a `CLAUDE.md` bridge rule.
+- **Driver Leave:** `DRIVER_LEAVE_KNOWLEDGE.md` now cites MOVE-3777 "hide AM/PM if time off" as backing for the time-off answer.
+
 **Open:** MOVE-3949 attachments return 403 to this session, so screenshots were requested from the user.
 
 ### Docs — Driver Leave: answers to two Figma comments on Apply Leave (21 Oct 2026, MOVE-4074)

@@ -249,7 +249,9 @@ The user asked for one more full check before handing the file to product: match
   - the Time Off End Date lock is not explicit in MOVE-3777;
   - missing-fields copy.
 
-**Blue notes rewritten** in the last call before a bridge drop: Apply Leave `41108:314324`, Leave approver `41108:314345`, Claim approver `41108:314373`. **Verify on reconnect** that the text and bullets applied, and move the orange Apply note below the taller blue note if they overlap.
+**Blue notes rewritten** in the last call before a bridge drop: Apply Leave `41108:314324`, Leave approver `41108:314345`, Claim approver `41108:314373`. Verified after reconnecting: the text and bullets applied. The orange Apply note moved to y = 15121, below the blue note, which is now 609 tall.
+
+**Status: the review is finished and ready to hand off to product (22 Oct 2026).** Product's open questions are in the two orange notes.
 
 ### Still to do
 

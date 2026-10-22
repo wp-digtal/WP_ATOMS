@@ -175,6 +175,7 @@ Figma comments on this section could not be read: the REST API returns 401, the 
    - **Answer:** right, AM/PM is not needed for time off. The Time range field (max 2 h) already says which part of the day, and End Date is locked to Start Date. The web module also disables it.
    - **Proposal:** hide the AM/PM radios entirely for time off instead of showing them disabled.
    - **Ticket wording to confirm:** MOVE-4074's End Date row still says "Select AM/PM" right after the time-off rule. Read it as applying to non-time-off types only.
+   - **Supporting rule found on 22 Oct:** the web Leave module ticket MOVE-3777 (biz req 2, Start/End Date) says "Select AM/PM (radio) –> hide if leave type = time off". Cite it when asking PM to align MOVE-4074.
 
 ## 7. Fixes built in `Fixing` (`8590:7558`)
 

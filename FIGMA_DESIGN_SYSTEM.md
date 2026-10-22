@@ -589,6 +589,32 @@ Self-check against our own builds:
 
 Both use a row layout instead of a navigation map. Next time, follow 1–7 above.
 
+
+**4.14 Bulk edits and long connectors through the Desktop Bridge (Personal Dashboard file, 22 Oct 2026).**
+
+Searching and editing:
+- Before searching inside a frame, set `figma.skipInvisibleInstanceChildren = true` and use `frame.findAllWithCriteria({types:['TEXT']})`. That takes 30–150 ms per 1440 frame, while plain `findAll` timed out at 25 s.
+  - The flag is **global and persists across calls**. Set it back to `false` before inspecting hidden layers, or `children` comes back empty.
+- Load fonts once as plain `{family, style}`. Never call `loadFontAsync(t.fontName)` per node: the fontName carries `variationSettings`, and that hung the plugin.
+  - This file mixes Inter, "SF Pro" and "SF Pro Text". Load all three, each in a try/catch.
+- Keep it to 2–3 frames per call. Loops over about 10 frames dropped the bridge, even when each frame took under 200 ms.
+
+Connectors:
+- Draw **one long arrow per call**. Four 20,000px vectors in one call hung the bridge, although they were all created.
+- Each arrow is a `figma.createVector()` in the section, with `setVectorNetworkAsync`: polyline vertices and the last vertex `strokeCap: 'ARROW_LINES'`.
+  - Stroke 4px, colour rgb(0.9, 0.28, 0.3), `strokeJoin: 'ROUND'`.
+  - Add a 14px red ellipse at the start point so the trigger is obvious.
+- **Routing** for a row-layout section:
+  - Long routes run down the left gutter between the notes column and the frames, with one lane per arrow, 12px apart.
+  - Across a group they run in the band between the `Docs/Big Title` bottom and the `Docs/Flow Label` row.
+  - Within a row they go through the gutters between frames.
+  - Never cross a Big Title or a Flow Label.
+  - Get trigger coordinates from `text.absoluteBoundingBox` minus the section's `absoluteBoundingBox`.
+
+Notes:
+- **Orange note = `Docs/Notes` variant `Type=Important`.** The other variants are `Flow` (blue) and `Code`.
+- After setting `Information#22:0`, re-apply `setRangeListOptions(UNORDERED)`, then move any note below it if the grown height now overlaps.
+
 ## 5. States & interaction patterns
 
 <!-- fill in the standard treatment for these, so every new drawer/table/form

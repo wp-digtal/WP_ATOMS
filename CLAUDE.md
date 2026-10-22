@@ -72,6 +72,7 @@ Don't build the feature in code instead and offer Figma "next". The web-tracking
 - **One small step per call:** one component, one frame, or one property batch. Build a component set over several calls (create A → create B → combine), not in one.
 - **Never `findAll` over a big section or page.** Navigate from a known node id, or search inside one frame.
 - **Imports from libraries (`importComponentByKeyAsync`) time out in this file.** Reuse instances already in the file. If nothing fits, hand-build and name it `(hand-built …)`.
+- **Text sweeps across frames:** set `figma.skipInvisibleInstanceChildren = true`, use `findAllWithCriteria`, load fonts once as `{family, style}`, and touch 2–3 frames per call. **Long connector vectors: one per call** (22 Oct 2026; details in `FIGMA_DESIGN_SYSTEM.md` §4.14).
 - **After a timeout, inspect before retrying.** The change may have half-applied, so a blind rerun creates duplicates.
 - If the bridge hangs, call `figma_pair_plugin` straight away and give the user the code. Ask them to keep Figma Desktop in the foreground and the laptop awake while you work; a background or sleeping window throttles the plugin.
 
