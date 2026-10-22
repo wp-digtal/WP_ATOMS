@@ -615,6 +615,19 @@ Notes:
 - **Orange note = `Docs/Notes` variant `Type=Important`.** The other variants are `Flow` (blue) and `Code`.
 - After setting `Information#22:0`, re-apply `setRangeListOptions(UNORDERED)`, then move any note below it if the grown height now overlaps.
 
+
+**4.15 Extracting business components from repeated frames (Personal Dashboard file, 22 Oct 2026).** This is the user's rule: whatever repeats in near-identical form across frames and is still a plain frame becomes a component. Its differences become variants.
+- **Build them on a separate review page and don't swap yet.** The user reviews first.
+- **Steps, one component set per call:**
+  1. Clone each source node to the page.
+  2. `figma.createComponentFromNode(clone)`, with each clone named `Prop=Value, Prop2=Value`.
+  3. `figma.combineAsVariants(list, page)`.
+  4. Give the set an auto-layout so the variants lay out neatly. For many variants use `layoutWrap='WRAP'` with a fixed width.
+  5. Write a description citing the tickets.
+- **Pick sources by container and visibility, not by name.** Drawer templates carry hidden leftovers with the same layer name.
+- Expose a text property where only the copy changes (`addComponentProperty('Text','TEXT',…)` + `componentPropertyReferences`), e.g. the tooltip.
+- Ids and the list of components: `PERSONAL_DASHBOARD_KNOWLEDGE.md` §9.
+
 ## 5. States & interaction patterns
 
 <!-- fill in the standard treatment for these, so every new drawer/table/form

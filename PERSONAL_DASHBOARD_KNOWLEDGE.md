@@ -276,3 +276,59 @@ The user asked for one more full check before handing the file to product: match
 - Set `figma.skipInvisibleInstanceChildren = true` and use `findAllWithCriteria({types:['TEXT']})`. A text search in one 1440 frame then takes 30–150 ms; plain `findAll` timed out.
 - **Never `await figma.loadFontAsync(t.fontName)` per node.** The fontName carries `variationSettings` and it hung the plugin. Load `{family:'Inter', style:'Regular'}` once.
 - Loops over 10 frames still dropped the bridge. Keep it to 2–3 frames per call.
+
+
+## 9. PD business components, draft (22 Oct 2026)
+
+The user asked:
+1. Save the PD patterns so the next request goes fast.
+2. Find the repeated, near-identical elements in Section 7 and turn them into business components with variants. Put them on another page and **don't replace anything yet**, because the user wants to review them first.
+
+**Page:** `🧩 PD Business Components (draft)` (`41116:149163`). Restore point: "Before PD business components draft (Claude, 22 Oct 2026)".
+
+| Component | Id | Variants | Cloned from (Section 7) |
+|---|---|---|---|
+| `PD/Recent Activity Card` | `41116:150492` | State = Collapsed / Expanded / Empty | Home frames `267249`, `271607`, `274758`. Uses the `Activity Card` instances. |
+| `PD/My Next Leave Card` | `41116:153455` | State = Upcoming / Empty | Home `271298` and the empty Home frame |
+| `PD/Home Leave Balances Card` | `41116:153606` | none | Home `267384` |
+| `PD/Leave Balance Preview` | `41116:156629` | State = Empty / Filled / Negative balance / Time Off | Apply Leave drawers `414340`, `414579`, `415054`, `414815` (`Frame 2608997`) |
+| `PD/Confirm Modal` | `41116:156869` | Action = Approve / Reject / Cancel × Record = Leave / Claim × State = Default / Reason empty / Reason filled (9) | `Modals` frames in the approve, reject and cancel modal frames |
+| `PD/Empty State (text)` | `41116:162406` | Message = Pending Approval / Approval History / Recent Activity / My Next Leave | Approvals empty `41107:264186` and the Home empty frame |
+| `PD/Tooltip (hand-built)` | `41116:162409` | text prop `Text` | `41092:332706` |
+| `PD/Leave Date Range + Half Day` | `41116:162548` | State = Disabled (no leave type) / Filled AM → PM / Time Off (AM/PM hidden) | Apply Leave `Frame 2608964` |
+
+Existing local components (`Header Bar`, `Profile Dropdown`, `Activity Card`) stay in Section 7 and are nested inside these.
+
+**Next step, once the user approves:** swap the Section 7 frames to instances of these. One frame per call, and clone the frame first if unsure.
+
+### Rule for what becomes a business component (user, 22 Oct)
+
+Anything that is **repeated and near-identical across frames, and is still a plain frame**, becomes a component; its differences become variants. Examples: a card shown in several states, a modal type reused across Leave and Claim, the same field group in several drawer states. Library instances that already exist (COMPASS buttons, inputs, table, `Drawers Template`) are left alone.
+
+### Gotchas found while extracting
+
+- A layer name is not unique. Every Apply Leave drawer carries a **hidden** template `Frame 2608997` (an old grey "2026 / Available 8 Days" box). `findOne(name)` returned that one, not the visible blue preview. Pick from the known container's direct children with `visible === true`.
+- When climbing from a text node to "its card", check the size. The first climb stopped at the 1144×25 header row; the card is the 1146-wide parent.
+- Filled textareas need the variant `State=Filled`. Setting only `Text#533:4` leaves the text grey, like a placeholder. This was fixed in the two reason-filled frames in Section 7 too.
+- `combineAsVariants` then `layoutMode` / `itemSpacing` / padding on the set lays variants out cleanly. Use `layoutWrap='WRAP'` with a fixed width for 9 variants.
+
+## 10. PD playbook: how this module is built in Figma (read this first next time)
+
+- **File and section:** `1FCRdGhHru6czP5P6h06kH`, page `🏭 Production`, `Section 7` (`41091:22331`). Work through the Desktop Bridge with small calls (CLAUDE.md; `FIGMA_DESIGN_SYSTEM.md` §4.14).
+- **Tickets:** only the MOVE-3412 children. PD ≠ the HR module. When a PD ticket says "same as leave/claims module ticket X", read X only for what the PD ticket points at (e.g. MOVE-3946 → MOVE-3777 for the Apply Leave fields and logic).
+- **Frames:** 1440 wide.
+  - Pages: `PD Side Navbar` + `HR General Screen` or `RT-Page Interaction Section`, with a `Header Bar` instance at the top.
+  - Drawers: in context, page + 40% overlay + drawer at x = 756.
+  - Modals: a second overlay with `Modals` (now `PD/Confirm Modal`).
+  - The frames are horizontal auto-layout, so overlays, toasts and tooltips need `layoutPositioning='ABSOLUTE'`.
+- **Data set:** Citra Dewi is the employee and an approver; today is about 19 Oct 2026.
+  - Annual leave: 19 entitlement, 3 used, 3 pending (3–5 Nov), balance 13.
+  - Leave approvals: 7 pending. Claims approvals: 14, 10 per page.
+  - Keep every number consistent across Home, Leave and Apply Leave.
+- **Docs grammar per group:**
+  - one pink `Docs/Big Title` with the surface name;
+  - blue `Docs/Notes` (Type=Flow) in the left column, x = 100, w = 1550, one rule per bullet;
+  - orange `Docs/Notes` (Type=Important) for open questions;
+  - a `Docs/Flow Label` 30px above every frame (`Current Flow#44:4`);
+  - red trigger arrows from the clicked element, routed through gutters (§8).
+- **State checklist** used in the 22 Oct review: empty, filled, error (toast + field), disabled + tooltip, required-reason modal (empty → Confirm disabled, filled → enabled), result (toast + updated drawer or page), approver vs non-approver (tabs or no tabs), and empty tables.

@@ -14,6 +14,27 @@ minor).
 
 ## [Unreleased]
 
+### Added — Figma (Personal Dashboard): draft business components page (22 Oct 2026)
+
+The user asked for repeated, similar elements in Section 7 to be turned into business components with variants on a separate page, **without replacing anything yet**, so they can review first.
+
+- **New page `🧩 PD Business Components (draft)` with 8 components:**
+  - Recent Activity Card (3 variants);
+  - My Next Leave Card (2);
+  - Home Leave Balances Card;
+  - Leave Balance Preview (4);
+  - Confirm Modal (9: Approve / Reject / Cancel × Leave / Claim × reason state);
+  - Empty State (4);
+  - Tooltip (text prop);
+  - Leave Date Range + Half Day (3).
+- **Fixed:** the reason-filled textareas in the two Section 7 frames used `State=Default`, so the text looked like a placeholder. Now `State=Filled`.
+- **"Save it in memory":**
+  - `PERSONAL_DASHBOARD_KNOWLEDGE.md` §9 lists the components;
+  - §10 is a PD playbook (file, data set, frame recipes, docs grammar, state checklist);
+  - `FIGMA_DESIGN_SYSTEM.md` §4.15 covers the extraction technique;
+  - `FIGMA_COMPONENT_INDEX.md` has a new row.
+- **Open:** swap Section 7 to these components after the user approves.
+
 ### Fixed — Figma (Personal Dashboard Section 7): pre-handoff review (22 Oct 2026)
 
 The user asked for one final check against the tickets before handing the file to product. Details and node ids are in `PERSONAL_DASHBOARD_KNOWLEDGE.md` §8.
