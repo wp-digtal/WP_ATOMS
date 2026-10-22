@@ -1,11 +1,13 @@
 // Web tracking pages opened from the links in Live Tracking 2.0's "Web
 // Tracking Links" modal (MOVE-3676). One page, two audiences:
 //
-//   driver    — Map + traffic, Driver's location, Routelist, Route points,
-//               Registration (the driver registers each point on arrival)
-//   passenger — Map + traffic, ETA, Driver's location, Passenger location,
-//               Routelist, Route points, Registration (read-only: sees which
-//               points the driver has registered)
+//   driver    — Map + traffic, Driver's location, Schedule details, Route points
+//   passenger — the same, plus ETA, Passenger location and a call-driver button
+//
+// Product review (22 Oct 2026, Figma comments tagged #Req): the Route List,
+// the Register action and the per-point status lines ("Registered at …",
+// "Next · ETA", "Not registered") were all "no need", so both pages are
+// view-only. Points the bus has already passed still show green on the rail.
 //
 // Behaviour from MOVE-1685 (FMS): keep the screen awake while the driver page
 // is open, hide the bus icon when there's no location, and show "Trip has
@@ -23,10 +25,9 @@ import { GoogleMap, Marker, Polyline, TrafficLayer, useJsApiLoader } from '@reac
 import { MapContainer, TileLayer, Marker as LMarker, Polyline as LPolyline, useMap } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import { Avatar, Button, Modal, Popover, Segmented, Switch, Tag, Typography, message } from 'antd'
+import { Avatar, Button, Popover, Segmented, Switch, Tag, Typography } from 'antd'
 import {
   AimOutlined,
-  CheckCircleFilled,
   ClockCircleOutlined,
   DisconnectOutlined,
   EnvironmentOutlined,
@@ -41,7 +42,6 @@ import {
   webTrip,
   type WebTrackingAudience,
   type WtPoint,
-  type WtRoute,
 } from './webTrackingData'
 
 const { Text } = Typography
@@ -71,7 +71,7 @@ function useIsMobile() {
 
 interface MapProps {
   points: WtPoint[]
-  registered: Record<string, string>
+  passed: Record<string, string>
   nextPointId: string | null
   driverPos: [number, number] | null
   passengerPos: [number, number] | null
@@ -93,11 +93,11 @@ const passengerSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="34" height=
 
 const dataUrl = (svg: string) => `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`
 
-function pointState(p: WtPoint, registered: Record<string, string>, nextPointId: string | null) {
-  return registered[p.id] ? 'done' : p.id === nextPointId ? 'next' : 'todo'
+function pointState(p: WtPoint, passed: Record<string, string>, nextPointId: string | null) {
+  return p.id in passed ? 'done' : p.id === nextPointId ? 'next' : 'todo'
 }
 
-function GoogleTrackingMap({ points, registered, nextPointId, driverPos, passengerPos, showTraffic, focus }: MapProps) {
+function GoogleTrackingMap({ points, passed, nextPointId, driverPos, passengerPos, showTraffic, focus }: MapProps) {
   const { isLoaded, loadError } = useJsApiLoader({ id: 'google-map-script', googleMapsApiKey: GOOGLE_MAPS_API_KEY })
   const mapRef = useRef<google.maps.Map | null>(null)
   useEffect(() => {
@@ -125,7 +125,7 @@ function GoogleTrackingMap({ points, registered, nextPointId, driverPos, passeng
           key={p.id}
           position={{ lat: p.lat, lng: p.lng }}
           title={p.name}
-          icon={{ url: dataUrl(pointSvg(i + 1, pointState(p, registered, nextPointId))), anchor: new google.maps.Point(14, 14) }}
+          icon={{ url: dataUrl(pointSvg(i + 1, pointState(p, passed, nextPointId))), anchor: new google.maps.Point(14, 14) }}
         />
       ))}
       {passengerPos && (
@@ -158,7 +158,7 @@ const leafletIcon = (svg: string, size: number) =>
   L.divIcon({ html: svg, className: 'wt-divicon', iconSize: [size, size], iconAnchor: [size / 2, size / 2] })
 
 /** Fallback when VITE_GOOGLE_MAPS_API_KEY isn't set: OpenStreetMap tiles + the mock traffic corridors. */
-function LeafletTrackingMap({ points, registered, nextPointId, driverPos, passengerPos, showTraffic, focus }: MapProps) {
+function LeafletTrackingMap({ points, passed, nextPointId, driverPos, passengerPos, showTraffic, focus }: MapProps) {
   return (
     <MapContainer center={[points[1]?.lat ?? 1.33, points[1]?.lng ?? 103.8]} zoom={14} style={{ height: '100%', width: '100%' }} zoomControl={false} attributionControl={false}>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
@@ -170,7 +170,7 @@ function LeafletTrackingMap({ points, registered, nextPointId, driverPos, passen
         ))}
       <LPolyline positions={points.map((p) => [p.lat, p.lng] as [number, number])} pathOptions={{ color: BLUE, weight: 6, opacity: 0.85 }} />
       {points.map((p, i) => (
-        <LMarker key={p.id} position={[p.lat, p.lng]} icon={leafletIcon(pointSvg(i + 1, pointState(p, registered, nextPointId)), 28)} />
+        <LMarker key={p.id} position={[p.lat, p.lng]} icon={leafletIcon(pointSvg(i + 1, pointState(p, passed, nextPointId)), 28)} />
       ))}
       {passengerPos && <LMarker position={passengerPos} icon={leafletIcon(passengerSvg, 34)} />}
       {driverPos && <LMarker position={driverPos} icon={leafletIcon(busSvg(40), 40)} zIndexOffset={1000} />}
@@ -206,33 +206,22 @@ function Field({ label, value }: { label: string; value: React.ReactNode }) {
   )
 }
 
-function routeStatus(idx: number, activeIdx: number) {
-  if (idx < activeIdx) return <Tag color="success" style={{ margin: 0 }}>Completed</Tag>
-  if (idx === activeIdx) return <Tag color="processing" style={{ margin: 0 }}>In Progress</Tag>
-  return <Tag style={{ margin: 0 }}>Upcoming</Tag>
-}
-
 /* ───────────────────────────── Page ───────────────────────────── */
 
 export default function WebTrackingPage({ audience, tripId }: { audience: WebTrackingAudience; tripId: string }) {
   const trip = useMemo(() => webTrip(tripId), [tripId])
   const isMobile = useIsMobile()
-  const [messageApi, msgContext] = message.useMessage()
   const isDriver = audience === 'driver'
 
   const [demo, setDemo] = useState<DemoState>('live')
   const [showTraffic, setShowTraffic] = useState(true)
-  const [viewRouteIdx, setViewRouteIdx] = useState(0)
   const [focus, setFocus] = useState<[number, number] | null>(null)
   const [showMe, setShowMe] = useState(!isDriver)
   const [wakeLock, setWakeLock] = useState<'on' | 'unsupported'>('unsupported')
 
-  // Route 1 is in progress: points 1–2 already registered, bus between 2 and 3.
+  // Route 1 is in progress: the bus has passed points 1–2 and is heading to 3.
   const activeRoute = trip?.routes[0]
   const [progress, setProgress] = useState(1.35)
-  const [registered, setRegistered] = useState<Record<string, string>>(() =>
-    activeRoute ? Object.fromEntries(activeRoute.points.slice(0, 2).map((p, i) => [p.id, formatAmPm(addMinutes(p.scheduled, i === 0 ? 1 : 3))])) : {},
-  )
 
   // Demo clock: the bus creeps along the route while the page is live.
   useEffect(() => {
@@ -275,10 +264,11 @@ export default function WebTrackingPage({ audience, tripId }: { audience: WebTra
   if (!trip || !activeRoute) return <EndedScreen text="This tracking link is invalid." />
   if (demo === 'expired') return <EndedScreen text="Trip has ended, tracking unavailable" demo={<DemoSwitch value={demo} onChange={setDemo} isDriver={isDriver} />} />
 
-  const viewRoute = trip.routes[viewRouteIdx]
-  const nextPoint = activeRoute.points.find((p) => !registered[p.id]) ?? null
+  // "Passed" is derived from the bus position now that drivers don't register points.
+  const passed: Record<string, string> = Object.fromEntries(activeRoute.points.filter((_, i) => i <= Math.floor(progress)).map((p) => [p.id, '']))
+  const nextPoint = activeRoute.points.find((p) => !(p.id in passed)) ?? null
   const driverVisible = isDriver ? demo !== 'location-off' : demo !== 'driver-offline'
-  const driverPos = driverVisible && viewRouteIdx === 0 ? positionAlong(activeRoute.points, progress) : null
+  const driverPos = driverVisible ? positionAlong(activeRoute.points, progress) : null
   // Demo: the passenger stands a short walk from point 3.
   const passengerPos: [number, number] | null = showMe ? [activeRoute.points[2].lat + 0.0025, activeRoute.points[2].lng - 0.002] : null
   const nowHHmm = addMinutes(activeRoute.start, Math.round(progress * MIN_PER_LEG))
@@ -286,21 +276,6 @@ export default function WebTrackingPage({ audience, tripId }: { audience: WebTra
     const idx = activeRoute.points.findIndex((x) => x.id === p.id)
     const mins = Math.max(1, Math.round((idx - progress) * MIN_PER_LEG))
     return { mins, at: formatAmPm(addMinutes(nowHHmm, mins)) }
-  }
-
-  const register = (p: WtPoint) => {
-    Modal.confirm({
-      title: `Register ${p.name}?`,
-      content: 'Confirm that you have arrived at this point.',
-      okText: 'Register',
-      onOk: () => {
-        setRegistered((r) => ({ ...r, [p.id]: formatAmPm(nowHHmm) }))
-        // Registering means the bus is at that point.
-        const idx = activeRoute.points.findIndex((x) => x.id === p.id)
-        setProgress((pr) => Math.max(pr, idx))
-        messageApi.success(`${p.name} registered.`)
-      },
-    })
   }
 
   const statusChip = isDriver ? (
@@ -374,25 +349,14 @@ export default function WebTrackingPage({ audience, tripId }: { audience: WebTra
         </div>
       </div>
 
-      {/* Routelist */}
-      <div style={{ marginBottom: 20 }}>
-        <SectionTitle>Route List</SectionTitle>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {trip.routes.map((r, i) => (
-            <RouteCard key={r.id} route={r} selected={i === viewRouteIdx} status={routeStatus(i, 0)} onClick={() => setViewRouteIdx(i)} />
-          ))}
-        </div>
-      </div>
-
-      {/* Route points + registration */}
+      {/* Route points */}
       <div>
-        <SectionTitle extra={<Text style={{ fontSize: 12, color: GREY }}>{viewRoute.code}</Text>}>Route Points</SectionTitle>
+        <SectionTitle extra={<Text style={{ fontSize: 12, color: GREY }}>{activeRoute.code}</Text>}>Route Points</SectionTitle>
         <div>
-          {viewRoute.points.map((p, i) => {
-            const onActive = viewRouteIdx === 0
-            const done = onActive && registered[p.id]
-            const isNext = onActive && nextPoint?.id === p.id
-            const last = i === viewRoute.points.length - 1
+          {activeRoute.points.map((p, i) => {
+            const done = p.id in passed
+            const isNext = nextPoint?.id === p.id
+            const last = i === activeRoute.points.length - 1
             return (
               <div key={p.id} style={{ display: 'flex', gap: 12, cursor: 'pointer' }} onClick={() => setFocus([p.lat, p.lng])}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 24, flexShrink: 0 }}>
@@ -414,20 +378,6 @@ export default function WebTrackingPage({ audience, tripId }: { audience: WebTra
                     <Text style={{ fontSize: 14, fontWeight: 600 }}>{p.name}</Text>
                     <Text style={{ fontSize: 12, color: GREY, whiteSpace: 'nowrap' }}>{formatAmPm(p.scheduled)}</Text>
                   </div>
-                  {done ? (
-                    <Text style={{ fontSize: 12, color: GREEN }}><CheckCircleFilled /> Registered at {registered[p.id]}</Text>
-                  ) : isNext && driverVisible ? (
-                    <Text style={{ fontSize: 12, color: BLUE }}><ClockCircleOutlined /> Next · ETA {etaFor(p).at}</Text>
-                  ) : (
-                    <Text style={{ fontSize: 12, color: GREY }}>Not registered</Text>
-                  )}
-                  {isDriver && isNext && (
-                    <div style={{ marginTop: 8 }}>
-                      <Button type="primary" size={isMobile ? 'large' : 'middle'} block={isMobile} disabled={demo === 'location-off'} onClick={(e) => { e.stopPropagation(); register(p) }}>
-                        Register
-                      </Button>
-                    </div>
-                  )}
                 </div>
               </div>
             )
@@ -440,9 +390,9 @@ export default function WebTrackingPage({ audience, tripId }: { audience: WebTra
   const map = (
     <div style={{ position: 'relative', height: '100%', width: '100%' }}>
       {GOOGLE_MAPS_API_KEY ? (
-        <GoogleTrackingMap points={viewRoute.points} registered={viewRouteIdx === 0 ? registered : {}} nextPointId={viewRouteIdx === 0 ? nextPoint?.id ?? null : null} driverPos={driverPos} passengerPos={passengerPos} showTraffic={showTraffic} focus={focus} />
+        <GoogleTrackingMap points={activeRoute.points} passed={passed} nextPointId={nextPoint?.id ?? null} driverPos={driverPos} passengerPos={passengerPos} showTraffic={showTraffic} focus={focus} />
       ) : (
-        <LeafletTrackingMap points={viewRoute.points} registered={viewRouteIdx === 0 ? registered : {}} nextPointId={viewRouteIdx === 0 ? nextPoint?.id ?? null : null} driverPos={driverPos} passengerPos={passengerPos} showTraffic={showTraffic} focus={focus} />
+        <LeafletTrackingMap points={activeRoute.points} passed={passed} nextPointId={nextPoint?.id ?? null} driverPos={driverPos} passengerPos={passengerPos} showTraffic={showTraffic} focus={focus} />
       )}
       {/* Traffic toggle — same control as the Live Tracking map card */}
       <div style={{ position: 'absolute', left: 12, bottom: 12, zIndex: 500, background: '#fff', borderRadius: 8, padding: '6px 10px', boxShadow: '0 2px 8px rgba(0,0,0,.15)', display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -469,7 +419,6 @@ export default function WebTrackingPage({ audience, tripId }: { audience: WebTra
 
   return (
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', background: '#fff' }}>
-      {msgContext}
       <style>{`.wt-divicon{background:none;border:none}.wt-pulse{display:inline-block;width:7px;height:7px;border-radius:4px;background:${GREEN};margin-right:4px;animation:wtp 1.4s infinite}@keyframes wtp{50%{opacity:.25}}`}</style>
       {/* Header */}
       <div style={{ height: 56, flexShrink: 0, display: 'flex', alignItems: 'center', gap: 12, padding: '0 16px', borderBottom: '1px solid #f0f0f0' }}>
@@ -504,26 +453,6 @@ function addMinutes(hhmm: string, min: number): string {
   const [h, m] = hhmm.split(':').map(Number)
   const t = h * 60 + m + min
   return `${String(Math.floor(t / 60) % 24).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`
-}
-
-function RouteCard({ route, selected, status, onClick }: { route: WtRoute; selected: boolean; status: React.ReactNode; onClick: () => void }) {
-  return (
-    <div
-      role="button"
-      tabIndex={0}
-      onClick={onClick}
-      onKeyDown={(e) => e.key === 'Enter' && onClick()}
-      style={{ border: `1px solid ${selected ? BLUE : '#f0f0f0'}`, background: selected ? '#f0f7ff' : '#fff', borderRadius: 8, padding: '10px 12px', cursor: 'pointer' }}
-    >
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
-        <Text style={{ fontSize: 14, fontWeight: 600 }}>{route.code}</Text>
-        {status}
-      </div>
-      <Text style={{ fontSize: 12, color: GREY }}>
-        {formatAmPm(route.start)} - {formatAmPm(route.end)} · {route.points.length} points · {route.points[0].name} → {route.points[route.points.length - 1].name}
-      </Text>
-    </div>
-  )
 }
 
 function Banner({ tone, icon, children }: { tone: 'info' | 'warning' | 'error'; icon: React.ReactNode; children: React.ReactNode }) {

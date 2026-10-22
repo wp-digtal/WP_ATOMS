@@ -24,7 +24,11 @@ Applied product's #Req comments on the driver frames (all "no need"). Details in
   - Registered at / Not registered.
 - **Deleted:** the Register confirm and Point registered frames, mobile and web. The rows were renumbered (2.1–2.3, 4.1–4.3).
 - **"Is this the bus label?":** answered that it is the route name, not the plate. No change.
-- **Open:** the passenger page's registration status and Route List; the code (`WebTrackingPage.tsx`) has not been updated yet.
+- **Follow-up, same day:**
+  - The user asked for the passenger page to match, and for the code to be updated.
+  - Passenger frames (mobile + web): Route List and status lines hidden; the ETA card stays.
+  - `WebTrackingPage.tsx`: Route List, Register and status lines removed, and progress is now derived from the bus position (`passed`) instead of registration.
+  - `tsc` is clean, and the pages were checked in Playwright at 390 and 1440.
 
 ### Docs — `LIVE_TRACKING_KNOWLEDGE.md` (22 Oct 2026)
 

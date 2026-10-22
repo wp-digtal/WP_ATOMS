@@ -63,6 +63,13 @@ Restore point: "Before driver web-tracking review fixes (Claude, 22 Oct 2026)".
 
 **Net effect:** the driver page is view-only: map + traffic, the driver's location, driver / vehicle, schedule details, and the route points with times. No registration.
 
-**Open questions:**
-- **Passenger page:** it still shows "Registered at …" and a Route List. If drivers no longer register on the web page, does the passenger still see registration status (from the driver app), and is the Route List needed there? Not changed, because there were no comments on the passenger frames.
-- **Code:** `WebTrackingPage.tsx` still has Route List and Register for drivers. Update it only if asked (Figma first).
+**Follow-up (user, 22 Oct):** "Passenger page needs updating too", plus the go-ahead to update the code.
+
+- **Figma:** on every passenger frame (mobile `75976`, `76088`; web `39465:41596`, `41807`), the Route List and the per-point status lines are hidden. The ETA card, passenger location and call-driver button stay, since they were never questioned.
+- **Code:** `WebTrackingPage.tsx`:
+  - The Route List section, `RouteCard` and `routeStatus` are removed.
+  - The Register action (confirm modal and toast) is removed.
+  - The per-point status lines are removed.
+  - `registered` state is replaced by a `passed` set derived from the bus position. Green rail dots now mean "the bus has passed this point", not "registered".
+  - The page always shows the active route.
+- **Checked** with Playwright: driver 390 / 1440 and passenger 390 show no Route List, Register or status text, and there are no page errors.
