@@ -14,6 +14,18 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Figma (Live Tracking 2.0, Archive › Web Tracking Links): driver page review fixes (22 Oct 2026, MOVE-3676)
+
+Applied product's #Req comments on the driver frames (all "no need"). Details in `LIVE_TRACKING_KNOWLEDGE.md` §3.
+- **Hidden on every driver frame (mobile + web):**
+  - Route List;
+  - Register button;
+  - Next · ETA;
+  - Registered at / Not registered.
+- **Deleted:** the Register confirm and Point registered frames, mobile and web. The rows were renumbered (2.1–2.3, 4.1–4.3).
+- **"Is this the bus label?":** answered that it is the route name, not the plate. No change.
+- **Open:** the passenger page's registration status and Route List; the code (`WebTrackingPage.tsx`) has not been updated yet.
+
 ### Docs — `LIVE_TRACKING_KNOWLEDGE.md` (22 Oct 2026)
 
 The user pointed at the Live Tracking 2.0 Archive page (`39443:75324`) ahead of sending review comments.

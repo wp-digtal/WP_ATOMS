@@ -48,3 +48,21 @@ Comments can't be read through the API from this session (Figma REST 401), so as
 ## 3. Review comments log
 
 (Fill in as the user sends comment screenshots: comment → tag → decision → fix.)
+
+### Round 1: driver page (Westpoint Digital → Daniel, around 19 Oct; applied 22 Oct 2026)
+
+Restore point: "Before driver web-tracking review fixes (Claude, 22 Oct 2026)".
+
+| # | Where | Comment | Tag | Decision / fix |
+|---|---|---|---|---|
+| 1 | Driver 2.1, Route List cards | "no need" | #Req | Route List hidden on every driver frame, mobile and web |
+| 2 | Driver 2.1, "JK Attendant 6 (7:50 AM)" beside ROUTE POINTS | "is this the bus label? If yes pls allow user to copy the label" | #Req | **Not a bus label.** It is the route name (schedule route + start time); the bus plate is "PA5993Z" under the driver's name. Answered, no change. If product wants the plate copyable, add a copy icon next to the plate (open). |
+| 3 | Driver, "Next · ETA" + Register button | "no need" | #Req | Hidden on every driver frame |
+| 4 | Driver, "✓ Registered at 7:51 AM" | "no need" | #Req | All per-point status lines hidden (Registered at / Next · ETA / Not registered). Points now show name + scheduled time only. |
+| 5 | Driver 2.2 "Register → confirm" | "no need" | #Req | Deleted 2.2 Register confirm and 2.3 Point registered (mobile `75633`, `75750`; web `39465:40979`, `41195`) with their labels and arrows. Remaining frames shifted left and renumbered: mobile 2.1 Live, 2.2 Location off, 2.3 Expired; web 4.1 / 4.2 / 4.3. |
+
+**Net effect:** the driver page is view-only: map + traffic, the driver's location, driver / vehicle, schedule details, and the route points with times. No registration.
+
+**Open questions:**
+- **Passenger page:** it still shows "Registered at …" and a Route List. If drivers no longer register on the web page, does the passenger still see registration status (from the driver app), and is the Route List needed there? Not changed, because there were no comments on the passenger frames.
+- **Code:** `WebTrackingPage.tsx` still has Route List and Register for drivers. Update it only if asked (Figma first).
