@@ -91,4 +91,10 @@ Restore point: "Before driver web-tracking review fixes (Claude, 22 Oct 2026)".
 - `WtTrip.busLabel` added in `webTrackingData.ts`.
 - Checked in Playwright: the clipboard holds "JK Attendant 6" after Copy, and the toast shows.
 
+**Figma (25 Oct):** restore point "Before bus label + copy (Claude, 25 Oct 2026)".
+- Row `Bus Label + Copy (review 25 Oct)` (template `39535:14282` in driver mobile 2.1): the Customer field is cloned and relabelled "Bus Label: JK Attendant 6", next to a COMPASS `Button` (Type=Default, Size=Small, "Copy") cloned from the Ops modal's Copy button.
+- It is inserted as the first row of Trip Details on driver mobile `75528`, `75866`; passenger mobile `75976`, `76088`; driver web `39464:40767`, `39465:41400`; and passenger web `41596`, `41807`.
+- Section titles are now "TRIP DETAILS" everywhere. The expired frames have no details panel.
+- No "copied" toast frame was drawn; the code shows "Bus label copied to clipboard.".
+
 **Lesson:** when a reviewer uses a domain term ("bus label"), grep the module's data and UI for it before answering. The term existed in the code all along.

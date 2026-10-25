@@ -21,7 +21,7 @@ minor).
   - Trip Details (renamed from Schedule Details, matching the user's Figma edit) now starts with **Bus Label** + **Copy**.
   - `WtTrip.busLabel` added.
   - `tsc` is clean, and the copy was checked in Playwright.
-- **Figma:** the same field is being added to the driver and passenger frames.
+- **Figma:** Bus Label + Copy added as the first row of Trip Details on all 8 live driver and passenger frames (mobile + web), and the section titles unified to "TRIP DETAILS".
 - **Docs:** the `LIVE_TRACKING_KNOWLEDGE.md` glossary now defines "bus label", and the wrong answer is corrected.
 
 ### Changed — Figma (Live Tracking 2.0, Archive › Web Tracking Links): driver page review fixes (22 Oct 2026, MOVE-3676)
