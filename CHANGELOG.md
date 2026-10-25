@@ -14,6 +14,16 @@ minor).
 
 ## [Unreleased]
 
+### Fixed — Web tracking pages: missing bus label + copy button (25 Oct 2026, MOVE-3676, review #data)
+
+- **The miss:** on 22 Oct the reviewer asked "is this the bus label?" about "JK Attendant 6 (7:50 AM)", and I answered that it was the route name. In Live Tracking the bus label *is* the trip card's `label` ("JK Attendant 6"). The reviewer then flagged "missing bus label + copy button".
+- **Code:**
+  - Trip Details (renamed from Schedule Details, matching the user's Figma edit) now starts with **Bus Label** + **Copy**.
+  - `WtTrip.busLabel` added.
+  - `tsc` is clean, and the copy was checked in Playwright.
+- **Figma:** the same field is being added to the driver and passenger frames.
+- **Docs:** the `LIVE_TRACKING_KNOWLEDGE.md` glossary now defines "bus label", and the wrong answer is corrected.
+
 ### Changed — Figma (Live Tracking 2.0, Archive › Web Tracking Links): driver page review fixes (22 Oct 2026, MOVE-3676)
 
 Applied product's #Req comments on the driver frames (all "no need"). Details in `LIVE_TRACKING_KNOWLEDGE.md` §3.

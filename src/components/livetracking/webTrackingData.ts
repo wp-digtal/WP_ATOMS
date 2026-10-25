@@ -39,6 +39,8 @@ export interface WtRoute {
 
 export interface WtTrip {
   tripId: string
+  /** The Live Tracking trip card's label (e.g. "JK Attendant 6"), which product calls the bus label. */
+  busLabel: string
   date: string
   driver: string
   driverPhone: string
@@ -117,6 +119,7 @@ export function webTrip(tripId: string): WtTrip | null {
     const back = [...stops].reverse().map((p, i) => (i === stops.length - 1 ? { ...p, name: PICKUPS[(n + 4) % PICKUPS.length] } : p))
     return {
       tripId: d.id,
+      busLabel: d.label,
       date: '13 Oct 2026',
       driver: d.driver,
       driverPhone: d._driverPhone,
@@ -136,6 +139,7 @@ export function webTrip(tripId: string): WtTrip | null {
   const second = addMin(t.scheduled, 50)
   return {
     tripId: t.id,
+    busLabel: t.label,
     date: '13 Oct 2026',
     driver: t.driver,
     driverPhone: '+65 8888 1234',

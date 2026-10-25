@@ -29,6 +29,11 @@ Read this before any Live Tracking work.
 - **Docs:** numbered `Docs/Big Title`s ("1 · Ops …"), `Docs/Flow Label`s 1.1–5.3, and arrows on sequential steps.
   - This predates the 20 Oct rule of no numbers in titles plus trigger arrows (`FIGMA_DESIGN_SYSTEM.md` §4.13).
 
+## 1b. Glossary (learned from review)
+
+- **Bus label:** the trip card's `label` field in Live Tracking (`dummyLiveData.ts`, e.g. "JK Attendant 6", "Hal 4WP(IN)"). It is shown as the blue tag at the top of each trip card. It is **not** the plate (`plate`, e.g. "PA5993Z") and not the route code. Route names are built as `<bus label> (<start time>)`.
+- **Trip Details:** the section the user renamed from "Schedule Details" in Figma (by 25 Oct). The code now uses this name too.
+
 ## 2. Review comment tags (frame "#tags", `39469:10540`, on the Archive page)
 
 Product reviewers prefix Figma comments with these tags:
@@ -56,7 +61,7 @@ Restore point: "Before driver web-tracking review fixes (Claude, 22 Oct 2026)".
 | # | Where | Comment | Tag | Decision / fix |
 |---|---|---|---|---|
 | 1 | Driver 2.1, Route List cards | "no need" | #Req | Route List hidden on every driver frame, mobile and web |
-| 2 | Driver 2.1, "JK Attendant 6 (7:50 AM)" beside ROUTE POINTS | "is this the bus label? If yes pls allow user to copy the label" | #Req | **Not a bus label.** It is the route name (schedule route + start time); the bus plate is "PA5993Z" under the driver's name. Answered, no change. If product wants the plate copyable, add a copy icon next to the plate (open). |
+| 2 | Driver 2.1, "JK Attendant 6 (7:50 AM)" beside ROUTE POINTS | "is this the bus label? If yes pls allow user to copy the label" | #Req | **Answered wrongly on 22 Oct.** I called it "the route name, not the bus label". In this module the **bus label is the trip card's `label`** ("JK Attendant 6", the blue tag on the Live Tracking trip card), so the text *was* derived from the bus label. Product followed up on 25 Oct (see round 2). |
 | 3 | Driver, "Next · ETA" + Register button | "no need" | #Req | Hidden on every driver frame |
 | 4 | Driver, "✓ Registered at 7:51 AM" | "no need" | #Req | All per-point status lines hidden (Registered at / Next · ETA / Not registered). Points now show name + scheduled time only. |
 | 5 | Driver 2.2 "Register → confirm" | "no need" | #Req | Deleted 2.2 Register confirm and 2.3 Point registered (mobile `75633`, `75750`; web `39465:40979`, `41195`) with their labels and arrows. Remaining frames shifted left and renumbered: mobile 2.1 Live, 2.2 Location off, 2.3 Expired; web 4.1 / 4.2 / 4.3. |
@@ -73,3 +78,17 @@ Restore point: "Before driver web-tracking review fixes (Claude, 22 Oct 2026)".
   - `registered` state is replaced by a `passed` set derived from the bus position. Green rail dots now mean "the bus has passed this point", not "registered".
   - The page always shows the active route.
 - **Checked** with Playwright: driver 390 / 1440 and passenger 390 show no Route List, Register or status text, and there are no page errors.
+
+### Round 2 (25 Oct 2026)
+
+| Where | Comment | Tag | Fix |
+|---|---|---|---|
+| Driver 2.1 › Trip Details | "missing bus label + copy button" | #data | Added a **Bus Label** field ("JK Attendant 6") with a **Copy** button as the first row of Trip Details. |
+
+**Code (`WebTrackingPage.tsx`):**
+- Section renamed to "Trip Details".
+- Bus Label field + `Copy` button (`CopyOutlined`). It copies the label to the clipboard and shows the toast "Bus label copied to clipboard." (placeholder until the copy key is known).
+- `WtTrip.busLabel` added in `webTrackingData.ts`.
+- Checked in Playwright: the clipboard holds "JK Attendant 6" after Copy, and the toast shows.
+
+**Lesson:** when a reviewer uses a domain term ("bus label"), grep the module's data and UI for it before answering. The term existed in the code all along.

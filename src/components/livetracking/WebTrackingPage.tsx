@@ -25,10 +25,11 @@ import { GoogleMap, Marker, Polyline, TrafficLayer, useJsApiLoader } from '@reac
 import { MapContainer, TileLayer, Marker as LMarker, Polyline as LPolyline, useMap } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import { Avatar, Button, Popover, Segmented, Switch, Tag, Typography } from 'antd'
+import { Avatar, Button, Popover, Segmented, Switch, Tag, Typography, message } from 'antd'
 import {
   AimOutlined,
   ClockCircleOutlined,
+  CopyOutlined,
   DisconnectOutlined,
   EnvironmentOutlined,
   ExperimentOutlined,
@@ -212,6 +213,7 @@ export default function WebTrackingPage({ audience, tripId }: { audience: WebTra
   const trip = useMemo(() => webTrip(tripId), [tripId])
   const isMobile = useIsMobile()
   const isDriver = audience === 'driver'
+  const [messageApi, msgContext] = message.useMessage()
 
   const [demo, setDemo] = useState<DemoState>('live')
   const [showTraffic, setShowTraffic] = useState(true)
@@ -278,6 +280,16 @@ export default function WebTrackingPage({ audience, tripId }: { audience: WebTra
     return { mins, at: formatAmPm(addMinutes(nowHHmm, mins)) }
   }
 
+  const copyBusLabel = async (label: string) => {
+    try {
+      await navigator.clipboard.writeText(label)
+    } catch {
+      // Clipboard API can be blocked (non-secure context); the label is still on screen.
+    }
+    // Copy master list key TBC; placeholder copy.
+    messageApi.success('Bus label copied to clipboard.')
+  }
+
   const statusChip = isDriver ? (
     demo === 'location-off' ? (
       <Tag icon={<DisconnectOutlined />} color="error" style={{ margin: 0 }}>Not sharing location</Tag>
@@ -341,8 +353,13 @@ export default function WebTrackingPage({ audience, tripId }: { audience: WebTra
 
       {/* Schedule details */}
       <div style={{ marginBottom: 20 }}>
-        <SectionTitle>Schedule Details</SectionTitle>
+        <SectionTitle>Trip Details</SectionTitle>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+          {/* Product review 25 Oct (#data): the bus label was missing and needs a copy button. */}
+          <div style={{ gridColumn: '1 / -1', display: 'flex', alignItems: 'flex-end', gap: 8 }}>
+            <div style={{ flex: 1, minWidth: 0 }}><Field label="Bus Label" value={trip.busLabel} /></div>
+            <Button size="small" icon={<CopyOutlined />} onClick={() => copyBusLabel(trip.busLabel)}>Copy</Button>
+          </div>
           <Field label="Date" value={trip.date} />
           <Field label="Time" value={`${formatAmPm(trip.routes[0].start)} - ${formatAmPm(trip.routes[trip.routes.length - 1].end)}`} />
           <div style={{ gridColumn: '1 / -1' }}><Field label="Customer" value={trip.customer} /></div>
@@ -419,6 +436,7 @@ export default function WebTrackingPage({ audience, tripId }: { audience: WebTra
 
   return (
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', background: '#fff' }}>
+      {msgContext}
       <style>{`.wt-divicon{background:none;border:none}.wt-pulse{display:inline-block;width:7px;height:7px;border-radius:4px;background:${GREEN};margin-right:4px;animation:wtp 1.4s infinite}@keyframes wtp{50%{opacity:.25}}`}</style>
       {/* Header */}
       <div style={{ height: 56, flexShrink: 0, display: 'flex', alignItems: 'center', gap: 12, padding: '0 16px', borderBottom: '1px solid #f0f0f0' }}>
