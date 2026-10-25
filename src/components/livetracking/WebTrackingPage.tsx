@@ -360,15 +360,17 @@ export default function WebTrackingPage({ audience, tripId }: { audience: WebTra
             <div style={{ flex: 1, minWidth: 0 }}><Field label="Bus Label" value={trip.busLabel} /></div>
             <Button size="small" icon={<CopyOutlined />} onClick={() => copyBusLabel(trip.busLabel)}>Copy</Button>
           </div>
+          {/* Review 25 Oct (#data): trip remarks were missing; the driver app shows them on its Trip Details screen. */}
+          <div style={{ gridColumn: '1 / -1' }}><Field label="Trip Remarks" value={trip.remarks} /></div>
           <Field label="Date" value={trip.date} />
           <Field label="Time" value={`${formatAmPm(trip.routes[0].start)} - ${formatAmPm(trip.routes[trip.routes.length - 1].end)}`} />
           <div style={{ gridColumn: '1 / -1' }}><Field label="Customer" value={trip.customer} /></div>
         </div>
       </div>
 
-      {/* Route points */}
+      {/* Route list (review 25 Oct, #Copy: "Route List") */}
       <div>
-        <SectionTitle extra={<Text style={{ fontSize: 12, color: GREY }}>{activeRoute.code}</Text>}>Route Points</SectionTitle>
+        <SectionTitle extra={<Text style={{ fontSize: 12, color: GREY }}>{activeRoute.code}</Text>}>Route List</SectionTitle>
         <div>
           {activeRoute.points.map((p, i) => {
             const done = p.id in passed

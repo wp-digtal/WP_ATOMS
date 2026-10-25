@@ -41,6 +41,8 @@ export interface WtTrip {
   tripId: string
   /** The Live Tracking trip card's label (e.g. "JK Attendant 6"), which product calls the bus label. */
   busLabel: string
+  /** Ops' remarks for the driver on this trip (shown as "Trip Remarks"); demo text until the backend supplies it. */
+  remarks: string
   date: string
   driver: string
   driverPhone: string
@@ -120,6 +122,7 @@ export function webTrip(tripId: string): WtTrip | null {
     return {
       tripId: d.id,
       busLabel: d.label,
+      remarks: 'Children are escorted by a teacher at each pickup. Wait until all are seated before moving off.',
       date: '13 Oct 2026',
       driver: d.driver,
       driverPhone: d._driverPhone,
@@ -140,6 +143,7 @@ export function webTrip(tripId: string): WtTrip | null {
   return {
     tripId: t.id,
     busLabel: t.label,
+    remarks: '-',
     date: '13 Oct 2026',
     driver: t.driver,
     driverPhone: '+65 8888 1234',

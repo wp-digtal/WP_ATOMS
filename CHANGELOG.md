@@ -14,6 +14,13 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Web tracking pages: Trip Remarks + "Route List" (25 Oct 2026, MOVE-3676, review #data / #Copy)
+
+The reviewer compared the pages with the driver mobile app's Trip Details screen (Figma `39536:14618`).
+- **Added** a Trip Remarks field under Bus Label (`WtTrip.remarks`).
+- **Renamed** the section "Route Points" to "Route List". The comment's intent is to be confirmed, because its pin sits near "Customer".
+- Applied to all 8 live Figma frames and to `WebTrackingPage.tsx`. `tsc` is clean, and it was checked in Playwright.
+
 ### Fixed — Web tracking pages: missing bus label + copy button (25 Oct 2026, MOVE-3676, review #data)
 
 - **The miss:** on 22 Oct the reviewer asked "is this the bus label?" about "JK Attendant 6 (7:50 AM)", and I answered that it was the route name. In Live Tracking the bus label *is* the trip card's `label` ("JK Attendant 6"). The reviewer then flagged "missing bus label + copy button".

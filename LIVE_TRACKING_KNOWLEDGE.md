@@ -32,6 +32,7 @@ Read this before any Live Tracking work.
 ## 1b. Glossary (learned from review)
 
 - **Bus label:** the trip card's `label` field in Live Tracking (`dummyLiveData.ts`, e.g. "JK Attendant 6", "Hal 4WP(IN)"). It is shown as the blue tag at the top of each trip card. It is **not** the plate (`plate`, e.g. "PA5993Z") and not the route code. Route names are built as `<bus label> (<start time>)`.
+- **Trip remarks:** ops' note for the trip, shown to the driver (app: orange banner on Trip Details). Web page: a "Trip Remarks" field in Trip Details.
 - **Trip Details:** the section the user renamed from "Schedule Details" in Figma (by 25 Oct). The code now uses this name too.
 
 ## 2. Review comment tags (frame "#tags", `39469:10540`, on the Archive page)
@@ -96,5 +97,18 @@ Restore point: "Before driver web-tracking review fixes (Claude, 22 Oct 2026)".
 - It is inserted as the first row of Trip Details on driver mobile `75528`, `75866`; passenger mobile `75976`, `76088`; driver web `39464:40767`, `39465:41400`; and passenger web `41596`, `41807`.
 - Section titles are now "TRIP DETAILS" everywhere. The expired frames have no details panel.
 - No "copied" toast frame was drawn; the code shows "Bus label copied to clipboard.".
+
+### Round 3 (25 Oct 2026): the reviewer refers to the driver mobile app
+
+Reference: the driver app's **Trip Details** screen in this file (`39536:14618`, "iPhone 16 Pro - 59"). It shows:
+- the trip remarks as an orange banner at the top ("Please be aware …");
+- the stop list with times, pax counts, wait time and "Navigate here".
+
+| Comment | Tag | Fix |
+|---|---|---|
+| "missing trip remarks" (pinned under Bus Label) | #data | **Trip Remarks** field (full width) added below Bus Label in Trip Details, on all 8 live frames + code (`WtTrip.remarks`; the demo text is "Children are escorted by a teacher at each pickup…"). |
+| "Route List" (#Copy, pinned on the Customer / Route Points area) | #Copy | Read as: rename the section title **"ROUTE POINTS" → "ROUTE LIST"**. Done on all frames + code. **To confirm** with the reviewer, because the pin sits near "Customer". |
+
+Restore point: "Before trip remarks + Route List rename (Claude, 25 Oct 2026)". Checked in Playwright: passenger 390 shows Trip Remarks + "Route List", no errors.
 
 **Lesson:** when a reviewer uses a domain term ("bus label"), grep the module's data and UI for it before answering. The term existed in the code all along.
