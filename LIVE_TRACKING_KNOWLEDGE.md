@@ -29,6 +29,12 @@ Read this before any Live Tracking work.
 - **Docs:** numbered `Docs/Big Title`s ("1 · Ops …"), `Docs/Flow Label`s 1.1–5.3, and arrows on sequential steps.
   - This predates the 20 Oct rule of no numbers in titles plus trigger arrows (`FIGMA_DESIGN_SYSTEM.md` §4.13).
 
+## 1a. Standing rule (user, 25 Oct 2026)
+
+Every web-tracking change goes to **both** versions:
+- in Figma, the mobile rows (2, 3) **and** the web (1440) rows (4, 5), for driver **and** passenger;
+- in code, both breakpoints of `WebTrackingPage.tsx` (390 bottom sheet and the 1440 side panel), checked in Playwright at both widths.
+
 ## 1b. Glossary (learned from review)
 
 - **Bus label:** the trip card's `label` field in Live Tracking (`dummyLiveData.ts`, e.g. "JK Attendant 6", "Hal 4WP(IN)"). It is shown as the blue tag at the top of each trip card. It is **not** the plate (`plate`, e.g. "PA5993Z") and not the route code. Route names are built as `<bus label> (<start time>)`.
