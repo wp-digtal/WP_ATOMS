@@ -25,7 +25,7 @@ import { GoogleMap, Marker, Polyline, TrafficLayer, useJsApiLoader } from '@reac
 import { MapContainer, TileLayer, Marker as LMarker, Polyline as LPolyline, useMap } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import { Avatar, Button, Popover, Segmented, Switch, Tag, Typography, message } from 'antd'
+import { Avatar, Button, Popover, Segmented, Switch, Tag, Typography, message, theme } from 'antd'
 import {
   AimOutlined,
   ClockCircleOutlined,
@@ -57,8 +57,6 @@ const MIN_PER_LEG = 8 // demo: scheduled minutes between consecutive points
 /** Demo-only switch, so every state the page can be in is reachable without a backend. */
 type DemoState = 'live' | 'stop-photo' | 'location-off' | 'driver-offline' | 'expired'
 
-/** Route List colours, read from the driver app's Trip Details screen (Figma 39511:68160). */
-const RL = { navy: '#193c60', passed: '#2b9d72', passedLine: '#258863', upcoming: '#00366b', headingLabel: '#30b080', text: '#565d61', time: '#323638', border: '#e0e1e1' }
 /** Demo wait time at the stop being headed to (the app shows "Wait time N min"). */
 const STOP_WAIT_MIN = 2
 
@@ -219,6 +217,18 @@ export default function WebTrackingPage({ audience, tripId }: { audience: WebTra
   const trip = useMemo(() => webTrip(tripId), [tripId])
   const isMobile = useIsMobile()
   const isDriver = audience === 'driver'
+  const { token } = theme.useToken()
+  // Route List colours = COMPASS design-system tokens, as bound in the PM-approved Figma frame (39443:75528, 26 Oct).
+  const RL = {
+    passed: token.colorSuccessActive, // passed stops: dot + line
+    heading: token.colorPrimary, // "Heading to" block + the line after it
+    upcoming: token.colorPrimaryActive, // upcoming dots + stop-count chip
+    passedText: token.colorTextSecondary,
+    upcomingText: token.colorTextTertiary,
+    title: token.colorTextSecondary,
+    time: token.colorText,
+    border: token.colorBorderSecondary,
+  }
   const [messageApi, msgContext] = message.useMessage()
 
   const [demo, setDemo] = useState<DemoState>('live')
@@ -379,8 +389,8 @@ export default function WebTrackingPage({ audience, tripId }: { audience: WebTra
           green, the stop being headed to highlighted in navy. */}
       <div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-          <Text style={{ fontSize: 14, fontWeight: 500, color: RL.text }}>Route List</Text>
-          <span style={{ background: RL.navy, color: '#fff', fontSize: 12, fontWeight: 600, borderRadius: 14, padding: '4px 10px' }}>
+          <Text style={{ fontSize: 14, fontWeight: 500, color: RL.title }}>Route List</Text>
+          <span style={{ background: RL.upcoming, color: token.colorWhite, fontSize: 12, fontWeight: 600, borderRadius: 14, padding: '4px 10px' }}>
             {activeRoute.points.length} Stops
           </span>
         </div>
@@ -389,22 +399,22 @@ export default function WebTrackingPage({ audience, tripId }: { audience: WebTra
             const done = p.id in passed
             const heading = nextPoint?.id === p.id
             const last = i === activeRoute.points.length - 1
-            const lineColor = done ? RL.passedLine : RL.navy
+            const lineColor = done ? RL.passed : RL.upcoming
             const afterHeading = i > 0 && activeRoute.points[i - 1].id === nextPoint?.id
             return (
               <div
                 key={p.id}
-                style={{ display: 'flex', cursor: 'pointer', background: heading ? RL.navy : undefined, padding: heading ? '12px 0' : 0 }}
+                style={{ display: 'flex', cursor: 'pointer', background: heading ? RL.heading : undefined, padding: heading ? '12px 0' : 0 }}
                 onClick={() => setFocus([p.lat, p.lng])}
               >
                 <div style={{ width: 48, flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  {afterHeading && <div style={{ width: 4, height: 16, borderRadius: 2, background: RL.navy, marginBottom: 4 }} />}
+                  {afterHeading && <div style={{ width: 4, height: 16, borderRadius: 2, background: RL.heading, marginBottom: 4 }} />}
                   <div
                     style={{
                       width: 24, height: 24, borderRadius: 12, fontSize: 12, fontWeight: 700,
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      background: heading ? '#fff' : done ? RL.passed : RL.upcoming,
-                      color: heading ? RL.navy : '#fff',
+                      background: heading ? token.colorWhite : done ? RL.passed : RL.upcoming,
+                      color: heading ? RL.heading : token.colorWhite,
                     }}
                   >
                     {i + 1}
@@ -414,16 +424,16 @@ export default function WebTrackingPage({ audience, tripId }: { audience: WebTra
                 <div style={{ flex: 1, minWidth: 0, paddingRight: 12, paddingTop: afterHeading ? 20 : 0, paddingBottom: last || heading ? 0 : 16 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8 }}>
                     <div style={{ minWidth: 0 }}>
-                      {heading && <Text style={{ fontSize: 12, color: RL.headingLabel, display: 'block' }}>Heading to</Text>}
-                      <Text style={{ fontSize: 14, fontWeight: heading ? 600 : 400, color: heading ? '#fff' : RL.text }}>{p.name}</Text>
+                      {heading && <Text style={{ fontSize: 12, color: token.colorWhite, display: 'block' }}>Heading to</Text>}
+                      <Text style={{ fontSize: 14, fontWeight: heading ? 600 : 400, color: heading ? token.colorWhite : done ? RL.passedText : RL.upcomingText }}>{p.name}</Text>
                     </div>
-                    <Text style={{ fontSize: 12, color: heading ? '#fff' : RL.time, whiteSpace: 'nowrap' }}>{formatAmPm(p.scheduled)}</Text>
+                    <Text style={{ fontSize: 12, color: heading ? token.colorWhite : RL.time, whiteSpace: 'nowrap' }}>{formatAmPm(p.scheduled)}</Text>
                   </div>
                   {/* "Stop photo" state (Figma 2.4 / 3.4 / 4.4 / 5.4, from the app's 39536:14618):
                       wait time, a photo of the stop, and Navigate here. */}
                   {heading && demo === 'stop-photo' && (
                     <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
-                      <Text style={{ fontSize: 12, color: '#ff9e99' }}>Wait time {STOP_WAIT_MIN} min</Text>
+                      <Text style={{ fontSize: 12, fontWeight: 600, color: token.colorWhite }}>Wait time {STOP_WAIT_MIN} min</Text>
                       <img src={stopPhoto} alt={`Photo of ${p.name}`} style={{ width: '100%', height: 102, objectFit: 'cover', borderRadius: 8 }} />
                       <Button
                         block

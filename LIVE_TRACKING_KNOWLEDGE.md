@@ -142,3 +142,29 @@ Restore point: "Before route list v2 + photo state (Claude, 26 Oct 2026)".
 - Route List is rebuilt to the same spec (`RL` colour constants).
 - The new demo state **"Stop photo"** shows wait time (`STOP_WAIT_MIN`), the photo (`src/assets/stop-photo-joo-koon.jpg`, exported from the Figma image) and Navigate here, which opens Google Maps directions.
 - Checked in Playwright: driver 390 live (no photo) / stop photo, and passenger 1440 stop photo. No errors.
+
+### Round 5 (26 Oct 2026): PM approved driver mobile 2.1 (`39443:75528`), propagated everywhere
+
+- **Approved design:** the user re-coloured the Route List with **our COMPASS variables** (collection "1. Colors"). **Rule: use these DS variables, never hand-picked or app (Integral) hex values.**
+
+| Element | Token |
+|---|---|
+| Passed dot + line | `Colors/Brand/Success/colorSuccessActive` (#389e0d) |
+| "Heading to" block + the line after it | `Colors/Brand/Primary/colorPrimary` (#1677ff); text `colorWhite` |
+| Upcoming dot + "N Stops" chip | `Colors/Brand/Primary/colorPrimaryActive` (#0958d9) |
+| Passed / upcoming stop text | `Colors/Neutral/Text/colorTextSecondary` / `colorTextTertiary` |
+| Time | `Semantic/Text/Body-1` |
+| Title | `Semantic/Text/Body-3` |
+
+- **Approved stop names:**
+  1. (Office) 32 Pioneer Crescent @west park biz central - blk 30
+  2. (Bus stop) 15061 Pasir Ris MRT Station…
+  3. **Heading to:** (Bus stop) 18041 Bukit Panjang Plaza, Jelebu Rd, Singapore
+  4. (Bus stop) 15061 Pasir Ris MRT Station…
+- **Figma:** restore point "Before propagating PM-approved route list (Claude, 26 Oct 2026)".
+  - The approved card `39547:14851` was cloned to all 7 other live frames.
+  - The photo variant (template `39556:18336`) went to 2.4 / 3.4 / 4.4 / 5.4: wait time in white (cloned from "Heading to", so it keeps the variable), the photo, and a COMPASS `Button` Type=Default "Navigate here" (same component as the Copy button).
+  - The passenger ETA text now reads "Arriving at (Bus stop) 18041 Bukit Panjang Plaza".
+- **Code:** `WebTrackingPage.tsx` Route List colours come from `theme.useToken()`: colorSuccessActive, colorPrimary, colorPrimaryActive, colorTextSecondary / Tertiary, colorBorderSecondary, colorWhite. There are no hex values.
+  - The stop names in code come from the demo trip data, not the Figma mock text.
+  - Checked in Playwright at 390 (stop photo) and 1440 (live). No errors.

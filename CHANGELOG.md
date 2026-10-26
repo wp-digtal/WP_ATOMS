@@ -14,6 +14,13 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Web tracking pages: PM-approved Route List propagated; COMPASS colour tokens (26 Oct 2026, MOVE-3676)
+
+The PM approved driver mobile 2.1 (`39443:75528`), whose Route List uses our design-system colour variables.
+- **Figma:** the approved card was cloned to every live frame and the 4 stop-photo frames. The photo variant uses DS colours and a COMPASS button.
+- **Code:** the Route List now uses AntD/COMPASS tokens (`theme.useToken()`) instead of the app hex values.
+- **Standing rule:** colours come from our design-system tokens (`LIVE_TRACKING_KNOWLEDGE.md` round 5).
+
 ### Changed — Web tracking pages: Route List like the driver app + "stop photo" state (26 Oct 2026, MOVE-3676)
 
 At the user's request, following the driver app frames `39511:68160` (Route List) and `39536:14618` (stop with photo).
