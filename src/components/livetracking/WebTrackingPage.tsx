@@ -37,6 +37,7 @@ import {
   PhoneOutlined,
 } from '@ant-design/icons'
 import { trafficSegments, TRAFFIC_COLOR } from './trackingData'
+import stopPhoto from '../../assets/stop-photo-joo-koon.jpg'
 import {
   formatAmPm,
   positionAlong,
@@ -54,7 +55,12 @@ const GREY = '#8c8c8c'
 const MIN_PER_LEG = 8 // demo: scheduled minutes between consecutive points
 
 /** Demo-only switch, so every state the page can be in is reachable without a backend. */
-type DemoState = 'live' | 'location-off' | 'driver-offline' | 'expired'
+type DemoState = 'live' | 'stop-photo' | 'location-off' | 'driver-offline' | 'expired'
+
+/** Route List colours, read from the driver app's Trip Details screen (Figma 39511:68160). */
+const RL = { navy: '#193c60', passed: '#2b9d72', passedLine: '#258863', upcoming: '#00366b', headingLabel: '#30b080', text: '#565d61', time: '#323638', border: '#e0e1e1' }
+/** Demo wait time at the stop being headed to (the app shows "Wait time N min"). */
+const STOP_WAIT_MIN = 2
 
 function useIsMobile() {
   const q = '(max-width: 767px)'
@@ -368,35 +374,67 @@ export default function WebTrackingPage({ audience, tripId }: { audience: WebTra
         </div>
       </div>
 
-      {/* Route list (review 25 Oct, #Copy: "Route List") */}
+      {/* Route list — restyled 26 Oct to match the driver app's Trip Details
+          (Figma 39511:68160): stop-count chip, bordered card, passed stops in
+          green, the stop being headed to highlighted in navy. */}
       <div>
-        <SectionTitle extra={<Text style={{ fontSize: 12, color: GREY }}>{activeRoute.code}</Text>}>Route List</SectionTitle>
-        <div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+          <Text style={{ fontSize: 14, fontWeight: 500, color: RL.text }}>Route List</Text>
+          <span style={{ background: RL.navy, color: '#fff', fontSize: 12, fontWeight: 600, borderRadius: 14, padding: '4px 10px' }}>
+            {activeRoute.points.length} Stops
+          </span>
+        </div>
+        <div style={{ border: `1px solid ${RL.border}`, borderRadius: 12, overflow: 'hidden', padding: '12px 0' }}>
           {activeRoute.points.map((p, i) => {
             const done = p.id in passed
-            const isNext = nextPoint?.id === p.id
+            const heading = nextPoint?.id === p.id
             const last = i === activeRoute.points.length - 1
+            const lineColor = done ? RL.passedLine : RL.navy
+            const afterHeading = i > 0 && activeRoute.points[i - 1].id === nextPoint?.id
             return (
-              <div key={p.id} style={{ display: 'flex', gap: 12, cursor: 'pointer' }} onClick={() => setFocus([p.lat, p.lng])}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 24, flexShrink: 0 }}>
+              <div
+                key={p.id}
+                style={{ display: 'flex', cursor: 'pointer', background: heading ? RL.navy : undefined, padding: heading ? '12px 0' : 0 }}
+                onClick={() => setFocus([p.lat, p.lng])}
+              >
+                <div style={{ width: 48, flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  {afterHeading && <div style={{ width: 4, height: 16, borderRadius: 2, background: RL.navy, marginBottom: 4 }} />}
                   <div
                     style={{
                       width: 24, height: 24, borderRadius: 12, fontSize: 12, fontWeight: 700,
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      background: done ? GREEN : isNext ? BLUE : '#fff',
-                      color: done || isNext ? '#fff' : '#595959',
-                      border: done || isNext ? 'none' : '1.5px solid #bfbfbf',
+                      background: heading ? '#fff' : done ? RL.passed : RL.upcoming,
+                      color: heading ? RL.navy : '#fff',
                     }}
                   >
                     {i + 1}
                   </div>
-                  {!last && <div style={{ flex: 1, width: 2, background: done ? GREEN : '#e8e8e8', minHeight: 24 }} />}
+                  {!last && !heading && <div style={{ flex: 1, width: 4, borderRadius: 2, background: lineColor, minHeight: 24, margin: '4px 0' }} />}
                 </div>
-                <div style={{ flex: 1, minWidth: 0, paddingBottom: last ? 0 : 16 }}>
+                <div style={{ flex: 1, minWidth: 0, paddingRight: 12, paddingTop: afterHeading ? 20 : 0, paddingBottom: last || heading ? 0 : 16 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8 }}>
-                    <Text style={{ fontSize: 14, fontWeight: 600 }}>{p.name}</Text>
-                    <Text style={{ fontSize: 12, color: GREY, whiteSpace: 'nowrap' }}>{formatAmPm(p.scheduled)}</Text>
+                    <div style={{ minWidth: 0 }}>
+                      {heading && <Text style={{ fontSize: 12, color: RL.headingLabel, display: 'block' }}>Heading to</Text>}
+                      <Text style={{ fontSize: 14, fontWeight: heading ? 600 : 400, color: heading ? '#fff' : RL.text }}>{p.name}</Text>
+                    </div>
+                    <Text style={{ fontSize: 12, color: heading ? '#fff' : RL.time, whiteSpace: 'nowrap' }}>{formatAmPm(p.scheduled)}</Text>
                   </div>
+                  {/* "Stop photo" state (Figma 2.4 / 3.4 / 4.4 / 5.4, from the app's 39536:14618):
+                      wait time, a photo of the stop, and Navigate here. */}
+                  {heading && demo === 'stop-photo' && (
+                    <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                      <Text style={{ fontSize: 12, color: '#ff9e99' }}>Wait time {STOP_WAIT_MIN} min</Text>
+                      <img src={stopPhoto} alt={`Photo of ${p.name}`} style={{ width: '100%', height: 102, objectFit: 'cover', borderRadius: 8 }} />
+                      <Button
+                        block
+                        href={`https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}`}
+                        target="_blank"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        Navigate here
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </div>
             )
@@ -499,8 +537,8 @@ function EndedScreen({ text, demo }: { text: string; demo?: React.ReactNode }) {
 /** Prototype-only: flips the page between the states a real link can be in. */
 function DemoSwitch({ value, onChange, isDriver }: { value: DemoState; onChange: (v: DemoState) => void; isDriver: boolean }) {
   const options = isDriver
-    ? [{ label: 'Live', value: 'live' }, { label: 'Location off', value: 'location-off' }, { label: 'Expired', value: 'expired' }]
-    : [{ label: 'Live', value: 'live' }, { label: 'Driver offline', value: 'driver-offline' }, { label: 'Expired', value: 'expired' }]
+    ? [{ label: 'Live', value: 'live' }, { label: 'Stop photo', value: 'stop-photo' }, { label: 'Location off', value: 'location-off' }, { label: 'Expired', value: 'expired' }]
+    : [{ label: 'Live', value: 'live' }, { label: 'Stop photo', value: 'stop-photo' }, { label: 'Driver offline', value: 'driver-offline' }, { label: 'Expired', value: 'expired' }]
   return (
     <Popover
       trigger="click"

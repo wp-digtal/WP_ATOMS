@@ -118,3 +118,27 @@ Reference: the driver app's **Trip Details** screen in this file (`39536:14618`,
 Restore point: "Before trip remarks + Route List rename (Claude, 25 Oct 2026)". Checked in Playwright: passenger 390 shows Trip Remarks + "Route List", no errors.
 
 **Lesson:** when a reviewer uses a domain term ("bus label"), grep the module's data and UI for it before answering. The term existed in the code all along.
+
+### Round 4 (26 Oct 2026): Route List restyle + stop-photo state (user request)
+
+Restore point: "Before route list v2 + photo state (Claude, 26 Oct 2026)".
+
+**Route List**
+- Restyled like the driver app's Trip Details (`39511:68160`, frame "CR"): the title "Route List" plus an Integral `Chips/Normal` chip "4 Stops", and a bordered card (radius 12, `#e0e1e1`) holding the timeline.
+  - Passed stops: green dots `#2b9d72`, line `#258863`.
+  - The stop being headed to: a full-width navy block `#193c60` with "Heading to" (`#30b080`), the name and time in white.
+  - Upcoming stops: navy dots `#00366b`.
+- **Figma:**
+  - Cloned the app's `Frame 43241` (template `39547:14851` in driver mobile 2.1) and trimmed it from 6 to 4 stops.
+  - The dot column and the text column are separate auto-layouts, so alignment comes from fixed heights: text itemSpacing 30, rows 32 / 42 / 88; dot-column lines 30 / 40 / 22. **Recompute these if the stop count or name lengths change.**
+  - It replaces the old "Route Points" frame (now hidden) on all 8 live frames.
+
+**Stop-photo state**
+- Copied from the app's `39536:14618`. The heading-to stop also shows "Wait time N min" (`#ff9e99` on navy), a stop photo (image rect, radius 8) and an Integral `Button` "Navigate here" (Type = Outline Neutral, which reads as white on navy).
+- **New frames:** 2.4 driver mobile `39547:15215`, 3.4 passenger mobile `39547:15501`, 4.4 driver web `39547:15767`, 5.4 passenger web `39547:16122` (made 1150 tall with a taller details panel so the whole list shows; the map card stays 920, because stretching the map card distorts the Map instance). All have Flow Labels.
+- **Navigate here** is on both driver and passenger pages. The user was told and can say if it should be driver-only.
+
+**Code (`WebTrackingPage.tsx`)**
+- Route List is rebuilt to the same spec (`RL` colour constants).
+- The new demo state **"Stop photo"** shows wait time (`STOP_WAIT_MIN`), the photo (`src/assets/stop-photo-joo-koon.jpg`, exported from the Figma image) and Navigate here, which opens Google Maps directions.
+- Checked in Playwright: driver 390 live (no photo) / stop photo, and passenger 1440 stop photo. No errors.

@@ -14,6 +14,14 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Web tracking pages: Route List like the driver app + "stop photo" state (26 Oct 2026, MOVE-3676)
+
+At the user's request, following the driver app frames `39511:68160` (Route List) and `39536:14618` (stop with photo).
+- **Route List:** stop-count chip, bordered card, passed stops green, "Heading to" stop highlighted in navy.
+- **New state:** the heading-to stop shows wait time, a stop photo and "Navigate here".
+- **Figma:** all 8 live frames updated, plus 4 new state frames (2.4, 3.4, 4.4, 5.4), mobile and web.
+- **Code:** `WebTrackingPage.tsx` rebuilt to match, with a new "Stop photo" demo state and the photo asset. `tsc` is clean, and it was checked in Playwright at 390 and 1440.
+
 ### Changed — Web tracking pages: Trip Remarks + "Route List" (25 Oct 2026, MOVE-3676, review #data / #Copy)
 
 The reviewer compared the pages with the driver mobile app's Trip Details screen (Figma `39536:14618`).
