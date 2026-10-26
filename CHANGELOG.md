@@ -14,6 +14,19 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Account Management Figma: Production 2.0 with MOVE-4455 Account Type and the MOVE-4458 Activity tab (26 Oct 2026)
+
+The PM (Daniel) wrote the Activity tab ticket (MOVE-4458) and added "Account Type" to the details drawer (MOVE-4455). Everything else was signed off.
+- **New page `🏭 Production 2.0`:** the user asked for the old page to be duplicated so it isn't lost. All edits went into the copy. No code changes this round (user).
+- **MOVE-4455:** Account Type is the first field of Basic Information, in every frame that shows the details drawer (9).
+- **MOVE-4458:** four frames replace the "spec pending" placeholder:
+  - default with no employee selected (empty table);
+  - filter open with Full Name auto-complete;
+  - employee selected;
+  - Module multi-select applied.
+- **Open questions:** 6, all from listing-ticket wording copied into MOVE-4458; listed in `ACCOUNT_MANAGEMENT_KNOWLEDGE.md` §13.
+- **Bridge lessons:** stepwise page duplication, a library-instance probe that hangs the bridge, and the Select menu / multi-select tag recipe (`FIGMA_DESIGN_SYSTEM.md` §4.16).
+
 ### Changed — Web tracking pages: PM-approved Route List propagated; COMPASS colour tokens (26 Oct 2026, MOVE-3676)
 
 The PM approved driver mobile 2.1 (`39443:75528`), whose Route List uses our design-system colour variables.

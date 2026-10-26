@@ -17,7 +17,7 @@ Written 15 Oct 2026 from Jira epic **MOVE-4449 "ATOMS Account Management"**. The
 | MOVE-4457 | Unsuspend ATOMS Account | **Build**: unsuspend modal (manual "potentially MVP 2") + auto-unsuspend |
 | MOVE-4451 | Auto-create ATOMS Account | System rule: no screen, but explains "Created By = system" |
 | MOVE-4463 | Verify Account & Set Password (Email) | Email with a verify + set-password link; no admin screen |
-| MOVE-4458 | ATOMS Account Activity | Only "Similar to current staff activity log" |
+| MOVE-4458 | ATOMS Account Activity | **Build** (spec written 26 Oct 2026): activity log tab, filter by employee; see §13 |
 | MOVE-4465 | [KIV 2] Account Change History | Empty |
 | MOVE-4466 | [KIV 1] Verify & Set Password (SMS) | KIV |
 | MOVE-4454 | [KIV 3] Auto-deactivate | KIV: employee/driver becomes inactive → account deactivated |
@@ -67,7 +67,7 @@ Header "Create ATOMS Account"; CTAs **Cancel / Create**.
 ## 5. Details drawer (MOVE-4455)
 
 - **Header**: full name + status tag.
-- **Basic**: Username, Access Roles ('-' for sub-con driver), Mobile Number, Work Email ('-' if none).
+- **Basic** (ticket order, edited 26 Oct 2026): **Account Type** (Employee / Sub-contractor Driver), Username, Access Roles ('-' for sub-con driver), Mobile Number, Work Email ('-' if none).
 - **Additional**:
   - Created On / Created By ("system" if auto-created).
   - Last Updated On / By.
@@ -219,3 +219,49 @@ Restore point: "Before Account Mgmt Section 7 audit fixes (Claude, 20 Oct 2026)"
   - MOVE-4463 email scope;
   - the Activity tab spec;
   - the landing after Suspend / Unsuspend / Edit.
+
+## 13. Ticket edits of 26 Oct 2026 and the `🏭 Production 2.0` page
+
+Daniel (PM) wrote: "I wrote the account activity tab ticket (MOVE-4458). For MOVE-4455 I added 'Account Type' in the drawer. The rest for account management is ok!" `tools/jira-desc-diff.py` from 16 Oct confirms only these two tickets changed.
+
+**User rule for this round:** don't edit the old page. Duplicate `🏭 Production` into a new page **`🏭 Production 2.0`** (`41058:67693`) and change only that. No code changes this round.
+- Restore point before the duplicate: "Before Production 2.0 duplicate (Claude, 26 Oct 2026)".
+- The copied section is `41058:74670`. It has the same 79 children at the same positions; frame ids differ from Section 7 (`41058:…`).
+
+**MOVE-4455: Account Type in the details drawer.**
+- `Basic Information` is now 3 rows of the 2-column grid, in ticket order:
+  - Account Type | Username;
+  - Access Roles | Mobile Number;
+  - Work Email.
+- The third row is a clone of row 2, with its second cell hidden.
+- Applied to every frame that shows the drawer (9 frames): Details Active / Suspended / Sub-con / Auto-suspended / Auto-created employee, the 3 Suspend-modal frames, and the Unsuspend modal. Edit and Create already had the Account Type field.
+
+**MOVE-4458: Account Activity tab.**
+- **Columns:** Module, Event Type (Create / Update / Delete), Before, After, Last Updated On.
+- **Default:** no employee selected, so the table shows no records. Selecting an employee shows only that employee's activities. Changing the selection reloads; clearing it empties the table again.
+- **Sort:** Last Updated On, newest first.
+- **Search:** "Search Accounts" (Full Name).
+- **Filters:**
+  - Full Name: single select with auto-complete; filters to the activities *performed by* that employee.
+  - Module: multi-select with auto-complete.
+- **Toolbar:** Last Updated On date range; Create Account primary CTA.
+- **Permissions:** master / junior system admin, or "view ATOMS account".
+
+**Frames in row 1 (now titled "Accounts Listing & Activity"):**
+- 1.4 `41059:108712`: default, no employee selected → COMPASS "No data" empty state, no footer.
+- 1.5 `41059:109011`: Filter popover open.
+  - Full Name typed "He" → auto-complete list "Heikke Ekkieh / Hendra Saputra".
+  - Module is empty.
+- 1.6 `41058:95230`: Heikke Ekkieh selected, 6 rows across Account Management / Leave / Claims / Employees.
+  - The Account Management rows reuse Rudi's Create → Suspend → Unsuspend timeline.
+- 1.7 `41059:111562`: Module = Account Management (tag in the multi-select, menu open) → 3 rows.
+- The "spec pending" placeholder `41058:78318` was removed. Flow Labels 1.4–1.7 and red arrows 1.4 → 1.5 → 1.6 → 1.7 were added.
+- No `Docs/Notes` cards: the user had removed them from this section, so open questions go here and in chat instead.
+
+**Open questions for PM (MOVE-4458).** The ticket was adapted from the Listing ticket, so some lines don't fit:
+1. Sort "by full name / account type", but neither is a column in the Activity table. Is only Last Updated On sortable?
+2. "Search Accounts" (Full Name) and the Full Name filter overlap. Which picks the employee? And with no employee selected the table is empty, so what does search do on its own?
+3. The Full Name filter sits inside the filter popover, as the ticket lists it under Filter. Since nothing shows until an employee is picked, should Full Name be a visible select in the toolbar instead?
+4. Is a "Create Account" CTA on the Activity tab intended (copied from the listing)?
+5. The format of Before / After is undefined. Drawn as "record · field: value" on one line.
+6. Is "Full Name" the actor (performed by), as the ticket says, or the account the activity was about?

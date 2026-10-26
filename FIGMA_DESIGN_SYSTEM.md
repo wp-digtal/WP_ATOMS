@@ -686,3 +686,19 @@ during the next Figma-vs-code comparison pass.
 - When Claude is asked to build a screen or component against Figma, this
   file is read first; gaps found while building get filled in as part of
   that work, not left for later.
+
+**4.16 Duplicating a page through the bridge, and select dropdowns (Account Management file, 26 Oct 2026).**
+- **Duplicate a page in steps, not with `page.clone()`.**
+  1. `figma.createPage()` and `insertChild` it after the source.
+  2. Clone the light top-level nodes in one call.
+  3. Create an empty `figma.createSection()` with the source's name, position, size and fills.
+  4. Clone the section's non-frame children (labels, arrows, titles) in one call.
+  5. Clone the frames 4–11 per call. Use `insertChild(<frames so far>)` so they stay *under* the docs layer.
+
+  A 79-child section with 27 full-page frames took 5 calls with no drop.
+- **`getMainComponentAsync()` on a nested *library* instance**, plus reading its set's `componentPropertyDefinitions`, hung the plugin and dropped the bridge. Probe variants by trying `setProperties` in try/catch instead.
+- **COMPASS `Select`:**
+  - It has a hidden `Select Menu` inside. Clone it to the frame top level, set `visible = true`, place it 4px under the input at the input's width, and add the AntD dropdown shadow.
+  - Items: `_Select Menu / Select Menu Item`, prop `Text#533:115`, `State` Default / Hover / Selected / Disabled.
+  - The input `_Select / Select Input` has `State` Default / Focused / Filled and `Type` Basic / Multiple. **Multi-select tags only appear with `Type=Multiple` + `State=Filled`**, which shows the hidden `Multiple Selection Items`. Set each `Item` text, and hide unused items.
+- **Details drawer `Group Content Cell`** (2 cells, `Label` / `Value` text): to add a field, clone an existing row rather than unhiding the spare rows. The spare rows carry stale Suspended-On sub-texts.
