@@ -168,3 +168,12 @@ Restore point: "Before route list v2 + photo state (Claude, 26 Oct 2026)".
 - **Code:** `WebTrackingPage.tsx` Route List colours come from `theme.useToken()`: colorSuccessActive, colorPrimary, colorPrimaryActive, colorTextSecondary / Tertiary, colorBorderSecondary, colorWhite. There are no hex values.
   - The stop names in code come from the demo trip data, not the Figma mock text.
   - Checked in Playwright at 390 (stop photo) and 1440 (live). No errors.
+
+### Round 6 (28 Oct 2026): pax count, a photo per stop, wait time example (#data, Daniel)
+
+- **Reference:** feedback frame `39605:66633`, the driver app's Trip Details. Each stop has its time and a pax chip (user icon + "10"). The stop with a wait shows "Wait time 10 min", then the photo and Navigate here.
+- **Comments and decision:**
+  - "missing pax count and also point image for each point" (Daniel: "it should be there"). The user decided on **a photo under every stop**, not only on the active one as in the app.
+  - "pls show example if there is a wait time". The heading-to stop shows "Wait time 10 min" in every live state.
+- **Code:** `WtPoint.pax`, a pax chip under the time, `stopPhoto` on every stop, and the wait time on the heading-to stop. Navigate here stays in the "Stop photo" demo only.
+- **Figma:** pending bridge pairing.

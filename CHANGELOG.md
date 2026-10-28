@@ -14,6 +14,18 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Web tracking Route List: pax count, a photo per stop, wait time example (28 Oct 2026, MOVE-3676)
+
+Review comments (#data, Daniel) on the web tracking frames, referring to the driver app's Trip Details (`39605:66633`):
+- **"missing pax count and also point image for each point":** every stop now shows a pax chip (user icon + count) under its time and a stop photo. The user chose a photo on **every** stop over the app's one-photo layout.
+- **"pls show example if there is a wait time":** the stop being headed to shows "Wait time 10 min" in every live state, not only in the stop-photo demo.
+- **Code:**
+  - `WtPoint.pax` is new (demo 10 / 6 / 8 / 4).
+  - `WebTrackingPage.tsx` renders the chip, the photo and the wait time.
+  - "Navigate here" stays in the Stop photo demo state.
+  - `tsc` is clean; checked in Playwright at driver 390 and passenger 1440 (4 photos, 4 pax chips, the wait time, no errors).
+- **Figma:** frames to follow once the Desktop Bridge is paired.
+
 ### Changed — Account Management Figma (Production 2.0): Daniel's 28 Oct comments (MOVE-4452, MOVE-4458, MOVE-4455)
 
 Checked first against the tickets: MOVE-4452 and MOVE-4458 were edited on 28 Oct in line with the comments. Only `🏭 Production 2.0` was changed, every related screen on it (user rule).

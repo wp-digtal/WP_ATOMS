@@ -35,6 +35,7 @@ import {
   ExperimentOutlined,
   MobileOutlined,
   PhoneOutlined,
+  UserOutlined,
 } from '@ant-design/icons'
 import { trafficSegments, TRAFFIC_COLOR } from './trackingData'
 import stopPhoto from '../../assets/stop-photo-joo-koon.jpg'
@@ -57,8 +58,9 @@ const MIN_PER_LEG = 8 // demo: scheduled minutes between consecutive points
 /** Demo-only switch, so every state the page can be in is reachable without a backend. */
 type DemoState = 'live' | 'stop-photo' | 'location-off' | 'driver-offline' | 'expired'
 
-/** Demo wait time at the stop being headed to (the app shows "Wait time N min"). */
-const STOP_WAIT_MIN = 2
+/** Demo wait time at the stop being headed to (the app shows "Wait time N min").
+ *  Shown in every live state since review #data (28 Oct): "pls show example if there is a wait time". */
+const STOP_WAIT_MIN = 10
 
 function useIsMobile() {
   const q = '(max-width: 767px)'
@@ -427,14 +429,30 @@ export default function WebTrackingPage({ audience, tripId }: { audience: WebTra
                       {heading && <Text style={{ fontSize: 12, color: token.colorWhite, display: 'block' }}>Heading to</Text>}
                       <Text style={{ fontSize: 14, fontWeight: heading ? 600 : 400, color: heading ? token.colorWhite : done ? RL.passedText : RL.upcomingText }}>{p.name}</Text>
                     </div>
-                    <Text style={{ fontSize: 12, color: heading ? token.colorWhite : RL.time, whiteSpace: 'nowrap' }}>{formatAmPm(p.scheduled)}</Text>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 6, flexShrink: 0 }}>
+                      <Text style={{ fontSize: 12, color: heading ? token.colorWhite : RL.time, whiteSpace: 'nowrap' }}>{formatAmPm(p.scheduled)}</Text>
+                      {/* Pax chip, as in the driver app (review #data 28 Oct: "missing pax count"). */}
+                      <span
+                        aria-label={`${p.pax} passengers`}
+                        style={{
+                          display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 12, lineHeight: '20px', padding: '0 6px', borderRadius: 4,
+                          border: `1px solid ${heading ? token.colorWhite : RL.border}`, color: heading ? token.colorWhite : RL.time,
+                        }}
+                      >
+                        <UserOutlined style={{ fontSize: 11 }} />
+                        {p.pax}
+                      </span>
+                    </div>
                   </div>
+                  {heading && (
+                    <Text style={{ fontSize: 12, fontWeight: 600, color: token.colorWhite, display: 'block', marginTop: 6 }}>Wait time {STOP_WAIT_MIN} min</Text>
+                  )}
+                  {/* A photo of every point (review #data 28 Oct: "point image for each point"). */}
+                  <img src={stopPhoto} alt={`Photo of ${p.name}`} style={{ display: 'block', width: '100%', height: 102, objectFit: 'cover', borderRadius: 8, marginTop: 8 }} />
                   {/* "Stop photo" state (Figma 2.4 / 3.4 / 4.4 / 5.4, from the app's 39536:14618):
-                      wait time, a photo of the stop, and Navigate here. */}
+                      adds Navigate here; wait time and photos now show in every live state. */}
                   {heading && demo === 'stop-photo' && (
-                    <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
-                      <Text style={{ fontSize: 12, fontWeight: 600, color: token.colorWhite }}>Wait time {STOP_WAIT_MIN} min</Text>
-                      <img src={stopPhoto} alt={`Photo of ${p.name}`} style={{ width: '100%', height: 102, objectFit: 'cover', borderRadius: 8 }} />
+                    <div style={{ marginTop: 8 }}>
                       <Button
                         block
                         href={`https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}`}

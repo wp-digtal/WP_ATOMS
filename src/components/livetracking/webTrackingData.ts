@@ -26,6 +26,8 @@ export interface WtPoint {
   lng: number
   /** Scheduled time at this point, "HH:mm". */
   scheduled: string
+  /** Passengers expected at this point (the app's pax chip; review #data 28 Oct). */
+  pax: number
 }
 
 export interface WtRoute {
@@ -100,7 +102,7 @@ export function parseWebTrackingHash(hash: string): { audience: WebTrackingAudie
 }
 
 function routeFrom(id: string, code: string, start: string, stops: TripPoint[]): WtRoute {
-  const points = stops.map((p, i) => ({ id: `${id}-p${i + 1}`, name: p.name, lat: p.lat, lng: p.lng, scheduled: addMin(start, i * 8) }))
+  const points = stops.map((p, i) => ({ id: `${id}-p${i + 1}`, name: p.name, lat: p.lat, lng: p.lng, scheduled: addMin(start, i * 8), pax: [10, 6, 8, 4][i % 4] }))
   return { id, code: `${code} (${formatAmPm(start)})`, start, end: points[points.length - 1].scheduled, points }
 }
 
