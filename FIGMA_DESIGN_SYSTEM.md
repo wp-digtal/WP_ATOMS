@@ -702,3 +702,9 @@ during the next Figma-vs-code comparison pass.
   - Items: `_Select Menu / Select Menu Item`, prop `Text#533:115`, `State` Default / Hover / Selected / Disabled.
   - The input `_Select / Select Input` has `State` Default / Focused / Filled and `Type` Basic / Multiple. **Multi-select tags only appear with `Type=Multiple` + `State=Filled`**, which shows the hidden `Multiple Selection Items`. Set each `Item` text, and hide unused items.
 - **Details drawer `Group Content Cell`** (2 cells, `Label` / `Value` text): to add a field, clone an existing row rather than unhiding the spare rows. The spare rows carry stale Suspended-On sub-texts.
+
+**4.17 Adding a status column with real Tag components to a table (Account Management, 28 Oct 2026).**
+- **Cell:** clone the neighbouring `_Table / Table cell`, set `Type=Tag`, then `Tag 2#…=false`.
+- **Tag:** the cell's built-in `Tag / Status` only has `Status=Default`, so swap it with `swapComponent(main)`. Get `main` from `getMainComponentAsync()` on a top-level instance of the wanted tag, e.g. the drawer header's status tag; that call was quick. After the swap, set `Status`, and turn `Select#…` off or a dropdown chevron appears.
+- **Throughput:** one routine of header clone + 10 row cells + resize ran fine on 4 full-page frames per call.
+- **Timeout:** 6 drawer frames per call with `skipInvisibleInstanceChildren=false` timed out at 32 s, though most of the work still landed. Keep that flag `true` and handle hidden cells via `children` directly.

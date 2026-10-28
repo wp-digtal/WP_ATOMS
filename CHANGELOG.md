@@ -14,6 +14,16 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Account Management Figma (Production 2.0): Daniel's 28 Oct comments (MOVE-4452, MOVE-4458, MOVE-4455)
+
+Checked first against the tickets: MOVE-4452 and MOVE-4458 were edited on 28 Oct in line with the comments. Only `🏭 Production 2.0` was changed, every related screen on it (user rule).
+- **MOVE-4452 #CR:**
+  - an `Account Status` column (Active / Suspended / Deactivated tags) in all 25 frames that show the Accounts table;
+  - an `Account Status` multi-select in the filter popover (row 2: Account Status | Last Login).
+- **MOVE-4458 #CR:** the search bar and Create Account button were removed from the Activity tab (frames 1.4–1.7).
+- **MOVE-4455 #UI/UX:** the drawer shows Mobile Number | Work Email on one row and Access Roles on its own row (9 frames).
+- Details and seed statuses are in `ACCOUNT_MANAGEMENT_KNOWLEDGE.md` §14; the tag technique is in `FIGMA_DESIGN_SYSTEM.md` §4.17. No code changes.
+
 ### Changed — Account Management Figma: Production 2.0 with MOVE-4455 Account Type and the MOVE-4458 Activity tab (26 Oct 2026)
 
 The PM (Daniel) wrote the Activity tab ticket (MOVE-4458) and added "Account Type" to the details drawer (MOVE-4455). Everything else was signed off.

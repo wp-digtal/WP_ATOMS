@@ -39,10 +39,11 @@ Written 15 Oct 2026 from Jira epic **MOVE-4449 "ATOMS Account Management"**. The
   - Account Type (Employee / Sub-contractor Driver).
   - Access Roles (comma-separated, wraps to multiple rows; '-' for sub-con drivers).
   - Last Login (date & time).
+  - **Account Status** (Active / Suspended / Deactivated), added 28 Oct 2026, between Last Login and Last Updated.
   - Last Updated (date & time).
 - **Sort**: default last updated, newest first. Alphabetical by Full Name and Account Type; chronological by Last Updated.
 - **Search** "Search Accounts": Full Name, Access Roles.
-- **Filters**: Access Roles (multi-select + search, options = roles from Roles & Permissions), Account Type (single-select), Last Login (date range).
+- **Filters**: Access Roles (multi-select + search, options = roles from Roles & Permissions), Account Type (single-select), **Account Status** (multi-select + search: Active / Suspended / Deactivated; added 28 Oct 2026), Last Login (date range). Popover layout: Access Roles | Account Type, then Account Status | Last Login (Daniel's comment).
 - Toolbar date range: **Last Updated On**.
 - **Primary CTA**: "Create Account" → create drawer. A row click opens the details drawer.
 
@@ -265,3 +266,35 @@ Daniel (PM) wrote: "I wrote the account activity tab ticket (MOVE-4458). For MOV
 4. Is a "Create Account" CTA on the Activity tab intended (copied from the listing)?
 5. The format of Before / After is undefined. Drawn as "record · field: value" on one line.
 6. Is "Full Name" the actor (performed by), as the ticket says, or the account the activity was about?
+
+## 14. Daniel's #CR / #UI-UX round (28 Oct 2026), applied on `🏭 Production 2.0` only
+
+Ticket edits on 28 Oct (diff via `tools/jira-desc-diff.py`) match his Figma comments.
+- **Restore point:** "Before Daniel #CR round 28 Oct (Claude)".
+- **User rule:** check the tickets before replacing anything, and change every related screen on that page, not on other pages.
+
+**1. MOVE-4452 #CR: listing column `Account Status`**, between Last Login and Last Updated.
+- Added to all 25 frames that show the Accounts table, including the listing behind drawers and modals.
+- Each cell is a `_Table / Table cell` with `Type=Tag`, `Tag 2` off, its `Tag / Status` swapped to the drawer header's tag component (`Status=Active` / `Suspended` / `Deactivated`), and `Select#…` off. That last one is needed because the swap otherwise shows a dropdown chevron.
+- Column widths are 17 / 15 / 27 / 15 / 12 / 14 % of the table width.
+- **Seed:**
+  - Hendra Saputra = Suspended;
+  - Eko Wijaya = Deactivated (never logged in);
+  - Rudi Hartono = Suspended in 3.2, 3.4, 5.4 and 6.1, otherwise Active;
+  - everyone else Active.
+- Tables are marked with plugin data `statusCol`.
+
+**2. MOVE-4452 #CR: filter `Account Status`** (multi-select) in the popover of 1.2.
+- Row 1 is Access Roles | Account Type; row 2 is Account Status | Last Login.
+- The filter group wraps, so a cloned Access Roles item inserted at index 2 lands in the right place.
+
+**3. MOVE-4458 #CR: no search bar and no Create Account on the Activity tab.** The ticket dropped both lines.
+- `Filter Bar 3.0` has `Search#4814:2 = false`, and its `Button ` child is hidden, in 1.4–1.7.
+- The popovers in 1.5 and 1.7 were re-anchored so their right edge meets the filter icon (+143 px), with their menus moved by the same amount.
+
+**4. MOVE-4455 #UI/UX: drawer field layout.**
+- Rows are Account Type | Username, then Mobile Number | Work Email, then Access Roles on its own full-width row (cell `layoutSizingHorizontal=FILL`, second cell hidden).
+- Applied in all 9 drawer frames (plugin data `layout2`).
+- The ticket itself was not edited, so this is a layout-only call by Daniel.
+
+Of the open questions in §13: Q2 (search vs Full Name) and Q4 (Create Account on Activity) are answered, because both were removed. Q1 (sort by full name / account type), Q3, Q5 and Q6 are still open.
