@@ -354,3 +354,34 @@ Frame ids are in `FIGMA_MOBILE_DESIGN_SYSTEM.md` §5.1.
 - Does PD sit under the Account tab or get its own tab?
 - Pay Slip has no spec.
 - Are approver items needed on mobile (ops managers)?
+
+### 11.1 Styles 5–6: Stretch break (user request, 29 Oct 2026)
+
+The user wants a stretch-break feature: seated exercise cards with an illustration, name, duration and how-to, after a reference screenshot. The placement was left to us ("on a page, an expandable section, or a pop-up; you're the product designer").
+
+**Style 5 · Wellness Page** (Brand Hero look):
+- Home `8725:10938` with a Stretch break entry card.
+- Stretch Break page `8725:11360`: a safety banner, a 2×2 grid of exercise cards, and "Start guided session".
+- Exercise detail bottom sheet `8725:11494`: illustration, steps, timer ring, Skip / Start timer.
+
+**Style 6 · Inline + Pop-up** (Minimal List look):
+- Home `8725:11706` with a collapsible "Daily Stretch" section showing a carousel.
+- A reminder pop-up after a trip ends `8725:11865`: Start / Remind me after next trip / Don't remind me today.
+- Guided session in focus mode `8725:12072`: no tab bar, segment progress, timer, Previous / Next.
+
+**Product rules we added** (to confirm with product):
+- Show stretching only while the bus is parked / no trip is active, never while driving.
+- The reminder is triggered by trip end or a long wait / layover.
+
+**Exercises** (copy from the user's reference):
+- Neck tilt: 15 sec each side.
+- Chin tuck: 8 slow reps.
+- Wrist stretch: 15 sec each hand.
+- Seated twist: 15 sec each side.
+
+**Illustrations:** local component set `Stretch Illustration (hand-built)` `8725:10906`.
+- `Pose` = Neck tilt / Chin tuck / Wrist stretch / Seated twist.
+- 160×100 vectors in Integral colour variables.
+- There is no illustration in Integral.
+
+**Docs:** the user removed every `Docs/Notes` card in this section (including the read-me) while styles 5–6 were being built. Don't re-add them; keep the explanations in this file and in the chat report.

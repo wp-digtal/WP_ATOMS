@@ -14,6 +14,15 @@ minor).
 
 ## [Unreleased]
 
+### Added — PD mobile ideation styles 5–6: Stretch break (Figma, 29 Oct 2026)
+
+At the user's request: two more styles for the stretch-break exercise cards idea.
+- **Style 5 · Wellness Page:** Home entry card → Stretch Break page → exercise bottom sheet.
+- **Style 6 · Inline + Pop-up:** collapsible Home section → reminder pop-up after a trip → guided session.
+- **Illustrations:** a hand-built `Stretch Illustration` component set (4 poses, Integral colours).
+- **Product rule we proposed:** stretching only while parked or with no active trip. It is not in any ticket yet.
+- **Docs:** the user removed the `Docs/Notes` cards from the section, so the explanations live in `PERSONAL_DASHBOARD_KNOWLEDGE.md` §11.1.
+
 ### Added — Personal Dashboard mobile ideation: 4 styles × 3 screens (Figma, 29 Oct 2026, MOVE-3412)
 
 At the user's request, built in the Mobile Apps Design file, `Section 1` `8725:7951`, using the Integral mobile DS only (the user's reminder: mobile and web are different design systems).
