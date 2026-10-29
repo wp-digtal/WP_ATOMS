@@ -176,4 +176,8 @@ Restore point: "Before route list v2 + photo state (Claude, 26 Oct 2026)".
   - "missing pax count and also point image for each point" (Daniel: "it should be there"). The user decided on **a photo under every stop**, not only on the active one as in the app.
   - "pls show example if there is a wait time". The heading-to stop shows "Wait time 10 min" in every live state.
 - **Code:** `WtPoint.pax`, a pax chip under the time, `stopPhoto` on every stop, and the wait time on the heading-to stop. Navigate here stays in the "Stop photo" demo only.
-- **Figma:** pending bridge pairing.
+- **Figma (28 Oct, partial):**
+  - Restore point "Before pax + photo per stop + wait time (Claude, 28 Oct 2026)".
+  - In driver mobile 2.1 (`39443:75528`), a new Route List body `39610:67003` ("Route List body v3 …") replaces the old body `39547:14855`, which is now hidden. Each stop is an auto-layout row: rail + header (name, time + pax chip) + photo. The heading-to stop has "Wait time 10 min".
+  - The template was **not screenshot-verified** (the bridge dropped), and it is **not yet propagated** to the other live and photo frames.
+  - Next session: verify it, then clone it to the driver/passenger mobile and web frames, and grow the frame heights.

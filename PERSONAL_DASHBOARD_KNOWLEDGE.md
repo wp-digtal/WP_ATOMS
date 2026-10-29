@@ -332,3 +332,25 @@ Anything that is **repeated and near-identical across frames, and is still a pla
   - a `Docs/Flow Label` 30px above every frame (`Current Flow#44:4`);
   - red trigger arrows from the clicked element, routed through gutters (§8).
 - **State checklist** used in the 22 Oct review: empty, filled, error (toast + field), disabled + tooltip, required-reason modal (empty → Confirm disabled, filled → enabled), result (toast + updated drawer or page), approver vs non-approver (tabs or no tabs), and empty tables.
+
+## 11. Mobile ideation (Driver app), 29 Oct 2026
+
+The user asked for ideation of the Personal Dashboard on **mobile**, in the 🛞📱 Mobile Apps Design file, area `Section 1` `8725:7951` (page Production - Driver): **4 styles × 3 screens**.
+- **Rule repeated by the user:** mobile and web are different design systems. Use Integral only (`FIGMA_MOBILE_DESIGN_SYSTEM.md`), never COMPASS.
+
+**Screens per style:** Home / Leave / Claims, from MOVE-3949 / 3948 / 3943.
+- Pay Slip has no spec (MOVE-3953 / 3954), so it only appears as an entry / badge.
+- Sample driver: John Mit.
+
+**The four styles:**
+1. **Brand Hero:** the app's gradient hero cards.
+2. **Widget Grid:** a light background with metric tiles.
+3. **Activity Feed:** a timeline, plus status trackers on leave and claims.
+4. **Minimal List:** the Account page's row pattern.
+
+Frame ids are in `FIGMA_MOBILE_DESIGN_SYSTEM.md` §5.1.
+
+**Open questions** (orange note in Figma):
+- Does PD sit under the Account tab or get its own tab?
+- Pay Slip has no spec.
+- Are approver items needed on mobile (ops managers)?

@@ -196,6 +196,7 @@ Use this table when a feature exists on web and needs a mobile screen, e.g. Leav
 
 | Feature | Where | Frames | Notes |
 |---|---|---|---|
+| **Personal Dashboard — mobile ideation** (epic MOVE-3412; user request 29 Oct 2026: "4 styles × 3 screens") | Production - Driver → `Section 1` (`8725:7951`) | Style 1 Brand Hero `8725:8092` / `8725:8271` / `8725:8452`; Style 2 Widget Grid `8725:8724` / `8725:8905` / `8725:9123`; Style 3 Activity Feed `8725:9384` / `8725:9645` / `8725:9872`; Style 4 Minimal List `8725:10059` / `8725:10241` / `8725:10424` (Home / Leave / Claims each) | Integral only. Docs: section title, `Docs/Big Title` per style (rescaled 0.5), `Docs/Flow Label` per frame (rescaled 0.5), blue `Docs/Notes` per style with concept + dev effort, orange read-me note with open questions. Restore point "Before PD mobile ideation (Claude, 29 Oct 2026)". |
 | **Claims — Manage Claims** (Driver app; epic MOVE-4113 stories MOVE-4431/4432/4433/4434, form per MOVE-4021) | Production - Driver → `Section 2` (`8524:13453`) | `8524:13458` Account (Quick Actions → **Manage Claims**), `8524:13615` Manage Claims list, `8524:13570` Submit Claim form, details `8524:14017` Pending Approval / `8524:14069` Pending Payment / `8524:14125` Paid / `8524:14181` Rejected / `8524:14240` Cancelled, `8524:15021` Cancel Claim sheet | **Current version (user, 14 Oct 2026), modelled on Manage Leave; fields / statuses aligned to HR Claims on 15 Oct 2026 (see `CLAIMS_KNOWLEDGE.md` §6). Extra frame: Submit filled `8545:15279`.** List = year dropdown + claim cards (type, amount, claim no. chip, "Submitted on …", status chip) + "Submit New Claim". Details = Leave's detail page + claim rows (Date, Full Name, Bus Number, Route), Remarks, Attachment(s), audit rows per status. Cancel only while Pending Approval, reason required (web MOVE-3731). Docs: `Docs/Big Title` `8524:13454`, notes `8524:15113` / `8524:15120`, flow labels per row, captions 2.x / 3.1, orange arrows. |
 | **Leave — fixes** (Driver app; MOVE-2481/4073/4074/4075 edited 19 Oct 2026 + two user comments) | Production - Driver → `Fixing` (`8590:7558`) | 10 frames, listed in `DRIVER_LEAVE_KNOWLEDGE.md` §7 | AM/PM, time-off detail, locked End Date, balance box hidden, field errors + Danger toast, Success toast, Empty State, Cancel hidden once dates passed, cancelled reason "-", offline banner. |
 | **Claims — submission only** (superseded) | Production - Driver → `Section 1` (`8521:9653`) | `8522:12503` Account (Quick Actions → Submit Claim), `8522:12658` Submit Claim | Earlier version, from when the user said mobile is submission only. Superseded by Section 2 after the MOVE-4113 claims stories appeared; kept untouched. |
@@ -234,3 +235,37 @@ Techniques and gotchas from the Claims build:
 
 - Integral: `lk-747b38dd4f601acdfce08aa11be65bc0d49a124418e5059f7b9cce40b3e2e1570654b2d82ba68c6262d7ae6a11f941969d3b530a9fafc345cf73951a3c08c7e7`
 - (Web) COMPASS: `lk-d71fb0e8f1777bdaf7149c5afd3f39e4a2ce0cb802bb67b25a0436bd5768213bb0f683a5943600bc0b4ac2c4d73cee3d4fca1a9794be73e4d08c183c64510d1c`, so you can tell which is which in search results.
+
+---
+
+## 5.2 Building many new screens fast (PD ideation, 29 Oct 2026)
+
+- **Import Integral colour variables once, then bind them.** `figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync()` lists Integral's collections (Colors, Typography, Spacing, Rounded …). `getVariablesInLibraryCollectionAsync(key)` + `figma.variables.importVariableByKeyAsync(key)` then gives local ids. All three were fast here (with a 12–15 s `Promise.race` guard).
+  - Keep the name → id map in the section's plugin data, so later calls do `getVariableByIdAsync(id)` and `setBoundVariableForPaint(paint, 'color', v)`.
+  - Keys used: White, Border-2 / Border-3, Primary 600 / 500 / 100, Heading-1, Body-1 / 3 / 8, Body-Brand, Heading-Brand, Success / Warning / Danger / Info 600 + 100, Base/Neutral/100 (page background).
+- **Text styles:** clone a text node that already carries the right Integral style, and change its characters. Account page `8524:13458`:
+  - `Body 1/Semi Bold` section heading `8524:13462`;
+  - `labelMedium/Medium` `8524:13471`;
+  - `bodyLarge/Bold` `8524:13472`;
+  - Medium 14 row label `8524:13514`;
+  - `titleSmall/Semi Bold` `8524:13549`;
+  - `titleMedium/Semi Bold` brand `8524:13553`;
+  - tab-bar white Bold / Regular `8524:13560` / `8524:13563`.
+
+  Set `textAlignHorizontal` explicitly, because some sources are centred. Set `layoutSizingHorizontal='HUG'` before `textAutoResize='WIDTH_AND_HEIGHT'`, or a cloned label can stay narrow and wrap ("Good / morning").
+- **A shell screen to clone:** status bar `8524:13533`, an auto-layout `Content` frame (16 px sides, 120 px bottom padding), the gradient tab bar `8524:13556` (Account active: swap the text styles) and `NavigationBar` `8524:13554`. Afterwards, grow the frame to the content height and move the tab bar and home indicator to the bottom.
+- **Top bar with back arrow:** clone `8524:13632` (Manage Claims header) and change its text.
+- **`Chips/Normal`:**
+  - Clone `8524:13657`, then `setProperties({Variant, Size, States:'Active'})`; fall back to `Default` when the combination doesn't exist.
+  - Set the text with `Text#…`.
+  - Then **`layoutSizingHorizontal='HUG'`**, which fixes the fixed 83 px width; no more `resize(124, …)`.
+- **`Button`:** clone `8524:13715` (Primary Large) and set `Type` / `Size` / `Input text#…`.
+- **Icons:** `createInstance()` on the Tabler main components already in the file:
+  - `calendar-stats` `2589:8943`, `receipt` `8523:13310`, `note` `203:2096`, `book` `1316:9395`, `user` `210:2942`, `lock` `857:6906`, `phone-call` `1929:7661`, `logout` `1264:5294`;
+  - plus the chevron frame `IconRight` `8524:13490`.
+
+  Recolour by setting the vector strokes to a bound paint.
+- **Timeline rails:** after the rows are laid out, set each rail frame and its line rectangle to `layoutSizingVertical='FILL'`. Otherwise the line stays at its initial 10 px.
+- **Progress bars:** set the fill width *after* the tile has its final width; tiles start at hug width.
+- **Pace:** one screen per `figma_execute` (about 20–30 s each) was stable for 12 screens. `AsyncFunction` / `eval` is **not available** in the plugin, so the helper prelude has to be pasted into every call.
+- **Docs components here are large:** `Docs/Big Title` Small is 1700×390, and `Docs/Flow Label` Small is about 740×140. Rescale them by 0.5 (`rescale(0.5)`) for a 900 px column pitch.

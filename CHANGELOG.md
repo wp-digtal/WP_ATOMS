@@ -14,6 +14,18 @@ minor).
 
 ## [Unreleased]
 
+### Added — Personal Dashboard mobile ideation: 4 styles × 3 screens (Figma, 29 Oct 2026, MOVE-3412)
+
+At the user's request, built in the Mobile Apps Design file, `Section 1` `8725:7951`, using the Integral mobile DS only (the user's reminder: mobile and web are different design systems).
+- **Styles:** Brand Hero, Widget Grid, Activity Feed and Minimal List.
+- **Screens:** each style has Home, Leave and Claims.
+- **Docs:** title, labels, a concept + dev-effort note per style, and an orange read-me with open questions:
+  - where PD lives in the app;
+  - Pay Slip has no spec;
+  - approver items on mobile.
+- **Techniques:** library variable import, chip HUG, and shell cloning, in `FIGMA_MOBILE_DESIGN_SYSTEM.md` §5.2.
+- **Also recorded:** the partial state of the 28 Oct Live Tracking Figma update (template only; propagation pending), in `LIVE_TRACKING_KNOWLEDGE.md` round 6.
+
 ### Changed — Web tracking Route List: pax count, a photo per stop, wait time example (28 Oct 2026, MOVE-3676)
 
 Review comments (#data, Daniel) on the web tracking frames, referring to the driver app's Trip Details (`39605:66633`):
