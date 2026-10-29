@@ -133,7 +133,8 @@ function HomeTab({
   return (
     <div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-        <Title level={4} style={{ margin: 0 }}>Hi, {self.givenName}</Title>
+        {/* Page title is a greeting (review #Copy, Daniel, 29 Oct 2026). */}
+        <Title level={4} style={{ margin: 0 }}>Hello, {fullName(self)}</Title>
         {/* Biz req 4 — both are primary CTAs. */}
         <Space>
           <Button type="primary" icon={<PlusOutlined />} onClick={() => setApplyOpen(true)}>Apply Leave</Button>
@@ -170,7 +171,7 @@ function HomeTab({
         )}
       </Card>
 
-      <Card title="Leave Balances" extra={<Button type="link" style={{ padding: 0 }} onClick={onViewMoreBalances}>View more</Button>}>
+      <Card title="Leave Balances" extra={<Button size="small" onClick={onViewMoreBalances}>View more</Button>}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 260px))', gap: 12 }}>
           {[{ name: alName, value: al }, { name: 'Medical Leave', value: ml }].map((b) => (
             <div key={b.name} style={{ border: '1px solid #f0f0f0', borderRadius: 8, padding: '16px 18px' }}>

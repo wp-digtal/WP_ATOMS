@@ -14,6 +14,15 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Personal Dashboard Home: greeting title, no status tags on activity cards, "View more" button (29 Oct 2026, MOVE-3949)
+
+Review comments from Daniel (#Copy, #UI/UX ×2).
+- **Title:** "Home" → "Hello, Citra Dewi".
+- **Recent Activity cards:** no status tag (component default changed too).
+- **Leave Balances:** "View more" is now a Default/Small button.
+- **Figma:** all 4 frames that show Home, plus the draft business components.
+- **Code:** `EmployeePortalPage.tsx` greeting and button. `tsc` is clean and it was checked in Playwright.
+
 ### Added — PD mobile ideation styles 5–6: Stretch break (Figma, 29 Oct 2026)
 
 At the user's request: two more styles for the stretch-break exercise cards idea.

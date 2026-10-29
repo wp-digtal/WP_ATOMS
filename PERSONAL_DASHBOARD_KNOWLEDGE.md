@@ -385,3 +385,21 @@ The user wants a stretch-break feature: seated exercise cards with an illustrati
 - There is no illustration in Integral.
 
 **Docs:** the user removed every `Docs/Notes` card in this section (including the read-me) while styles 5–6 were being built. Don't re-add them; keep the explanations in this file and in the chat report.
+
+## 12. Review round, Daniel (29 Oct 2026): Home
+
+Restore point: "Before Home greeting + no status tag + View more button (Claude, 29 Oct 2026)".
+
+| Comment | Tag | Fix |
+|---|---|---|
+| "'Hello, XXX' — can we do like greeting?" (on the page title "Home"). Daniel: "Can no problem". | #Copy | The page title is now **"Hello, Citra Dewi"** (the `Title` instance's `Text#1233:64`). The breadcrumb and side-nav item stay "Home". |
+| "no need for status tag" (on the Recent Activity cards) | #UI/UX | `Show status#41107:3 = false` on every `Activity Card` instance. The **component default** is now false too, and the 15 cards inside `PD/Recent Activity Card` (draft page) are switched off. |
+| "can this be a button?" (on "View more", Leave Balances) | #UI/UX | The link text is replaced by a COMPASS `Button` with `Type=Default`, `Size=Small`, text "View more" (cloned from the Apply Leave button). Also changed in `PD/Home Leave Balances Card`. |
+
+- **Frames updated:** Home Default `41107:267249`, Expanded `41107:271607`, Empty `41108:274758`, and Entry "Inside PD" `41108:283731`.
+- **Code** (`EmployeePortalPage.tsx`):
+  - the greeting is `Hello, {fullName(self)}` (it was "Hi, givenName");
+  - View more is `<Button size="small">` instead of a link;
+  - activity cards never had status tags.
+- **Checked:** `tsc` is clean; Playwright at 1440 shows "Hello, Citra Dewi" and a default small button, with no errors.
+- **Left as-is:** "View all (12)" / "Show less" stay links, because the comment was only about View more. Ask if they should match.
