@@ -14,6 +14,13 @@ minor).
 
 ## [Unreleased]
 
+### Changed — PD mobile: entry from Account (4 versions); PD screens without tab bar (Figma, 30 Oct 2026)
+
+The user: entry is Account → Personal Dashboard, so the navbar must not show inside PD.
+- The tab bar was removed from all 18 PD ideation frames, and the Home frames got a back top bar.
+- 4 Account entry-point versions were added: Quick Actions row, Highlight card, "My HR" section, Profile card.
+- Details: `PERSONAL_DASHBOARD_KNOWLEDGE.md` §11.2.
+
 ### Changed — Personal Dashboard Home: greeting title, no status tags on activity cards, "View more" button (29 Oct 2026, MOVE-3949)
 
 Review comments from Daniel (#Copy, #UI/UX ×2).

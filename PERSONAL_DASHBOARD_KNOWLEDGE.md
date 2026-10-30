@@ -403,3 +403,20 @@ Restore point: "Before Home greeting + no status tag + View more button (Claude,
   - activity cards never had status tags.
 - **Checked:** `tsc` is clean; Playwright at 1440 shows "Hello, Citra Dewi" and a default small button, with no errors.
 - **Left as-is:** "View all (12)" / "Show less" stay links, because the comment was only about View more. Ask if they should match.
+
+### 11.2 Entry from Account; PD screens are pushed pages (user, 30 Oct 2026)
+
+**User rule:** on mobile, the Personal Dashboard is entered from **Account → Personal Dashboard**. So the PD screens have **no bottom tab bar**; they are pushed pages with a back arrow.
+- The section was renamed "Personal Dashboard Mobile" by the user. The style frames now sit at x = 1274 / 2174 / 3074, and the Account screen `8751:9010` (current, no entry) sits in the left column.
+- **All 18 PD frames:** the tab bar (`Frame 1410126735`) was removed and the bottom padding cut to 40.
+  - Every Home got a top bar `Top bar · back to Account` (back arrow + "Personal Dashboard"), and the duplicate "Personal Dashboard" label in its content was removed.
+  - The overlay frames (Style 5 sheet, Style 6 pop-up) had their overlay / sheet / modal repositioned.
+  - Restore point: "Before PD entry points + remove tab bar (Claude, 30 Oct 2026)".
+
+**Entry-point versions** (Account clones in the left column; the Sidebar Menu is detached; Account tab active; Tabler `dashboard` icon `1213:1301`):
+- **V1** `8751:34735`, Quick Actions row: "Personal Dashboard" + an Info "New" chip as the first Quick Actions row.
+- **V2** `8751:34910`, Highlight card: a gradient card under Overview, "Personal Dashboard" + "Annual leave 9.5 days · 1 claim pending · new pay slip".
+- **V3** `8751:35085`, My HR section: a new "My HR" section (Personal Dashboard with "Leave · Claims · Pay Slip", Manage Leave moved here, Manage Claims). Quick Actions keeps Trips History + Contact Us.
+- **V4** `8751:35260`, Profile card: a card at the top with avatar, name, company / plate, two stats, and "View Personal Dashboard ›". The header name is hidden.
+
+**Open question:** once PD exists, do Manage Leave / Manage Claims stay as separate Account rows? V3 groups them; V1, V2 and V4 keep them.
