@@ -140,3 +140,19 @@ Section `8763:16472` on page `🧔 Production - Passenger`. Restore point: "Befo
 - The emails carry a **Bus size** row per trip (MOVE-4582 AC), although the ticket's table layout has no such row.
 - The emails use sales@westpointbus.com**.sg**, as MOVE-4582 says; the Enquiry page's mailto still follows MOVE-4569 (.com). Open question for the PM.
 - The acknowledgement "From" is shown as `noreply@westpointbus.com.sg (system address)`. The ticket only says "system address".
+
+## CR round, Daniel (4 Nov 2026)
+
+Restore point: "Before Bus Booking CR round (Claude, 4 Nov 2026)". The user had already removed, by hand, the Price Breakdown card on 3.1, the price preview on 2.x, and row 4 (the emails). These were left removed, not rebuilt.
+
+| Comment | Change |
+|---|---|
+| "would this be stick to the top?" (Daniel: "i plan yes") | New **2.8** `8802:20731`: the form scrolled, with the stepper pinned under the top bar on a white strip with a soft shadow. |
+| "can show an example of the time picker?" | New **2.9** `8802:20902`: a bottom sheet "Select pick-up time" listing 15-minute slots. Peak slots carry a "Peak +S$20" tag, 08:00 AM is selected (blue row and check), and a note states the peak and midnight rules. Hand-built. |
+| #CR "Trip Summary" on step 2 | Step 2 is renamed **Trip Summary** in every stepper (2.1–2.9, 3.1–3.3, 3.5). |
+| #CR "Contact Informations" on step 3 | Step 3 and the page heading are renamed **Contact Information** (singular, the standard English form). |
+| Passengers: "Passenger count, subtext: Bus size assigned" | On 3.1 (both trips) and 3.4, the value is the count "18", with "20-seater bus" as a 12 px subtext under it. |
+
+The stepper now puts each label **under** its dot (12 px), with connectors that grow to fill the width. The longer labels no longer fit side by side in 358 px.
+
+Labels and frame names were updated to match (3.1 Trip Summary, 3.2 / 3.3 Contact Information, Row 3 title).

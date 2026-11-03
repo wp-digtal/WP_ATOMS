@@ -14,6 +14,15 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Bus Booking CR round: sticky stepper, time picker, "Trip Summary" / "Contact Information", passenger subtext (Figma, 4 Nov 2026, MOVE-4581)
+
+From Daniel's #CR comments on the Passenger work sheet `8763:16472`:
+- New states: 2.8, the stepper sticky while scrolling; 2.9, a time picker with 15-minute slots and surcharge tags.
+- Steps renamed everywhere: "Review" → "Trip Summary" and "About You" → "Contact Information". Labels now sit under the step dots so the longer names fit.
+- Passengers show the count with "20-seater bus" as subtext.
+
+The comment wrote "Contact Informations"; the singular was used as correct English. Price blocks and the email row that the user had removed by hand were not restored. Details: `BUS_BOOKING_KNOWLEDGE.md`.
+
 ### Changed — PD mobile Style 2: leave statuses, balances carousel, claims year filter + tab counters; Account quick-action labels (Figma, 3 Nov 2026)
 
 Comments on the Style 2 Leave / Claims screens, applied in place:

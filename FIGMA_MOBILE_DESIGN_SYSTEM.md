@@ -281,3 +281,5 @@ Techniques and gotchas from the Claims build:
 - **Arrows:** build them with `setVectorNetworkAsync` and put `strokeCap:'ARROW_LINES'` only on the last vertex. Setting `strokeCap` on the whole vector puts arrowheads on both ends.
 - **`getMainComponentAsync()`**, not `.mainComponent`: this file runs with `documentAccess: dynamic-page`, and the sync getter throws.
 - **Simple illustrations** (no Integral illustration set): draw them with `figma.createVector()` + `vectorPaths` (stroke 6, round caps) and `createEllipse()` heads. Make one `createComponent()` per pose in a single call, then `combineAsVariants` in a second call.
+
+**Bridge timeouts on text edits (4 Nov 2026).** In the Bus Booking frames, calls that ran `loadFontAsync(t.fontName)` per node timed out three times; the edits half-applied. Preload fonts once as plain `{family:'Roboto', style}` objects, then touch **one frame per call**. A per-node font load with the `variationSettings` object is what hangs.
