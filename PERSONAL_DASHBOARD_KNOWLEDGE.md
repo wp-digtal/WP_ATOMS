@@ -420,3 +420,22 @@ Restore point: "Before Home greeting + no status tag + View more button (Claude,
 - **V4** `8751:35260`, Profile card: a card at the top with avatar, name, company / plate, two stats, and "View Personal Dashboard ›". The header name is hidden.
 
 **Open question:** once PD exists, do Manage Leave / Manage Claims stay as separate Account rows? V3 groups them; V1, V2 and V4 keep them.
+
+### 11.3 Review round on Style 2 + Account quick actions (Figma, 3 Nov 2026)
+
+Comments on Style 2 Widget Grid, applied directly to the screens (not the work sheet). Restore point "Before PD Style 2 comment fixes + Account quick actions (Claude, 3 Nov 2026)".
+
+**Leave (`8725:8905`)**
+- "missing rejected status / cancel also": the filter chips are now All (5) · Pending (1) · Approved (2) · Rejected (1) · Cancelled (1), in a horizontally scrolling row that runs to the screen edge. A Cancelled application row was added (grey `Neutral_2` / `Default` chip) so the counts add up.
+- "remove" on "+ Apply": removed. The bottom **Apply Leave** button is the only apply entry.
+- "more than 3 leave balances?": the balance tiles are a horizontal carousel. Tiles are a fixed 124 px, and the row runs to the screen edge, so the third tile is cut off and signals a swipe. A 4th tile (Compassionate 3 of 3 days) shows the case.
+
+**Claims (`8725:9123`)**
+- "filter by year, like the leave at the side": a "Claim Applications" heading with the `2026 ▾` year chip on the right, the same pattern as Leave Balances.
+- "no need [summary tiles], do the counter in the tab like leave": the three summary tiles were removed. The chips carry counts: All (5) · Pending (2) · Paid (2) · Rejected (1) · Cancelled (0). Pending covers Pending Approval + Pending Payment.
+
+**Account quick actions** (user's Account page `8757:18508`; work sheet `8763:20219`)
+- The problem: each quick-action column hugged its 48 px circle, so every label wrapped to two lines. There were also typos: "Contract Us" → **Contact Us**, "Trips History" → **Trip History**.
+- **V1 `8763:20311` (recommended):** same layout, but four equal FILL columns with labels on one line (HUG, 12 px, centred).
+- **V2 `8763:20468`:** 2×2 action tiles, each a 36 px circle plus a 14 px one-line label on a grey card. The frame is 48 px taller.
+- Open point: Apply Leave / Submit Claim in the quick actions duplicate the Manage Leave / Manage Claim rows below. One of the two could go.

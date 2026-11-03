@@ -14,6 +14,14 @@ minor).
 
 ## [Unreleased]
 
+### Changed — PD mobile Style 2: leave statuses, balances carousel, claims year filter + tab counters; Account quick-action labels (Figma, 3 Nov 2026)
+
+Comments on the Style 2 Leave / Claims screens, applied in place:
+- Leave: Rejected and Cancelled chips added (with counts), "+ Apply" removed, balances made a horizontal carousel for more than 3 leave types.
+- Claims: summary tiles removed in favour of tab counters; a year chip added beside a "Claim Applications" heading, like Leave.
+
+The user also asked for an opinion on the Account page: the quick-action labels wrapped to two lines because each column was only as wide as its icon. The work sheet `8763:20219` has V1 (equal columns, one-line labels, recommended) and V2 (2×2 tiles), with the "Contract Us" / "Trips History" typos fixed. Details: `PERSONAL_DASHBOARD_KNOWLEDGE.md` §11.3.
+
 ### Added — Passenger app: Bus Booking enquiry, form and emails (Figma, 3 Nov 2026, MOVE-4569 / MOVE-4581 / MOVE-4582)
 
 The user asked for the three Bus Booking tickets to be built in the Passenger work sheet (`8763:16472`), following the Passenger module's patterns (`1643:2000`).
