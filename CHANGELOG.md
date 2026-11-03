@@ -14,6 +14,15 @@ minor).
 
 ## [Unreleased]
 
+### Added — Passenger app: Bus Booking enquiry, form and emails (Figma, 3 Nov 2026, MOVE-4569 / MOVE-4581 / MOVE-4582)
+
+The user asked for the three Bus Booking tickets to be built in the Passenger work sheet (`8763:16472`), following the Passenger module's patterns (`1643:2000`).
+- Row 1: Home card → Enquiry page → mail app draft / "Copied" toast.
+- Row 2: Trip Details empty, filled, Add-Ons sheet, date picker, 2 way on, errors, address auto-complete.
+- Row 3: Review with an estimated price breakdown, About You (prefilled; invalid email disables Submit Enquiry), Success and Submit failed + Retry.
+- Row 4: the sales email and the customer acknowledgement email.
+- Design calls and ticket inconsistencies (sales address .com vs .com.sg, "Fill in" vs "Submit Booking Form", bus size missing from the email layout) are recorded in `BUS_BOOKING_KNOWLEDGE.md`; build lessons in `FIGMA_MOBILE_DESIGN_SYSTEM.md` §5.2.
+
 ### Changed — PD mobile: entry from Account (4 versions); PD screens without tab bar (Figma, 30 Oct 2026)
 
 The user: entry is Account → Personal Dashboard, so the navbar must not show inside PD.
@@ -3126,6 +3135,7 @@ Tracked here so they do not get lost between sessions.
 
 | Item | Status |
 |---|---|
+| Bus Booking (MOVE-4569 / 4582): sales address is sales@westpointbus.com in MOVE-4569 but sales@westpointbus.com.sg in MOVE-4582; MOVE-4569 AC says "Fill in Booking Form" while its table says "Submit Booking Form"; MOVE-4582 AC asks for bus size but its email layout has no field (Figma adds a Bus size row) | Open — ask the PM (see `BUS_BOOKING_KNOWLEDGE.md`) |
 | **Public Holiday vs On Leave precedence** — MOVE-3608 carries an unresolved PM note: *"Should be PH over on leave cause it was their rest day hmm"*. Current behaviour keeps **On Leave winning**, per priority 1 as still written. | Awaiting PM decision |
 | **Roster Calendar and Roster 3.0 are off-spec** — MOVE-3608 no longer describes a matrix layout at all, and both still use the bulk-select edit model MOVE-3658 replaced. | Awaiting a call on whether to retire them |
 | **MOVE-3660 [Payroll] Standby Calculation** — ticket has no description. | Not implemented |
