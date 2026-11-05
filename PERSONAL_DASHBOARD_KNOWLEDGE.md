@@ -439,3 +439,9 @@ Comments on Style 2 Widget Grid, applied directly to the screens (not the work s
 - **V1 `8763:20311` (recommended):** same layout, but four equal FILL columns with labels on one line (HUG, 12 px, centred).
 - **V2 `8763:20468`:** 2×2 action tiles, each a 36 px circle plus a 14 px one-line label on a grey card. The frame is 48 px taller.
 - Open point: Apply Leave / Submit Claim in the quick actions duplicate the Manage Leave / Manage Claim rows below. One of the two could go.
+
+### 11.4 Claims Style 2: no row icons (Daniel, 5 Nov 2026)
+
+- "no need icon since it will be the same anyways": the receipt icon tile was removed from every claim row in `8725:9123`. The text column now fills the row.
+- The older pin "no need this, do the same as leave, the counter in the tab" is about the summary tiles. Those were already replaced by tab counters on 3 Nov (§11.3); nothing more to change.
+- Restore point "Before PD Claims icon removal (Claude, 5 Nov 2026)".

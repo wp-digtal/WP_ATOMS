@@ -14,6 +14,11 @@ minor).
 
 ## [Unreleased]
 
+### Changed — PD mobile Claims Style 2: row icons removed; lessons file added (5 Nov 2026)
+
+- Daniel: "no need icon since it will be the same anyways". The identical receipt icon was removed from every claim row (`8725:9123`). The "counter in the tab" comment had already been done on 3 Nov.
+- The user asked that every process become a saved lesson. New `LESSONS_LEARNED.md` (reviewer preferences, working rules, bridge gotchas, dated log); `CLAUDE.md` now says to read it first and append to it after every task.
+
 ### Changed — Bus Booking CR round: sticky stepper, time picker, "Trip Summary" / "Contact Information", passenger subtext (Figma, 4 Nov 2026, MOVE-4581)
 
 From Daniel's #CR comments on the Passenger work sheet `8763:16472`:
