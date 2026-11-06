@@ -298,3 +298,9 @@ Ticket edits on 28 Oct (diff via `tools/jira-desc-diff.py`) match his Figma comm
 - The ticket itself was not edited, so this is a layout-only call by Daniel.
 
 Of the open questions in §13: Q2 (search vs Full Name) and Q4 (Create Account on Activity) are answered, because both were removed. Q1 (sort by full name / account type), Q3, Q5 and Q6 are still open.
+
+## 15. Daniel, 6 Nov 2026: "default screen: access roles field hidden, show only if account type = employee"
+
+- **Not a new requirement.** MOVE-4450 has said this since 15 Oct 2026 (last edit 13:09; no edits or comments since). In its field table, Work Email and Access Roles are each "Field shown if account type = employee … Field hidden if account type = sub-contractor driver".
+- **The miss was ours.** The ticket doesn't spell out the state where no Account Type is chosen yet. But "shown **if** = employee" means the field is hidden when nothing is selected. The 2.1 Create drawer – empty frame still showed Work Email **and** Access Roles.
+- **Fix:** in the empty frame, show only Account Type, Given / Family Name, Username and Mobile Number. Work Email + Access Roles appear once Employee is picked, and stay hidden for Sub-contractor Driver. The same applies to the "missing required fields" frame if Account Type is empty there.

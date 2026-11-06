@@ -14,6 +14,10 @@ minor).
 
 ## [Unreleased]
 
+### Docs — Account Management: the "access roles hidden by default" comment traced to MOVE-4450 (6 Nov 2026)
+
+The user asked whether Daniel's comment ("default screen: access roles field hidden, show only if account type = employee") is a new requirement. Jira check: it isn't. MOVE-4450 has said it since 15 Oct, with no edits since, and the same rule applies to Work Email. Our 2.1 empty Create frame showed both fields. Recorded in `ACCOUNT_MANAGEMENT_KNOWLEDGE.md` §15 and `LESSONS_LEARNED.md`; the Figma fix is pending.
+
 ### Changed — PD mobile Claims Style 2: row icons removed; lessons file added (5 Nov 2026)
 
 - Daniel: "no need icon since it will be the same anyways". The identical receipt icon was removed from every claim row (`8725:9123`). The "counter in the tab" comment had already been done on 3 Nov.
