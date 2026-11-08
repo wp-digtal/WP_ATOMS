@@ -6,6 +6,8 @@ disable-model-invocation: false
 
 # Figma fidelity checklist (WP_ATOMS)
 
+> **Docs location:** everything is under `knowledge/` (start at `knowledge/README.md`). Look up every element in `COMPONENT_MAP.md` first: it gives the real component, its node id or key, and how to set it. Bare `NAME.md` references below resolve with `find . -name NAME.md`.
+
 This skill exists because of a concrete failure mode, not a hypothetical one:
 a drawer-field-pairing pattern was learned from Figma and recorded in
 `FIGMA_DESIGN_SYSTEM.md` §3.4. When asked to "apply it in Personal

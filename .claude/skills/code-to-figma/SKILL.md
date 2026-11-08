@@ -6,6 +6,8 @@ disable-model-invocation: false
 
 # Code / screen / HTML → Figma (the user's standard)
 
+> **Docs location:** everything is under `knowledge/` (start at `knowledge/README.md`). Look up every element in `COMPONENT_MAP.md` first: it gives the real component, its node id or key, and how to set it. Bare `NAME.md` references below resolve with `find . -name NAME.md`.
+
 The user asked for this to be a skill so they don't have to re-explain it.
 A push to Figma is done when **a reader who never saw the code or the
 tickets can open the Figma section and understand the whole module**: what

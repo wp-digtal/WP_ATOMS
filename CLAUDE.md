@@ -1,5 +1,7 @@
 # Working agreements for this repository
 
+**All knowledge lives in `knowledge/` (reorganised 8 Nov 2026). Start at `knowledge/README.md`.** It has `process/` (lessons), `design-system/` (Figma docs plus `COMPONENT_MAP.md`, the component lookup) and `modules/` (one KB per module). Docs refer to each other by bare file name, and names are unique, so find any `NAME.md` mentioned below with `find . -name NAME.md`. Run `python3 -I tools/check-knowledge.py` after editing docs; it checks for missing references, duplicate names, secrets, and that the component map is in sync.
+
 Standing instructions for Claude sessions on this repo. Structural reference
 lives in `DEVELOPER_GUIDE.md`; module business rules live in
 `CLAUDE_SESSION_CONTEXT.md`; the Figma design system (tokens, component
@@ -19,7 +21,8 @@ point is that the next session starts smarter than this one did, not that
 it re-learns the same thing from scratch.
 
 **Knowledge goes into files, not session memory (user, 15 Oct 2026).** Session memory is limited and lost between sessions. Whenever the user says "pelajari / simpan / ingat" (learn / save / remember), or points at a Figma file, ticket or chat to learn from, write what was learned into a repo `.md` file in the same turn, then commit and push. This applies to every topic, not just Figma.
-- Feature knowledge bases live at the repo root as `<TOPIC>_KNOWLEDGE.md`, e.g. `CLAIMS_KNOWLEDGE.md`. Read the matching one before working on that topic.
+- Feature knowledge bases live in `knowledge/modules/` as `<TOPIC>_KNOWLEDGE.md`, e.g. `CLAIMS_KNOWLEDGE.md`. Read the matching one before working on that topic.
+- **Before building or tidying any Figma screen, look the elements up in `COMPONENT_MAP.md`** (web COMPASS rows W…, mobile Integral rows M…, legacy → replacement table, tidy-up procedure). Add a row whenever a new component gets used.
 
 **Every task ends with a lesson (user, 5 Nov 2026).** Read `LESSONS_LEARNED.md` at the start of a session. At the end of every task, add what was learned there in the same commit: reviewer preferences, design rules, tool gotchas, mistakes. Topic detail stays in the topic file.
 

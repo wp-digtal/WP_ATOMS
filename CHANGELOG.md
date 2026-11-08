@@ -14,6 +14,21 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Knowledge base reorganised into `knowledge/`; consolidated component map; safety checker (8 Nov 2026)
+
+The user asked for the existing knowledge to be tidied so it can be moved around safely, and for components to be mapped well ahead of tidying old designs.
+- **Moved with `git mv`** (history kept):
+  - `knowledge/process/`: LESSONS_LEARNED;
+  - `knowledge/design-system/`: FIGMA_DESIGN_SYSTEM, FIGMA_MOBILE_DESIGN_SYSTEM, FIGMA_COMPONENT_INDEX;
+  - `knowledge/modules/`: the six `*_KNOWLEDGE.md` files and CLAUDE_SESSION_CONTEXT.
+- **Kept at the root:** `CLAUDE.md`, `CHANGELOG.md`, `DEVELOPER_GUIDE.md` and `tools/`. The nightly Leave routine's prompt reads `CLAUDE.md`, `CHANGELOG.md` and `tools/jira-desc-diff.py` by these paths.
+- **Links stay by bare file name** (all names are unique), so further moves need no edits. `CLAUDE.md` and both skills now point to `knowledge/README.md`.
+- **New `knowledge/README.md`:** folder index, read order for Figma work, how to move or export the folder, and the upkeep rule.
+- **New `knowledge/design-system/COMPONENT_MAP.md`** with a JSON twin, `component-map.json`. It consolidates the component facts that were spread across five docs:
+  - 27 web rows (COMPASS / ATOM business components) and 18 mobile rows (Integral), each with element → component → file and node / key → how to set it → source section;
+  - a legacy → replacement table and a step-by-step tidy-up procedure, ready for the old-design clean-up.
+- **New `tools/check-knowledge.py`.** It checks for missing doc references, duplicate file names, secrets (tokens, keys, private keys, passwords), and that the JSON map matches the Markdown. It passes: 121 files, 45 component rows.
+
 ### Docs — Account Management: the "access roles hidden by default" comment traced to MOVE-4450 (6 Nov 2026)
 
 The user asked whether Daniel's comment ("default screen: access roles field hidden, show only if account type = employee") is a new requirement. Jira check: it isn't. MOVE-4450 has said it since 15 Oct, with no edits since, and the same rule applies to Work Email. Our 2.1 empty Create frame showed both fields. Recorded in `ACCOUNT_MANAGEMENT_KNOWLEDGE.md` §15 and `LESSONS_LEARNED.md`; the Figma fix is pending.

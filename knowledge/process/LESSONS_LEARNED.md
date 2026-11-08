@@ -38,6 +38,7 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 
 | Date | Task | Lesson |
 |---|---|---|
+| 8 Nov 2026 | Reorganise the knowledge base | Docs refer to each other by bare, unique file names, so folders can move freely. A checker script (`tools/check-knowledge.py`) proves nothing broke and no secrets slipped in. One component lookup (`COMPONENT_MAP.md`) replaces hunting through five docs. |
 | 6 Nov 2026 | AM: is "access roles hidden by default" new? | No. MOVE-4450 had it since 15 Oct. We drew the empty state with the conditional fields visible. When a ticket says "shown if", apply it to the empty state as well. |
 | 5 Nov 2026 | PD Claims Style 2: remove row icons | Identical icons on every row add nothing. The older "no need this" pin had already been fixed (tab counters), so it was reported, not re-done. |
 | 4 Nov 2026 | Bus Booking CR round | Longer step labels broke the side-by-side stepper; labels under the dots fit 3 long steps in 358 px. The user's own deletions are intentional. |

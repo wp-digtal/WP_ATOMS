@@ -1,0 +1,455 @@
+{
+  "generated_from": "COMPONENT_MAP.md",
+  "rows": [
+    {
+      "id": "W01",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Side navigation",
+      "component": "`Side Navbar`",
+      "where": "ATOM Business Component `ZpEYnJ4POb86CDMAM3BWCG` · `425:16539`",
+      "how": "Clone from a Production frame",
+      "ref": "DS §3, Index"
+    },
+    {
+      "id": "W02",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Page tab bar",
+      "component": "`Tab/Tab Group`",
+      "where": "ATOM Business Component · `424:16506`",
+      "how": "Equal-width items; code `PageTabs`",
+      "ref": "DS §3"
+    },
+    {
+      "id": "W03",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Table toolbar (search, filters, date)",
+      "component": "`FilterBar 3.0` (composable row)",
+      "where": "ATOM Business Component · `21:9490`",
+      "how": "Compose the slots, see §3.2",
+      "ref": "DS §3.2, §4.5"
+    },
+    {
+      "id": "W04",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Data table",
+      "component": "`Table` → `Header Row` + `Row n`, cells `Table / Table cell`",
+      "where": "Leave HR file `VYGulw8yaudo3FRAWh4sEh` · `41042:54541`; also in every Production listing",
+      "how": "Widths must sum to the table width; the table repeats behind every drawer, so edit all copies",
+      "ref": "DS §3.3, §4.10"
+    },
+    {
+      "id": "W05",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Status tag",
+      "component": "`Tag / Status`",
+      "where": "Instances in Production frames",
+      "how": "`Status` variant (Default = grey \"Cancelled\"); for Active / Suspended swap to the drawer tag's main component, `Select#…` off",
+      "ref": "DS §4.10, §4.17"
+    },
+    {
+      "id": "W06",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Form field (text, select, date, phone, textarea)",
+      "component": "`_Form / Form Item / Vertical`",
+      "where": "COMPASS `gbSCJ7q9FcMZsZ6d5dbrRN` · page `388:11438`",
+      "how": "`Type` variant; `State: Filled` for values in black; phone = `Type=Phone`, inner `Input / Pre Post Tab` `Size: Default`, `Post Tab: No`, `Pre Tab Text` \"+65\"; full width 620 / half 302",
+      "ref": "DS §4.4, §4.11"
+    },
+    {
+      "id": "W07",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Multi-select",
+      "component": "`_Select / Select Input`",
+      "where": "in Form Item",
+      "how": "`Type: 'Multiple'`, rename tag texts, hide spare tags",
+      "ref": "DS §4.11"
+    },
+    {
+      "id": "W08",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Field label",
+      "component": "`_Form / Form Label Vertical`",
+      "where": "in Form Item",
+      "how": "`Mark=Required` for `*`",
+      "ref": "DS §4.8"
+    },
+    {
+      "id": "W09",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Field error",
+      "component": "`_Input / Input Caption`",
+      "where": "in Form Item",
+      "how": "`Caption#515:251=true`, `Status: Error`, text `{{refer to copy}}`",
+      "ref": "DS §4.11"
+    },
+    {
+      "id": "W10",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Textarea",
+      "component": "`Input / Textarea`",
+      "where": "in Form Item",
+      "how": "`Show Count#5012:0` on; max = the ticket's max length; no error variant, so use a red stroke `#ff4d4f` + caption",
+      "ref": "DS §4.8, §4.11"
+    },
+    {
+      "id": "W11",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Upload",
+      "component": "`Upload / Button` + file row + 2-line helper",
+      "where": "Claim HR file `Gp7MfEP0XEv8YqZ9q474sj`",
+      "how": "Not `Upload / Drag and Drop`; size and types from the ticket",
+      "ref": "DS §4.8"
+    },
+    {
+      "id": "W12",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Time / date picker open",
+      "component": "`TimePicker Menu` (hidden inside the picker)",
+      "where": "in Form Item",
+      "how": "Clone to the frame top level, 4 px under the input, `State=Focused`",
+      "ref": "DS §4.8"
+    },
+    {
+      "id": "W13",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Drawer (create / edit)",
+      "component": "`Drawers Template` (via `Create Leave Type`)",
+      "where": "Account Mgmt `kI1rSu1FAsPpV5K1EI2HvM` · overlay `39283:130365`",
+      "how": "Detach, empty `Frame 2608909` (WRAP, gap 16), add Form Items",
+      "ref": "DS §3.4, §4.11"
+    },
+    {
+      "id": "W14",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Drawer (details)",
+      "component": "`Drawers Template` → `RT-Details Content Sub-Section`, `Content Cell` / `Group Content Cell`",
+      "where": "Account Mgmt · overlay `39283:110677`",
+      "how": "`Label#15150:33` / `Value#15150:39`, `Line '2'`; full width = `Item '1', Column '1'`",
+      "ref": "DS §3.4, §4.3, §4.11"
+    },
+    {
+      "id": "W15",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Drawer header + actions menu",
+      "component": "`BusCom-Header Text`, `BusCom-Details Button 2.0`, `BusCom-Details Action Button 2.0`",
+      "where": "Account Mgmt Production",
+      "how": "`First Status#9045:7`; `Show Action#11657:6`; menu items `State` Disabled / Hover",
+      "ref": "DS §4.11"
+    },
+    {
+      "id": "W16",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Confirm / reason modal",
+      "component": "Reject Leave overlay",
+      "where": "Account Mgmt · `39312:45655`",
+      "how": "Body copy `{{copy to master}}`, real title",
+      "ref": "DS §4.8, §4.11"
+    },
+    {
+      "id": "W17",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Toast",
+      "component": "`Toaster Pop-up Message`",
+      "where": "Production instances",
+      "how": "Variants `Module=Staff` (Create / Edited / Deleted / …); set `children[0].visible = true`, centre at y 24",
+      "ref": "DS §4.9, §4.11"
+    },
+    {
+      "id": "W18",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Empty state",
+      "component": "`Empty / Image`",
+      "where": "COMPASS set key `ac29cc9196a4854e88f97e0fb812a26009c5a6c3`; variant key `a03cfe16d7afb97975743504256e318ba445c2d5`; Claim HR main `43115:433553`",
+      "how": "`Image=1`, `rescale(67/184)` → 67×43, grey 14 px text under it",
+      "ref": "DS §4.10, §4.11"
+    },
+    {
+      "id": "W19",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Tooltip",
+      "component": "`Tooltip`",
+      "where": "COMPASS set key `f5c249bb07d798357029189e660d54f795b5759c`; local copy in Account Mgmt `29009:28743`",
+      "how": "Import times out; use the local copy",
+      "ref": "DS §4.11"
+    },
+    {
+      "id": "W20",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Highlight / KPI card",
+      "component": "`Highlights Card`",
+      "where": "Claim HR · `43114:431210`",
+      "how": "`Title` `Level=2` count; active = blue stroke + label",
+      "ref": "DS §4.10"
+    },
+    {
+      "id": "W21",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Filter popover",
+      "component": "`Table Filter Dropdown 2.0` / `Table Filter with Buttons`",
+      "where": "Production",
+      "how": "Overlay a detached copy (don't detach the toolbar); **no placeholders** inside",
+      "ref": "DS §4.8, §4.11"
+    },
+    {
+      "id": "W22",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Select menu / ⋯ menu",
+      "component": "`_Select Menu / Select Menu Item`",
+      "where": "Live Tracking `XKD77FPEWx0wfQxxCWelfM` · `39156:37134`",
+      "how": "Item `State=Hover` for the click",
+      "ref": "DS §4.9"
+    },
+    {
+      "id": "W23",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Switch",
+      "component": "`Switch / Basic`",
+      "where": "Live Tracking Production",
+      "how": "—",
+      "ref": "DS §4.9"
+    },
+    {
+      "id": "W24",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Button (web)",
+      "component": "COMPASS `Button`",
+      "where": "Production instances",
+      "how": "`Type` Primary / Default / Danger; `Size=Small` for inline actions (e.g. Copy, Navigate here)",
+      "ref": "DS §3, Live Tracking KB Round 5"
+    },
+    {
+      "id": "W25",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Map",
+      "component": "`Map`",
+      "where": "Live Tracking · `39048:40152`",
+      "how": "`Property 1` Default / Zoomed; bus layer `;39048:39923`",
+      "ref": "DS §4.9"
+    },
+    {
+      "id": "W26",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "Canvas docs",
+      "component": "`Docs/Big Title`, `Docs/Flow Label`, `Docs/Notes`",
+      "where": "in each file",
+      "how": "Flow Label `Parent Flow#44:0` → `Current Flow#44:4`; 900 px column pitch for 390 frames",
+      "ref": "DS §4.9, §4.12–4.13"
+    },
+    {
+      "id": "W27",
+      "system": "web",
+      "section": "Web: COMPASS + ATOM business components",
+      "element": "PD business components",
+      "component": "`PD/Recent Activity Card`, `PD/My Next Leave Card`, `PD/Home Leave Balances Card`, `PD/Leave Balance Preview`, `PD/Confirm Modal`, `PD/Empty State (text)`, `PD/Tooltip (hand-built)`, `PD/Leave Date Range + Half Day`",
+      "where": "Personal Dashboard `1FCRdGhHru6czP5P6h06kH` · page `41116:149163` (draft, not swapped yet)",
+      "how": "See the variants in the PD KB",
+      "ref": "PD KB §9"
+    },
+    {
+      "id": "M01",
+      "system": "mobile",
+      "section": "Mobile: Integral (Driver / Passenger apps)",
+      "element": "Button",
+      "component": "`Button`",
+      "where": "key `e23481ef886cdb5784d2b9c331b6033ad06e1f29`; in-file `8524:13715`",
+      "how": "`Type` Primary / Outline Brand / Outline Neutral / Danger …; `Size` (Passenger uses Small); `State=Disable`; text `Input text#2053:13`",
+      "ref": "Mobile §4.1, §5.2"
+    },
+    {
+      "id": "M02",
+      "system": "mobile",
+      "section": "Mobile: Integral (Driver / Passenger apps)",
+      "element": "Input (text / select / date / password)",
+      "component": "`Input/Input Border Style`",
+      "where": "key `a8cb449ec465144fc3fb88a553f505b163cc6297`; in-file `1643:12963`",
+      "how": "`Variant` Icon / Password / Country Code …; `State` Default / Filled / Error / Typing; label = `Label#8293:122` (set it once: it's bound); hint `Hint#8293:244`",
+      "ref": "Mobile §4.1, §5.2"
+    },
+    {
+      "id": "M03",
+      "system": "mobile",
+      "section": "Mobile: Integral (Driver / Passenger apps)",
+      "element": "Phone input",
+      "component": "`Input/Input Border Style` `Variant=Country Code`",
+      "where": "`5869:5843`",
+      "how": "Label prop is `Label‎ #8293:183`",
+      "ref": "Mobile §5.2"
+    },
+    {
+      "id": "M04",
+      "system": "mobile",
+      "section": "Mobile: Integral (Driver / Passenger apps)",
+      "element": "Chip / status pill",
+      "component": "`Chips/Normal`",
+      "where": "key `e5bd12e21ff41a0bd19c67a09e3142aed6062c6e`; in-file `8524:13657`",
+      "how": "`Variant` Neutral_1/2, Success, Warning, Danger, Info; `Size`; `States` (Cancelled = `Neutral_2` + `Default`); text `Text#10472:0`; then `layoutSizingHorizontal='HUG'`",
+      "ref": "Mobile §4.1, §5.2"
+    },
+    {
+      "id": "M05",
+      "system": "mobile",
+      "section": "Mobile: Integral (Driver / Passenger apps)",
+      "element": "Leave status badge",
+      "component": "local `Status` set",
+      "where": "`8197:21408`",
+      "how": "`Property 1` Rejected / Cancelled / Pending / Approved",
+      "ref": "Mobile §4.2"
+    },
+    {
+      "id": "M06",
+      "system": "mobile",
+      "section": "Mobile: Integral (Driver / Passenger apps)",
+      "element": "Icon",
+      "component": "`Icon Wrapper` / Tabler glyph components",
+      "where": "glyph ids: `map-pin` 233:2403, `chevron-down` 857:6904, `chevron-right` 857:9410, `mail` 857:6902, `phone` 1261:5122, `user` 210:2942, `check` 857:22463, `calendar-stats` 2589:8943, `clock` 829:6105, `receipt` 8523:13310, `note` 203:2096, `book` 1316:9395, `arrow-left` 1213:1297",
+      "how": "`createInstance()`; recolour the strokes with a bound paint",
+      "ref": "Mobile §4.1, §5.2"
+    },
+    {
+      "id": "M07",
+      "system": "mobile",
+      "section": "Mobile: Integral (Driver / Passenger apps)",
+      "element": "Upload",
+      "component": "`Upload File`",
+      "where": "key `86e1c0b18c62e0e552c4ba4c0e6751f6464d6a34`",
+      "how": "`State` Default → Uploading → Success / Failed",
+      "ref": "Mobile §4.1"
+    },
+    {
+      "id": "M08",
+      "system": "mobile",
+      "section": "Mobile: Integral (Driver / Passenger apps)",
+      "element": "Toast",
+      "component": "`ToastContainer`",
+      "where": "set key `6de3b77adddf7d0f9bddac1d5ab6a6ce281b97bb`",
+      "how": "Import **times out** here → hand-built Success toast; one-line: `Subtitle#12467:30=false`, `Call to Action Box#12493:0=false`, 358 wide, x 16 y 52",
+      "ref": "Mobile §4.1, §5.2"
+    },
+    {
+      "id": "M09",
+      "system": "mobile",
+      "section": "Mobile: Integral (Driver / Passenger apps)",
+      "element": "Empty state",
+      "component": "`Empty State`",
+      "where": "set key `8f7e8d9772a307e793c18109f0bc3d3d4c7b34dc`",
+      "how": "`Variant=Vertical`, `Show buttons#12148:6=false`",
+      "ref": "Mobile §4.1"
+    },
+    {
+      "id": "M10",
+      "system": "mobile",
+      "section": "Mobile: Integral (Driver / Passenger apps)",
+      "element": "Radio / checkbox / toggle",
+      "component": "`RadioButton Atom` (key `35ad146310d1343bcbdfc50e18479009bee255cf`), `Checkbox Atom`, `◈ Toggle / Base`",
+      "where": "—",
+      "how": "Radio: `Type=Radiobox` = selected. Checkbox: `Checked=True` needs `Type=Checked`",
+      "ref": "Mobile §4.1"
+    },
+    {
+      "id": "M11",
+      "system": "mobile",
+      "section": "Mobile: Integral (Driver / Passenger apps)",
+      "element": "Modal",
+      "component": "`Modal Basic` / `Modal Pre Build`",
+      "where": "library",
+      "how": "Body `{{copy to master}}`",
+      "ref": "Mobile §4.3"
+    },
+    {
+      "id": "M12",
+      "system": "mobile",
+      "section": "Mobile: Integral (Driver / Passenger apps)",
+      "element": "Status bar / top bar / home indicator",
+      "component": "Production shell parts",
+      "where": "status bar `5455:10243` / `8524:13533`; top bar `5455:10256` (hide `Frame 1410126690`) or `8524:13632`; home indicator `8524:13554`",
+      "how": "Pushed pages: white, back arrow + SemiBold 16 title, no tab bar",
+      "ref": "Mobile §2, §5.2"
+    },
+    {
+      "id": "M13",
+      "system": "mobile",
+      "section": "Mobile: Integral (Driver / Passenger apps)",
+      "element": "Bottom tab bar",
+      "component": "hand-built gradient bar",
+      "where": "`8524:13556`",
+      "how": "Only on top-level screens; never on pushed pages (PD, Bus Booking)",
+      "ref": "Mobile §2, PD KB §11.2"
+    },
+    {
+      "id": "M14",
+      "system": "mobile",
+      "section": "Mobile: Integral (Driver / Passenger apps)",
+      "element": "Text styles",
+      "component": "clone a styled text node",
+      "where": "`8524:13462` h16, `8524:13471` l12, `8524:13472` b14, `8524:13514` m14, `8524:13549` t16, `8524:13553` n18, `8524:13560` / `8524:13563` white",
+      "how": "Set `textAlignHorizontal` explicitly; `HUG` before `WIDTH_AND_HEIGHT`",
+      "ref": "Mobile §5.2"
+    },
+    {
+      "id": "M15",
+      "system": "mobile",
+      "section": "Mobile: Integral (Driver / Passenger apps)",
+      "element": "Colour variables",
+      "component": "Integral \"Colors\"",
+      "where": "name → id map in plugin data `vars` on sections `8725:7951`, `8763:16472`",
+      "how": "`setBoundVariableForPaint`; `border4` not imported",
+      "ref": "Mobile §3.1, §5.2"
+    },
+    {
+      "id": "M16",
+      "system": "mobile",
+      "section": "Mobile: Integral (Driver / Passenger apps)",
+      "element": "Local cards",
+      "component": "`Leave Card` `8197:21416`, `Trip Details` `5149:9376`, `Component 21` `2786:16994`, sidebar menus `8188:15259` / `8188:6586`",
+      "where": "—",
+      "how": "—",
+      "ref": "Mobile §4.2"
+    },
+    {
+      "id": "M17",
+      "system": "mobile",
+      "section": "Mobile: Integral (Driver / Passenger apps)",
+      "element": "Stepper (multi-step form)",
+      "component": "hand-built `Stepper (hand-built)`",
+      "where": "Bus Booking frames, section `8763:16472`",
+      "how": "Dot above, label below (12 px), connector frames `layoutGrow=1`; done = success dot ✓, active = brand",
+      "ref": "Bus Booking KB"
+    },
+    {
+      "id": "M18",
+      "system": "mobile",
+      "section": "Mobile: Integral (Driver / Passenger apps)",
+      "element": "Bottom sheet (picker / add-ons)",
+      "component": "hand-built `Bottom sheet · …`",
+      "where": "Bus Booking 2.3 / 2.4 / 2.9",
+      "how": "Overlay rect + sheet pinned to the bottom (`y = 844 − h`)",
+      "ref": "Bus Booking KB"
+    }
+  ]
+}
