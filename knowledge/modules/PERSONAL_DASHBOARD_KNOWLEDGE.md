@@ -566,3 +566,19 @@ MOVE-3953 / 3954 (Pay Slip) descriptions are still empty.
 - the orange-note questions (`41116:147347`, `41116:147362`);
 - whether to fix findings 1–13.
 
+### 13.4 Audit fixes #4, #5, #7, #9, #10 (10 Nov 2026, in progress)
+
+The user chose to fix these five (the ones that could mislead devs about logic). **New marker rule from the user:** every updated frame gets a **🟢** prefix in its name, and a **green** update note (fill rgb(.9,.97,.92), stroke rgb(.13,.64,.35), plugin data `note=green`). The yellow 📝 notes from earlier rounds were deleted from the canvas by the team (only 1 is left), so don't recreate them.
+
+Restore point: "Before PD audit fixes 4/5/7/9/10 (Claude, 10 Nov 2026)".
+
+| # | Fix | Frames |
+|---|---|---|
+| 4 | Medical Leave preview set to Available 9 / To Deduct 2 / Balance 7 | `41195:181488` (🟢) + green note `41214:256290` |
+| 5 | Drawer data changed to the approved Medical Leave in the table (6–7 Oct 2026, 2 days, applied 8 Oct, remark "Fever, MC from clinic"). Approved On / By rows unhidden: 8 Oct 2026 2:10 PM, Heikke Ekkieh. | `41092:457308` (🟢) + note `41214:258820` |
+| 7 | Claims note: Approvals has no Remarks (6 Nov edit). Submit Claim note: the claim goes to the **claims** approver (30 Oct edit); added the upload standard. Both notes dated 10/11/2026. | `41108:314352`, `41108:314359` (🟢) |
+| 9 | Re-created "🟢 Claim Details (own) – Pending Payment, Cancel disabled + tooltip". It was cloned from `305164`. Data: CL20260013, Carpark, $6.50, receipt 7 Oct 6:15 PM, plate SBS5678B. The Trip row is hidden because Trip is Toll-only. Approved 10 Oct 11:20 AM by Heikke Ekkieh. Tag Status=Processing; Cancel State=Disabled; tooltip cloned from the leave frame. | `41214:258823` at 8315,28971, flow label `41217:261373`, note `41217:261379` |
+| 10 | Validity sub-row example. The balances table is an instance of `Leave Detail Table Listing` (`39009:61976`, 52 instances incl. Old Leave), so it is **detached** only in the Leave page frames, then the row is cloned. Example: Custom Leave Type, 1 Mar–31 Aug 2026 (1 / 1 / 0 / 0) plus a sub-row 1 Sep 2026–28 Feb 2027 (1 / 0 / 0 / 1). This also fixes the invalid "31 Sep". | Done: `364801` (table `41217:261383`), `357820` (table `41217:262147`). In progress: `374451` (rows `41217:263087` / `263109` cloned, texts not set yet). To do: `421184`, and the "31 Sep" date in the other frames' background tables. |
+
+Bridge gotcha: with `skipInvisibleInstanceChildren=false`, a `findAllWithCriteria` over a detached 18-row table timed out and dropped the bridge. Address rows by id, and keep the flag `true`.
+
