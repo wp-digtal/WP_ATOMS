@@ -23,7 +23,7 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 ## Working with the user
 
 - **Comments can be stale or made on the wrong file.** Never apply a comment blind: check the current frame and the current ticket first, and report the ones that were already done (user, 9 Nov).
-- **When asked to "give notes" while fixing,** put a yellow `📝 Change note` frame under each changed frame (date, ticket, what changed and why).
+- **Change notes are the default on every revision round (user, 9 Nov, repeated 10 Nov).** Put a yellow `📝 Change note` frame under each changed frame with the date, ticket, what changed and why, and update the frame's flow label. The user should never have to diff frames by eye.
 
 - Reply in Bahasa Indonesia.
 - "Update related screens too" is the default, even when unstated. Check sibling screens of the same style and flow, but don't touch other pages or styles unless they share the same element.
