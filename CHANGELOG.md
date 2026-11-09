@@ -14,6 +14,14 @@ minor).
 
 ## [Unreleased]
 
+### Fixed — Account Management Production 3.1: full ticket audit (Figma, 9 Nov 2026, MOVE-4449 children)
+
+The user asked for every ticket to be re-checked against the design. Everything matched except two things:
+- A **Deactivated** details drawer was missing. It was added as 3.6: Edit disabled with a tooltip; Reset Password / Suspend / Unsuspend disabled (MOVE-4455 action table, MOVE-4456).
+- Rudi's Last Login was inconsistent behind the Edit drawers.
+
+Not drawn, by scope: MOVE-4463 email, the KIV change-history drawer and the KIV reset-password flow. Details: `ACCOUNT_MANAGEMENT_KNOWLEDGE.md` §16.2.
+
 ### Added — Account Management: tab layout exploration section (Figma, 9 Nov 2026)
 
 Daniel suggested non-stretched tabs (Roles module on UAT as reference), with Create Account outside the tabs. Built in a separate section on Production 3.1 as three variations:

@@ -360,3 +360,29 @@ Of the open questions in §13: Q2 (search vs Full Name) and Q4 (Create Account o
   - **V3, minimal** (`41137:63852`): only the tabs stop stretching; the CTA stays in the toolbar.
 - **Technique:** `Container` (the tab group) → each `Tab/Tab Item` gets `layoutSizingHorizontal='HUG'`; the container gets `primaryAxisAlignItems='MIN'` and `itemSpacing=32`. No detach needed. The CTA is a clone of the Filter Bar's `Button`, placed with `layoutPositioning='ABSOLUTE'`; the original is hidden.
 - **Already done before this round** (also in Daniel's comments): stay on the drawer after Suspend / Unsuspend (§16, 5.4 / 6.2).
+
+### 16.2 Full ticket audit of Production 3.1 (9 Nov 2026)
+
+All MOVE-4449 children were re-read; MOVE-4458 / 4452 / 4453 / 4457 at their 6 Nov versions. The 30 frames were checked programmatically for table columns, drawer cells, header text and disabled states, plus screenshots.
+
+- **Matches the tickets:**
+  - Listing columns in every frame, sort icons, search placeholder, the filter set, no-result state.
+  - Create: empty / filled / sub-con / errors / duplicate / created.
+  - Details: header, Basic + Additional cells, "-" rules for sub-con, Created By "System" for auto-created, suspension rows.
+  - Edit: "Edit [full name]", Account Type disabled, errors, saved → listing + toast, sub-con edit.
+  - Suspend and Unsuspend: stay on the drawer; auto-suspend.
+  - Activity: rebuilt to the 6 Nov version.
+- **Fixed in this audit:**
+  - **3.6 Deactivated drawer** (`41138:99426`, Eko Wijaya) was missing:
+    - Edit is disabled, with a `Tooltip` (`29009:28743`, Bottom Right, "{{refer to copy}}");
+    - Reset Password / Suspend / Unsuspend are disabled in the open Actions menu; View Change History stays enabled.
+  - **Data:** Rudi's Last Login read "-" behind the Edit drawers (4.1, 4.3, 4.4, 4.5) but "15 Oct 2026 11:05" in 4.2 / 5.x. Set to 11:05.
+- **Not drawn, by scope:**
+  - MOVE-4463 verify-account / set-password email (back end; the design scope is still unconfirmed);
+  - View Change History drawer (KIV MOVE-4465);
+  - Reset Password flow (KIV MOVE-4460).
+- **Still open with PM:**
+  - MOVE-4458 tab label ('staff activity' vs "Activity");
+  - MOVE-4458 sort by full name / account type;
+  - Before / After format;
+  - MOVE-4451: should Access Roles become read-only in Employees?
