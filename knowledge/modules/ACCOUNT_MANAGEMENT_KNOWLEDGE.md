@@ -304,3 +304,48 @@ Of the open questions in §13: Q2 (search vs Full Name) and Q4 (Create Account o
 - **Not a new requirement.** MOVE-4450 has said this since 15 Oct 2026 (last edit 13:09; no edits or comments since). In its field table, Work Email and Access Roles are each "Field shown if account type = employee … Field hidden if account type = sub-contractor driver".
 - **The miss was ours.** The ticket doesn't spell out the state where no Account Type is chosen yet. But "shown **if** = employee" means the field is hidden when nothing is selected. The 2.1 Create drawer – empty frame still showed Work Email **and** Access Roles.
 - **Fix:** in the empty frame, show only Account Type, Given / Family Name, Username and Mobile Number. Work Email + Access Roles appear once Employee is picked, and stay hidden for Sub-contractor Driver. The same applies to the "missing required fields" frame if Account Type is empty there.
+
+## 16. Comment round + ticket edits of 6 Nov 2026, applied on `🏭 Production 3.1` (9 Nov 2026)
+
+**Working area:** page `🏭 Production 3.1` (`41137:16938`), section `Production` (`41137:17061`). The user duplicated it; edit only here. Restore point: "Before AM comment + 6 Nov ticket round (Claude, 9 Nov 2026)".
+
+**Context:** Daniel left comments on an older file / page. Each was checked against the current tickets before acting. On every changed frame, a yellow `📝 Change note — <step>` frame sits **under** it (1440 wide, plugin data `note=1`). The user asked for these notes so they can see what moved.
+
+**Comments, checked against the tickets**
+
+| Comment | Verdict | Action |
+|---|---|---|
+| "last login should be a date range picker" | Already done (1.2) | Ignored |
+| "missing filter: account status" | Already done 28 Oct (1.2) | Ignored |
+| "add one more filter for full name" | **New**: MOVE-4452 edited 6 Nov | Added (1.2) |
+| "default screen: work email field hidden…" | Valid (MOVE-4450 since 15 Oct; our miss) | Fixed (2.1) |
+| "default screen: access roles field hidden…" | Valid (same) | Fixed (2.1) |
+| "missing field: account type" (details drawer) | Already done 26 Oct (3.x drawers) | Ignored |
+
+**Ticket edits of 6 Nov (via `jira-desc-diff.py` from 29 Oct)**
+- **MOVE-4452:**
+  - New filter **Full Name**: multi-select with auto-complete; options = all employees + sub-con drivers.
+  - Popover order: Full Name, Access Roles, Account Type, Account Status, Last Login.
+  - Account Status is now a plain multi-select (no search).
+- **MOVE-4453 / MOVE-4457:** after Confirm, and after Cancel, the modal closes and the user **stays on the account details drawer**. Previously they went back to the listing.
+  - 5.4 `41137:59793`: Suspended; drawer with suspension details + toast.
+  - 6.2 `41137:60588`: Unsuspended; drawer Active, no suspension details, Last Updated On 2:10pm, toast.
+  - The old "back on listing" frames were deleted.
+- **MOVE-4458 (Activity):**
+  - Wording changed from "employee" to "account".
+  - Column **Last Updated On → Date & Time**.
+  - Empty state copy: "Please select an account to view the account activity".
+  - The account picker sits **outside** the filter component: a select with placeholder "Select account" and auto-complete.
+  - The filter component holds **Module**, **Event Type** (new) and **Date** (new date range on the activity date).
+  - The toolbar's "Last Updated On" range was removed.
+  - Frames 1.4–1.7 updated. 1.5 is now the toolbar select open with "He". 1.6 lost its "Full Name:" tag row.
+- **MOVE-4449:** summary renamed "WLA: ATOMS Account Management". No screen impact.
+
+**Technique:** in this file the toolbar is `Leave/Filter` → `Filter Bar 3.0`.
+- Its `Secondary Datepicker#44:0=false` does **not** hide the date range. Hide the inner `Date Selector` child directly.
+- An absolute-positioned select appended to `Leave Employee` stays **behind** the `Leave/Filter` instance until that date selector is hidden.
+
+**Open questions (MOVE-4458), still open**
+1. The intro says "select tab 'staff activity'", but the tab is drawn as "Activity". Which label is it?
+2. Sort still lists "full name / account type", but neither is a column.
+3. Before / After format is still undefined.

@@ -20,6 +20,9 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 
 ## Working with the user
 
+- **Comments can be stale or made on the wrong file.** Never apply a comment blind: check the current frame and the current ticket first, and report the ones that were already done (user, 9 Nov).
+- **When asked to "give notes" while fixing,** put a yellow `📝 Change note` frame under each changed frame (date, ticket, what changed and why).
+
 - Reply in Bahasa Indonesia.
 - "Update related screens too" is the default, even when unstated. Check sibling screens of the same style and flow, but don't touch other pages or styles unless they share the same element.
 - **The user edits frames by hand between rounds** (e.g. removed Price Breakdown, the email row and a dropdown caret). Before editing, list the current children and respect what was removed. Never rebuild something the user deleted.
@@ -38,6 +41,7 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 
 | Date | Task | Lesson |
 |---|---|---|
+| 9 Nov 2026 | AM comments made on the wrong file + ticket edits | Triage each comment against the **current** ticket: already done → ignore and report; new ticket edit → build; valid miss → fix. Then diff **all** epic tickets edited since the last round: the 6 Nov edits (stay on drawer after suspend, Activity rework) were bigger than the comments. Leave a visible change note under every touched frame when the user asks for traceability. |
 | 8 Nov 2026 | Reorganise the knowledge base | Docs refer to each other by bare, unique file names, so folders can move freely. A checker script (`tools/check-knowledge.py`) proves nothing broke and no secrets slipped in. One component lookup (`COMPONENT_MAP.md`) replaces hunting through five docs. |
 | 6 Nov 2026 | AM: is "access roles hidden by default" new? | No. MOVE-4450 had it since 15 Oct. We drew the empty state with the conditional fields visible. When a ticket says "shown if", apply it to the empty state as well. |
 | 5 Nov 2026 | PD Claims Style 2: remove row icons | Identical icons on every row add nothing. The older "no need this" pin had already been fixed (tab counters), so it was reported, not re-done. |

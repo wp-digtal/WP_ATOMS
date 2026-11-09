@@ -14,6 +14,19 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Account Management Production 3.1: comment triage + 6 Nov ticket edits (Figma, 9 Nov 2026, MOVE-4450 / 4452 / 4453 / 4457 / 4458)
+
+Daniel's comments were left on an older page. Each was checked against the current tickets:
+- 3 were already done and were ignored: Last Login as a date range, the Account Status filter, Account Type in the details drawer.
+- 2 were valid: Work Email and Access Roles are now hidden in the empty Create drawer (MOVE-4450, rule since 15 Oct).
+- 1 came from a new ticket edit: the Full Name filter.
+
+All epic tickets were then diffed from 29 Oct, which found further 6 Nov edits:
+- After Suspend / Unsuspend the user stays on the details drawer (5.4, 6.2 rebuilt).
+- The Activity tab was reworked: toolbar "Select account" picker, popover with Module / Event Type / Date, column "Date & Time", new empty-state copy.
+
+Every changed frame has a yellow change note under it, as the user asked. Restore point: "Before AM comment + 6 Nov ticket round (Claude, 9 Nov 2026)". Details: `ACCOUNT_MANAGEMENT_KNOWLEDGE.md` §16.
+
 ### Changed — Knowledge base reorganised into `knowledge/`; consolidated component map; safety checker (8 Nov 2026)
 
 The user asked for the existing knowledge to be tidied so it can be moved around safely, and for components to be mapped well ahead of tidying old designs.
