@@ -42,6 +42,7 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 
 | Date | Task | Lesson |
 |---|---|---|
+| 9 Nov 2026 | AM "pls check updated requirements MOVE-4458" on the old 'spec pending' frame | That comment was on a frame from the very first build. On Production 3.1 the Activity tab was already rebuilt to the 6 Nov ticket in the same session, so the answer is "already done", with a pointer to the frames. No rework. |
 | 9 Nov 2026 | AM comments made on the wrong file + ticket edits | Triage each comment against the **current** ticket: already done → ignore and report; new ticket edit → build; valid miss → fix. Then diff **all** epic tickets edited since the last round: the 6 Nov edits (stay on drawer after suspend, Activity rework) were bigger than the comments. Leave a visible change note under every touched frame when the user asks for traceability. |
 | 8 Nov 2026 | Reorganise the knowledge base | Docs refer to each other by bare, unique file names, so folders can move freely. A checker script (`tools/check-knowledge.py`) proves nothing broke and no secrets slipped in. One component lookup (`COMPONENT_MAP.md`) replaces hunting through five docs. |
 | 6 Nov 2026 | AM: is "access roles hidden by default" new? | No. MOVE-4450 had it since 15 Oct. We drew the empty state with the conditional fields visible. When a ticket says "shown if", apply it to the empty state as well. |
