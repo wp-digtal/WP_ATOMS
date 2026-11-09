@@ -458,8 +458,8 @@ Restore point: "Before PD comment round: balance drawer, history filter, upload 
 
 - **Reference locations:** the Leave module's Leave Balance Details drawers are in this same file. They sit in section `Old Leave` (`29013:27819`), under the big title `39222:22525` at 10573,7715.
 - **Open:**
-  - PD **Submit Claim** frames (MOVE-3776) still use `Upload / Drag and Drop` ("PNG, JPG/JPEG or PDF, up to 2MB each"), not the house pattern. Asked the user whether to standardise them too.
-  - None of the PD forms shows an uploaded-file row (thumbnail + name + "File size" + delete), as in the HR Claims reference.
+  - PD **Submit Claim** frames (MOVE-3776) still use `Upload / Drag and Drop` ("PNG, JPG/JPEG or PDF, up to 2MB each"), not the house pattern. Asked the user whether to standardise them too. **Resolved in §13.2: yes.**
+  - None of the PD forms shows an uploaded-file row (thumbnail + name + "File size" + delete), as in the HR Claims reference. **Resolved in §13.2.**
 
 ### 13.1 Follow-up comments (10 Nov 2026)
 
@@ -468,3 +468,20 @@ Restore point: "Before PD comment round: balance drawer, history filter, upload 
   - It is a clone of the My Claims tab frame (`41092:109304`) with the Approvals popover (`41092:117104`) cloned in, minus the Employee item.
   - The popover holds Claim Type, Status and Submitted On. The filter icon is set to `Active=True`.
   - The same filter applies to the non-approver page (no tabs); no separate frame was drawn.
+
+### 13.2 Round 2: upload standard on Claims, CTA out of the tabs, Remarks column, tab exploration (10 Nov 2026)
+
+The user's answers to §13's open questions: "upload sama kan" (yes, same pattern) and "ya boleh" (yes, show an uploaded file).
+
+| Comment / answer | Ticket | Change |
+|---|---|---|
+| Upload the same as Leave | MOVE-3776 / 3777 | Submit Claim filled `41092:299784` and missing-fields `41092:300597`: drag-and-drop replaced by the standard stack. Label "Attachments" (Required) + `Upload / Button` + "Maximum file size: 2MB / Accepted file types: .jpg, .jpeg, .png, .pdf". The missing-fields frame also has an error caption; its inner frame is now vertical auto-layout, gap 4. |
+| Show an uploaded file | MOVE-3946 / 3777 | Uploaded-file card (hand-built: paperclip thumbnail, blue file name, "File size : 0.12MB", trash icon; width 620) in Submit Claim `41195:181461`. **New** frame `41195:181488` "Apply Leave – Medical Leave with supporting document uploaded": Medical Leave 2–3 Dec 2026, preview 14 / 2 / 12, Supporting Document = Required, card "medical-certificate.pdf" (`41195:187605`), flow label `41195:187616`. |
+| "Submit Claim should be outside the tabs, like Leave" | MOVE-3943 | On all 20 Claims frames (listing, both tabs, filter frames, and the page behind every drawer / modal), the `BusCom-HeaderWrapper` was replaced with a clone of the Leave page header (`41092:361854`, Type=Detail). It has the title "Claims", breadcrumb "Claims" and a primary "Submit Claim" in the header button group. The old header and the filter-bar Submit Claim button are hidden, not deleted. The two filter popovers (`41092:117104`, `41195:180863`) were re-anchored to 744,286 because the filter bar shifted. |
+| "Approvals table looks squeezy, remove Remarks" | MOVE-3943 | Remarks column hidden on the Approvals table in 9 frames: `113871`, `116474`, and the approver drawer / modal frames `314570`, `316841`, `319302`, `324952`, `327572`, `330231`, `41114:125100`. Widths: Employee 180 / Claim No. 140 / Submission Date 150 / Claim Type 160 / Amount 110 / Status 175 / Last Updated On 240 (total 1155). Remarks stays in Claim Details. The Leave tables never had Remarks. |
+| Tabs not stretched (Roles on UAT) | — | **Exploration section** `41195:245231`, to the right of the PD section (48537,-34758). V1 `41195:245232`: tabs hug left, CTA at the right of the tab row. V2 `41195:247591`: tabs hug left, CTA in the page header. V3 `41195:249937`: tabs and filters on one row, CTA in the header. Plus V1 on Leave, `41195:252283`. Each has a pro/con note. Production stays on V2's header without tab hugging until the user picks. |
+
+- **How to move a CTA into the page header:** clone the Leave header, insert it at the old header's index, hide the old one, and change the texts "Leave"→"Claims" and "Apply Leave"→"Submit Claim". After that, hide only the filter-bar child whose id ends `21:47309`. Its siblings `21:9496` (Filter) and `21:9497` (Download Trip) are hidden in the source already.
+- **Moving a CTA onto the tab row:** clone the header's button into the tab group as `ABSOLUTE`. Set `Type=Primary` (the clone came out Default). Set the header's `RT-Detail Header Content` to `primaryAxisAlignItems=MIN`, or the title centres once the button group is hidden.
+- **Open:** the user is to pick V1, V2 or V3; then apply tab hugging to every Claims and Leave frame.
+

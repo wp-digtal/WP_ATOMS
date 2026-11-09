@@ -20,6 +20,8 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 - **Every status in the data needs its detail state.** If the listing shows a status (e.g. Deactivated), the drawer for that status must exist, with the ticket's allowed / disabled actions and tooltips (AM audit, 9 Nov).
 - **"Same as module X" means clone X, not redraw it.** When a ticket says "exact same details and format as" another module, clone that module's real frame or drawer, then remove the actions this context doesn't allow and re-sync the data (PD balance drawer, 10 Nov).
 - **Standardise a component across every frame that uses it**, not only the commented one: here, upload helpers were missing in 3 of 5 Apply Leave frames.
+- **A page-level CTA sits outside the tabs, in the page header** (as on the Leave page). Don't put it in one tab's filter bar (Daniel, 10 Nov).
+- **Drop low-value columns before a table gets squeezy.** Long free text (Remarks) belongs in the details drawer, not the listing (Daniel, 10 Nov).
 - **Every table with a filter icon needs a "filter open" frame.** That means own vs. approvals tables (Leave History, My Claims), not just the first table on the page. The filter sets differ per table, so read each table's own query table in the ticket (Daniel, 10 Nov).
 - **Sticky step headers** on long multi-step forms are expected. Draw the scrolled state (Bus Booking 2.8).
 
@@ -46,6 +48,7 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 
 | Date | Task | Lesson |
 |---|---|---|
+| 10 Nov 2026 | PD round 2: CTA out of tabs, Remarks, upload | A page-level CTA lives in the page header, so swap in the sibling module's header component rather than restyling the old one. Do it on the page **behind** every drawer and modal too (20 frames, not 4). Hiding a column changes nothing in the filter popovers, but moving a filter-bar button does: absolute popovers anchored to the old position must be re-placed. Before creating a change note, look for an older note without plugin data, or the two will overlap. |
 | 10 Nov 2026 | PD comment round | Cloned instance sub-layers keep the source state: the Upload button came over Disabled from the Empty frame. Reset states after cloning. Per-node `loadFontAsync(t.fontName)` timed out again; preload `{family, style}` once (SF Pro Bold / Semibold, Inter Regular in this file). |
 | 9 Nov 2026 | AM full audit | Check frames programmatically: dump the table header texts, drawer cell label=value pairs and disabled states for every frame, then compare them with the ticket tables. This found the missing Deactivated state and a data mismatch that screenshots alone had missed. |
 | 9 Nov 2026 | AM "pls check updated requirements MOVE-4458" on the old 'spec pending' frame | That comment was on a frame from the very first build. On Production 3.1 the Activity tab was already rebuilt to the 6 Nov ticket in the same session, so the answer is "already done", with a pointer to the frames. No rework. |

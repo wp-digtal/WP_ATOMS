@@ -14,6 +14,18 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Personal Dashboard (web): Claims CTA in the page header, Remarks column removed, upload standard, tab exploration (Figma, 10 Nov 2026, MOVE-3943 / 3776 / 3946)
+
+Daniel's second round, plus the user's answers to the upload question ("upload sama kan", "ya boleh").
+
+- **Submit Claim** moved out of the tabs into the page header on all 20 Claims frames. It uses the Leave page header component and placement.
+- **Approvals table:** Remarks column removed in 9 frames; columns refit. Remarks remains in Claim Details.
+- **Submit Claim upload:** now the house pattern (Upload + max 2MB + accepted types), with an uploaded-file card.
+- **New Apply Leave frame:** Medical Leave with a supporting document uploaded.
+- **New exploration section:** tabs not stretched, Roles UAT pattern. V1 puts the CTA on the tab row, V2 in the header, V3 puts tabs and filters on one row; V1 is also shown on Leave. Open: the user's pick.
+
+Change notes sit on every touched frame. Details: `PERSONAL_DASHBOARD_KNOWLEDGE.md` §13.2.
+
 ### Added — Personal Dashboard (web): My Claims filter open (Figma, 10 Nov 2026, MOVE-3943)
 
 Daniel: the own-claims filter was missing. It differs from Approvals, having no Employee filter. Added frame `41195:180732` with Claim Type / Status / Submitted On, plus a change note. His History filter comment had already been covered earlier the same day. Details: `PERSONAL_DASHBOARD_KNOWLEDGE.md` §13.1.
