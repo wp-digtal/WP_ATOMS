@@ -460,3 +460,11 @@ Restore point: "Before PD comment round: balance drawer, history filter, upload 
 - **Open:**
   - PD **Submit Claim** frames (MOVE-3776) still use `Upload / Drag and Drop` ("PNG, JPG/JPEG or PDF, up to 2MB each"), not the house pattern. Asked the user whether to standardise them too.
   - None of the PD forms shows an uploaded-file row (thumbnail + name + "File size" + delete), as in the HR Claims reference.
+
+### 13.1 Follow-up comments (10 Nov 2026)
+
+- **"missing showing the filter for history"** (MOVE-3948 4.3): already built in §13 (`41195:176264`). No change.
+- **"missing showing the filter for own claims"** (MOVE-3943 biz req 2.3): `41195:180732` is **new**, "My Claims, filter open (approver)", at 8315,23659 next to the Approvals filter.
+  - It is a clone of the My Claims tab frame (`41092:109304`) with the Approvals popover (`41092:117104`) cloned in, minus the Employee item.
+  - The popover holds Claim Type, Status and Submitted On. The filter icon is set to `Active=True`.
+  - The same filter applies to the non-approver page (no tabs); no separate frame was drawn.

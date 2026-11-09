@@ -20,6 +20,7 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 - **Every status in the data needs its detail state.** If the listing shows a status (e.g. Deactivated), the drawer for that status must exist, with the ticket's allowed / disabled actions and tooltips (AM audit, 9 Nov).
 - **"Same as module X" means clone X, not redraw it.** When a ticket says "exact same details and format as" another module, clone that module's real frame or drawer, then remove the actions this context doesn't allow and re-sync the data (PD balance drawer, 10 Nov).
 - **Standardise a component across every frame that uses it**, not only the commented one: here, upload helpers were missing in 3 of 5 Apply Leave frames.
+- **Every table with a filter icon needs a "filter open" frame.** That means own vs. approvals tables (Leave History, My Claims), not just the first table on the page. The filter sets differ per table, so read each table's own query table in the ticket (Daniel, 10 Nov).
 - **Sticky step headers** on long multi-step forms are expected. Draw the scrolled state (Bus Booking 2.8).
 
 ## Working with the user

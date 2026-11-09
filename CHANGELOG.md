@@ -14,6 +14,10 @@ minor).
 
 ## [Unreleased]
 
+### Added — Personal Dashboard (web): My Claims filter open (Figma, 10 Nov 2026, MOVE-3943)
+
+Daniel: the own-claims filter was missing. It differs from Approvals, having no Employee filter. Added frame `41195:180732` with Claim Type / Status / Submitted On, plus a change note. His History filter comment had already been covered earlier the same day. Details: `PERSONAL_DASHBOARD_KNOWLEDGE.md` §13.1.
+
 ### Changed — Personal Dashboard (web): comment round, balance drawer, History filter, upload standard (Figma, 10 Nov 2026, MOVE-4351 / 3948 / 3946)
 
 - **Leave Balance Details drawer** replaced with the Leave module's drawer (MOVE-4351 says "exact same as" MOVE-4137).
