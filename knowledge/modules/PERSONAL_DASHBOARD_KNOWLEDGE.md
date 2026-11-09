@@ -93,6 +93,7 @@ These come from product, not a ticket. Apply them in Figma; the tickets lag behi
 
 - **Personal Dashboard ≠ HR module.** Read only the MOVE-3412 children for PD rules; never the HR Claims / Leave module tickets (user: "jangan baca yang HR lho ya, ini beda ya"). Where a PD ticket says "same as leave/claims module", follow that pointer only as far as the PD ticket says.
   - Example: **Remarks** — the PD ticket MOVE-3943 (16 Oct) removes it from **My Claims only**. The **Approvals** table keeps Remarks, even though product's chat note said "remove remarks column from table".
+  - **Superseded 6 Nov 2026:** MOVE-3943 was edited again (6 Nov, 13:26) and the Remarks row was removed from the Approvals column table too. The Approvals table now has no Remarks column (built 10 Nov, §13.2). Search still covers Remarks.
 - **Header bar like the main app (SS1).**
   - Top header bar over the content column: collapse icon, Search…, English, ?, bell, avatar + chevron.
   - The profile dropdown holds "Personal Dashboard" (from the workspace) and "Work space" (from inside PD).
@@ -484,4 +485,84 @@ The user's answers to §13's open questions: "upload sama kan" (yes, same patter
 - **How to move a CTA into the page header:** clone the Leave header, insert it at the old header's index, hide the old one, and change the texts "Leave"→"Claims" and "Apply Leave"→"Submit Claim". After that, hide only the filter-bar child whose id ends `21:47309`. Its siblings `21:9496` (Filter) and `21:9497` (Download Trip) are hidden in the source already.
 - **Moving a CTA onto the tab row:** clone the header's button into the tab group as `ABSOLUTE`. Set `Type=Primary` (the clone came out Default). Set the header's `RT-Detail Header Content` to `primaryAxisAlignItems=MIN`, or the title centres once the button group is hidden.
 - **Open:** the user is to pick V1, V2 or V3; then apply tab hugging to every Claims and Leave frame.
+
+### 13.3 Full audit against the tickets (10 Nov 2026)
+
+The user asked: "cek kembali semua screen disini … compare dengan tiket. apakah ada yang terlewatkan". Read-only; nothing was changed in Figma during the audit.
+
+**Tickets.** All 22 MOVE-3412 children were re-read. Edits since 17 Oct:
+
+| Ticket | Edit | Effect |
+|---|---|---|
+| MOVE-3943 | 6 Nov 13:26 | Remarks row removed from the columns table. Approvals has no Remarks (already built 10 Nov). |
+| MOVE-3776 | 30 Oct | Submitted claims go to the employee's **claims** approver (was "leave approver"). Wording only; no screen shows it. |
+| 3945 / 3950 / 3952 / 3958 | 20 Oct | Copy-key names added to the tooltips and modals. No rule change. |
+| Every other ticket | 6 Nov 09:32–09:37 | Sprint field moved (HR Module → Sprint 30 → 28 → 30). Not a requirement change. |
+
+MOVE-3953 / 3954 (Pay Slip) descriptions are still empty.
+
+**Section inventory.** Section `41091:22331` has 195 children and 51 frames. Rows:
+
+| Row | Frames |
+|---|---|
+| Entry | `41108:278794`, `283731` |
+| Home | `41107:267249`, `271607`, `41108:274758` |
+| Leave page | `41092:364801`, `357820`, `374451`, `385461`, `41195:166114` |
+| Leave approvals | `41092:396180`, `399456`, `41107:264186`, `41195:176264` |
+| Apply Leave | `41092:414340`, `414579`, `421184`, `414815`, `415054`, `41116:48919`, `41195:181488` |
+| Own leave drawer | `41092:450009`, `464616`, `465601`, `457308` |
+| Approver leave | `41092:475837`, `485616`, `41099:154273`, `41092:489811`, `41099:161302`, `169816`, `41114:124024` |
+| Claims page | `41092:111950`, `109304`, `113871`, `116474`, `41195:180732` |
+| Submit Claim | `41092:300597`, `299784`, `303206` |
+| Own claim | `41092:305164`, `307743`, `307953`, `309614` |
+| Approver claim | `41092:314570`, `316841`, `324952`, `319302`, `327572`, `330231`, `41114:125100` |
+
+**Findings** (the same list is in `HANDOFF.md` §7.1):
+
+| # | Type | Finding | Frames |
+|---|---|---|---|
+| 1 | Bug | "1 Sep 2026 – 31 Sep 2026" (invalid date) for Custom Leave Type in Leave Balances | every Leave page frame |
+| 2 | Bug | Leftover "1 month ago" under Reason for Cancellation | `41092:465601` |
+| 3 | Bug | Label "Days Used" (elsewhere "Used") | `41114:124024` |
+| 4 | Bug (own, 10 Nov) | Medical Leave preview 14 / 2 / 12; should be 9 / 2 / 7 (Medical: 14 entitlement, 5 used) | `41195:181488` |
+| 5 | Data | Approved annual leave 18–22 Oct is not in Leave Applications; Annual Used 3 doesn't include it | `41092:457308` |
+| 6 | Data | Submit Claim filled (Toll, 3 Oct, $3.50, SBS9012C, WP 7) ≠ result CL20260016 (19 Oct, $2.60, SBS5678B, WP 3) | `41092:299784` vs `303206` / `305164` |
+| 7 | Docs | Claims note says Approvals keeps Remarks (outdated since 6 Nov) | `41108:314352` |
+| 8 | Docs | 18 `Docs/Notes` still show the default date "24/04/2024" | section notes |
+| 9 | Missing | "Claim Details (own) – Pending Payment, Cancel disabled + tooltip" `41092:312075` is gone, with its flow label and note. It existed on 10 Nov morning; `getNodeByIdAsync` on it hangs the bridge. MOVE-3958 needs this state. | — |
+| 10 | Missing | No example of a leave type with more than one validity period in the year (MOVE-3948 3.3 sub-rows) | Leave page |
+| 11 | Missing (house standard) | No empty state for own Leave Applications, My Claims, or Claims Approvals | — |
+| 12 | Style | Claim drawer Cancel is red / danger, leave drawer Cancel is grey; both tickets say "secondary CTA" | `41092:305164` vs `41092:450009` |
+| 13 | Style | Claims tables use "05 Oct 2026", Leave and drawers "5 Oct 2026" | Claims tables |
+
+**Confirmed OK:**
+- Entry via the profile dropdown and back to Work space.
+- Home:
+  - Recent Activity "Last 7 days", 6 cards + View all / Show less;
+  - balances Annual + Medical + View more;
+  - both CTAs.
+- Leave:
+  - year toggle above the tabs; tabs only for approvers;
+  - Applications above Balances; 5 / page;
+  - Approvals columns and filters (History adds Status);
+  - both empty-state copies match MOVE-3948 exactly;
+  - badge 7.
+- Balance drawer: Option 1 / 2, View Change History, no Edit.
+- Apply Leave: upload standard; error state; Time Off; insufficient balance.
+- Own leave drawer: Cancel enabled / disabled + tooltip; optional reason.
+- Approver leave and claim drawers:
+  - Employee field;
+  - Actions Approve / Reject, disabled + tooltip when not pending;
+  - reason required → Confirm disabled until filled;
+  - result drawer + toast.
+- Claims:
+  - columns per the 6 Nov ticket; 10 / page;
+  - search placeholder "Search Claims", Last Updated On range;
+  - filters (Employee only on Approvals);
+  - Submit Claim in the page header; no Employee field in Submit Claim.
+
+**Still waiting on the user:**
+- tab variant V1 / V2 / V3;
+- the orange-note questions (`41116:147347`, `41116:147362`);
+- whether to fix findings 1–13.
 

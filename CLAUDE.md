@@ -1,5 +1,7 @@
 # Working agreements for this repository
 
+**New agent? Read `HANDOFF.md` (repo root) first: people, tools, file registry, module status, open items, standing rules, playbooks.**
+
 **All knowledge lives in `knowledge/` (reorganised 8 Nov 2026). Start at `knowledge/README.md`.** It has `process/` (lessons), `design-system/` (Figma docs plus `COMPONENT_MAP.md`, the component lookup) and `modules/` (one KB per module). Docs refer to each other by bare file name, and names are unique, so find any `NAME.md` mentioned below with `find . -name NAME.md`. Run `python3 -I tools/check-knowledge.py` after editing docs; it checks for missing references, duplicate names, secrets, and that the component map is in sync.
 
 Standing instructions for Claude sessions on this repo. Structural reference

@@ -10,6 +10,8 @@ Everything a session (or a person) needs to work on this product fast. Session m
 | `design-system/` | `COMPONENT_MAP.md` + `component-map.json` (**the lookup**: element → real component → where → how → legacy replacement)<br>`FIGMA_DESIGN_SYSTEM.md` (web / COMPASS: files, tokens, house patterns, bridge techniques §4)<br>`FIGMA_MOBILE_DESIGN_SYSTEM.md` (mobile / Integral: anatomy, tokens, components, fast-build tips §5.2)<br>`FIGMA_COMPONENT_INDEX.md` (code → Figma: which frames and components each screen of the app was pushed to) | Before building, editing or tidying **any** Figma screen |
 | `modules/` | One file per module: `ACCOUNT_MANAGEMENT_`, `BUS_BOOKING_`, `CLAIMS_`, `DRIVER_LEAVE_`, `FLEET_`, `LIVE_TRACKING_`, `PERSONAL_DASHBOARD_KNOWLEDGE.md`, plus `CLAUDE_SESSION_CONTEXT.md` (web app business rules) | Before touching that module: ticket rules, frame ids per state, decisions, open questions |
 
+**Handover entry point:** `HANDOFF.md` at the repo root summarises everything (people, tools, Figma files, module status, open items, rules). Read it first.
+
 Kept at the repo root on purpose (tooling and the nightly routine read them there): `CLAUDE.md` (working agreement), `CHANGELOG.md` (what changed and why, plus Open items), `DEVELOPER_GUIDE.md` (code structure), `tools/` (scripts).
 
 ## Read order for a Figma task

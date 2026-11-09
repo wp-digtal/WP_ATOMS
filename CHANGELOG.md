@@ -14,6 +14,22 @@ minor).
 
 ## [Unreleased]
 
+### Added — `HANDOFF.md` + Personal Dashboard full ticket audit (10 Nov 2026, MOVE-3412)
+
+- **`HANDOFF.md`** (new, repo root): a detailed handover so another AI agent can continue with no context loss (the user asked for it "sangat detail"). It covers:
+  - people;
+  - repo and git rules;
+  - tools and their failure modes (Figma bridge pairing, official Figma MCP, Jira cloudId, the copy master list);
+  - design systems; Figma file registry; module status board;
+  - open items; consolidated standing rules; playbooks; glossary;
+  - an end-of-session checklist.
+  `CLAUDE.md` and `knowledge/README.md` now point to it first.
+- **PD audit** (read-only): every MOVE-3412 ticket was re-read with changelog diffs, and all 51 frames were checked.
+  - Findings: 4 canvas bugs, 2 data inconsistencies, 2 docs issues, 3 missing states, 2 style inconsistencies. The most important: the own-claim "Pending Payment, Cancel disabled + tooltip" frame `41092:312075` was deleted from the canvas.
+  - Full list in `PERSONAL_DASHBOARD_KNOWLEDGE.md` §13.3. Nothing fixed yet; waiting for the user.
+- **Correction:** `PERSONAL_DASHBOARD_KNOWLEDGE.md` §5 said Approvals keeps Remarks. MOVE-3943's 6 Nov edit removed it, so the note is marked superseded.
+- **Found:** the nightly Leave routine has no Jira connector attached, so it likely stops at preflight every night. Recorded in `HANDOFF.md` §3.3; not changed.
+
 ### Added — Fleet knowledge base (read-only study of the legacy WLA Fleet Figma file, 10 Nov 2026, MOVE-125)
 
 The user asked for the old Fleet file to be studied before rebuilding it with COMPASS. No Figma edits were made.
