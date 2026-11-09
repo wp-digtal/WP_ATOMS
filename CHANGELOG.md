@@ -14,6 +14,21 @@ minor).
 
 ## [Unreleased]
 
+### Fixed — HR Claims: Submit Claim empty state, Remarks without plate/trip, Others max 80 (Figma + code, 10 Nov 2026, MOVE-3799 / MOVE-3801)
+
+- **Figma (Claim (HR Module) file):**
+  - Westpoint Digital's comment is solved: new "🟢 2.0 Empty — drawer just opened" frame `43236:18679`, with a green note.
+  - A re-check of all MOVE-4021 tickets found two real edits:
+    - MOVE-3801 (27 Oct) dropped the rule that appended "Vehicle Licence Plate / Trip" to Remarks; Remarks is fixed in 9 drawer and modal frames;
+    - MOVE-3799 (30 Oct) caps "Others" at 80 characters; counter added on 2.3.
+  - Also fixed: 2.1 Trip counter (0/120 → 14/120).
+  - Restore point saved first.
+- **Code:**
+  - `remarksLines()` now returns only the user's remarks.
+  - The Specify Claim Type input has `maxLength={80} showCount`.
+  - `tsc` is clean; checked in the browser (drawer Remarks "Detour for road closure"; counter "13 / 80").
+- **Open, not built:** the submit-success frame, a disabled-action + tooltip example, and the highlight-active frame. The user removed some of these by hand, so ask first. Details in `CLAIMS_KNOWLEDGE.md` §6.
+
 ### Fixed — Personal Dashboard audit fixes #4, #5, #7, #9, #10 (Figma, 10 Nov 2026, MOVE-3946 / 3950 / 3943 / 3776 / 3958 / 3948)
 
 The user picked the findings that could mislead devs about logic or flow. Each updated frame now has a 🟢 name prefix and a green update note (the user's new marker for product).

@@ -56,7 +56,8 @@ All three surfaces now share **one status model** (§2). Until the mobile storie
   - Full Name* (searchable, active employees) and Bus Number* (searchable, Westpoint Transit fleet).
   - Route (optional, max 120), Remarks* (max 1000).
   - Attachment(s)* (multiple; png / jpg / jpeg / pdf).
-- **Remarks as displayed** = user text + "Vehicle Licence Plate: …" + "Trip: …", on one line joined with " | ". The parts are derived on read, never stored composed.
+- **Remarks as displayed = only what the user typed ("-" if empty).** The MOVE-3801 edit of 27 Oct 2026 removed the old rule (append "Vehicle Licence Plate: …" / "Trip: …"). Plate and Trip keep their own rows. Code: `remarksLines()` in `hrClaimsData.ts` now returns only the user text (10 Nov 2026).
+- **Others → Specify Claim Type: max 80 characters** with a counter (MOVE-3799 edit 30 Oct 2026; it was 50 for one minute on 27 Oct, then removed, then 80).
 - **Details drawer (MOVE-3801)**:
   - Header: claim number + status tag.
   - **Basic Information**: Employee (department sub-line), Claim Type, Submission Date, Receipt Date & Time, Amount, Attachments, Vehicle Licence Plate, Trip, and Remarks (full width).
@@ -194,3 +195,58 @@ Restore point: "Before mobile Claims align to HR Claims (Claude, 15 Oct 2026)".
   - Remarks joined with " | ".
   - Header shows the HR type label, the `$` amount, the new claim no. and the HR chip colour.
 - The two `Docs/Notes` on the canvas had been removed from the file (by the user), so they were not re-added. Captions 1.3 / 1.4 were added above the form frames.
+
+## 6. HR Claims Figma: state of the file and how to work in it (re-checked 10 Nov 2026)
+
+**Read this before touching the Claim (HR Module) file.** The user reorganised section `29013:27819` by hand after 15 Oct, so the frame list in §4 is partly stale. **Respect the deletions; don't re-create removed frames without asking.**
+
+**Current layout** (81 children; frames are 1440 × 1024):
+
+| Row | Big Title | Frames (x,y) |
+|---|---|---|
+| Title | `43023:263570` "HR Claims" | — |
+| 1 · Claims Listing | `43023:263592` | 1.1 default `43006:22337` (420,2100); 1.2 filter `43006:22479` (2838,2100); 1.4 empty search `43023:240323` (5042,2100). **1.3 highlight-active is gone.** |
+| 2 · Submit Claim | `43023:267832` | 2.1 Toll filled `43006:24615` (420,4214); missing fields `43006:24781` (3546,4198); **🟢 2.0 Empty `43236:18679` (5186,4198), new 10 Nov**; 2.3 Others `43023:244863` (420,5499). **2.2 "submitted, back on listing" is gone.** 2.4 Receipt Time is now a Docs/Notes + mini frame `43143:53058` next to 2.1. |
+| Details by status | — | **Row 3 is gone as a row.** Statuses still appear inside the flows: Pending Approval `43111:430288` (467,7613); Pending Payment drawer-only frame `43146:53156` (1223,8753, 684 wide); Rejected `43023:250676`; Cancelled `43105:19765`; Paid `43023:261293`. |
+| 4 · Approve / Reject | `43208:18707`, `43023:267883` | 4.1 `43006:23765`, 4.2 `43023:247822`, 4.3 `43006:23967`, 4.4 `43023:250061`, 4.5 `43023:250676` |
+| 5 · Cancel Claim | `43023:267912` | 5.1 `43006:24184`, 5.2 `43023:251546`, 5.3 `43105:19765` |
+| 6 · Mark as Paid | `43023:267934` | 6.1 `43006:24401`, 6.2 errors `43023:256811` (2908,14622), 6.3 `43023:259067`, 6.4 `43023:261293` |
+
+There is also a stray `Employee/Drawer` `39280:84433` at (10551,5523).
+
+**Tickets** (epic MOVE-4021, all "To Define Tasks"). Edits since 15 Oct:
+
+| Ticket | Edit | Effect |
+|---|---|---|
+| 3799 | 20 Oct | copy keys only |
+| 3799 | 30 Oct | **Others max 80** |
+| 3801 | 27 Oct | **Remarks no longer appends plate / trip**; the trip-format row was removed |
+| 3801 | 30 Oct | Reason for Cancellation always shown (it is now required) |
+| 3731 / 3920 / 3957 | 20 Oct | copy keys only |
+
+**Done 10 Nov 2026** (restore point "Before HR Claims comment fix: Submit Claim empty state + Remarks/Trip/Others (Claude, 10 Nov 2026)"):
+- Westpoint Digital's comment: **2.0 Empty state** of the Submit Claim drawer.
+  - Cloned from the missing-fields frame. Errors reset:
+    - `Caption#515:251=false` on the Form Items;
+    - inner `_Select / Select Input` and `_DatePicker … Outlined` set to `Status=Default` / `State=Default`;
+    - the InputNumber's red stroke was a **direct stroke override**, reset to #D9D9D9;
+    - the Attachments error caption hidden;
+    - both toasts hidden.
+  - Vehicle Licence Plate and Trip are not shown until Claim Type is Carpark / Toll.
+  - Caption `43236:19572`; green note `43236:19573`.
+- Remarks fixed in 9 frames: 3.1, 4.1–4.5, 5.1–5.3, of which 5.3 Cancelled → "-".
+- 2.1 Trip counter set to 14/120.
+- 2.3 Others input: `Show Count#5011:4=true`, "13 / 80".
+- 🟢 prefix + green notes everywhere there was room. Where arrows block the space, the note under 4.2 lists the extra frames.
+
+**Still open (not built; ask first, the user removed some of these on purpose):**
+- No "submitted → back on listing + success toast" frame. MOVE-3799 3.1 requires it.
+- No disabled-action + tooltip example. MOVE-3920 / 3731 / 3957 each have a tooltip copy key: Approve/Reject on a non-pending claim, Cancel when not pending approval, Mark as Paid when not pending payment.
+- No highlight-active (quick filter) frame.
+
+**Fast path next time:**
+1. `figma_diagnose`, then pair on this file.
+2. List the section children (81, cheap).
+3. JQL `parent = MOVE-4021`; diff every ticket updated since the last date in this section with `tools/jira-desc-diff.py`.
+4. Search texts per frame for "Vehicle Licence Plate:" etc. to catch stale copy.
+

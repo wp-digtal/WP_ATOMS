@@ -241,7 +241,8 @@ export function SubmitHrClaimDrawer({
             label="Specify Claim Type"
             rules={[{ required: true, whitespace: true, message: 'Enter the claim type.' }]}
           >
-            <Input placeholder="e.g. air freshener" />
+            {/* MOVE-3799 edit 30 Oct 2026: max 80 characters. */}
+            <Input placeholder="e.g. air freshener" maxLength={80} showCount />
           </Form.Item>
         )}
 

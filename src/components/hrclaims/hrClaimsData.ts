@@ -98,17 +98,13 @@ export function requiresTrip(type: HrClaimType | undefined): boolean {
 }
 
 /**
- * MOVE-3798 / MOVE-3801 — the Remarks shown in the listing and the details
- * drawer include the vehicle licence plate and/or trip appended after the
- * user's own text. Derived on read rather than stored composed, so the
- * separate Vehicle Licence Plate / Trip fields can never disagree with it.
+ * MOVE-3801 (edit 27 Oct 2026) — Remarks shows only what the user typed.
+ * The earlier rule ("append vehicle licence plate and/or trip details") was
+ * removed from the ticket; those values keep their own rows in the drawer.
+ * Kept as a list so callers that join lines still work.
  */
 export function remarksLines(c: Pick<HrClaim, 'remarks' | 'vehiclePlate' | 'trip'>): string[] {
-  const lines: string[] = []
-  if (c.remarks?.trim()) lines.push(c.remarks.trim())
-  if (c.vehiclePlate) lines.push(`Vehicle Licence Plate: ${c.vehiclePlate}`)
-  if (c.trip) lines.push(`Trip: ${c.trip}`)
-  return lines
+  return c.remarks?.trim() ? [c.remarks.trim()] : []
 }
 
 /** MOVE-3798 / MOVE-3801 — "$5.00". */
