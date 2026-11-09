@@ -349,3 +349,14 @@ Of the open questions in §13: Q2 (search vs Full Name) and Q4 (Create Account o
 1. The intro says "select tab 'staff activity'", but the tab is drawn as "Activity". Which label is it?
 2. Sort still lists "full name / account type", but neither is a column.
 3. Before / After format is still undefined.
+
+### 16.1 Tab layout exploration (Daniel #UI/UX, 9 Nov 2026)
+
+- **Daniel's comment:** tabs stretched across the full width are harder to read when there are only 2 short tabs. Take reference from the Roles module on UAT: tabs on the left, "Create Role" on the right of the tab row. Maybe move "Create Account" out of the tabs.
+- **Where:** a separate section on the same page, `Exploration — Tabs not stretched + Create Account outside tabs` (`41137:62068`), to the right of Production. Restore point "Before AM tab exploration section (Claude, 9 Nov 2026)".
+- **Variations:**
+  - **V1 (recommended), Roles-module pattern** (`41137:62073` Accounts, `41137:62668` Activity): tabs hug their labels on the left; Create Account sits on the tab row at the right, and is hidden on Activity, consistent with the MOVE-4458 #CR.
+  - **V2, CTA in the page header** (`41137:62884`, `41137:63664`): Create Account sits next to the page title. It is page-level, so it also shows on Activity; needs a PM call.
+  - **V3, minimal** (`41137:63852`): only the tabs stop stretching; the CTA stays in the toolbar.
+- **Technique:** `Container` (the tab group) → each `Tab/Tab Item` gets `layoutSizingHorizontal='HUG'`; the container gets `primaryAxisAlignItems='MIN'` and `itemSpacing=32`. No detach needed. The CTA is a clone of the Filter Bar's `Button`, placed with `layoutPositioning='ABSOLUTE'`; the original is hidden.
+- **Already done before this round** (also in Daniel's comments): stay on the drawer after Suspend / Unsuspend (§16, 5.4 / 6.2).

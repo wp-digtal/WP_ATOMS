@@ -14,6 +14,15 @@ minor).
 
 ## [Unreleased]
 
+### Added — Account Management: tab layout exploration section (Figma, 9 Nov 2026)
+
+Daniel suggested non-stretched tabs (Roles module on UAT as reference), with Create Account outside the tabs. Built in a separate section on Production 3.1 as three variations:
+- V1 (recommended): tabs left, CTA on the tab row, hidden on Activity;
+- V2: CTA in the page header (page-level, open question for Activity);
+- V3: minimal, tabs left and CTA kept in the toolbar.
+
+His other two comments (stay on the drawer after Suspend / Unsuspend) had already been applied in the same session. Details: `ACCOUNT_MANAGEMENT_KNOWLEDGE.md` §16.1.
+
 ### Changed — Account Management Production 3.1: comment triage + 6 Nov ticket edits (Figma, 9 Nov 2026, MOVE-4450 / 4452 / 4453 / 4457 / 4458)
 
 Daniel's comments were left on an older page. Each was checked against the current tickets:

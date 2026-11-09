@@ -16,6 +16,7 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 - **Value + subtext beats a joined string.** "18" with "20-seater bus" under it, not "18 · 20-seater bus" (Bus Booking, 4 Nov).
 - **Labels follow the PM's #CR wording**, but fix the grammar ("Contact Informations" → "Contact Information") and say so in the reply.
 - **A conditional field ("shown if X = Y") is hidden in the default / empty state too**, not only when another value is picked. Check every state, including "nothing selected yet" (Account Management create drawer, 6 Nov).
+- **Fewer, shorter tabs don't stretch.** With 2 short tabs, size the tabs to their labels on the left and put the primary CTA on the tab row (Roles module pattern), not full-width tabs (Daniel, 9 Nov).
 - **Sticky step headers** on long multi-step forms are expected. Draw the scrolled state (Bus Booking 2.8).
 
 ## Working with the user
