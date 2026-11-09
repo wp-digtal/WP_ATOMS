@@ -177,6 +177,8 @@ Node ids go stale when people move or delete frames. **Resolve the user's link a
 
 ### 7.1 Personal Dashboard audit, 10 Nov 2026
 
+**Fixed on 10 Nov (user picked #4, #5, #7, #9, #10, the ones that could mislead devs about logic):** see `PERSONAL_DASHBOARD_KNOWLEDGE.md` §13.4. Fixing #10 also fixed #1 ("31 Sep"). **Still open:** #2, #3, #6, #8, #11, #12, #13.
+
 The user asked to re-check every screen against the tickets. Details are in `PERSONAL_DASHBOARD_KNOWLEDGE.md` §13.3. Short list:
 
 **Bugs on the canvas**
@@ -241,7 +243,7 @@ All of these come from the user and are binding. Sources: `CLAUDE.md` and `LESSO
    - If the bridge isn't on that file, give a pairing code first and wait.
 2. **Learn = write it down.** "pelajari / simpan / ingat" means write it into a repo `.md` in the same turn, then commit and push. Session memory doesn't count.
 3. **Every task ends with a lesson** in `LESSONS_LEARNED.md` (dated log row, newest first).
-4. **Change notes on every revision round.** Put a yellow `📝 Change note` frame directly under every changed or added frame, at y = frame bottom + 24.
+4. **Change notes on every revision round.** **Since 10 Nov 2026 (user): mark every updated frame with a 🟢 prefix in its name, and use a GREEN note** (fill rgb(.9,.97,.92), stroke rgb(.13,.64,.35), plugin data `note=green`), so product can spot updates. The team deleted the earlier yellow notes after reading them, so don't recreate old notes. Yellow-note spec, kept for reference: Put a yellow `📝 Change note` frame directly under every changed or added frame, at y = frame bottom + 24.
    - Style: fill rgb(1, .957, .8), stroke rgb(.98, .68, .08), 2px, radius 10, padding 14/18, width 1440.
    - Text: Inter Semi Bold 20 title, Inter Regular 18 body.
    - Set plugin data `note=1`.

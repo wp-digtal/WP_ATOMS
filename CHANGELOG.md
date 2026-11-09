@@ -14,6 +14,17 @@ minor).
 
 ## [Unreleased]
 
+### Fixed — Personal Dashboard audit fixes #4, #5, #7, #9, #10 (Figma, 10 Nov 2026, MOVE-3946 / 3950 / 3943 / 3776 / 3958 / 3948)
+
+The user picked the findings that could mislead devs about logic or flow. Each updated frame now has a 🟢 name prefix and a green update note (the user's new marker for product).
+- **#4** Medical Leave balance preview set to 9 / 2 / 7: Available is the remaining balance, not the entitlement.
+- **#5** "Approved, leave started" drawer now uses the approved Medical Leave from the table (6–7 Oct), plus Approved On / By.
+- **#7** Claims note: no Remarks on Approvals (6 Nov edit). Submit Claim note: claims approver (30 Oct edit).
+- **#9** Re-created the deleted "Claim Details (own) – Pending Payment, Cancel disabled + tooltip" frame: CL20260013, Carpark.
+- **#10** Leave Balances validity sub-row example: Custom Leave Type with two periods, in the 4 Leave page frames (tables detached from the shared component so the Leave module isn't affected). This also fixes the invalid "31 Sep" date (#1) across 12 frames.
+
+Restore point: "Before PD audit fixes 4/5/7/9/10 (Claude, 10 Nov 2026)". Still open: #2, #3, #6, #8, #11, #12, #13 (`HANDOFF.md` §7.1).
+
 ### Added — `HANDOFF.md` + Personal Dashboard full ticket audit (10 Nov 2026, MOVE-3412)
 
 - **`HANDOFF.md`** (new, repo root): a detailed handover so another AI agent can continue with no context loss (the user asked for it "sangat detail"). It covers:
