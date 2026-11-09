@@ -14,6 +14,16 @@ minor).
 
 ## [Unreleased]
 
+### Added — Fleet knowledge base (read-only study of the legacy WLA Fleet Figma file, 10 Nov 2026, MOVE-125)
+
+The user asked for the old Fleet file to be studied before rebuilding it with COMPASS. No Figma edits were made.
+
+Findings:
+- Only the MOVE-600 page holds real Fleet UI. The other ticket pages are copies of the Sub-contractor listing flow.
+- The old design predates MOVE-797 (listing columns and filters) and MOVE-2554 (the one-page form with quick-access buttons).
+
+The ticket map, rules and rebuild plan are in `FLEET_KNOWLEDGE.md`. Open: the user's go-ahead on the plan, and whether this file has the COMPASS / ATOM libraries enabled.
+
 ### Changed — Personal Dashboard (web): Claims CTA in the page header, Remarks column removed, upload standard, tab exploration (Figma, 10 Nov 2026, MOVE-3943 / 3776 / 3946)
 
 Daniel's second round, plus the user's answers to the upload question ("upload sama kan", "ya boleh").
