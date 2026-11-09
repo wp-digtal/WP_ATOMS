@@ -445,3 +445,18 @@ Comments on Style 2 Widget Grid, applied directly to the screens (not the work s
 - "no need icon since it will be the same anyways": the receipt icon tile was removed from every claim row in `8725:9123`. The text column now fills the row.
 - The older pin "no need this, do the same as leave, the counter in the tab" is about the summary tiles. Those were already replaced by tab counters on 3 Nov (§11.3); nothing more to change.
 - Restore point "Before PD Claims icon removal (Claude, 5 Nov 2026)".
+
+## 13. Daniel's comment round on the web PD (Production section `41091:22331`, 10 Nov 2026)
+
+Restore point: "Before PD comment round: balance drawer, history filter, upload (Claude, 10 Nov 2026)". Every changed frame has a yellow `📝 Change note` under it.
+
+| Comment | Ticket | Change |
+|---|---|---|
+| "wrong drawer used here, should be same as the leave module" | MOVE-4351 → "exact same as" MOVE-4137 | `41092:385461`: the overlay was replaced with a clone of the Leave module drawer (Old Leave section `29013:27819` → `39300:75269`, Option 1, Used by month). `41195:166114` is **new**: Option 2 (Used by leave application), cloned from `39300:54826`. Both: Edit hidden (PD has only View Change History); values matched to the PD Leave Balances row (Annual Leave 19 / 3 / 3 / 13; Carried Forward 5 + This Year 14 = 19; Used Apr 2026 = 3 days / "1 Apr 2026 - 3 Apr 2026"); Added By = System. |
+| "missing filter for history … + Status" | MOVE-3948 biz req 4.3 | `41195:176264` is **new**: History filter open. Popover moved under the History filter icon (active), Status multi-select inserted after Leave Type. Order: Employee, Leave Type, Status, Leave Application Period, Applied On. |
+| "missing max file size, accepted file format" | MOVE-3946 → MOVE-3777 | Apply Leave filled `41092:414579`, Time Off `41092:414815`, Insufficient balance `41092:415054`: Supporting Document replaced with the standard stack already used in the Empty / error frames (label + `Upload / Button` + 12px helper "Maximum file size: 5MB / Accepted file types: .jpg, .jpeg, .png, .pdf"). The Upload button is set to Default (it was Disabled in the Empty frame source). |
+
+- **Reference locations:** the Leave module's Leave Balance Details drawers are in this same file. They sit in section `Old Leave` (`29013:27819`), under the big title `39222:22525` at 10573,7715.
+- **Open:**
+  - PD **Submit Claim** frames (MOVE-3776) still use `Upload / Drag and Drop` ("PNG, JPG/JPEG or PDF, up to 2MB each"), not the house pattern. Asked the user whether to standardise them too.
+  - None of the PD forms shows an uploaded-file row (thumbnail + name + "File size" + delete), as in the HR Claims reference.

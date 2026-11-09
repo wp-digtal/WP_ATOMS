@@ -18,6 +18,8 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 - **A conditional field ("shown if X = Y") is hidden in the default / empty state too**, not only when another value is picked. Check every state, including "nothing selected yet" (Account Management create drawer, 6 Nov).
 - **Fewer, shorter tabs don't stretch.** With 2 short tabs, size the tabs to their labels on the left and put the primary CTA on the tab row (Roles module pattern), not full-width tabs (Daniel, 9 Nov).
 - **Every status in the data needs its detail state.** If the listing shows a status (e.g. Deactivated), the drawer for that status must exist, with the ticket's allowed / disabled actions and tooltips (AM audit, 9 Nov).
+- **"Same as module X" means clone X, not redraw it.** When a ticket says "exact same details and format as" another module, clone that module's real frame or drawer, then remove the actions this context doesn't allow and re-sync the data (PD balance drawer, 10 Nov).
+- **Standardise a component across every frame that uses it**, not only the commented one: here, upload helpers were missing in 3 of 5 Apply Leave frames.
 - **Sticky step headers** on long multi-step forms are expected. Draw the scrolled state (Bus Booking 2.8).
 
 ## Working with the user
@@ -43,6 +45,7 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 
 | Date | Task | Lesson |
 |---|---|---|
+| 10 Nov 2026 | PD comment round | Cloned instance sub-layers keep the source state: the Upload button came over Disabled from the Empty frame. Reset states after cloning. Per-node `loadFontAsync(t.fontName)` timed out again; preload `{family, style}` once (SF Pro Bold / Semibold, Inter Regular in this file). |
 | 9 Nov 2026 | AM full audit | Check frames programmatically: dump the table header texts, drawer cell label=value pairs and disabled states for every frame, then compare them with the ticket tables. This found the missing Deactivated state and a data mismatch that screenshots alone had missed. |
 | 9 Nov 2026 | AM "pls check updated requirements MOVE-4458" on the old 'spec pending' frame | That comment was on a frame from the very first build. On Production 3.1 the Activity tab was already rebuilt to the 6 Nov ticket in the same session, so the answer is "already done", with a pointer to the frames. No rework. |
 | 9 Nov 2026 | AM comments made on the wrong file + ticket edits | Triage each comment against the **current** ticket: already done → ignore and report; new ticket edit → build; valid miss → fix. Then diff **all** epic tickets edited since the last round: the 6 Nov edits (stay on drawer after suspend, Activity rework) were bigger than the comments. Leave a visible change note under every touched frame when the user asks for traceability. |

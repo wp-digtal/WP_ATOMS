@@ -14,6 +14,17 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Personal Dashboard (web): comment round, balance drawer, History filter, upload standard (Figma, 10 Nov 2026, MOVE-4351 / 3948 / 3946)
+
+- **Leave Balance Details drawer** replaced with the Leave module's drawer (MOVE-4351 says "exact same as" MOVE-4137).
+  - Both Option 1 (Used by month) and Option 2 (Used by application) are shown.
+  - Edit is removed (PD only allows View Change History).
+  - Numbers are synced to the PD balances table.
+- **New "History filter open" frame**, with the Status filter (MOVE-3948 4.3).
+- **Apply Leave Supporting Document** standardised in 3 frames: Upload + max 5MB + accepted types (MOVE-3777).
+
+Change notes sit on every touched frame. Open question: should PD Submit Claim's drag-and-drop upload also move to the house pattern? Details: `PERSONAL_DASHBOARD_KNOWLEDGE.md` §13.
+
 ### Fixed — Account Management Production 3.1: full ticket audit (Figma, 9 Nov 2026, MOVE-4449 children)
 
 The user asked for every ticket to be re-checked against the design. Everything matched except two things:
