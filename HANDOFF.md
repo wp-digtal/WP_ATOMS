@@ -145,7 +145,7 @@ Component priority when building:
 | Account Management – HR Module | `kI1rSu1FAsPpV5K1EI2HvM` | Production 3.1 section `41137:17061`; exploration section `41137:62068`; 3.6 Deactivated drawer `41138:99426` | Full audit done 9 Nov. PM questions open (MOVE-4458 / 4451). |
 | 👩🏻‍🚀 Claim (HR Module) | `Gp7MfEP0XEv8YqZ9q474sj` | `🏭 Production` section `29013:27819` | Built and reviewed (Oct). |
 | 👩🏻‍🚀 Leave – HR Module | `VYGulw8yaudo3FRAWh4sEh` | Real Leave epic screens | Reference. |
-| 🛞📱 Mobile Apps Design | `IICHGFDHLhKCvE5vMzFokS` | Driver app (Leave, Claims, Account/Profile); Passenger app (Bus Booking `8763:16472`, reference `1643:2000`) | Bus Booking CR round done; Driver profile ideation done. |
+| 🛞📱 Mobile Apps Design | `IICHGFDHLhKCvE5vMzFokS` | Driver app (Leave, Claims, Account/Profile); Passenger app (Bus Booking `8763:16472`, reference `1643:2000`) | Bus Booking PM round 3 done (10 Nov: Add-ons field, time picker, price on 3.1, collapsed 3.4 + 3.4b, ticket edits); Driver profile ideation done. |
 | Live Tracking 2.0 – Ops Module | `XKD77FPEWx0wfQxxCWelfM` | Section `39646:74664` (web tracking links) | **Not started:** convert from mobile DS to COMPASS (asked 9 Nov). Needs pairing on that file. |
 | 🚍 WLA: Operations – Fleet | `0wGJrFQ9M5p24utxxvlMY5` | Legacy. Only page `✏️ MOVE-600 Create Vehicle` has real UI; the other ticket pages are copied Sub-contractor placeholders. | Studied read-only 10 Nov. **Rebuild plan sent; waiting for the user's go-ahead and three answers** (`FLEET_KNOWLEDGE.md` §5). |
 | 🧭 COMPASS DS 2.0 | `gbSCJ7q9FcMZsZ6d5dbrRN` | Library | Read-only reference. |
@@ -166,7 +166,7 @@ Node ids go stale when people move or delete frames. **Resolve the user's link a
 | **HR Claims (web)** | MOVE-4021 | `CLAIMS_KNOWLEDGE.md` (**§6 = current file layout + fast path**), `CLAUDE_SESSION_CONTEXT.md` §9 | Claim file + `src/components/hrclaims/` | 10 Nov: empty-state comment solved, Remarks / Others ticket edits applied in Figma and code. Open: submit-success frame, disabled + tooltip example, highlight-active (ask first; the user removed some by hand). **Different module from PD Claims, never mix them.** |
 | **HR Leave (web)** | MOVE-3410 | `CLAUDE_SESSION_CONTEXT.md`, `src/components/leave/WhatsNew.tsx` | Code + Leave file | Maintained by the nightly routine (see §3.3 problem). |
 | Driver app Leave / Claims / Profile | MOVE-4113 | `DRIVER_LEAVE_KNOWLEDGE.md`, `CLAIMS_KNOWLEDGE.md` | Mobile Apps Design | Built. |
-| Passenger app Bus Booking | MOVE-1963 (4569/4581/4582) | `BUS_BOOKING_KNOWLEDGE.md` | Mobile Apps Design `8763:16472` | CR round done (sticky header, states, emails). |
+| Passenger app Bus Booking | MOVE-1963 (4569/4581/4582) | `BUS_BOOKING_KNOWLEDGE.md` | Mobile Apps Design `8763:16472` | Round 3 done 10 Nov (🟢 frames). Open: add-ons ticket conflict, Refund Policy + offline banner not designed. |
 | Live Tracking 2.0 | MOVE-3676 (FMS MOVE-1685) | `LIVE_TRACKING_KNOWLEDGE.md` | Live Tracking file + `src/components/livetracking/` | Code done; Figma COMPASS conversion pending. |
 | **Fleet** | MOVE-125 (+ CR MOVE-2543) | `FLEET_KNOWLEDGE.md` | Fleet file | Plan only. Old Figma predates MOVE-797 (listing) and MOVE-2554 (one-page form). |
 | Roster | MOVE-3608 | `CLAUDE.md` Roster section | Code: `Roster4Page.tsx` is the PRD one | Stable. |

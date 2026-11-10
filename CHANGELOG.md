@@ -14,6 +14,21 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Bus Booking round 3: own Add-ons field, normal time picker, price on Trip Summary, collapsed success cards (Figma, 10 Nov 2026, MOVE-4581 / MOVE-4569)
+
+- **From PM comments (Westpoint Digital):**
+  - Add-ons is now one trip-level field; it was removed from the pick-up / drop-off points (2.1–2.3, 2.5, 2.6, 2.8, 2.9).
+  - 2.9 uses a wheel time picker with any minute; the 15-minute slots are gone.
+  - 3.1 shows the price card.
+  - 3.4 trip cards are collapsed by default (Date, Time, Pick-up Point, Bus Size). New 3.4b shows the expanded state.
+- **From the 10 Nov ticket edits:**
+  - Contact Number is removed from Contact Information (3.2 / 3.3 / 3.5), per MOVE-4581.
+  - The Copy Template button is removed from 1.2, per MOVE-4569; Email Sales Team now prefills the template.
+  - MOVE-4582's "PRICE" rename hits only the email frames, which the user had already removed.
+- Every changed frame and flow label is prefixed 🟢 for the product team. A restore point was saved first.
+- **Conflict:** MOVE-4581 still says each point has its own add-ons; Figma follows the PM comment. Listed in Open items.
+- Details: `BUS_BOOKING_KNOWLEDGE.md` "PM comment round 3".
+
 ### Fixed — HR Claims: Submit Claim empty state, Remarks without plate/trip, Others max 80 (Figma + code, 10 Nov 2026, MOVE-3799 / MOVE-3801)
 
 - **Figma (Claim (HR Module) file):**
@@ -3285,6 +3300,7 @@ Tracked here so they do not get lost between sessions.
 
 | Item | Status |
 |---|---|
+| Bus Booking (MOVE-4581): the ticket's Trip Summary table and AC still give pick-up and drop-off their own add-ons. The PM comment (10 Nov) asked for one separate Add-ons field, and Figma follows the comment. Also not designed yet from the 3 Nov edits: the Refund Policy link + overlay, and the offline banner | Open — ask the PM to update the ticket; design Refund Policy / offline banner on request |
 | Bus Booking (MOVE-4569 / 4582): sales address is sales@westpointbus.com in MOVE-4569 but sales@westpointbus.com.sg in MOVE-4582; MOVE-4569 AC says "Fill in Booking Form" while its table says "Submit Booking Form"; MOVE-4582 AC asks for bus size but its email layout has no field (Figma adds a Bus size row) | Open — ask the PM (see `BUS_BOOKING_KNOWLEDGE.md`) |
 | **Public Holiday vs On Leave precedence** — MOVE-3608 carries an unresolved PM note: *"Should be PH over on leave cause it was their rest day hmm"*. Current behaviour keeps **On Leave winning**, per priority 1 as still written. | Awaiting PM decision |
 | **Roster Calendar and Roster 3.0 are off-spec** — MOVE-3608 no longer describes a matrix layout at all, and both still use the bulk-select edit model MOVE-3658 replaced. | Awaiting a call on whether to retire them |

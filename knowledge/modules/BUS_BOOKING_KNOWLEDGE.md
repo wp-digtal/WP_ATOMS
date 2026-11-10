@@ -156,3 +156,29 @@ Restore point: "Before Bus Booking CR round (Claude, 4 Nov 2026)". The user had 
 The stepper now puts each label **under** its dot (12 px), with connectors that grow to fill the width. The longer labels no longer fit side by side in 358 px.
 
 Labels and frame names were updated to match (3.1 Trip Summary, 3.2 / 3.3 Contact Information, Row 3 title).
+
+## PM comment round 3 (10 Nov 2026)
+
+Restore point: "Before Bus Booking round 3: add-ons field, time picker, price on summary, collapsible success (Claude, 10 Nov 2026)". Every touched frame and its `Docs/Flow Label` carries a **🟢 prefix** (`HANDOFF.md` §8 rule 4). On the Flow Label, set **both** `States Name#59:0` and `Current Flow#44:4`: only `Current Flow` is the visible text.
+
+| PM comment (Westpoint Digital) | Change | Frames |
+|---|---|---|
+| 2.9 "pls have a normal time picker … not limited to 15 min intervals" | The slot list is hidden. Instead there is a wheel picker (hour / minute / AM-PM) `8880:17837` showing 08:07 AM, with a helper line for the peak surcharge. | 2.9 `8802:20902` |
+| "remove 'add-ons' from pick up point and drop off point … separate 'add-ons' field on its own" | Add-ons is now **one trip-level field** under the points, not one per point. The 2.3 sheet is titled "Add-ons" and includes WiFi Connection. | 2.1 `8763:17762`, 2.2 `8763:17192` (card `8880:8223`), 2.3 `8763:18025`, 2.5 `8763:18518`, 2.6 `8763:18780`, 2.8 `8802:20731`, 2.9 |
+| 3.1 "price should be on this page" | The point-level add-ons lines are hidden, and trip-level Add-ons rows are added. A price card `8880:17880` (cloned from 2.5's) sits on the summary. | 3.1 `8763:19215` |
+| 3.4 "trip card like before, but collapsed by default. Collapsed: Date, Time, Pick-up Point, Bus Size" | The trip cards are collapsible (wrap `8880:17922`, cards `8880:17924` / `8880:17941`). Under them: Grand Total and the "copy sent to email" note. A new frame shows the expanded state. | 3.4 `8763:19630`, **new 3.4b** `8880:17962` (Trip 1 expanded) + label `8880:18272` |
+
+**Ticket edits applied in the same round** (diffed with `jira-desc-diff.py`):
+- **MOVE-4581, 10 Nov:** the Contact Number field is removed from Contact Information. The input is hidden on 3.2 `8763:19377`, 3.3 `8763:19510` and 3.5 `8763:19714`.
+- **MOVE-4569, 10 Nov:** the Copy Template button is removed, because "Email Sales Team" now opens the mail app with the template prefilled. Button `8763:16833` is hidden on 1.2 `8763:16719`. Frame 1.4 (the "Copied" toast) had already been removed by the user.
+- **MOVE-4582, 10 Nov:** "ESTIMATED PRICE" becomes "PRICE". This affects the emails only, and those frames (row 4) were removed by the user on 4 Nov, so there was nothing to change.
+
+**Conflict, ask the PM:** MOVE-4581's Trip Summary table and AC still say pick-up and drop-off "each have their own remarks and add-ons". The PM comment overrides that, so Figma follows the comment; the ticket should be updated to match.
+
+**Not built yet** (from the 3 Nov edits to MOVE-4569 / 4581):
+- the Refund Policy link and its overlay;
+- the offline banner.
+
+Frame 2.7 (address auto-complete) is gone too; the user removed it.
+
+**Demo data is unchanged** (Changi T3 → Marina Bay Sands, 18 pax, 20-seater, Grand Total S$446.90). The 2.9 example time is now 08:07 AM, which shows that any minute can be picked.
