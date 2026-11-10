@@ -63,7 +63,7 @@ Comments can't be read through the API from this session (Figma REST 401), so as
 
 ### Round 1: driver page (Westpoint Digital → Daniel, around 19 Oct; applied 22 Oct 2026)
 
-Restore point: "Before driver web-tracking review fixes (Claude, 22 Oct 2026)".
+Restore point: "Before driver web-tracking review fixes (22 Oct 2026)".
 
 | # | Where | Comment | Tag | Decision / fix |
 |---|---|---|---|---|
@@ -98,7 +98,7 @@ Restore point: "Before driver web-tracking review fixes (Claude, 22 Oct 2026)".
 - `WtTrip.busLabel` added in `webTrackingData.ts`.
 - Checked in Playwright: the clipboard holds "JK Attendant 6" after Copy, and the toast shows.
 
-**Figma (25 Oct):** restore point "Before bus label + copy (Claude, 25 Oct 2026)".
+**Figma (25 Oct):** restore point "Before bus label + copy (25 Oct 2026)".
 - Row `Bus Label + Copy (review 25 Oct)` (template `39535:14282` in driver mobile 2.1): the Customer field is cloned and relabelled "Bus Label: JK Attendant 6", next to a COMPASS `Button` (Type=Default, Size=Small, "Copy") cloned from the Ops modal's Copy button.
 - It is inserted as the first row of Trip Details on driver mobile `75528`, `75866`; passenger mobile `75976`, `76088`; driver web `39464:40767`, `39465:41400`; and passenger web `41596`, `41807`.
 - Section titles are now "TRIP DETAILS" everywhere. The expired frames have no details panel.
@@ -115,13 +115,13 @@ Reference: the driver app's **Trip Details** screen in this file (`39536:14618`,
 | "missing trip remarks" (pinned under Bus Label) | #data | **Trip Remarks** field (full width) added below Bus Label in Trip Details, on all 8 live frames + code (`WtTrip.remarks`; the demo text is "Children are escorted by a teacher at each pickup…"). |
 | "Route List" (#Copy, pinned on the Customer / Route Points area) | #Copy | Read as: rename the section title **"ROUTE POINTS" → "ROUTE LIST"**. Done on all frames + code. **To confirm** with the reviewer, because the pin sits near "Customer". |
 
-Restore point: "Before trip remarks + Route List rename (Claude, 25 Oct 2026)". Checked in Playwright: passenger 390 shows Trip Remarks + "Route List", no errors.
+Restore point: "Before trip remarks + Route List rename (25 Oct 2026)". Checked in Playwright: passenger 390 shows Trip Remarks + "Route List", no errors.
 
 **Lesson:** when a reviewer uses a domain term ("bus label"), grep the module's data and UI for it before answering. The term existed in the code all along.
 
 ### Round 4 (26 Oct 2026): Route List restyle + stop-photo state (user request)
 
-Restore point: "Before route list v2 + photo state (Claude, 26 Oct 2026)".
+Restore point: "Before route list v2 + photo state (26 Oct 2026)".
 
 **Route List**
 - Restyled like the driver app's Trip Details (`39511:68160`, frame "CR"): the title "Route List" plus an Integral `Chips/Normal` chip "4 Stops", and a bordered card (radius 12, `#e0e1e1`) holding the timeline.
@@ -161,7 +161,7 @@ Restore point: "Before route list v2 + photo state (Claude, 26 Oct 2026)".
   2. (Bus stop) 15061 Pasir Ris MRT Station…
   3. **Heading to:** (Bus stop) 18041 Bukit Panjang Plaza, Jelebu Rd, Singapore
   4. (Bus stop) 15061 Pasir Ris MRT Station…
-- **Figma:** restore point "Before propagating PM-approved route list (Claude, 26 Oct 2026)".
+- **Figma:** restore point "Before propagating PM-approved route list (26 Oct 2026)".
   - The approved card `39547:14851` was cloned to all 7 other live frames.
   - The photo variant (template `39556:18336`) went to 2.4 / 3.4 / 4.4 / 5.4: wait time in white (cloned from "Heading to", so it keeps the variable), the photo, and a COMPASS `Button` Type=Default "Navigate here" (same component as the Copy button).
   - The passenger ETA text now reads "Arriving at (Bus stop) 18041 Bukit Panjang Plaza".
@@ -177,7 +177,7 @@ Restore point: "Before route list v2 + photo state (Claude, 26 Oct 2026)".
   - "pls show example if there is a wait time". The heading-to stop shows "Wait time 10 min" in every live state.
 - **Code:** `WtPoint.pax`, a pax chip under the time, `stopPhoto` on every stop, and the wait time on the heading-to stop. Navigate here stays in the "Stop photo" demo only.
 - **Figma (28 Oct, partial):**
-  - Restore point "Before pax + photo per stop + wait time (Claude, 28 Oct 2026)".
+  - Restore point "Before pax + photo per stop + wait time (28 Oct 2026)".
   - In driver mobile 2.1 (`39443:75528`), a new Route List body `39610:67003` ("Route List body v3 …") replaces the old body `39547:14855`, which is now hidden. Each stop is an auto-layout row: rail + header (name, time + pax chip) + photo. The heading-to stop has "Wait time 10 min".
   - The template was **not screenshot-verified** (the bridge dropped), and it is **not yet propagated** to the other live and photo frames.
   - Next session: verify it, then clone it to the driver/passenger mobile and web frames, and grow the frame heights.

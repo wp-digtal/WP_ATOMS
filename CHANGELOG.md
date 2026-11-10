@@ -14,6 +14,12 @@ minor).
 
 ## [Unreleased]
 
+### Changed — No "Claude" in Figma restore points (docs, 10 Nov 2026)
+
+- User: "saya tidak mau ada kata claude … di semua restore point di version history". New rule in `CLAUDE.md`, `HANDOFF.md`, `FIGMA_DESIGN_SYSTEM.md` §4.10 and the `code-to-figma` skill. Titles are `Before <change> (<date>)`, with no AI or tool name in the title or the description.
+- All 33 older titles in the docs were rewritten from "(Claude, d Mon yyyy)" to "(d Mon yyyy)".
+- Figma's plugin and REST APIs cannot rename saved versions, so the user renames the existing entries by hand (File → Show version history → Edit version info). Listed in Open items until that is done.
+
 ### Changed — Bus Booking round 4 (Next button, no price on step 1, even stepper) + PD mobile Style 2 Leave/Claims content (Figma, 10 Nov 2026)
 
 - **Bus Booking:**
@@ -67,7 +73,7 @@ The user picked the findings that could mislead devs about logic or flow. Each u
 - **#9** Re-created the deleted "Claim Details (own) – Pending Payment, Cancel disabled + tooltip" frame: CL20260013, Carpark.
 - **#10** Leave Balances validity sub-row example: Custom Leave Type with two periods, in the 4 Leave page frames (tables detached from the shared component so the Leave module isn't affected). This also fixes the invalid "31 Sep" date (#1) across 12 frames.
 
-Restore point: "Before PD audit fixes 4/5/7/9/10 (Claude, 10 Nov 2026)". Still open: #2, #3, #6, #8, #11, #12, #13 (`HANDOFF.md` §7.1).
+Restore point: "Before PD audit fixes 4/5/7/9/10 (10 Nov 2026)". Still open: #2, #3, #6, #8, #11, #12, #13 (`HANDOFF.md` §7.1).
 
 ### Added — `HANDOFF.md` + Personal Dashboard full ticket audit (10 Nov 2026, MOVE-3412)
 
@@ -150,7 +156,7 @@ All epic tickets were then diffed from 29 Oct, which found further 6 Nov edits:
 - After Suspend / Unsuspend the user stays on the details drawer (5.4, 6.2 rebuilt).
 - The Activity tab was reworked: toolbar "Select account" picker, popover with Module / Event Type / Date, column "Date & Time", new empty-state copy.
 
-Every changed frame has a yellow change note under it, as the user asked. Restore point: "Before AM comment + 6 Nov ticket round (Claude, 9 Nov 2026)". Details: `ACCOUNT_MANAGEMENT_KNOWLEDGE.md` §16.
+Every changed frame has a yellow change note under it, as the user asked. Restore point: "Before AM comment + 6 Nov ticket round (9 Nov 2026)". Details: `ACCOUNT_MANAGEMENT_KNOWLEDGE.md` §16.
 
 ### Changed — Knowledge base reorganised into `knowledge/`; consolidated component map; safety checker (8 Nov 2026)
 
@@ -472,7 +478,7 @@ The user said Section 7 "has no information or documentation" and showed the Pro
 - The section is re-laid out into 12 groups.
 - Each group has a pink `Docs/Big Title`, blue `Docs/Notes` with the ticket rules, red arrows between states, an elbow arrow for the Reject branch, and dashed connectors between groups.
 - Frames were reordered so the arrows follow real flows.
-- Restore point: "Before PD Section 7 relayout + docs layer (Claude, 19 Oct 2026)".
+- Restore point: "Before PD Section 7 relayout + docs layer (19 Oct 2026)".
 - Details: `PERSONAL_DASHBOARD_KNOWLEDGE.md` §7, plus a new `FIGMA_COMPONENT_INDEX.md` row.
 
 **Open — confirm with product**
@@ -520,7 +526,7 @@ The user said Section 7 "has no information or documentation" and showed the Pro
   - Own-table scroll width is now 900.
   - `tsc` clean. Checked in Chromium: My Claims has no Remarks column; Approvals keeps it.
 - **Figma (Personal Dashboard file, Section 7).** The user said the section didn't match the tickets and had no notes.
-  - Restore point: "Before PD Section 7 audit fixes + docs (Claude, 19 Oct 2026)".
+  - Restore point: "Before PD Section 7 audit fixes + docs (19 Oct 2026)".
   - Fixed: leave approve/reject modal copy, plus a closed Actions menu behind those modals.
   - Added leave approved / rejected / disabled + tooltip frames.
   - Added 5-per-page pagination on the leave tables (MOVE-3948).
@@ -560,7 +566,7 @@ The user asked for a re-check of the Driver-app Leave section (`8515:13884`) aga
 
 ### Added — Figma (Live Tracking 2.0 file): web (desktop) versions of the driver / passenger tracking pages (19 Oct 2026)
 
-The user asked to re-check the web tracking link case and to add a web display alongside mobile, reusing patterns from other pages. Work is in Archive › "Web Tracking Links" (`39443:75325`), where the section now lives. Restore point: "Before web (desktop) tracking pages (Claude, 19 Oct 2026)".
+The user asked to re-check the web tracking link case and to add a web display alongside mobile, reusing patterns from other pages. Work is in Archive › "Web Tracking Links" (`39443:75325`), where the section now lives. Restore point: "Before web (desktop) tracking pages (19 Oct 2026)".
 - **Ticket re-check:** MOVE-3676 and its sub-tasks MOVE-4347 / MOVE-4334 were last edited 13 Oct 10:28, before the original build; MOVE-1685 was last edited 8 Oct 2025. No changes to apply.
 - **Added:**
   - Row 4, Driver web: live, register confirm, point registered, location off, expired.
@@ -637,7 +643,7 @@ The Claim (HR Module) file's only empty state (empty search, `43023:241260`) alr
 The user pointed at `Highlights Card` (`43114:431210`, 277×78) as the right size.
 
 - **Figma (Claim (HR Module), Production):** every `Claims Highlights` frame, 27 in total, now uses clones of it instead of the hand-built 352×103 cards. The Pending Approval highlight-active frame keeps its blue stroke/label.
-  - Restore point: "Before highlight resize to Highlights Card 277x78 (Claude, 15 Oct 2026)".
+  - Restore point: "Before highlight resize to Highlights Card 277x78 (15 Oct 2026)".
 - **Code:** `HrClaimsPage.tsx`'s highlight cards are now 277×78 (number 30px semibold, label 12px semibold). Checked in Chromium.
 
 ### Changed — Personal Dashboard: applied the 12–13 Oct 2026 ticket rewrite (MOVE-3412 epic)
@@ -686,7 +692,7 @@ Open items:
 - **Figma (Claim (HR Module) file, Production page).** Two review comments by Daniel are applied:
   - "#CR — remove the 'remarks' column": the column was removed from all 26 frames that carry the listing table (the listing itself and the listing behind every drawer and modal). Column widths were reset to fill the table's 1155px; before, they overflowed by 56px and clipped "Last Updated On".
   - "#Data — Missing Cancelled - grey": page 1 wrongly showed CL20260002 (Paid, 31 Mar) as its 10th row. Sorting by Last Updated On, it should be CL20260003 (Toll (ERP), Joko Prasetyo, $1.80, grey Cancelled tag, 20 May 2026). That row is fixed in every frame; in the filtered/empty frames it stays hidden.
-  - A named restore point was saved first: "Before CR: remove Remarks column + add Cancelled row (Claude, 15 Oct 2026)", version `2410038709683049161`.
+  - A named restore point was saved first: "Before CR: remove Remarks column + add Cancelled row (15 Oct 2026)", version `2410038709683049161`.
 
 Open item:
 - The comments on the Claim Details frames (3.1–3.3) couldn't be read. The bridge's comment API returned 401, so the user was asked for their text.
@@ -3314,6 +3320,7 @@ Tracked here so they do not get lost between sessions.
 
 | Item | Status |
 |---|---|
+| Figma version history: older restore points still say "(Claude, …)" in Figma. The API cannot rename them; the user renames them by hand to `Before … (<date>)` | Open — user |
 | Bus Booking (MOVE-4581): the ticket's Trip Summary table and AC still give pick-up and drop-off their own add-ons. The PM comment (10 Nov) asked for one separate Add-ons field, and Figma follows the comment. Also not designed yet from the 3 Nov edits: the Refund Policy link + overlay, and the offline banner | Open — ask the PM to update the ticket; design Refund Policy / offline banner on request |
 | Bus Booking (MOVE-4569 / 4582): sales address is sales@westpointbus.com in MOVE-4569 but sales@westpointbus.com.sg in MOVE-4582; MOVE-4569 AC says "Fill in Booking Form" while its table says "Submit Booking Form"; MOVE-4582 AC asks for bus size but its email layout has no field (Figma adds a Bus size row) | Open — ask the PM (see `BUS_BOOKING_KNOWLEDGE.md`) |
 | **Public Holiday vs On Leave precedence** — MOVE-3608 carries an unresolved PM note: *"Should be PH over on leave cause it was their rest day hmm"*. Current behaviour keeps **On Leave winning**, per priority 1 as still written. | Awaiting PM decision |

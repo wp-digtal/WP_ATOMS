@@ -122,7 +122,7 @@ Per trip: date, time, passengers, pick-up and drop-off, each with its own remark
 
 ## Figma build (3 Nov 2026)
 
-Section `8763:16472` on page `🧔 Production - Passenger`. Restore point: "Before Bus Booking build (Claude, 3 Nov 2026)". One row per flow, `Docs/Big Title` + white row notes + `Docs/Flow Label` per frame, orange arrows.
+Section `8763:16472` on page `🧔 Production - Passenger`. Restore point: "Before Bus Booking build (3 Nov 2026)". One row per flow, `Docs/Big Title` + white row notes + `Docs/Flow Label` per frame, orange arrows.
 
 | Row | Frames |
 |---|---|
@@ -143,7 +143,7 @@ Section `8763:16472` on page `🧔 Production - Passenger`. Restore point: "Befo
 
 ## CR round, Daniel (4 Nov 2026)
 
-Restore point: "Before Bus Booking CR round (Claude, 4 Nov 2026)". The user had already removed, by hand, the Price Breakdown card on 3.1, the price preview on 2.x, and row 4 (the emails). These were left removed, not rebuilt.
+Restore point: "Before Bus Booking CR round (4 Nov 2026)". The user had already removed, by hand, the Price Breakdown card on 3.1, the price preview on 2.x, and row 4 (the emails). These were left removed, not rebuilt.
 
 | Comment | Change |
 |---|---|
@@ -159,7 +159,7 @@ Labels and frame names were updated to match (3.1 Trip Summary, 3.2 / 3.3 Contac
 
 ## PM comment round 3 (10 Nov 2026)
 
-Restore point: "Before Bus Booking round 3: add-ons field, time picker, price on summary, collapsible success (Claude, 10 Nov 2026)". Every touched frame and its `Docs/Flow Label` carries a **🟢 prefix** (`HANDOFF.md` §8 rule 4). On the Flow Label, set **both** `States Name#59:0` and `Current Flow#44:4`: only `Current Flow` is the visible text.
+Restore point: "Before Bus Booking round 3: add-ons field, time picker, price on summary, collapsible success (10 Nov 2026)". Every touched frame and its `Docs/Flow Label` carries a **🟢 prefix** (`HANDOFF.md` §8 rule 4). On the Flow Label, set **both** `States Name#59:0` and `Current Flow#44:4`: only `Current Flow` is the visible text.
 
 | PM comment (Westpoint Digital) | Change | Frames |
 |---|---|---|
@@ -185,7 +185,7 @@ Frame 2.7 (address auto-complete) is gone too; the user removed it.
 
 ## PM comment round 4 (10 Nov 2026, same day)
 
-Restore point: "Before Bus Booking round 4 + PD mobile Claims/Leave content (Claude, 10 Nov 2026)". Each changed frame has a green `🟢 Change note` under it, with plugin data `note=green`.
+Restore point: "Before Bus Booking round 4 + PD mobile Claims/Leave content (10 Nov 2026)". Each changed frame has a green `🟢 Change note` under it, with plugin data `note=green`.
 
 | Comment | Change |
 |---|---|

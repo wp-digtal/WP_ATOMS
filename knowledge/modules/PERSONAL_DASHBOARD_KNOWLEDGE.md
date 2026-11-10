@@ -136,7 +136,7 @@ These come from product, not a ticket. Apply them in Figma; the tickets lag behi
 
 ## 7. Section 7 layout + documentation (finished 19 Oct 2026)
 
-Restore point before the relayout: "Before PD Section 7 relayout + docs layer (Claude, 19 Oct 2026)". The section is 11700×23700.
+Restore point before the relayout: "Before PD Section 7 relayout + docs layer (19 Oct 2026)". The section is 11700×23700.
 
 Every group has:
 - a pink `Docs/Big Title` (clone of `39082:10687`) at x=1755, above the frames;
@@ -174,7 +174,7 @@ Frames sit at x = 1755 + i·1640.
 
 The user asked for one more full check before handing the file to product: match every ticket, check the attachments, check states, and add the missing red arrows.
 
-- Restore point: "Before PD Section 7 final review (Claude, 22 Oct 2026)".
+- Restore point: "Before PD Section 7 final review (22 Oct 2026)".
 - **Tickets edited on 20 Oct** (MOVE-3945, 3950, 3952, 3958): only copy-key names were added (`Tooltip: disable approve/reject button`, `Tooltip: disable cancel button`, `Modal: cancel leave application`, `Modal: cancel claim`). No rule changes.
 - **Attachments:** only MOVE-3949 has images (3 PNGs: entry via profile dropdown, side-nav navigation, activity-card layout). The Jira attachment API returns 403 from this session, so ask the user for screenshots.
 - **MOVE-3777** (the pointer from MOVE-3946) says:
@@ -285,7 +285,7 @@ The user asked:
 1. Save the PD patterns so the next request goes fast.
 2. Find the repeated, near-identical elements in Section 7 and turn them into business components with variants. Put them on another page and **don't replace anything yet**, because the user wants to review them first.
 
-**Page:** `🧩 PD Business Components (draft)` (`41116:149163`). Restore point: "Before PD business components draft (Claude, 22 Oct 2026)".
+**Page:** `🧩 PD Business Components (draft)` (`41116:149163`). Restore point: "Before PD business components draft (22 Oct 2026)".
 
 | Component | Id | Variants | Cloned from (Section 7) |
 |---|---|---|---|
@@ -389,7 +389,7 @@ The user wants a stretch-break feature: seated exercise cards with an illustrati
 
 ## 12. Review round, Daniel (29 Oct 2026): Home
 
-Restore point: "Before Home greeting + no status tag + View more button (Claude, 29 Oct 2026)".
+Restore point: "Before Home greeting + no status tag + View more button (29 Oct 2026)".
 
 | Comment | Tag | Fix |
 |---|---|---|
@@ -412,7 +412,7 @@ Restore point: "Before Home greeting + no status tag + View more button (Claude,
 - **All 18 PD frames:** the tab bar (`Frame 1410126735`) was removed and the bottom padding cut to 40.
   - Every Home got a top bar `Top bar · back to Account` (back arrow + "Personal Dashboard"), and the duplicate "Personal Dashboard" label in its content was removed.
   - The overlay frames (Style 5 sheet, Style 6 pop-up) had their overlay / sheet / modal repositioned.
-  - Restore point: "Before PD entry points + remove tab bar (Claude, 30 Oct 2026)".
+  - Restore point: "Before PD entry points + remove tab bar (30 Oct 2026)".
 
 **Entry-point versions** (Account clones in the left column; the Sidebar Menu is detached; Account tab active; Tabler `dashboard` icon `1213:1301`):
 - **V1** `8751:34735`, Quick Actions row: "Personal Dashboard" + an Info "New" chip as the first Quick Actions row.
@@ -424,7 +424,7 @@ Restore point: "Before Home greeting + no status tag + View more button (Claude,
 
 ### 11.3 Review round on Style 2 + Account quick actions (Figma, 3 Nov 2026)
 
-Comments on Style 2 Widget Grid, applied directly to the screens (not the work sheet). Restore point "Before PD Style 2 comment fixes + Account quick actions (Claude, 3 Nov 2026)".
+Comments on Style 2 Widget Grid, applied directly to the screens (not the work sheet). Restore point "Before PD Style 2 comment fixes + Account quick actions (3 Nov 2026)".
 
 **Leave (`8725:8905`)**
 - "missing rejected status / cancel also": the filter chips are now All (5) · Pending (1) · Approved (2) · Rejected (1) · Cancelled (1), in a horizontally scrolling row that runs to the screen edge. A Cancelled application row was added (grey `Neutral_2` / `Default` chip) so the counts add up.
@@ -445,7 +445,7 @@ Comments on Style 2 Widget Grid, applied directly to the screens (not the work s
 
 - "no need icon since it will be the same anyways": the receipt icon tile was removed from every claim row in `8725:9123`. The text column now fills the row.
 - The older pin "no need this, do the same as leave, the counter in the tab" is about the summary tiles. Those were already replaced by tab counters on 3 Nov (§11.3); nothing more to change.
-- Restore point "Before PD Claims icon removal (Claude, 5 Nov 2026)".
+- Restore point "Before PD Claims icon removal (5 Nov 2026)".
 
 ### 11.5 Style 2 Leave / Claims: content aligned to the reference (10 Nov 2026)
 
@@ -475,7 +475,7 @@ Xing Yun (reply to Daniel's question of 5 Nov): "we can use the design on the le
 
 ## 13. Daniel's comment round on the web PD (Production section `41091:22331`, 10 Nov 2026)
 
-Restore point: "Before PD comment round: balance drawer, history filter, upload (Claude, 10 Nov 2026)". Every changed frame has a yellow `📝 Change note` under it.
+Restore point: "Before PD comment round: balance drawer, history filter, upload (10 Nov 2026)". Every changed frame has a yellow `📝 Change note` under it.
 
 | Comment | Ticket | Change |
 |---|---|---|
@@ -596,7 +596,7 @@ MOVE-3953 / 3954 (Pay Slip) descriptions are still empty.
 
 The user chose to fix these five (the ones that could mislead devs about logic). **New marker rule from the user:** every updated frame gets a **🟢** prefix in its name, and a **green** update note (fill rgb(.9,.97,.92), stroke rgb(.13,.64,.35), plugin data `note=green`). The yellow 📝 notes from earlier rounds were deleted from the canvas by the team (only 1 is left), so don't recreate them.
 
-Restore point: "Before PD audit fixes 4/5/7/9/10 (Claude, 10 Nov 2026)".
+Restore point: "Before PD audit fixes 4/5/7/9/10 (10 Nov 2026)".
 
 | # | Fix | Frames |
 |---|---|---|

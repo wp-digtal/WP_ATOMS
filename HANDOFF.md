@@ -92,7 +92,7 @@ The product is **ATOMS / WLA** (White-Label App) by Westpoint: bus operations, H
 - `importComponentByKeyAsync` (library import) times out in the PD file. Clone an instance already in the file, or hand-build and name it `(hand-built, no <X> component found)`.
 - **After a timeout, inspect before retrying.** The call often half-applied. Send `return 1` to see whether the bridge is alive.
 - **`getNodeByIdAsync` on a node that was deleted from the canvas can hang the bridge** (PD file, 10 Nov 2026). If an id from the docs suddenly hangs, list the section's children by name instead.
-- Before bulk edits: `figma.saveVersionHistoryAsync(title, description)`, then tell the user the title.
+- Before bulk edits: `figma.saveVersionHistoryAsync(title, description)`, then tell the user the title. Title format `Before <change> (<date>)`; **never the word "Claude"** in the title or the description (user, 10 Nov 2026). Saved versions can't be renamed via the API.
 - Frames in HR / PD files are horizontal auto-layout. Overlays, toasts, tooltips and moved buttons need `layoutPositioning = 'ABSOLUTE'`.
 
 ### 3.2 Jira (Atlassian Rovo MCP)

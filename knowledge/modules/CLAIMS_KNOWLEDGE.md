@@ -178,7 +178,7 @@ Mobile Apps Design, Section 2 `8524:13453`, compared with §2–§3 above.
 
 ### 6.2 Applied in Figma (15 Oct 2026)
 
-Restore point: "Before mobile Claims align to HR Claims (Claude, 15 Oct 2026)".
+Restore point: "Before mobile Claims align to HR Claims (15 Oct 2026)".
 
 - **List `8524:13615`**:
   - Types now read Toll (ERP) / Carpark / Others (car wash).
@@ -224,7 +224,7 @@ There is also a stray `Employee/Drawer` `39280:84433` at (10551,5523).
 | 3801 | 30 Oct | Reason for Cancellation always shown (it is now required) |
 | 3731 / 3920 / 3957 | 20 Oct | copy keys only |
 
-**Done 10 Nov 2026** (restore point "Before HR Claims comment fix: Submit Claim empty state + Remarks/Trip/Others (Claude, 10 Nov 2026)"):
+**Done 10 Nov 2026** (restore point "Before HR Claims comment fix: Submit Claim empty state + Remarks/Trip/Others (10 Nov 2026)"):
 - Westpoint Digital's comment: **2.0 Empty state** of the Submit Claim drawer.
   - Cloned from the missing-fields frame. Errors reset:
     - `Caption#515:251=false` on the Form Items;

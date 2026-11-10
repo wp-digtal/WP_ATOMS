@@ -471,6 +471,9 @@ so no change was needed there.
   ```
 
   It returns a version id. Report the title and id to the user. To undo, they open File → Show version history and restore that entry. Cheaper and safer than cloning a whole section to a backup page; that clone timed out on big pages.
+- **No "Claude" in restore points (user, 10 Nov 2026).** Never put "Claude", the AI's name or any tool name in a version title **or** its description. The format is `Before <what changes> (<d Mon yyyy>)`, e.g. "Before Bus Booking round 4 (10 Nov 2026)".
+  - Neither the plugin API nor the REST API can rename or delete a saved version. Only the user can, by hand: File → Show version history → ⋯ → Edit version info. So get the title right the first time.
+  - The older titles that contained "(Claude, …)" were rewritten in the docs to the new form, and the user renames them in Figma.
 - **Removing a listing column ("#CR Daniel — remove the 'remarks' column", MOVE-3798 edit 14 Oct 2026).**
   - **Find every frame first.** The listing table (`Table` → `Header Row` + `Row n`, cells are `Table / Table cell` instances) is repeated behind every drawer and modal. Search the page for `Header Row` frames, not just the listing frames: 26 frames carried it.
   - **Remove the column.** Remove the header's index from every row that has the same cell count. Hidden rows count too, since the highlight and empty-search frames hide rows rather than delete them.

@@ -179,7 +179,7 @@ Figma comments on this section could not be read: the REST API returns 401, the 
 
 ## 7. Fixes built in `Fixing` (`8590:7558`)
 
-Restore point: "Before Driver Leave fixes in Fixing section (Claude, 19 Oct 2026)" (version id `2411969985763602919`).
+Restore point: "Before Driver Leave fixes in Fixing section (19 Oct 2026)" (version id `2411969985763602919`).
 
 | # | Frame | Position | What it shows | Source |
 |---|---|---|---|---|

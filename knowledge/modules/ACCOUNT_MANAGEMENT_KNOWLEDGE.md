@@ -111,7 +111,7 @@ Disabled items show a tooltip (copy master list).
 
 Section 7 `41001:22331` now holds the module as 20 frames in 6 rows: Listing, Create, Details, Edit, Suspend, Unsuspend. Each row has a header, rule notes, n.m captions and arrows; node ids are in `FIGMA_COMPONENT_INDEX.md`.
 
-- **Restore point:** "Before Account Management build in Section 7 (Claude, 15 Oct 2026)" (id 2410496742691575608).
+- **Restore point:** "Before Account Management build in Section 7 (15 Oct 2026)" (id 2410496742691575608).
 - **Not drawn yet:**
   - the module's tabs (Accounts / Activity), because the Activity tab has no spec;
   - Deactivated status (KIV);
@@ -185,7 +185,7 @@ KIV items (Reset Password, Change History, Deactivate / Reactivate, SMS verify) 
 
 ## 12. Fixes applied in Section 7 (20 Oct 2026)
 
-Restore point: "Before Account Mgmt Section 7 audit fixes (Claude, 20 Oct 2026)".
+Restore point: "Before Account Mgmt Section 7 audit fixes (20 Oct 2026)".
 
 - **Module tabs.** The user's Tab component `41017:45839` (a `Container` with 6 `Tab/Tab Item`; props `Text#11488:0`, `State` Active / Default, `Counter#11488:3`) is cloned into every frame's `RT-Page Interaction Section`, between `BusCom-HeaderWrapper` and `Content Wrapper`.
   - It sits in a wrapper `Tabs — Accounts / Activity`, padded 0/24/8.
@@ -226,7 +226,7 @@ Restore point: "Before Account Mgmt Section 7 audit fixes (Claude, 20 Oct 2026)"
 Daniel (PM) wrote: "I wrote the account activity tab ticket (MOVE-4458). For MOVE-4455 I added 'Account Type' in the drawer. The rest for account management is ok!" `tools/jira-desc-diff.py` from 16 Oct confirms only these two tickets changed.
 
 **User rule for this round:** don't edit the old page. Duplicate `🏭 Production` into a new page **`🏭 Production 2.0`** (`41058:67693`) and change only that. No code changes this round.
-- Restore point before the duplicate: "Before Production 2.0 duplicate (Claude, 26 Oct 2026)".
+- Restore point before the duplicate: "Before Production 2.0 duplicate (26 Oct 2026)".
 - The copied section is `41058:74670`. It has the same 79 children at the same positions; frame ids differ from Section 7 (`41058:…`).
 
 **MOVE-4455: Account Type in the details drawer.**
@@ -270,7 +270,7 @@ Daniel (PM) wrote: "I wrote the account activity tab ticket (MOVE-4458). For MOV
 ## 14. Daniel's #CR / #UI-UX round (28 Oct 2026), applied on `🏭 Production 2.0` only
 
 Ticket edits on 28 Oct (diff via `tools/jira-desc-diff.py`) match his Figma comments.
-- **Restore point:** "Before Daniel #CR round 28 Oct (Claude)".
+- **Restore point:** "Before Daniel #CR round 28 Oct".
 - **User rule:** check the tickets before replacing anything, and change every related screen on that page, not on other pages.
 
 **1. MOVE-4452 #CR: listing column `Account Status`**, between Last Login and Last Updated.
@@ -307,7 +307,7 @@ Of the open questions in §13: Q2 (search vs Full Name) and Q4 (Create Account o
 
 ## 16. Comment round + ticket edits of 6 Nov 2026, applied on `🏭 Production 3.1` (9 Nov 2026)
 
-**Working area:** page `🏭 Production 3.1` (`41137:16938`), section `Production` (`41137:17061`). The user duplicated it; edit only here. Restore point: "Before AM comment + 6 Nov ticket round (Claude, 9 Nov 2026)".
+**Working area:** page `🏭 Production 3.1` (`41137:16938`), section `Production` (`41137:17061`). The user duplicated it; edit only here. Restore point: "Before AM comment + 6 Nov ticket round (9 Nov 2026)".
 
 **Context:** Daniel left comments on an older file / page. Each was checked against the current tickets before acting. On every changed frame, a yellow `📝 Change note — <step>` frame sits **under** it (1440 wide, plugin data `note=1`). The user asked for these notes so they can see what moved.
 
@@ -353,7 +353,7 @@ Of the open questions in §13: Q2 (search vs Full Name) and Q4 (Create Account o
 ### 16.1 Tab layout exploration (Daniel #UI/UX, 9 Nov 2026)
 
 - **Daniel's comment:** tabs stretched across the full width are harder to read when there are only 2 short tabs. Take reference from the Roles module on UAT: tabs on the left, "Create Role" on the right of the tab row. Maybe move "Create Account" out of the tabs.
-- **Where:** a separate section on the same page, `Exploration — Tabs not stretched + Create Account outside tabs` (`41137:62068`), to the right of Production. Restore point "Before AM tab exploration section (Claude, 9 Nov 2026)".
+- **Where:** a separate section on the same page, `Exploration — Tabs not stretched + Create Account outside tabs` (`41137:62068`), to the right of Production. Restore point "Before AM tab exploration section (9 Nov 2026)".
 - **Variations:**
   - **V1 (recommended), Roles-module pattern** (`41137:62073` Accounts, `41137:62668` Activity): tabs hug their labels on the left; Create Account sits on the tab row at the right, and is hidden on Activity, consistent with the MOVE-4458 #CR.
   - **V2, CTA in the page header** (`41137:62884`, `41137:63664`): Create Account sits next to the page title. It is page-level, so it also shows on Activity; needs a PM call.
