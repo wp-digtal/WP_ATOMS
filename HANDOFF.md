@@ -141,7 +141,7 @@ Component priority when building:
 
 | File | Key | Where the work is | Status (10 Nov 2026) |
 |---|---|---|---|
-| 👩🏻‍🚀 Personal Dashboard (HR Module) | `1FCRdGhHru6czP5P6h06kH` | Page `🏭 Production` `23691:148675`. Section **Personal Dashboard** `41091:22331` (the PD build, 51 frames). Section `Old Leave` `29013:27819` holds the Leave-module reference drawers. **Exploration** section `41195:245231` (tab layout V1/V2/V3). | Comment rounds 1 + 2 done 10 Nov; full audit 10 Nov (§7.1). Waiting on the user's tab-variant pick. |
+| 👩🏻‍🚀 Personal Dashboard (HR Module) | `1FCRdGhHru6czP5P6h06kH` | Page `🏭 Production` `23691:148675`. Section **Personal Dashboard** `41091:22331` (the PD build, 51 frames). Section `Old Leave` `29013:27819` holds the Leave-module reference drawers. **Exploration** section `41195:245231` (tab layout V1/V2/V3). | Comment rounds 1 + 2 done 10 Nov; full audit 10 Nov (§7.1). **V1 tabs applied 11 Nov** (46 frames); long arrows replaced by 15 numbered links (§13.5). |
 | Account Management – HR Module | `kI1rSu1FAsPpV5K1EI2HvM` | Production 3.1 section `41137:17061`; exploration section `41137:62068`; 3.6 Deactivated drawer `41138:99426` | Full audit done 9 Nov. PM questions open (MOVE-4458 / 4451). |
 | 👩🏻‍🚀 Claim (HR Module) | `Gp7MfEP0XEv8YqZ9q474sj` | `🏭 Production` section `29013:27819` | Built and reviewed (Oct). |
 | 👩🏻‍🚀 Leave – HR Module | `VYGulw8yaudo3FRAWh4sEh` | Real Leave epic screens | Reference. |
@@ -160,7 +160,7 @@ Node ids go stale when people move or delete frames. **Resolve the user's link a
 
 | Module | Epic | KB file | Where | State and next step |
 |---|---|---|---|---|
-| **Personal Dashboard (web)** | MOVE-3412 | `PERSONAL_DASHBOARD_KNOWLEDGE.md` (§10 playbook, §13 comment rounds, §13.3 audit) | PD Figma section `41091:22331`; code `src/components/employeeportal/` | Audit 10 Nov found the items in §7.1. **Next:** the user decides what to fix, and picks tab variant V1, V2 or V3. Pay Slip tickets (3953/3954) are empty, so there is nothing to design. |
+| **Personal Dashboard (web)** | MOVE-3412 | `PERSONAL_DASHBOARD_KNOWLEDGE.md` (§10 playbook, §13 comment rounds, §13.3 audit) | PD Figma section `41091:22331`; code `src/components/employeeportal/` | Audit 10 Nov found the items in §7.1. V1 tabs + numbered flow links done 11 Nov (§13.5). **Next:** the user decides which remaining audit findings to fix. Pay Slip tickets (3953/3954) are empty, so there is nothing to design. |
 | Personal Dashboard (mobile ideation) | — | same KB §11 | Mobile Apps Design | Style 2 chosen; review rounds done. |
 | **Account Management** | MOVE-4449 | `ACCOUNT_MANAGEMENT_KNOWLEDGE.md` §15–16 | AM file | Audited 9 Nov. Open PM questions: MOVE-4458 (tab label, sort, Before/After format) and MOVE-4451. |
 | **HR Claims (web)** | MOVE-4021 | `CLAIMS_KNOWLEDGE.md` (**§6 = current file layout + fast path**), `CLAUDE_SESSION_CONTEXT.md` §9 | Claim file + `src/components/hrclaims/` | 10 Nov: empty-state comment solved, Remarks / Others ticket edits applied in Figma and code. Open: submit-success frame, disabled + tooltip example, highlight-active (ask first; the user removed some by hand). **Different module from PD Claims, never mix them.** |

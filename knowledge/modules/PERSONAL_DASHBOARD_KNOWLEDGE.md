@@ -588,7 +588,7 @@ MOVE-3953 / 3954 (Pay Slip) descriptions are still empty.
   - Submit Claim in the page header; no Employee field in Submit Claim.
 
 **Still waiting on the user:**
-- tab variant V1 / V2 / V3;
+- ~~tab variant V1 / V2 / V3~~ → **V1 picked 11 Nov** (§13.5);
 - the orange-note questions (`41116:147347`, `41116:147362`);
 - whether to fix findings 1–13.
 
@@ -611,4 +611,44 @@ Bridge gotchas:
 - With `skipInvisibleInstanceChildren=false`, a `findAllWithCriteria` over a detached 18-row table timed out and dropped the bridge. Address rows by id, and keep the flag `true`.
 
 The Leave Balances arrow (`Arrow — Leave Balances row → …`) crosses the green note under `374451`, so it was moved to the top of the z-order.
+
+### 13.5 V1 tabs applied + flow arrows cleaned up (11 Nov 2026)
+
+Restore point: "Before V1 tabs on PD Leave/Claims + arrow cleanup (11 Nov 2026)".
+
+**PM (Westpoint Digital) on the exploration section:**
+- "i think v1 is preferred. clearer hierarchy of info. can apply same to account management module". V1 is now applied to **46 Production frames**: every Leave and Claims frame whose page has the My Leave / My Claims | Approvals tabs, including the page behind each drawer and modal.
+  - **Recipe, per frame (4–5 frames per call is safe):**
+    1. In the first `Tab/Tab Group…`, set `primaryAxisAlignItems='MIN'` and set every tab item to `layoutSizingHorizontal='HUG'`.
+    2. Clone the exploration button (Claims `41195:247578` "Button — Submit Claim (on tab row, right)"; Leave `41195:256256` "Button — Apply Leave (on tab row, right)") into the tab group, `ABSOLUTE` at x = tabGroup.width − button.width, y = −3.
+    3. Hide `RT-Details Button Group` inside the page header, and set `RT-Detail Header Content` to `primaryAxisAlignItems='MIN'`.
+    4. Prefix the frame name with 🟢.
+  - **Not changed:** the non-approver frames (`364801`, `111950`) have no tab row, so their CTA stays in the page header.
+  - **Bug found and fixed:** Submit Claim missing-fields `300597` had **two** copies of the cloned page header (a duplicate from round 2), so "Claims" showed twice. The duplicate `41195:207342` was removed. A sweep of all 50 Leave/Claims frames found no other frame with more than one visible header.
+- "the red arrows … so cluttered … overlap and cut across each other … pls try to clean up". The **15 long trigger arrows** that ran down the left gutter (lanes x 1660–1744) and across rows were deleted, along with their 14 px start dots. They are replaced by **numbered links**:
+  - a red numbered badge (`Link N · trigger badge`, 28 px) on the trigger element;
+  - a red pill `Link N · goes to` ("N · trigger → destination") in a strip 48 px above the source frame's flow label;
+  - a white, red-outlined pill `Link N · comes from` ("← N · from screen: trigger") above the target frame's flow label;
+  - all three carry plugin data `link=N`.
+  - **Kept as arrows:** the short "→ next state" arrows inside a row, the two reject-branch elbows, Type reason, Confirm → Rejected, and "Work space" → workspace.
+  - **Links:**
+    1. Workspace "Personal Dashboard" → Home
+    2. Home Apply Leave → Apply Leave drawer
+    3. Home Submit Claim → Submit Claim drawer
+    4. Home View more → Leave page
+    5. Home activity card → Leave Details (own)
+    6. Leave Apply Leave → Apply Leave drawer
+    7. Leave Applications row (non-approver) → Leave Details (own)
+    8. Leave Approvals tab → Leave Approvals
+    9. Leave Balances row → Balance Details
+    10. Pending Approval row → Leave Details (approver)
+    11. Send for Approval (empty) → missing-fields error
+    12. My Claims Submit Claim → Submit Claim drawer
+    13. My Claims row (non-approver) → Claim Details (own)
+    14. Claims Approvals row → Claim Details (approver)
+    15. My Claims Approvals tab → Claims Approvals
+- **Notes:**
+  - A legend note `41237:52672` and a V1 note `41237:52675` sit at 5400,170, to the right of the first Big Title.
+  - The stale flow label "Approvals tab (with Remarks)" now reads "Approvals tab".
+- **Checking a region that includes section-level overlays:** a frame screenshot doesn't show sibling arrows or badges. Create a temporary `figma.createSlice()` over the area, screenshot the slice, then delete it.
 

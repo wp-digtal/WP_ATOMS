@@ -14,6 +14,15 @@ minor).
 
 ## [Unreleased]
 
+### Changed — PD: V1 tabs on every Leave/Claims frame, long flow arrows replaced by numbered links (Figma, 11 Nov 2026, MOVE-3943 / MOVE-3948)
+
+- **PM: "v1 is preferred. clearer hierarchy of info".** On 46 Production frames, the tabs hug left and Apply Leave / Submit Claim sits at the right of the tab row; the page-header CTA is hidden. Non-approver frames have no tabs, so they keep the header CTA.
+- **Bug fixed:** a duplicated page header on Submit Claim missing-fields `300597`.
+- **PM: "red arrows … cluttered … overlap and cut across each other".** The 15 long gutter arrows and their dots are removed. In their place are numbered links: a badge on the trigger, a red "goes to" pill above the source frame, and a white "comes from" pill above the target. Short in-row arrows stay.
+- A legend note and a V1 note are on the canvas. Frames are prefixed 🟢. A restore point was saved first.
+- The AM part ("apply same to account management") is still to do; it needs a pairing to the AM file.
+- Details: `PERSONAL_DASHBOARD_KNOWLEDGE.md` §13.5; the arrow rule is in the `code-to-figma` skill.
+
 ### Changed — No "Claude" in Figma restore points (docs, 10 Nov 2026)
 
 - User: "saya tidak mau ada kata claude … di semua restore point di version history". New rule in `CLAUDE.md`, `HANDOFF.md`, `FIGMA_DESIGN_SYSTEM.md` §4.10 and the `code-to-figma` skill. Titles are `Before <change> (<date>)`, with no AI or tool name in the title or the description.

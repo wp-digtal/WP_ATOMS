@@ -127,6 +127,13 @@ For each screen and flow in the module, include:
   - One line of what's notable (rule, trigger, outcome).
 - **Arrows between consecutive steps** in a flow (a line with an arrowhead,
   e.g. `strokeCap: ARROW_LINES` on the end).
+  **Arrows must never get long or cross (PM, 11 Nov 2026).**
+  - Draw arrows only between neighbouring frames in the same row.
+  - Any jump to another row or group is a **numbered link** instead:
+    - a red badge on the trigger;
+    - a red pill "N · trigger → destination" above the source frame;
+    - a white, red-outlined pill "← N · from …" above the target frame.
+  - Recipe: `PERSONAL_DASHBOARD_KNOWLEDGE.md` §13.5. Long gutter arrows were judged "cluttered … overlap and cut across each other".
 - **A section title block** at the top-left: module name, epic key, ticket
   list, code path, the status legend (tag colour → meaning), and the
   last-updated date.
