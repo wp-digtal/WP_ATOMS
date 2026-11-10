@@ -361,6 +361,19 @@ Of the open questions in §13: Q2 (search vs Full Name) and Q4 (Create Account o
 - **Technique:** `Container` (the tab group) → each `Tab/Tab Item` gets `layoutSizingHorizontal='HUG'`; the container gets `primaryAxisAlignItems='MIN'` and `itemSpacing=32`. No detach needed. The CTA is a clone of the Filter Bar's `Button`, placed with `layoutPositioning='ABSOLUTE'`; the original is hidden.
 - **Already done before this round** (also in Daniel's comments): stay on the drawer after Suspend / Unsuspend (§16, 5.4 / 6.2).
 
+### 16.1.1 V1 applied to Production 3.1 (11 Nov 2026)
+
+- **Why:** the PM picked V1 on the Personal Dashboard exploration: "i think v1 is preferred. clearer hierarchy of info. can apply same to account management module" (`PERSONAL_DASHBOARD_KNOWLEDGE.md` §13.5). Restore point: "Before V1 tabs on AM Production 3.1 (11 Nov 2026)".
+- **What changed:** all **31** frames in `🏭 Production 3.1` section `41137:17061` now use V1, and every frame name is prefixed with 🟢.
+- **Per frame:**
+  - In `Tabs — …` → `Container`, the tab items are HUG, `primaryAxisAlignItems=MIN`, `itemSpacing=32`.
+  - On Accounts-tab frames, the filter-bar `Create Account` (instance id ending `;21:47309`) is hidden.
+  - A clone of the exploration CTA `41137:62663` sits in the `Tabs — …` wrapper, `ABSOLUTE` at x = wrapper.width − 135 − 40, y = 11.
+  - The 4 Activity frames get no CTA (MOVE-4458 #CR).
+- **Connector fixed:** "Connector — Create Account button → Create Account (Drawer)" `41137:21166` now starts at the new button (1500,1551), not the old filter-bar spot.
+- **Note:** a green note `41162:49558` sits at 100,534, between the section's Big Titles.
+- **Not changed:** the other AM elbow connectors (row → details, Edit, Suspend, Unsuspend) still run down the gutters. The PD arrow rule (§ `code-to-figma` skill) wasn't requested here; convert them to numbered links if the PM raises it.
+
 ### 16.2 Full ticket audit of Production 3.1 (9 Nov 2026)
 
 All MOVE-4449 children were re-read; MOVE-4458 / 4452 / 4453 / 4457 at their 6 Nov versions. The 30 frames were checked programmatically for table columns, drawer cells, header text and disabled states, plus screenshots.

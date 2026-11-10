@@ -14,6 +14,12 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Account Management: V1 tabs on Production 3.1 (Figma, 11 Nov 2026, MOVE-4452 / MOVE-4458)
+
+- PM: "can apply same to account management module". All 31 Production 3.1 frames now have hugging Accounts / Activity tabs, with Create Account at the right of the tab row. The filter-bar button is hidden, and Activity has no CTA.
+- The Create Account connector now starts at the new button position. A green note was added and the frames are prefixed 🟢. A restore point was saved first.
+- Details: `ACCOUNT_MANAGEMENT_KNOWLEDGE.md` §16.1.1.
+
 ### Changed — PD: V1 tabs on every Leave/Claims frame, long flow arrows replaced by numbered links (Figma, 11 Nov 2026, MOVE-3943 / MOVE-3948)
 
 - **PM: "v1 is preferred. clearer hierarchy of info".** On 46 Production frames, the tabs hug left and Apply Leave / Submit Claim sits at the right of the tab row; the page-header CTA is hidden. Non-approver frames have no tabs, so they keep the header CTA.
