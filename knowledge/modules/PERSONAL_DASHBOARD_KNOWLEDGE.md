@@ -630,6 +630,7 @@ Restore point: "Before V1 tabs on PD Leave/Claims + arrow cleanup (11 Nov 2026)"
   - a red pill `Link N · goes to` ("N · trigger → destination") in a strip 48 px above the source frame's flow label;
   - a white, red-outlined pill `Link N · comes from` ("← N · from screen: trigger") above the target frame's flow label;
   - all three carry plugin data `link=N`.
+  - **They are wrapped in groups** (`Flow links · 4, 6, 8, 9`, one per strip; `Flow link badge N`, one per badge). A frame placed directly in a section shows its layer name on the canvas ("Link 6 · goes to" appeared above every pill, user asked "apa maksudnya ini?"). A group does not show its name.
   - **Kept as arrows:** the short "→ next state" arrows inside a row, the two reject-branch elbows, Type reason, Confirm → Rejected, and "Work space" → workspace.
   - **Links:**
     1. Workspace "Personal Dashboard" → Home
