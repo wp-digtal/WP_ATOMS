@@ -182,3 +182,18 @@ Restore point: "Before Bus Booking round 3: add-ons field, time picker, price on
 Frame 2.7 (address auto-complete) is gone too; the user removed it.
 
 **Demo data is unchanged** (Changi T3 → Marina Bay Sands, 18 pax, 20-seater, Grand Total S$446.90). The 2.9 example time is now 08:07 AM, which shows that any minute can be picked.
+
+## PM comment round 4 (10 Nov 2026, same day)
+
+Restore point: "Before Bus Booking round 4 + PD mobile Claims/Leave content (Claude, 10 Nov 2026)". Each changed frame has a green `🟢 Change note` under it, with plugin data `note=green`.
+
+| Comment | Change |
+|---|---|
+| "pls standardise buttons. this button should be 'next' not 'confirm'" (step 1) | The primary button reads **Next** on every step-1 frame. Change it with the Button property `Input text#2053:13`. Frames 2.1, 2.2 and 2.8 already said Next. Changed: 2.3, 2.4, 2.5, 2.6 and 2.9. Frame 2.6 is renamed "Next with missing / invalid fields". |
+| "pls remove estimated price from step 1 screen" | The `Price preview` card is hidden on 2.3, 2.4, 2.5, 2.6 and 2.9. Price now appears **only** on 3.1 Trip Summary. |
+| User: stepper lines were uneven ("panjang line tidak sama") | Fixed on all 12 steppers: 2.1–2.6, 2.8 (×2), 2.9, 3.1, 3.2, 3.3 and 3.5. See the stepper rule below. |
+
+**Stepper rule (hand-built `Stepper (hand-built)`):**
+- Each `Step n` column is FILL width (358 / 3 ≈ 119 px) and centres its dot and label. Labels are centred, with an 18 px line height, so an active Bold label sits on the same baseline as the others.
+- Each `Connector` is ABSOLUTE at y = 10. It runs from 19 px right of one dot's centre to 19 px left of the next dot's centre, so every line is 81 px.
+- With HUG step columns, the line lengths depend on label width. Never go back to that.

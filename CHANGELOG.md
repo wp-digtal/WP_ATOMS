@@ -14,6 +14,20 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Bus Booking round 4 (Next button, no price on step 1, even stepper) + PD mobile Style 2 Leave/Claims content (Figma, 10 Nov 2026)
+
+- **Bus Booking:**
+  - PM: "standardise buttons … 'next' not 'confirm'". The step-1 primary button is now Next on 2.3, 2.4, 2.5, 2.6 and 2.9.
+  - PM: "remove estimated price from step 1". The Price preview card is hidden on 2.x, so price shows only on 3.1.
+  - User: the stepper lines were uneven. All 12 steppers now use equal columns, so both connectors are 81 px.
+- **PD mobile ideation:**
+  - Xing Yun: "use the design on the left but align on what we have on the right in terms of content". Leave and Claims rows now carry the reference's content: type, then date range + day chip or amount + claim ID chip, then "Submitted on …".
+  - Statuses use the reference colours.
+  - A Cancelled claim was added ("missing cancel status"), and the tab counts were updated.
+  - The CTAs read Apply New Leave / Submit New Claim.
+- Frames, labels and notes are marked 🟢. A restore point was saved first.
+- Details: `BUS_BOOKING_KNOWLEDGE.md` "PM comment round 4", `PERSONAL_DASHBOARD_KNOWLEDGE.md` §11.5.
+
 ### Changed — Bus Booking round 3: own Add-ons field, normal time picker, price on Trip Summary, collapsed success cards (Figma, 10 Nov 2026, MOVE-4581 / MOVE-4569)
 
 - **From PM comments (Westpoint Digital):**

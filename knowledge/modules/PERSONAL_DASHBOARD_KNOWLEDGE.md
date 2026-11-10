@@ -447,6 +447,32 @@ Comments on Style 2 Widget Grid, applied directly to the screens (not the work s
 - The older pin "no need this, do the same as leave, the counter in the tab" is about the summary tiles. Those were already replaced by tab counters on 3 Nov (§11.3); nothing more to change.
 - Restore point "Before PD Claims icon removal (Claude, 5 Nov 2026)".
 
+### 11.5 Style 2 Leave / Claims: content aligned to the reference (10 Nov 2026)
+
+Xing Yun (reply to Daniel's question of 5 Nov): "we can use the design on the left but it should align on what we have on the right, in terms of the content". The right side is the reference frame `8757:19735`, with the existing Manage Leave and Manage Claims screens. The layout stays the Style 2 one (grouped white cards and tab chips). Each row now carries the reference's content:
+- **Claims `8725:9123`:**
+  - Each row shows the claim type in grey 13 px Medium, then the amount in 18 px Bold next to a claim-ID chip, then "Submitted on Mon, 5 Oct 2026 06:00 PM" in 11 px grey. The status chip sits on the right.
+  - Data follows the reference:
+    - Toll (ERP) S$2.10, Pending Approval;
+    - Carpark S$4.80, Pending Payment;
+    - Toll (ERP) S$1.80, Paid;
+    - Others (car wash) S$12.90, Rejected;
+    - Toll (ERP) S$1.80, **Cancelled**.
+  - The Cancelled row answers "missing cancel status".
+  - Rows are grouped October (2) and September (3). Tabs read All (5) · Pending (2) · Paid (1) · Rejected (1) · Cancelled (1). The CTA is "Submit New Claim". The frame is now 882 px tall.
+- **Leave `8725:8905`:** each row shows the leave type, then the date range in 18 px Bold next to a day-count chip ("3 days"), then "Submitted on …". The CTA is "Apply New Leave". The frame is now 964 px tall.
+- **Status colours follow the reference:**
+  - Pending Approval: blue (`Info`);
+  - Pending Payment: orange (`Warning`);
+  - Paid / Approved: `Success`;
+  - Rejected: `Danger`;
+  - Cancelled: `Neutral_2` / `Default`.
+  The old frames had Pending Approval and Pending Payment swapped.
+- The ID and day chips are hand-built (`Claim ID chip (hand-built)`, `Days chip (hand-built)`), because no outline mini-chip was found in Integral.
+- Amounts keep the **S$** prefix, as everywhere else in the app; the reference shows "$".
+- The old pin "no need this, counter in the tab" was already done on 3 Nov (§11.3).
+- Green notes: `8880:18555` (Leave) and `8880:18558` (Claims).
+
 ## 13. Daniel's comment round on the web PD (Production section `41091:22331`, 10 Nov 2026)
 
 Restore point: "Before PD comment round: balance drawer, history filter, upload (Claude, 10 Nov 2026)". Every changed frame has a yellow `📝 Change note` under it.
