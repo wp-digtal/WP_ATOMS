@@ -14,6 +14,12 @@ minor).
 
 ## [Unreleased]
 
+### Added — PD: Submit Claim empty state; AM tabs without the white container (Figma, 11 Nov 2026, MOVE-3776 / MOVE-4452)
+
+- **PD.** PM: "can show an empty state screen without the error states?". There is a new first frame in the Submit Claim row, the drawer just opened, with no errors and no toast. The rest of the row shifted right, and a short arrow goes to the error state. A green note was added and a restore point saved.
+- **Found while working:** 12 of the 16 PD link-pill strips had been deleted from the canvas. They were not recreated; the user was asked first.
+- **AM.** User: the tab style was still wrong; the white container should go, as in PD. On all 31 frames the tab `Container` has no fill, stroke, top padding or radius, and Create Account sits level with the tabs (x = wrapper − 24 − width, y = −1). The top Header Bar is still to do: it is a local PD component, so the user is to paste it into the AM file.
+
 ### Changed — Account Management: V1 tabs on Production 3.1 (Figma, 11 Nov 2026, MOVE-4452 / MOVE-4458)
 
 - PM: "can apply same to account management module". All 31 Production 3.1 frames now have hugging Accounts / Activity tabs, with Create Account at the right of the tab row. The filter-bar button is hidden, and Activity has no CTA.

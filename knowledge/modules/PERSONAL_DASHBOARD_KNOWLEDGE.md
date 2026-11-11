@@ -653,3 +653,16 @@ Restore point: "Before V1 tabs on PD Leave/Claims + arrow cleanup (11 Nov 2026)"
   - The stale flow label "Approvals tab (with Remarks)" now reads "Approvals tab".
 - **Checking a region that includes section-level overlays:** a frame screenshot doesn't show sibling arrows or badges. Create a temporary `figma.createSlice()` over the area, screenshot the slice, then delete it.
 
+### 13.6 Submit Claim empty state (11 Nov 2026)
+
+- PM: "can show an empty state screen without the error states?" (Daniel: "can can").
+- **New frame** `41244:54599` "🟢 PD - Submit Claim - Empty, drawer just opened (MOVE-3776)" at 1755,26647, with flow label `41244:54757` and green note `41244:55202`. Restore point: "Before Submit Claim empty state + link spacing (11 Nov 2026)".
+  - The rest of the row moved one column right: missing-fields `300597` → 3395, filled `299784` → 5035, sent `303206` → 6675, together with their labels and arrows.
+  - A new short arrow `41244:55201` (Empty → missing fields) sits at 3215.
+- **How it was made:** clone the missing-fields frame. Screenshot it first so that the cloned texts load. Then:
+  1. Hide the 4 `_Input / Input Caption` (Status=Error) instances.
+  2. Set `_Select / Select Input` and `_DatePicker / DatePicker Input` to `Status=Default`.
+  3. Reset the Amount `InputNumber` stroke (a direct red override) to #D9D9D9.
+  4. Hide the error toast.
+- **Open (11 Nov):** 12 of the 16 link-pill strips from §13.5 were gone from the canvas. Someone deleted them after they were grouped; the 15 badges and the strips for 1, 9, "8, 10" and 11 remain. The user was asked before recreating them.
+

@@ -374,6 +374,16 @@ Of the open questions in §13: Q2 (search vs Full Name) and Q4 (Create Account o
 - **Note:** a green note `41162:49558` sits at 100,534, between the section's Big Titles.
 - **Not changed:** the other AM elbow connectors (row → details, Edit, Suspend, Unsuspend) still run down the gutters. The PD arrow rule (§ `code-to-figma` skill) wasn't requested here; convert them to numbered links if the PM raises it.
 
+### 16.1.2 Tab style matched to PD (11 Nov 2026)
+
+- **User:** the AM tabs still looked wrong. In PD the tabs sit on the page background; AM had them in a white bordered card. The fix is to match PD (screenshot comparison).
+- **Done on all 31 frames:** `Tabs — …` → `Container` (library `Tab/Tab Group`, Property 1=Default) now has `fills=[]`, `strokes=[]`, `paddingTop=0` and `cornerRadius=0`. The inactive tab shows its grey underline, as in PD. Create Account sits at x = wrapper.width − 24 − 135, y = −1, level with the tabs.
+- **To do: top Header Bar.** PD frames have a 1204×56 `Header Bar` (sidebar toggle, Search, English, ?, bell, avatar) above the page header; AM has none. It is a **local** component in the PD file, so it cannot be imported from the AM file. The user was asked to copy-paste it into AM. Once it is pasted:
+  - add it at the top of `RT-Page Interaction Section` in all 31 frames;
+  - hide the sidebar's profile row, Notifications and collapse icon, which the header now carries;
+  - set the avatar initials to the AM user;
+  - re-anchor connector `41137:21166` again.
+
 ### 16.2 Full ticket audit of Production 3.1 (9 Nov 2026)
 
 All MOVE-4449 children were re-read; MOVE-4458 / 4452 / 4453 / 4457 at their 6 Nov versions. The 30 frames were checked programmatically for table columns, drawer cells, header text and disabled states, plus screenshots.
