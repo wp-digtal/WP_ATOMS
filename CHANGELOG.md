@@ -14,6 +14,12 @@ minor).
 
 ## [Unreleased]
 
+### Changed — PD: standard page header (breadcrumb + title, 124 px) on the 46 V1 frames (Figma, 11 Nov 2026)
+
+- User pointed at `41244:55205`: use that header's padding and sizes, with each page's own texts. The 152 px Detail header was replaced by the standard 124 px one, with the breadcrumb "Home / Personal Dashboard / Leave | Claims". The old header is hidden.
+- Filter popovers and numbered badges were moved up 28 px to follow the content. In Leave frames whose parent has absolute layout, the header was positioned by hand.
+- Details: `PERSONAL_DASHBOARD_KNOWLEDGE.md` §13.7.
+
 ### Added — PD: Submit Claim empty state; AM tabs without the white container (Figma, 11 Nov 2026, MOVE-3776 / MOVE-4452)
 
 - **PD.** PM: "can show an empty state screen without the error states?". There is a new first frame in the Submit Claim row, the drawer just opened, with no errors and no toast. The rest of the row shifted right, and a short arrow goes to the error state. A green note was added and a restore point saved.

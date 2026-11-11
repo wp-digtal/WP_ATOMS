@@ -666,3 +666,19 @@ Restore point: "Before V1 tabs on PD Leave/Claims + arrow cleanup (11 Nov 2026)"
   4. Hide the error toast.
 - **Open (11 Nov):** 12 of the 16 link-pill strips from §13.5 were gone from the canvas. Someone deleted them after they were grouped; the 15 badges and the strips for 1, 9, "8, 10" and 11 remain. The user was asked before recreating them.
 
+### 13.7 Standard page header on the V1 frames (11 Nov 2026)
+
+- **User:** "untuk bagian header harusnya kamu menggunakan ini" (the header should use this one). They pointed at `41244:55205`, a `BusCom-HeaderWrapper` with Type=Default, State=Scrolled, Status=Default: 1204×124, breadcrumb at 24,24, title at 24,62. "tetap ganti text nya, breadcrumb nya": keep each page's own texts, but take the padding and sizes from this one.
+- **Why:** after V1 moved the CTA to the tab row, the frames still used the Leave header (Type=Detail, 152 tall, with an extra 20 px above the title).
+- **Done on all 46 V1 frames:** a clone of the standard header, named `BusCom-HeaderWrapper (PD standard header)`, is inserted at the old header's index. The old header is hidden, not deleted.
+  - **Breadcrumb recipe:** in the `Breadcrumb` (Type=Icon) instance:
+    1. Set link 2 (`376:10808`) to State=Default and its text to "Personal Dashboard". After the State change, its text id becomes `…;376:10739`.
+    2. Unhide separator `376:10809` and link `1233:48281`.
+    3. Set that link to State=Current, Icon=false, with text "Leave" / "Claims".
+  - **Title:** `…;143:5533;1233:44525`.
+  - **Absolute parents:** some Leave frames' `HR General Screen` has layout NONE (e.g. `399456`). There, the clone keeps its source coordinates, so copy the old header's x/y/width and move everything below it up by 28.
+  - **Knock-on fixes:**
+    - The content moved up 28 px, so the 5 filter popovers (`374451`, `399456` ×2, `180732`, `116474`) and badges 6, 8, 9, 10, 12, 14 and 15 also moved up 28.
+    - Non-approver frames (`364801`, `111950`) keep the old header, because their CTA is still in it.
+- The user's reference instance `41244:55205` stays on the canvas, next to the Claims Big Title.
+
