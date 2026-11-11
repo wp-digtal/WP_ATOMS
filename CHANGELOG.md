@@ -14,6 +14,12 @@ minor).
 
 ## [Unreleased]
 
+### Added — Bus Booking: expand example next to 3.4 + trip-card layout exploration (Figma, 11 Nov 2026, MOVE-4581)
+
+- PM: "display and example for expand". The existing 3.4b expanded frame now sits right next to 3.4, with an arrow labelled "Tap a trip card to expand". 3.5 moved one column right, and its arrow was extended.
+- PM: "current layout is messy and v hard to read". There is a new separate exploration section (as the user asked) with 3 variants, each collapsed + expanded: V1 icon list (recommended), V2 2×2 grid, V3 route style. Production is unchanged until one is picked.
+- Figma comments couldn't be fetched (REST 401), so this round worked from the user's screenshots.
+
 ### Changed — Bus Booking round 5: counter outside + grey, Pick-up Time alignment, "Submit", label consistency (Figma, 11 Nov 2026, MOVE-4581)
 
 - **PM: character counter.** It now uses the Driver pattern: below the box, #A7AAAC, Roboto 14, "51 / 240". Applied to 18 counters.

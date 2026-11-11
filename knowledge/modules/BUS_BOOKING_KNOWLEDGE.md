@@ -222,3 +222,17 @@ Restore point: "Before Bus Booking round 5: counter, add-ons chips, alignment, S
 
 Screenshots sent to the user: `scratchpad/audit/1…4-*.png`. The scratchpad is not in the repo; it is a session-only copy.
 
+## Round 6: expand example + trip-card exploration (11 Nov 2026)
+
+- **Comments could not be read through the API.** The Figma REST token fails (401 on `figma_get_comments`), so this round worked from the user's screenshots. Ask the user for screenshots, or a fresh token, whenever comments must be read.
+- **PM: "display and example for expand"** (on 3.4).
+  - 3.4b (`8880:17962`, Trip 1 expanded) already existed, but it sat after 3.5 with no arrow. It now sits **directly right of 3.4** (3700,4500), and 3.5 moved to 4600,4500.
+  - The 3.2 → 3.5 elbow arrow `8763:20218` was extended (+900). The new arrow `8915:20260` 3.4 → 3.4b has the orange label "Tap a trip card to expand" (`8915:20261`).
+  - The 3.5 note moved to y 5620, so the arrow no longer cuts through it. 3.4b has a green note `8915:20263`.
+- **PM: "collapsed by default … messy and v hard to read".** At the user's request, this went into a separate area: section **`8915:20266`** "🧪 Exploration — Bus Booking success: trip card layout", at 26022,13403, right of the Bus Booking section. Each row is collapsed → expanded, with a note.
+  - **V1, icon list (recommended)** `8915:20269` / `8915:20662`. The collapsed card shows only the 4 asked-for fields, one per line with an icon (calendar-stats, clock, map-pin, user glyphs). Expanded adds a divider plus label-above-value details.
+  - **V2, 2×2 grid** `8915:20363` / `8915:20878`. Labels sit above values in two columns.
+  - **V3, route style** `8915:20457` / `8915:21103`. Date · time on one line, a bus-size `Chips/Normal` (Neutral_1, Default, Small), and a pick-up ● → drop-off ● route when expanded.
+  - Production 3.4 / 3.4b are unchanged until the PM picks one.
+- **Why the current card reads badly:** label left / value right with long values. Right-aligned addresses wrap into ragged blocks, and the eye zig-zags. All 3 variants keep long text left-aligned.
+
