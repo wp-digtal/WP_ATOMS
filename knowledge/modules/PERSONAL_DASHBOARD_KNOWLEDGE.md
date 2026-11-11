@@ -682,3 +682,15 @@ Restore point: "Before V1 tabs on PD Leave/Claims + arrow cleanup (11 Nov 2026)"
     - Non-approver frames (`364801`, `111950`) keep the old header, because their CTA is still in it.
 - The user's reference instance `41244:55205` stays on the canvas, next to the Claims Big Title.
 
+### 13.8 Link numbers removed; every page header is 124 px (11 Nov 2026)
+
+- **User:** "angka angka ini, bisa di remove saja ya agar tidak membingungkan" (please remove these numbers, they are confusing). All numbered link badges and the remaining pills (19 groups) were deleted. §13.5's numbered-link system is withdrawn for this file. The remaining flow docs are:
+  - the short in-row red arrows;
+  - row titles and notes.
+- The legend note `41237:52672` was rewritten to match, and the empty-state note `41244:55202` no longer mentions link numbers.
+- **User:** Home's header `41107:267278` "ini adalah sample component yang benar … secara size" (this is the correct sample size). It is `BusCom-HeaderWrapper` Type=Detail at **124 px**, so its `RT-Detail Header Content` has padding 0/0/0/0.
+  - The older 152 px headers had padding 20/0/8/0 on that frame; that is the only difference.
+  - **Fix:** set `paddingTop` / `paddingBottom` to 0 on that frame in the 5 headers still at 152 px (non-approver Claims `111950` and Leave `364801`, Home "View all" `271607`, Home Empty `274758`, Entry inside PD `283731`). The parents are vertical auto-layout, so the content reflows on its own.
+  - A sweep of all 54 frames now finds no visible page header other than 124 px.
+- **Rule for this file:** the page header is always 124 px, with breadcrumb at 24,24 and title row at 24,62. Detail type (title + buttons, as on Home) and Default type (title only, as on the V1 frames) are both allowed.
+

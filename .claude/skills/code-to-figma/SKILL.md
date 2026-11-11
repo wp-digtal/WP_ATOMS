@@ -133,7 +133,8 @@ For each screen and flow in the module, include:
     - a red badge on the trigger;
     - a red pill "N · trigger → destination" above the source frame;
     - a white, red-outlined pill "← N · from …" above the target frame.
-  - Recipe: `PERSONAL_DASHBOARD_KNOWLEDGE.md` §13.5. Long gutter arrows were judged "cluttered … overlap and cut across each other".
+  - Long gutter arrows were judged "cluttered … overlap and cut across each other".
+  - **Update 11 Nov 2026:** in the PD file the user then asked to remove the numbered badges and pills as well ("membingungkan", confusing). Ask before adding numbered links to another file. The default is short in-row arrows plus row notes that say where a screen is opened from (`PERSONAL_DASHBOARD_KNOWLEDGE.md` §13.8).
 - **A section title block** at the top-left: module name, epic key, ticket
   list, code path, the status legend (tag colour → meaning), and the
   last-updated date.

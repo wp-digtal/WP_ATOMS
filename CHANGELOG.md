@@ -14,6 +14,12 @@ minor).
 
 ## [Unreleased]
 
+### Changed — PD: link numbers removed; all page headers 124 px like Home (Figma, 11 Nov 2026)
+
+- User: the numbers were confusing. All 15 link badges and the 4 remaining pill strips are deleted, and the legend note is updated.
+- User: Home's header is the correct size sample. The 5 headers still at 152 px now match it (title-row padding 20/8 → 0). Every page header in the section is 124 px.
+- Details: `PERSONAL_DASHBOARD_KNOWLEDGE.md` §13.8. The `code-to-figma` skill is updated: ask before using numbered links.
+
 ### Changed — PD: standard page header (breadcrumb + title, 124 px) on the 46 V1 frames (Figma, 11 Nov 2026)
 
 - User pointed at `41244:55205`: use that header's padding and sizes, with each page's own texts. The 152 px Detail header was replaced by the standard 124 px one, with the breadcrumb "Home / Personal Dashboard / Leave | Claims". The old header is hidden.
