@@ -78,6 +78,8 @@ All rows: file `IICHGFDHLhKCvE5vMzFokS` unless stated. Library: Integral `sTpe9M
 | M16 | Local cards | `Leave Card` `8197:21416`, `Trip Details` `5149:9376`, `Component 21` `2786:16994`, sidebar menus `8188:15259` / `8188:6586` | — | — | Mobile §4.2 |
 | M17 | Stepper (multi-step form) | hand-built `Stepper (hand-built)` | Bus Booking frames, section `8763:16472` | Dot above, label below (12 px), connector frames `layoutGrow=1`; done = success dot ✓, active = brand | Bus Booking KB |
 | M18 | Bottom sheet (picker / add-ons) | hand-built `Bottom sheet · …` | Bus Booking 2.3 / 2.4 / 2.9 | Overlay rect + sheet pinned to the bottom (`y = 844 − h`) | Bus Booking KB |
+| M19 | Textarea + character counter | hand-built `Textarea (hand-built; no Integral textarea)`. The counter sits **outside**, as a separate text under the box | Bus Booking 2.x; reference Driver Claims Remarks `8545:15290` (`Input/Input Border Style`, hint "26 / 240") | Counter: Roboto Regular 14, line-height 20, fill #A7AAAC, left-aligned, format `n / max` with spaces | Bus Booking KB round 5 |
+| M20 | Toggle / quantity stepper | Integral `◈ Toggle / Base` (set key `d0845d17456eaac3dad7ef42ac210c7bbe75e774`), `Quantity Field / Normal` (set key `3d604d0166d2a51d0436edb08bb4c98e900d5235`) | not used in the file yet; Bus Booking still uses `Toggle off (hand-built)` / `Quantity stepper (hand-built)` | `importComponentSetByKeyAsync` **timed out** (60 s, 11 Nov). Copy-paste an instance from the Integral file into Mobile Apps Design first, then swap the hand-built ones | Bus Booking KB round 5 |
 
 ---
 

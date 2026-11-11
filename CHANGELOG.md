@@ -14,6 +14,15 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Bus Booking round 5: counter outside + grey, Pick-up Time alignment, "Submit", label consistency (Figma, 11 Nov 2026, MOVE-4581)
+
+- **PM: character counter.** It now uses the Driver pattern: below the box, #A7AAAC, Roboto 14, "51 / 240". Applied to 18 counters.
+- **PM: alignment.** "Pick-up Time" had a leading space; the stray space was removed from 21 labels.
+- **PM: button.** "Submit Enquiry" → "Submit" on 3.2 / 3.3 / 3.5.
+- **Add-ons.** Already a separate field using Integral `Chips/Normal`; the casing is now unified to "Add-Ons".
+- **Consistency.** Remarks labels are unified, and "Return trip" is used everywhere. The 2.8 buttons no longer sit under the home indicator.
+- **Reported, not changed:** Inter / 42dot Sans text in Passenger Bus Booking and Driver Leave (Integral = Roboto); hand-built toggle / quantity stepper (the Integral import times out); 2.1 hidden "Trip 1"; "Estimated price" wording. Listed in Open items.
+
 ### Changed — PD: link numbers removed; all page headers 124 px like Home (Figma, 11 Nov 2026)
 
 - User: the numbers were confusing. All 15 link badges and the 4 remaining pill strips are deleted, and the legend note is updated.
@@ -3353,6 +3362,7 @@ Tracked here so they do not get lost between sessions.
 
 | Item | Status |
 |---|---|
+| Mobile consistency (11 Nov): Inter in Bus Booking headings/labels and 42dot Sans in Driver Apply Leave balance card (Integral = Roboto); hand-built Return-trip toggle and quantity stepper (Integral `◈ Toggle / Base`, `Quantity Field / Normal` exist, import timed out); 2.1 "Trip 1" hidden; 3.1 "Estimated price" wording | Open — user to decide (screenshots sent) |
 | Figma version history: older restore points still say "(Claude, …)" in Figma. The API cannot rename them; the user renames them by hand to `Before … (<date>)` | Open — user |
 | Bus Booking (MOVE-4581): the ticket's Trip Summary table and AC still give pick-up and drop-off their own add-ons. The PM comment (10 Nov) asked for one separate Add-ons field, and Figma follows the comment. Also not designed yet from the 3 Nov edits: the Refund Policy link + overlay, and the offline banner | Open — ask the PM to update the ticket; design Refund Policy / offline banner on request |
 | Bus Booking (MOVE-4569 / 4582): sales address is sales@westpointbus.com in MOVE-4569 but sales@westpointbus.com.sg in MOVE-4582; MOVE-4569 AC says "Fill in Booking Form" while its table says "Submit Booking Form"; MOVE-4582 AC asks for bus size but its email layout has no field (Figma adds a Bus size row) | Open — ask the PM (see `BUS_BOOKING_KNOWLEDGE.md`) |

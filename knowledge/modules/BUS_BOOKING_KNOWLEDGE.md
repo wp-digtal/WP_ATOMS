@@ -197,3 +197,28 @@ Restore point: "Before Bus Booking round 4 + PD mobile Claims/Leave content (10 
 - Each `Step n` column is FILL width (358 / 3 ≈ 119 px) and centres its dot and label. Labels are centred, with an 18 px line height, so an active Bold label sits on the same baseline as the others.
 - Each `Connector` is ABSOLUTE at y = 10. It runs from 19 px right of one dot's centre to 19 px left of the next dot's centre, so every line is 81 px.
 - With HUG step columns, the line lengths depend on label width. Never go back to that.
+
+## PM comment round 5 + consistency pass (11 Nov 2026)
+
+Restore point: "Before Bus Booking round 5: counter, add-ons chips, alignment, Submit (11 Nov 2026)". Each changed frame's green note got an "11 Nov" line.
+
+| Comment | Finding | Change |
+|---|---|---|
+| "character counter … faded grey? … in ATOMS the counter is outside of text area … mobile?" | Mobile already has the pattern: Driver Claims Remarks (`Input/Input Border Style`, hint) shows "26 / 240" **below** the input, left-aligned, faded grey #A7AAAC, Roboto 14. Bus Booking had "51/240" inside the box, dark grey, Roboto Medium 12. | All 18 counters (2.1–2.6, 2.8, 2.9) moved out of the textarea into the field group, styled like Driver: "51 / 240". |
+| Add-ons as its own field | Already done in round 3. The chips are Integral `Chips/Normal` (Medium, Active, Info), the sheet uses `Checkbox Atom` + `Button`. | Nothing new. The labels are unified: **Add-Ons** / **+ Add-Ons** / **Total Add-Ons** (ticket casing). |
+| 3.1 "alignment is off" (Pick-up Time) | The text was " Pick-up Time", with a **leading space**. The same stray space was on 21 "Pick-up …" labels across 2.x / 3.1. | The spaces were removed with `deleteCharacters(0,1)`, which keeps the red `*` styling. |
+| 3.2 "should be 'Submit'" | — | The button on 3.2 / 3.3 / 3.5 now reads **Submit**. Frame 3.3's name and arrow names were updated too. |
+
+**Consistency fixes in the same pass:**
+- Labels are now "Pick-up Point Remarks" and "Drop-off Point Remarks" everywhere (2.1 had "Pick Up Remarks"; 2.2 / 2.8 had just "Remarks").
+- "Return Trip" / "2 way" → **Return trip**, and the "Add a return trip" subline is hidden.
+- 2.8's scrolled content moved up, so Cancel / Next clear the home indicator.
+
+**Reported to the user, not changed (needs a decision):**
+1. **Fonts.** Bus Booking headings and labels use **Inter** ("Trip 1", "Contact Information", "Enquiry sent!", textarea text). Driver Leave Apply Leave's balance card uses **42dot Sans** (5 frames, 15 texts each). Driver Claims has a few Inter texts. Integral is Roboto.
+2. **Hand-built controls** where Integral has components: the Return-trip toggle and the quantity stepper (`◈ Toggle / Base`, `Quantity Field / Normal`; import timed out). The textarea has no Integral component. Driver uses the single-line `Input/Input Border Style` for Remarks, so passenger and driver Remarks look different.
+3. 2.1 "Trip 1" heading is hidden (`8763:17800`), while every other 2.x frame shows it.
+4. 3.1 still says "Estimated price" with an "Estimate" tag. MOVE-4582's 10 Nov rename to "PRICE" was for the emails.
+
+Screenshots sent to the user: `scratchpad/audit/1…4-*.png`. The scratchpad is not in the repo; it is a session-only copy.
+
