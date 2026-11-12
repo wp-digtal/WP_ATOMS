@@ -14,6 +14,18 @@ minor).
 
 ## [Unreleased]
 
+### Added — Bus Booking: ticket-fix review page (Figma, 12 Nov 2026, MOVE-4581)
+
+- At the user's request, the fixes from the 12 Nov ticket check are on a new page (`8977:22537`) for review. Production is unchanged.
+- The fixes are on 8 frame copies, each with an update note:
+  - the 3.1 price format per the ticket;
+  - the missing-fields and success toasters;
+  - the success header and copy;
+  - the 3.5 helper copy;
+  - the "Return Trip" / "Pick-up Time" labels;
+  - Sub-total on 3.4b.
+- Correction: the "add-ons chips vs text" finding was wrong. All frames already use chips.
+
 ### Changed — Bus Booking: stepper V3 applied to Production; trip-card exploration tidied (Figma, 12 Nov 2026, MOVE-4581)
 
 - **Stepper.** The PM picked stepper V3 ("lets go with this version"). The compact "Step x of 3" band replaces the step dots on all 12 Production Passenger form frames. On 3.2 / 3.3 / 3.5, the duplicate "Contact Information" heading is hidden.

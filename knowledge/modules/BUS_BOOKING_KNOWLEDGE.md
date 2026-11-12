@@ -313,7 +313,7 @@ Screenshots sent to the user: `scratchpad/audit/1…4-*.png`. The scratchpad is 
    - 3.5: "We prefilled your details from your account …"
 6. **Toggle label** "Return trip" vs the ticket's "Return Trip".
 7. **Label case:** 2.6 has "Pick-Up Time *", while the other frames have "Pick-up Time".
-8. **Add-ons display:** 2.8 shows the selected add-ons as blue chips; 2.2 / 2.5 show them as text lines.
+8. ~~**Add-ons display:** 2.8 chips vs 2.2 text lines~~. **Wrong:** 2.2 / 2.5 / 2.8 all use the same blue chips. I misread a flat text dump; screenshot before reporting a visual difference.
 9. **Success header** is "Bus Booking" on 3.4 / 3.4b. The ticket header is "Bus Booking Enquiry" (biz req 2, for the form).
 
 **Matches the ticket:**
@@ -322,3 +322,26 @@ Screenshots sent to the user: `scratchpad/audit/1…4-*.png`. The scratchpad is 
 - 240-character remarks.
 - No Contact Number.
 - The 3.5 error stays on Contact Information.
+
+### Ticket fixes on a review page (12 Nov 2026)
+
+The user said: "make a new page and drop it there so I can review; write a comment or list of what was updated." Production is **unchanged**.
+
+- **Page** `🧪 Bus Booking — ticket fixes for review (12 Nov 2026)` (`8977:22537`), section `8977:22538`. It holds copies of 8 frames, each with a white caption above and a 🟢 update note below:
+
+  | Copy | Id | Fixes |
+  |---|---|---|
+  | 2.2 | `8977:22539` | "Return trip" → "Return Trip". The same applies to every 2.x frame with the toggle. |
+  | 2.5 | `8977:22627` | "Return Trip" |
+  | 2.6 | `8977:22761` | Danger toaster "Some required fields are missing. Please check and try again." (`8977:23989`); "Pick-Up Time" → "Pick-up Time"; "Return Trip" |
+  | 2.8 | `8977:22864` | "Return Trip" |
+  | 3.1 | `8977:22970` | Copied from the per-ticket exploration `8926:21325`: a Sub-total per trip with its breakdown, and a Price card with Total / GST / Grand Total. Stepper V3 at step 2. |
+  | 3.5 | `8977:23100` | Helper copy same as 3.2 / 3.3 |
+  | 3.4 | `8977:23164` | Success toaster "Bus booking submitted successfully." (`8977:23991`); header "Bus Booking Enquiry"; message "Enquiry sent" + "Our sales team will contact you via email to confirm your booking and arrange payment." |
+  | 3.4b | `8977:23258` | Same header and message as 3.4; "Trip price" → "Sub-total S$240.00" |
+
+- **Toasts are hand-built,** because the `ToastContainer` import timed out again and the old Driver Leave toast frames are gone. Each is a clone of the 3.5 `Error banner`, placed at x 16, y 52 with a soft shadow.
+  - Danger uses Integral `Primitive/Danger/100` and `/600`.
+  - Success uses `Primitive/Success/100` (`VariableID:89fbf55c…/14042:566`) and `/600` (`VariableID:f6b0032c…/14042:520`). Both were found with `getVariableByIdAsync` brute force over `14042:0–1500`.
+- **Gotcha:** the section background is dark, so captions and the title must be white.
+- **Next, once the user approves:** copy the fixes into Production, and apply the "Return Trip" label to the remaining 2.x frames.
