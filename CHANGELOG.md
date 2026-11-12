@@ -14,6 +14,15 @@ minor).
 
 ## [Unreleased]
 
+### Changed — Bus Booking: stepper V3 applied to Production; trip-card exploration tidied (Figma, 12 Nov 2026, MOVE-4581)
+
+- **Stepper.** The PM picked stepper V3 ("lets go with this version"). The compact "Step x of 3" band replaces the step dots on all 12 Production Passenger form frames. On 3.2 / 3.3 / 3.5, the duplicate "Contact Information" heading is hidden.
+- **Trip-card exploration.** The rows are re-spaced evenly. "Trip price" is now "Sub-total" (rates + add-ons), per the 11 Nov ticket edit.
+- **Ticket check,** reported to the user and not changed (details in `BUS_BOOKING_KNOWLEDGE.md` round 8):
+  - The 3.1 price card is still in the old format.
+  - The success and missing-fields toasters are not shown.
+  - Several copy and label mismatches.
+
 ### Changed — PD business components bound to COMPASS (Figma, 12 Nov 2026)
 
 - The user asked to tidy the PD business-components draft page with the existing design system, with no text on the canvas, and to document the DS usage. Production 3.1 is untouched.

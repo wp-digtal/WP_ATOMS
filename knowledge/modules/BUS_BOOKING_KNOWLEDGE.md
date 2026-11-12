@@ -274,3 +274,51 @@ Screenshots sent to the user: `scratchpad/audit/1…4-*.png`. The scratchpad is 
 - The frame was made taller (1216), so the buttons clear the home indicator. Note `8880:18573` moved and was updated.
 - **Character-counter reference:** Driver page, section "Claims", frame "Claims - Submit Claim (form…)", Remarks field `8545:15290` (Integral `Input/Input Border Style`, Hint "26 / 240").
 
+
+## Round 8: stepper V3 applied, trip-card exploration tidied, ticket check (12 Nov 2026)
+
+**PM (Westpoint Digital) on stepper V3:** "this looks great! lets go with this version". Restore point: "Before Bus Booking stepper V3 + trip card exploration tidy (12 Nov 2026)".
+
+- **Applied to Production Passenger, all 12 form frames:** 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.8 (sticky), 2.9, 3.1, 3.2, 3.3 and 3.5.
+  - A clone of the V3 band `8937:22258` ("Progress band — compact …", 390×80, #F3F5F7) sits under the Top bar at y 84.
+  - The Content's `Stepper (hand-built)` is hidden and Content moves to y 164.
+- **Band copy:**
+
+  | Steps | Text | Segments filled |
+  |---|---|---|
+  | 2.x | "Step 1 of 3 · Trip Details · Next: Trip Summary" | 1 |
+  | 3.1 | "Step 2 of 3 · Trip Summary · Next: Contact Information" | 2 |
+  | 3.2 / 3.3 / 3.5 | "Step 3 of 3 · Contact Information" (no "Next") | 3 |
+
+- **3.2 / 3.3 / 3.5:** the repeated "Contact Information" heading under the band is hidden, because the band already says it.
+- **Heights:**
+  - The tall frames (2.1, 2.2, 2.5, 2.6, 3.1) grew by 20, because the band is 80 and the hidden stepper plus gap was 60. Their NavigationBar moved down with them.
+  - The 844 frames stay 844.
+  - The change notes were moved back to 40 below their frame.
+- **2.8 sticky:** the old `Sticky stepper (pinned …)` is hidden. A band clone with the same drop shadow takes its place.
+- **Notes:** the green notes are re-dated to 12 Nov with one added line. The 3.2 / 3.3 notes moved to y 5620, so the Submit elbow arrows no longer cross them.
+- **Gotcha:** a loop that clones and edits 3–4 frames per call timed out twice. Use **one frame per call**, preloading the Roboto Medium, SemiBold and Regular fonts with `Promise.all`. After a timeout, list each frame's state (band present? stepper visible? Content y?) and finish only the missing steps.
+
+**Trip-card exploration `8915:20266` tidied:**
+- Rows were re-stacked with equal spacing (frame top 320, then the tallest frame + 250 per row), and the section was resized to 2060×4227.
+- Per the 11 Nov ticket edit ("Sub-total = rates + add-ons"), the expanded cards' "Trip price · S$170.00 + add-ons S$70.00" is now **"Sub-total · S$240.00"** in V1, V2 and V3. The V2 / V3 notes were updated to match.
+
+**Ticket check (MOVE-4581 as of 12 Nov). Reported to the user, not changed:**
+1. **3.1 price card** is still the old "Estimated price" list (per-trip lines + Add-Ons + Total / GST / Grand Total). The ticket now wants a **Sub-total on each trip card**, and the Price card with only Total / GST / Grand Total. The per-ticket version is in exploration `8926:21322`, waiting for approval.
+2. **Success toaster** "Bus booking submitted successfully." (biz req #6) is not shown on 3.4.
+3. **Missing-fields toaster** "Some required fields are missing. Please check and try again." is not shown on 2.6 (only the field errors are).
+4. **Success copy:** the ticket says "Enquiry sent, our sales team will contact you via email to confirm your booking and arrange payment." Frame 3.4 says "Enquiry sent!" + "If your booking is confirmed, our sales team will contact you via email to arrange payment."
+5. **Helper copy differs:**
+   - 3.2 / 3.3: "Please check your name and email …"
+   - 3.5: "We prefilled your details from your account …"
+6. **Toggle label** "Return trip" vs the ticket's "Return Trip".
+7. **Label case:** 2.6 has "Pick-Up Time *", while the other frames have "Pick-up Time".
+8. **Add-ons display:** 2.8 shows the selected add-ons as blue chips; 2.2 / 2.5 show them as text lines.
+9. **Success header** is "Bus Booking" on 3.4 / 3.4b. The ticket header is "Bus Booking Enquiry" (biz req 2, for the form).
+
+**Matches the ticket:**
+- The 2.5 return section shows only Return Date, Pick-up Time and Add-Ons (11 Nov edit).
+- Next / Cancel / Back / Submit labels.
+- 240-character remarks.
+- No Contact Number.
+- The 3.5 error stays on Contact Information.
