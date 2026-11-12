@@ -267,3 +267,9 @@ Screenshots sent to the user: `scratchpad/audit/1…4-*.png`. The scratchpad is 
   - **V2** `8926:21881`: a tinted rounded card (#ECF1F6, radius 12) inside the content, with extra spacing below.
   - **V3**: a compact version ("Step 1 of 3 · Trip Details · Next: Trip Summary" plus a 3-segment bar). Not built yet: the bridge dropped. `8926:21959` is still a plain copy of 2.2.
 
+**2.5 fix (12 Nov):**
+- The return-trip **Date** input `8763:18669` had been hidden, so only Pick-up Time showed after the toggle. MOVE-4581 lists "Return Date | Date picker | Required (if Return Trip is on)". It is visible again, labelled **"Return Date \*"** (red `*` via `setRangeFills`), and sits beside Pick-up Time (both FILL).
+- The return "+ Add-Ons" button is correct per the ticket: "Add-Ons | Button | Only display if 'Return Trip' is toggled, refer to row 8".
+- The frame was made taller (1216), so the buttons clear the home indicator. Note `8880:18573` moved and was updated.
+- **Character-counter reference:** Driver page, section "Claims", frame "Claims - Submit Claim (form…)", Remarks field `8545:15290` (Integral `Input/Input Border Style`, Hint "26 / 240").
+

@@ -14,6 +14,10 @@ minor).
 
 ## [Unreleased]
 
+### Fixed — Bus Booking 2.5: Return Date field shown (Figma, 12 Nov 2026, MOVE-4581)
+
+- The ticket requires Return Date when Return Trip is on, but the field was hidden on 2.5. It is shown again beside the return Pick-up Time, and the buttons no longer sit under the home indicator. The return "+ Add-Ons" stays, per the ticket row "Add-Ons — only display if Return Trip is toggled".
+
 ### Added — Bus Booking: Trip Summary per ticket format + stepper exploration sections (Figma, 12 Nov 2026, MOVE-4581)
 
 - **PM: "update the format based on the ticket".** A new section shows the Part 2 table, with return-trip and one-way versions. Each trip card has a Sub-total (rate + add-ons) with its breakdown. The Price card has only Total / GST / Grand Total. Production 3.1 is unchanged until approved.
