@@ -295,12 +295,29 @@ The user asked:
 | `PD/Leave Balance Preview` | `41116:156629` | State = Empty / Filled / Negative balance / Time Off | Apply Leave drawers `414340`, `414579`, `415054`, `414815` (`Frame 2608997`) |
 | `PD/Confirm Modal` | `41116:156869` | Action = Approve / Reject / Cancel × Record = Leave / Claim × State = Default / Reason empty / Reason filled (9) | `Modals` frames in the approve, reject and cancel modal frames |
 | `PD/Empty State (text)` | `41116:162406` | Message = Pending Approval / Approval History / Recent Activity / My Next Leave | Approvals empty `41107:264186` and the Home empty frame |
-| `PD/Tooltip (hand-built)` | `41116:162409` | text prop `Text` | `41092:332706` |
+| `PD/Tooltip` (was `PD/Tooltip (hand-built)`) | `41116:162409` | text prop `Text` | `41092:332706` |
 | `PD/Leave Date Range + Half Day` | `41116:162548` | State = Disabled (no leave type) / Filled AM → PM / Time Off (AM/PM hidden) | Apply Leave `Frame 2608964` |
 
 Existing local components (`Header Bar`, `Profile Dropdown`, `Activity Card`) stay in Section 7 and are nested inside these.
 
 **Next step, once the user approves:** swap the Section 7 frames to instances of these. One frame per call, and clone the frame first if unsure.
+
+### 12 Nov 2026: tidy-up to the design system
+
+The user said: tidy the PD business components, use the existing design system for colours and everything else, and **no text on the canvas** (the product team will review it, and the user doesn't want it to look AI-made). Restore point: "Before PD business components DS binding (12 Nov 2026)".
+
+- **Colours:** every raw SOLID fill and stroke outside instances is now bound to a COMPASS variable. Instances were skipped; library table cells keep their own colours. The mapping is in `COMPASS_TOKENS_KNOWLEDGE.md` §1.
+  - Visible change: black 100% text became colorText / colorTextHeading (88%).
+  - Visible change: the #ddd lines became colorBorder #d9d9d9.
+- **Radius:** 8 → borderRadiusLG, 6 → borderRadius, 4 → borderRadiusSM. The 24 radius on the card components and the 12 radius on the preview boxes stay raw because no token exists for them (open question).
+- **Text styles were not applied.** COMPASS text styles use SF Pro Text, while Production uses Inter (open question, see `COMPASS_TOKENS_KNOWLEDGE.md` §4).
+- **Canvas:**
+  - All 10 TEXT labels were removed: the 8 labels, the page title and the description.
+  - The components are stacked with a 160 px gap: Home → Apply Leave → Modal → Empty / Tooltip.
+- **Names and descriptions:**
+  - The tooltip was renamed from `PD/Tooltip (hand-built)` to `PD/Tooltip`.
+  - Component descriptions were rewritten as short product notes with ticket keys, without tool or process remarks.
+- **Production is untouched.**
 
 ### Rule for what becomes a business component (user, 22 Oct)
 

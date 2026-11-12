@@ -14,6 +14,18 @@ minor).
 
 ## [Unreleased]
 
+### Changed — PD business components bound to COMPASS (Figma, 12 Nov 2026)
+
+- The user asked to tidy the PD business-components draft page with the existing design system, with no text on the canvas, and to document the DS usage. Production 3.1 is untouched.
+- **Colours:** all raw fills and strokes on the 8 components (outside library instances) are now bound to COMPASS colour variables.
+- **Radius:** 8 / 6 / 4 are bound to the radius tokens.
+- **Canvas:** the 10 helper text labels were removed and the layout was re-stacked. The tooltip was renamed `PD/Tooltip`, and the descriptions were rewritten as product notes.
+- **Library import hangs in this file,** so variables were reached by id (`VariableID:<key>/<suffix>`). The new `COMPASS_TOKENS_KNOWLEDGE.md` records the hex → token mapping, the ids and the procedure.
+- **Open:**
+  - COMPASS text styles use SF Pro Text, but Production uses Inter, so the styles were not applied.
+  - Radius 24 (cards) and 12 (preview boxes) have no token.
+  - Both are waiting for the user's decision.
+
 ### Fixed — AM: Activity tab layout matches the Accounts tab (Figma, 12 Nov 2026, MOVE-4458)
 
 - PM asked to standardise; the user chose the Accounts layout. On the 4 Activity frames the filter now sits on the page background, not in a white section, with the same top padding as Accounts. The table and footer are white cards, and the popovers were re-anchored.
