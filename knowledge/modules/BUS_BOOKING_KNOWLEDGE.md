@@ -236,3 +236,34 @@ Screenshots sent to the user: `scratchpad/audit/1…4-*.png`. The scratchpad is 
   - Production 3.4 / 3.4b are unchanged until the PM picks one.
 - **Why the current card reads badly:** label left / value right with long values. Right-aligned addresses wrap into ragged blocks, and the eye zig-zags. All 3 variants keep long text left-aligned.
 
+## Round 7: Trip Summary per ticket + stepper exploration (12 Nov 2026)
+
+**MOVE-4581 Part 2 (Trip Summary) table, as updated 11 Nov 14:30:**
+- Date and No. of Passengers [bus size], both "per trip".
+- Trip 1 card: Pick-up Time, Pick-up point, Drop-off point, Remarks, Add-ons, **Sub-total = rate (biz req #4) + add-ons**.
+- Trip 2 (Return) card: the same, shown only when Return Trip is on, with the points reversed.
+- Price card: **Total** = sum of the trip sub-totals, **GST (9%)**, **Grand Total**.
+- Back / Next.
+
+**PM: "can help me update the format based on the ticket?"** This was built in a new section **`8926:21322`** "🧪 Bus Booking · Trip Summary per ticket format" at 28382,13403. Production 3.1 is unchanged.
+- **Frames:** return trip on `8926:21325`; one way `8926:21631`; mapping note `8926:21797`.
+- **What changed from 3.1:**
+  - Passengers now sits directly under Date.
+  - Add-ons are listed as "item · price".
+  - Each card has a divider plus a **Sub-total** row with a grey breakdown line, e.g. "S$150 (20-seater) + S$20 peak + S$70 add-ons".
+  - The Price card is titled "Price" (the "Estimate" tag is hidden) and shows only Total (Trip 1 + Trip 2), GST and Grand Total.
+  - Inter text was switched to Roboto in these cards.
+- **Numbers:**
+  - Return: Trip 1 S$240, Trip 2 S$170, Total S$410, GST S$36.90, Grand S$446.90.
+  - One way: S$240 / S$21.60 / S$261.60.
+- **Open for PM:** should Date / Passengers sit above the cards, as in the table's row order? They are inside each card here because the return date can differ.
+
+**PM on the stepper:**
+- "the '2' is not centered … 'contact information' is longer".
+- "add some sort of differentiator for this form progress section (e.g. section bg colour) and/or more spacing … currently looks a bit cluttered".
+- **Centring:** already solved on 10 Nov in Production. With 3 equal columns, step 2 sits at the exact centre.
+- **Exploration section `8926:21800`** at 30342,13403, built from copies of 2.2:
+  - **V1** `8926:21803`: a full-width band (#F3F5F7) under the top bar with a 1 px bottom border, like the sticky stepper in 2.8, and 24 px before the form.
+  - **V2** `8926:21881`: a tinted rounded card (#ECF1F6, radius 12) inside the content, with extra spacing below.
+  - **V3**: a compact version ("Step 1 of 3 · Trip Details · Next: Trip Summary" plus a 3-segment bar). Not built yet: the bridge dropped. `8926:21959` is still a plain copy of 2.2.
+
