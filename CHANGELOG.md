@@ -14,6 +14,10 @@ minor).
 
 ## [Unreleased]
 
+### Fixed — AM: Activity tab layout matches the Accounts tab (Figma, 12 Nov 2026, MOVE-4458)
+
+- PM asked to standardise; the user chose the Accounts layout. On the 4 Activity frames the filter now sits on the page background, not in a white section, with the same top padding as Accounts. The table and footer are white cards, and the popovers were re-anchored.
+
 ### Fixed — Bus Booking 2.5: Return Date field shown (Figma, 12 Nov 2026, MOVE-4581)
 
 - The ticket requires Return Date when Return Trip is on, but the field was hidden on 2.5. It is shown again beside the return Pick-up Time, and the buttons no longer sit under the home indicator. The return "+ Add-Ons" stays, per the ticket row "Add-Ons — only display if Return Trip is toggled".

@@ -384,6 +384,17 @@ Of the open questions in §13: Q2 (search vs Full Name) and Q4 (Create Account o
   - set the avatar initials to the AM user;
   - re-anchor connector `41137:21166` again.
 
+### 16.1.3 Activity tab layout = Accounts tab (12 Nov 2026)
+
+- **PM:** "standardise the UI between accounts tab and activity tab … accounts tab: filter not in white section, activity tab: filter in white section; ok with either, just choose one". The user pointed at Accounts `41137:17062` as the one to follow, and asked me to be more careful and to ask when unsure.
+- **The difference:** on the 4 Activity frames, `Content Wrapper → Leave Employee` had fill #FFF + stroke + radius 12 + padding 20, which wrapped the filter in a white card. Three of them (`20885`, `21171`, `21274`) also had `Content Wrapper` paddingTop 16. Accounts has neither.
+- **Fix, applied to all 4 frames (`20779`, `20885`, `21171`, `21274`):**
+  - `Leave Employee`: fills and strokes removed, padding 0, radius 0. `Content Wrapper`: paddingTop 0.
+  - The absolute "Select account" dropdown moved +20 x / −20 y, so it stays at the right of the filter row.
+  - Each table row's last cell was widened by the 40 px the table gained.
+  - Frame-level popovers (account auto-complete menu, filter popover, module menu) moved by the same offsets.
+- **Restore point:** "Before AM Activity tab layout matches Accounts (12 Nov 2026)".
+
 ### 16.2 Full ticket audit of Production 3.1 (9 Nov 2026)
 
 All MOVE-4449 children were re-read; MOVE-4458 / 4452 / 4453 / 4457 at their 6 Nov versions. The 30 frames were checked programmatically for table columns, drawer cells, header text and disabled states, plus screenshots.

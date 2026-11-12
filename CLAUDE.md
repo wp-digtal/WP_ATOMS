@@ -83,6 +83,8 @@ Don't build the feature in code instead and offer Figma "next". The web-tracking
 - **After a timeout, inspect before retrying.** The change may have half-applied, so a blind rerun creates duplicates.
 - If the bridge hangs, call `figma_pair_plugin` straight away and give the user the code. Ask them to keep Figma Desktop in the foreground and the laptop awake while you work; a background or sleeping window throttles the plugin.
 
+**Be careful and ask when unsure (user, 12 Nov 2026).** Before changing a layout, compare it with the sibling screen or the reference the user points at, property by property. If a comment allows a choice ("ok with either") and nothing in the files settles it, ask the user which one. Don't guess.
+
 **Save a Figma restore point before bulk edits (user, 15 Oct 2026).** Before changing more than a couple of frames in any Figma file, run `figma.saveVersionHistoryAsync(title, description)` through the bridge. Tell the user the version title so they can undo from File → Version history. Details: `FIGMA_DESIGN_SYSTEM.md` §4.10. **Never write "Claude" (or any AI/tool name) in the version title or description (user, 10 Nov 2026).** Use `Before <change> (<date>)`.
 
 ## Changelog
