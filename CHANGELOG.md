@@ -14,6 +14,12 @@ minor).
 
 ## [Unreleased]
 
+### Fixed — Bus Booking trip-card exploration: inside-card layout (Figma, 12 Nov 2026)
+
+- The first tidy pass had only re-spaced the rows; the user asked whether the layout was really tidied.
+- **V2:** the address no longer leaves a "3" alone on a line. The right column is a fixed 130 and the left column fills.
+- **V3:** the route line now runs continuously from the pick-up dot to the drop-off stop.
+
 ### Added — Bus Booking: ticket-fix review page (Figma, 12 Nov 2026, MOVE-4581)
 
 - At the user's request, the fixes from the 12 Nov ticket check are on a new page (`8977:22537`) for review. Production is unchanged.

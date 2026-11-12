@@ -345,3 +345,16 @@ The user said: "make a new page and drop it there so I can review; write a comme
   - Success uses `Primitive/Success/100` (`VariableID:89fbf55c…/14042:566`) and `/600` (`VariableID:f6b0032c…/14042:520`). Both were found with `getVariableByIdAsync` brute force over `14042:0–1500`.
 - **Gotcha:** the section background is dark, so captions and the title must be white.
 - **Next, once the user approves:** copy the fixes into Production, and apply the "Return Trip" label to the remaining 2.x frames.
+
+### Trip-card exploration: inside-card tidy-up (12 Nov 2026, second pass)
+
+The user asked: "did you tidy the layout?" The first pass had only fixed the row spacing, so this pass fixes the inside of the cards:
+
+- **V2 collapsed and expanded, all `Grid row`s:**
+  - The right cell (Time / Bus Size / Sub-total) is now FIXED 130, the left cell FILL, with a 12 gap.
+  - Before, both halves were 154 wide. "Changi Airport Terminal 3" (161 px natural) wrapped and left the "3" alone on a line.
+- **V3 expanded, route:**
+  - The detached 18 px `Route connector` between the stops is hidden.
+  - The pick-up stop's `Dot` column now stretches to the stop height, with a dot plus a FILL-height 2 px line. The line runs from the green dot down to the drop-off stop.
+  - The dots get 2 px top padding so they line up with the label text.
+- **V1:** already clean, no change.
