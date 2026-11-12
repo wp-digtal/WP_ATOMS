@@ -87,6 +87,8 @@ Don't build the feature in code instead and offer Figma "next". The web-tracking
 
 **Save a Figma restore point before bulk edits (user, 15 Oct 2026).** Before changing more than a couple of frames in any Figma file, run `figma.saveVersionHistoryAsync(title, description)` through the bridge. Tell the user the version title so they can undo from File → Version history. Details: `FIGMA_DESIGN_SYSTEM.md` §4.10. **Never write "Claude" (or any AI/tool name) in the version title or description (user, 10 Nov 2026).** Use `Before <change> (<date>)`.
 
+**Language (user, 12 Nov 2026):** always reply to the user in Bahasa Indonesia, including explanations and tables. Repo docs stay in English.
+
 ## Changelog
 
 `CHANGELOG.md` must stay current. Every change that ships gets an entry **in the

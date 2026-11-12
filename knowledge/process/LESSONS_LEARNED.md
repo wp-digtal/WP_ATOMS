@@ -31,7 +31,7 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 - **Updates are marked green for product (user, 10 Nov):** a 🟢 prefix on every updated frame name plus a green note under it.
 - **Change notes are the default on every revision round (user, 9 Nov, repeated 10 Nov).** Put a yellow `📝 Change note` frame under each changed frame with the date, ticket, what changed and why, and update the frame's flow label. The user should never have to diff frames by eye.
 
-- Reply in Bahasa Indonesia.
+- **Always reply in Bahasa Indonesia, every reply** (user, 12 Nov 2026). This includes explanations, tables and follow-up answers. One reply slipped into English and the user had to correct it. Only code, node names and ticket quotes stay in their original language.
 - "Update related screens too" is the default, even when unstated. Check sibling screens of the same style and flow, but don't touch other pages or styles unless they share the same element.
 - **The user edits frames by hand between rounds** (e.g. removed Price Breakdown, the email row and a dropdown caret). Before editing, list the current children and respect what was removed. Never rebuild something the user deleted.
 - A comment pin can sit on an area whose original issue was already fixed (it moves with the layout). Check the comment's date against the last round, and say "already done" rather than inventing a new change.
