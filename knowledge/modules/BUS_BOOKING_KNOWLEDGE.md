@@ -265,7 +265,8 @@ Screenshots sent to the user: `scratchpad/audit/1…4-*.png`. The scratchpad is 
 - **Exploration section `8926:21800`** at 30342,13403, built from copies of 2.2:
   - **V1** `8926:21803`: a full-width band (#F3F5F7) under the top bar with a 1 px bottom border, like the sticky stepper in 2.8, and 24 px before the form.
   - **V2** `8926:21881`: a tinted rounded card (#ECF1F6, radius 12) inside the content, with extra spacing below.
-  - **V3**: a compact version ("Step 1 of 3 · Trip Details · Next: Trip Summary" plus a 3-segment bar). Not built yet: the bridge dropped. `8926:21959` is still a plain copy of 2.2.
+  - **V3** `8926:21959`: a compact grey band with "Step 1 of 3", the title "Trip Details", "Next: Trip Summary" and a 3-segment brand bar. Built 12 Nov.
+  - Each variant has a flow label and a green pros/cons note under its frame.
 
 **2.5 fix (12 Nov):**
 - The return-trip **Date** input `8763:18669` had been hidden, so only Pick-up Time showed after the toggle. MOVE-4581 lists "Return Date | Date picker | Required (if Return Trip is on)". It is visible again, labelled **"Return Date \*"** (red `*` via `setRangeFills`), and sits beside Pick-up Time (both FILL).

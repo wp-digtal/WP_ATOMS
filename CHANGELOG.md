@@ -21,7 +21,7 @@ minor).
 ### Added — Bus Booking: Trip Summary per ticket format + stepper exploration sections (Figma, 12 Nov 2026, MOVE-4581)
 
 - **PM: "update the format based on the ticket".** A new section shows the Part 2 table, with return-trip and one-way versions. Each trip card has a Sub-total (rate + add-ons) with its breakdown. The Price card has only Total / GST / Grand Total. Production 3.1 is unchanged until approved.
-- **PM: stepper looks cluttered / step 2 not centred.** Centring was already fixed on 10 Nov (equal columns). A new exploration section has V1 (full-width grey band) and V2 (tinted card + spacing). V3 (compact "Step 1 of 3" + segmented bar) is pending because the bridge dropped.
+- **PM: stepper looks cluttered / step 2 not centred.** Centring was already fixed on 10 Nov (equal columns). A new exploration section has V1 (full-width grey band) and V2 (tinted card + spacing). V3 is a compact "Step 1 of 3" + segmented bar, added 12 Nov. All three have pros/cons notes.
 
 ### Added — Bus Booking: expand example next to 3.4 + trip-card layout exploration (Figma, 11 Nov 2026, MOVE-4581)
 
