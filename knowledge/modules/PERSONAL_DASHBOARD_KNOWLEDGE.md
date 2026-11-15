@@ -323,6 +323,22 @@ The user said: tidy the PD business components, use the existing design system f
 
 Anything that is **repeated and near-identical across frames, and is still a plain frame**, becomes a component; its differences become variants. Examples: a card shown in several states, a modal type reused across Leave and Claim, the same field group in several drawer states. Library instances that already exist (COMPASS buttons, inputs, table, `Drawers Template`) are left alone.
 
+### What a business component set must cover (user, 15 Nov 2026)
+
+The user taught this with four screenshots: the HR Employee leave table, PD Home, the PD Leave page and the Apply Leave drawer. **A module's business components are not just loose cards.** The set must cover:
+
+1. **Tables and their states.** Each business table (for example Leave Applications, Leave Balances, the Employee balance list) becomes one component. It holds the module's own columns, cell content (date + "x days ago" sub-line, status tag, "+2" overflow tag, two-line Dates cells) and the pagination footer ("You are now viewing … 1 – 5 of 12", pager, "5 / page").
+2. **Containers and their state variants.** The white page cards and bars that frame content: the Recent Activity card, the Leave Balances card with "View more", My Next Leave, the year picker bar, a table card with a title + filter icon, and the filter bar with date range + search + filter + CTA.
+3. **Sets of tables and their states.** The same table pattern reused across pages and roles (Leave vs Claims, My vs Approvals vs History), so the table family is consistent.
+4. **The set of drawers.** Every drawer the module has (Apply Leave, Submit Claim, leave / claim details, balance drawer …), each with the states it needs.
+
+**States only where they are needed (user's words: "berbagi state itu tidak harus dilakukan, lihat lihat dulu seperti apa kebutuhannya").** First look at which states the Production frames and the tickets really use: default / empty / filled / error / loading / per status. Make only those variants. Don't add a state no screen or ticket asks for.
+
+Procedure:
+- Inventory Production first: list each table, container and drawer, the frames it appears in, and the states those frames show.
+- Then build or extend the components on the draft page. Library instances (COMPASS table cells, buttons, inputs, `Drawers Template`) stay instances *inside* them.
+- Bind colours and radius to COMPASS (`COMPASS_TOKENS_KNOWLEDGE.md`). Keep the canvas free of helper text, and leave Production untouched until the user approves.
+
 ### Gotchas found while extracting
 
 - A layer name is not unique. Every Apply Leave drawer carries a **hidden** template `Frame 2608997` (an old grey "2026 / Available 8 Days" box). `findOne(name)` returned that one, not the visible blue preview. Pick from the known container's direct children with `visible === true`.
