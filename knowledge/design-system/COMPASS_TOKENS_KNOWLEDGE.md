@@ -24,6 +24,8 @@ The value column is what the token resolves to, so binding never changes the loo
 | `#1677ff` | link text ("View all", "Show less") | `Colors/Brand/Primary/colorPrimaryText` | #1677ff |
 | `#1677ff` | primary fill | `Colors/Brand/Primary/colorPrimary` | #1677ff |
 | `#f0f5ff` | highlighted card (My Next Leave) | `Colors/Base/Geekblue/1` | #f0f5ff |
+| `#f0f0f0` | divider fills (1 px frames) | `Colors/Neutral/Border/colorBorderSecondary` | #f0f0f0 |
+| `#000` @ 45% | icon vectors | `Colors/Neutral/Icon/colorIcon` (`ed255aaf…/5006:7909`) | #000 @ 45% |
 | `#000` @ 85% | tooltip background | `Colors/Neutral/Bg/colorBgSpotlight` | #000 @ 85% |
 
 When binding, set the paint's own opacity to 1 so the token's alpha is the only one applied.

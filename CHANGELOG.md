@@ -14,6 +14,17 @@ minor).
 
 ## [Unreleased]
 
+### Added — PD business components: tables, containers and drawers (Figma, 15 Nov 2026)
+
+- **Why:** the user taught that a module's business components must cover tables with their states, containers with their states, the table set, and the full drawer set. The 22 Oct draft only had loose cards. States were added only where Production frames or tickets use them.
+- **Added to the draft page `41116:149163`:**
+  - `PD/Table`: 9 variants.
+  - `PD/Container`: Table Card ±filter, Year Bar, Tab Row + CTA, plus the Home cards.
+  - `PD/Drawer`: 25 variants across Apply Leave, Submit Claim, Leave and Claim Details (own and approver) and Leave Balance Details.
+- **Page layout:** grouped into sections (Tables, Containers, Drawers, Fields, Modals & Feedback).
+- **Design system:** colours bound to COMPASS; radius 8 / 4 bound.
+- Production is unchanged.
+
 ### Fixed — Bus Booking trip-card exploration: inside-card layout (Figma, 12 Nov 2026)
 
 - The first tidy pass had only re-spaced the rows; the user asked whether the layout was really tidied.

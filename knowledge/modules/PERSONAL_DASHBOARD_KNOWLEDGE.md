@@ -339,6 +339,61 @@ Procedure:
 - Then build or extend the components on the draft page. Library instances (COMPASS table cells, buttons, inputs, `Drawers Template`) stay instances *inside* them.
 - Bind colours and radius to COMPASS (`COMPASS_TOKENS_KNOWLEDGE.md`). Keep the canvas free of helper text, and leave Production untouched until the user approves.
 
+### 15 Nov 2026: draft page rebuilt around tables, containers and drawers
+
+Restore point: "Before PD business components: tables, containers, drawers (15 Nov 2026)". Production is untouched.
+
+The page `41116:149163` is now grouped into sections, top to bottom: **Tables → Containers → Drawers → Fields → Modals & Feedback**.
+
+**`PD/Table`** `41269:69469`, properties Type × State. It holds the table plus its pagination footer, cloned from Production.
+
+| Type | State | Source |
+|---|---|---|
+| Leave Applications | Default | Leave non-approver `364856` + footer |
+| Leave Balances | Default (all types) | Leave `41217:261382` |
+| Leave Balances | Home (Annual + Medical) | Home card |
+| Leave Approvals · Pending | Default / Empty | Approvals tab `396235`; empty `41107:264242` |
+| Leave Approvals · History | Default / Empty | `398480`; empty `41107:264338` |
+| My Claims | Default | Claims `109317` + footer |
+| Claim Approvals | Default | `113884` + footer |
+
+The Claims tables have no Empty variant, because no Production frame or ticket shows one.
+
+**`PD/Container`** `41269:72348`, properties Type × Filter, plus a **Title** text property:
+- Table Card with Filter = On or Off. It is the white card with title + filter icon, and nests a `PD/Table` instance (swap the variant per use).
+- Year Bar.
+- Tab Row + CTA (My Leave / Approvals tabs + Apply Leave).
+- The Home cards also sit in the Containers section: `PD/Recent Activity Card`, `PD/My Next Leave Card`, `PD/Home Leave Balances Card`.
+
+**`PD/Drawer`** `41269:106145`, properties Type × State, 25 variants. Each is the drawer frame from inside a Production frame's `Drawer overlay`:
+
+| Type | States |
+|---|---|
+| Apply Leave | Empty / Filled (balance preview) / Time Off / Insufficient balance / Missing required fields / Document uploaded |
+| Submit Claim | Empty / Filled (Toll ERP) / Missing required fields |
+| Leave Details (Own) | Pending Approval / Approved · Cancel disabled / Cancelled |
+| Leave Details (Approver) | Pending Approval · Actions open / Approved / Rejected / Not pending · actions disabled |
+| Claim Details (Own) | Pending Approval / Pending Payment · Cancel disabled / Cancelled |
+| Claim Details (Approver) | Pending Approval · Actions open / Approved / Rejected / Not pending · actions disabled |
+| Leave Balance Details | Used by month (Option 1) / Used by application (Option 2). This wraps an instance of the Leave module's `Employee` drawer component `39372:48350`, so it stays linked to it. |
+
+**Not part of the drawer variants:**
+- Frame-level toasts and tooltips that sit outside the drawer frame.
+- Cancel / Approve / Reject confirm modals, which already live in `PD/Confirm Modal`.
+
+**Fields section:** `PD/Leave Date Range + Half Day` and `PD/Leave Balance Preview`.
+
+**Modals & Feedback section:** `PD/Confirm Modal`, `PD/Empty State (text)` and `PD/Tooltip`.
+
+**Design system binding:**
+- All raw fills and strokes in the new sets are bound to COMPASS (mapping in `COMPASS_TOKENS_KNOWLEDGE.md`). This pass added `#f0f0f0` fills → colorBorderSecondary, and icon vectors at #000 45% → `colorIcon` `VariableID:ed255aaf…/5006:7909`.
+- Radius 8 / 4 is bound. Radius 16 / 12 / 24 stays raw: there is no token, and the user agreed to keep it.
+
+**Gotchas:**
+- **A comma inside a variant value breaks the set.** "State=Approved, Cancel disabled" became "Property 1=…" and the set reported "existing errors". Use " · " inside values.
+- A component set with auto-layout WRAP kept a fixed 120 px height and clipped its children. Switch the set to `layoutMode NONE` and place the variants by hand.
+- Cloning a node while `currentPage` is Production puts the clone on Production. Move it into the draft section straight away (or clone into the section) and check Production's last children afterwards.
+
 ### Gotchas found while extracting
 
 - A layer name is not unique. Every Apply Leave drawer carries a **hidden** template `Frame 2608997` (an old grey "2026 / Available 8 Days" box). `findOne(name)` returned that one, not the visible blue preview. Pick from the known container's direct children with `visible === true`.
