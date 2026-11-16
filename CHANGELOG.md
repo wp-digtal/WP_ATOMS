@@ -14,6 +14,18 @@ minor).
 
 ## [Unreleased]
 
+### Added — Account Management business components draft (Figma, 16 Nov 2026)
+
+- **New page** `🧩 Draft Business Component`, built from Production 3.1 (which is unchanged), with the same rules as PD:
+  - `AM/Table`: 4 variants.
+  - `AM/Container`: tab rows.
+  - `AM/Drawer`: 17 variants.
+  - `AM/Confirm Modal`: 4 variants.
+- Colours and radius 8 are bound to COMPASS.
+- **Open, waiting on the user:**
+  - Whether the `Leave/Filter` library bar should become a container too.
+  - Whether the "Actions closed" drawer states are needed.
+
 ### Added — PD business components: tables, containers and drawers (Figma, 15 Nov 2026)
 
 - **Why:** the user taught that a module's business components must cover tables with their states, containers with their states, the table set, and the full drawer set. The 22 Oct draft only had loose cards. States were added only where Production frames or tickets use them.

@@ -20,6 +20,7 @@ The value column is what the token resolves to, so binding never changes the loo
 | `#000` @ 88% | body text | `Colors/Neutral/Text/colorText` | #000 @ 88% |
 | `#000` @ 88%, Semi Bold ≥ 16 | card and section titles | `Colors/Neutral/Text/colorTextHeading` | #000 @ 88% |
 | `#000` @ 100% | text | `colorText` / `colorTextHeading` | @ 88% (**slightly lighter**: AntD has no 100% text token) |
+| `#000` @ 25% | empty-state text | `Colors/Neutral/Text/colorTextQuaternary` (`fe09b102…/5006:8402`) | #000 @ 25% |
 | `#8c8c8c` | secondary / meta / empty-state text | `Colors/Neutral/Text/colorTextTertiary` | #000 @ 45% |
 | `#1677ff` | link text ("View all", "Show less") | `Colors/Brand/Primary/colorPrimaryText` | #1677ff |
 | `#1677ff` | primary fill | `Colors/Brand/Primary/colorPrimary` | #1677ff |
@@ -77,3 +78,5 @@ COMPASS text styles (e.g. `Text Base/Normal` `S:69f4e565…,13340:935`, `Text SM
 4. For each SOLID paint not already bound, map it with the table in §1: `setBoundVariableForPaint({...paint, opacity: 1}, 'color', variable)`.
 5. Radius: `setBoundVariable('topLeftRadius', …)` for each corner whose value matches a token (mixed corners too).
 6. Report any colours the mapping could not place, and ask before inventing a mapping.
+
+**Same ids in every consumer file (16 Nov 2026).** The `VariableID:<key>/<suffix>` ids in §2 resolve unchanged in the Account Management file too, so reuse them instead of brute-forcing again.

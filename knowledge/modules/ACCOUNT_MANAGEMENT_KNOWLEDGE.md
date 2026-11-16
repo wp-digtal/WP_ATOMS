@@ -420,3 +420,31 @@ All MOVE-4449 children were re-read; MOVE-4458 / 4452 / 4453 / 4457 at their 6 N
   - MOVE-4458 sort by full name / account type;
   - Before / After format;
   - MOVE-4451: should Access Roles become read-only in Employees?
+
+## 17. Business components draft (16 Nov 2026)
+
+Built with the same rules as PD (`PERSONAL_DASHBOARD_KNOWLEDGE.md` §9, "What a business component set must cover"). The source is **Production 3.1 only**, which is left untouched. Restore point: "Before AM business components draft (16 Nov 2026)".
+
+**Page** `🧩 Draft Business Component` (`41239:45038`). Sections from top to bottom: Tables, Containers, Drawers, Modals. There is no helper text on the canvas.
+
+- **`AM/Table`** `41239:47485` (Type × State), the table plus footer:
+  - Accounts: Default / No search result.
+  - Activity: No account selected / Account selected.
+- **`AM/Container`** `41239:49137` (Type × Tab), the tab row:
+  - Accounts, with the Create Account CTA.
+  - Activity, with no CTA.
+  - The filter bar is the library instance `Leave/Filter`, so it was not made into a business component. The user still has to confirm this.
+- **`AM/Drawer`** `41240:56340` (Type × State, 17 variants):
+
+  | Type | States |
+  |---|---|
+  | Create Account | Empty / Employee filled / Sub-contractor Driver filled / Missing required fields / Duplicate username |
+  | Account Details | Active · Actions open / Active / Suspended · Actions open / Suspended / Sub-contractor Driver / Auto-suspended via Employees · Actions open / Auto-created by System · Actions open / Deactivated · Actions open |
+  | Edit Account | Employee / Sub-contractor Driver / Missing required fields / Duplicate username |
+
+- **`AM/Confirm Modal`** `41240:56963` (Action × State): Suspend Empty / Reason missing / Reason filled, and Unsuspend Default.
+
+**Design system binding:**
+- Colours are bound to COMPASS. The same variable ids as in the PD file resolve here, because the suffix is the library's own id.
+- New mapping: `#000` @ 25% text (the empty-state "No data" and "Please select an account…") → `colorTextQuaternary` `VariableID:fe09b102…/5006:8402`.
+- Radius 8 is bound. Radius 16 stays raw (no token).
