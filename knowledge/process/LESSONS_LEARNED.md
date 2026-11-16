@@ -88,3 +88,4 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 | 4 Nov 2026 | Bus Booking CR round | Longer step labels broke the side-by-side stepper; labels under the dots fit 3 long steps in 358 px. The user's own deletions are intentional. |
 | 3 Nov 2026 | PD Leave / Claims Style 2, Account quick actions | Labels wrapped because the columns hugged a 48 px icon. Make the columns equal-width (FILL) and the labels one line (HUG). Watch for typos in hand-made screens ("Contract Us"). |
 | 3 Nov 2026 | Bus Booking build | When tickets contradict each other (sales address, button label), build one reading, record the conflict in CHANGELOG Open items, and ask the PM. |
+- **Re-read the ticket before answering a 'what changes' question (16 Nov 2026).** Fetch the latest description; edits move fields around (for example, Return Date was removed and the remarks were merged).
