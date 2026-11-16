@@ -473,3 +473,33 @@ Form frames (2.1–2.9):
 - The ticket's Part 4 table lists a "Retry" button next to the error message.
 - Biz req #5 says the user stays on Part 3 and sees a toaster.
 - Not changed: need to decide whether to rename Submit to Retry.
+
+**Layout ideas for the Trip Details form (16 Nov 2026).** The user said frame 2.1 was "not good enough" and asked for other ideas. Section `9048:24432` on the proposal page holds three frames:
+
+| Frame | Id | Layout |
+|---|---|---|
+| Current | `9048:24433` | The 2.1 form as it is today. |
+| Idea 1 | `9048:24511` | Grey background with white "Trip 1" and "Return trip" cards, the return toggle inside its card with a "Same day, points reversed" helper, red asterisks, sticky Cancel / Next footer. |
+| Idea 2 | `9048:24589` | Flat form with section labels (WHEN / PASSENGERS / ROUTE / NOTES & ADD-ONS) and dividers, a green→red route timeline, sticky footer. |
+
+Waiting for the user to pick one. After that, all states get rebuilt in the chosen layout.
+
+**Part 1 states the ticket needs, checked against section `9046:21489`:**
+- Present:
+  - 2.1 empty
+  - 2.2 filled one-way
+  - 2.3 add-ons sheet with quantity stepper
+  - 2.4 date picker (today and past disabled)
+  - 2.5 return trip on
+  - 2.6 field errors, including >49 passengers
+  - 2.8 sticky stepper
+  - 2.9 time picker with surcharge note
+  - address suggestions (a floating component only)
+- **Missing:**
+  - (a) Toaster "Some required fields are missing. Please check and try again." on Next.
+  - (b) Return Pick-up Time error, "Must be later than the outbound pick-up time".
+  - (c) Offline banner "You are currently offline", the "You are back online" pop-up and the "Unable to access due to no internet connection" pop-up (biz req #6).
+  - (d) The address auto-complete open as a full screen state.
+  - (e) A Cancel → Bus Booking Enquiry arrow.
+
+3.5 keeps **Submit** (user decision, 16 Nov).

@@ -16,6 +16,7 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **Bus Booking form layout ideas (MOVE-4581), 16 Nov 2026:** added section `9048:24432` with Current, Idea 1 (grouped cards) and Idea 2 (sectioned + route timeline) for the user to choose from. Audited the ticket states; missing ones: the required-fields toaster, the return time error, the offline states, full-screen auto-complete and the Cancel arrow. The user decided 3.5 keeps Submit.
 - **Bus Booking proposal form UI tidy (MOVE-4581), 16 Nov 2026:** tidied the form screens in section `9046:21489`, as the user asked.
   - Merged pick-up and drop-off into one route card.
   - Added the Trip 2 (Return) title and a divider.
