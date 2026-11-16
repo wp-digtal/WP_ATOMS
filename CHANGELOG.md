@@ -16,6 +16,11 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **Bus Booking proposal (MOVE-4581), 16 Nov 2026:** updated the pasted "Bus Booking Form" section `9046:21489` to the ticket, as the user asked.
+  - Form: one Remarks per trip, plus return-trip Remarks.
+  - Trip Summary cards: Trip Price, Add-ons total and Sub-total.
+  - Price card: Total, GST and Grand Total.
+  - Production was not changed.
 - **Bus Booking proposal (MOVE-4581), 16 Nov 2026:**
   - Added section 4 `9046:21027`: the Option A form with one Remarks per trip.
   - Removed the non-ticket breakdown lines from section 3.

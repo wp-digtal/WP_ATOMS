@@ -442,3 +442,14 @@ Per the user's agreement, the breakdown lines under Trip Price and Sub-total wer
 Add-ons are per trip, per the ticket:
 - Part 1 has two Add-Ons rows: Trip 1, and the return trip ("refer to row 8" = the same Items list).
 - Part 2 cards each show their own add-on items, an add-ons total and a Sub-total.
+
+**Section "Bus Booking Form" `9046:21489` on the proposal page (16 Nov 2026).** The user pasted a full copy of the flow here, and it was updated to MOVE-4581. Restore point: "Before Bus Booking Form section per MOVE-4581 (16 Nov 2026)".
+
+Changes:
+- **Form frames, one Remarks per trip.** In 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.8 and 2.9 the per-point remarks were replaced by a single "Remarks" field below the drop-off block.
+- **2.5 return section.** A return-trip Remarks field was added between Pick-up Time and + Add-Ons.
+- **3.1 Trip Summary trip cards.** The rows follow the ticket: Date, Pick-up Time, No. of Passengers [bus size], points, Remarks, Trip Price, Add-ons items, Add-ons total, Sub-total.
+  - Trip 1: S$170 + S$70 = S$240.
+  - Trip 2: S$170 + S$0 = S$170.
+- **3.1 Price card.** It is titled "Price"; the Estimate chip and the per-trip/add-on lines are hidden. It shows Total S$410, GST S$36.90 and Grand Total S$446.90.
+- **3.4 / 3.4b success screens are unchanged.** The ticket only says "Trip summary: reference of the submitted trip details".
