@@ -14,6 +14,13 @@ minor).
 
 ## [Unreleased]
 
+### Added — Route Point Manager: COMPASS side-by-side page, Listing flow (Figma, 16 Nov 2026, MOVE-737)
+
+- **New page** in the Route Point Manager file. Old frames sit on the left, the COMPASS rebuild on the right.
+- **Listing flow:** Default, Filter open and No search result.
+- **How it was built:** library import times out in this file, so the new frames are clones of the AM Production 3.1 frames the user pasted in, re-texted for Route Point Manager.
+- **Waiting for the user's review** before the next flow.
+
 ### Added — Route Point Manager knowledge base (16 Nov 2026, MOVE-131)
 
 - New `ROUTE_POINT_MANAGER_KNOWLEDGE.md`, a summary of tickets MOVE-735 / 736 / 737 / 738 / 739 / 745 and the old Figma file's pages.

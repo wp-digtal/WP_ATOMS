@@ -89,3 +89,44 @@ All fields are required.
 ## 2. Redesign to COMPASS (16 Nov 2026), in progress
 
 The user asked for one new page that holds every flow from every old page, rebuilt with the new design system: **COMPASS** plus the **💎 ATOM – Business Component** library. It must be **side by side** (old next to new), worked slowly and carefully, and re-checked at the end. Frame ids and decisions go below as the work proceeds.
+
+### 2.1 Setup and findings (16 Nov 2026)
+
+**Old file inventory, about 300 frames:**
+
+| Page | Frames | Content |
+|---|---|---|
+| Listing | ~70 | Search keyword / multi-landmark / linked-routes / combined; filter tags; not found; detail drawer per landmark type; detail page |
+| Create | ~128 | 1-column and 2-column page with map; per landmark type; confirmation; finish; empty |
+| Update | ~88 | Per landmark type |
+| Delete | 9 | Point used / not used |
+| Negative case | 8 | Building → bus stop, nearest bus stop not found |
+| Change History | — | Only a section header, no frames |
+
+- **The user's scope decision:** do one flow at a time, starting with Listing. They review it before the next flow.
+- **Create / Edit pattern:** a full page with a map, like the old design but with COMPASS components. A drawer would be too narrow for the map.
+- **Library imports time out in this file,** COMPASS Side Navbar included. The user pasted the Account Management Production 3.1 frames into page `New Design` (`14708:451945`), section `Production` `14708:458707`. **Build new screens by cloning those frames** (Side Navbar, HeaderWrapper, filter bar, COMPASS table cells, drawer template, modals) and re-texting them.
+
+**New page** `🧭 Route Point Manager — COMPASS side by side` (`14708:496103`). Restore point: "Before Route Point Manager COMPASS side-by-side page (16 Nov 2026)". Each row puts the OLD frame on the left (x 100) and the NEW frame on the right (x 1740).
+
+**Section `1 · Listing (MOVE-737)`** `14708:496104`:
+
+| Row | Old | New |
+|---|---|---|
+| 1.1 Default | `14708:498546` (search-first empty page) | `14708:496105`: table shown straight away, sorted by Last Updated |
+| 1.2 Filter | `14708:503650` (results + filter tags) | `14708:501886`: filter popover with Landmark Type + Linked Routes |
+| 1.3 Not found | `14708:507282` | `14708:505393`: table "No data" empty state |
+
+**How the new listing was made from the AM listing:**
+- Kept 4 of the 6 cell columns: Point Description (FILL), Linked Routes (140), Last Updated By (180), Last Updated On (180).
+- Set the cell text through `setProperties` on `Text Content#…` / `Text 2 Content#…`, and the headers through `Text#…`.
+- Hid the AM tabs container and right-aligned the CTA "Create Route Point".
+- Renamed the side-nav item, breadcrumb and title.
+- The Linked Routes count is a link (colorPrimaryText + underline); 0 stays plain.
+
+**Gotcha:** an 8-row loop that loads a font and sets fills on instance text timed out. Load the font once, build one paint, then loop.
+
+**Open questions for the user:**
+- The Linked Routes sub-table (ticket: accordion or modal) has no COMPASS component yet. Which form should it take?
+- The old table has "Last Updated by + Last Updated at"; the ticket only lists "Last Updated On". The new design kept both columns.
+- The old default page is search-first with no table; the new default shows the table, as the ticket asks.
