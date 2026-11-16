@@ -14,6 +14,12 @@ minor).
 
 ## [Unreleased]
 
+### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
+
+- **Why:** PM comments on bus size, long text, route alignment and add-on price per trip, plus the open question of whether add-ons belong to each trip or to the whole booking.
+- **What:** a new proposal page holds a fixed success card, plus Option A (per trip) and Option B (per booking) for the form and the success screen.
+- Existing screens are unchanged.
+
 ### Added — Route Point Manager: all flows rebuilt side by side in COMPASS (Figma, 16 Nov 2026, MOVE-735/736/738/739/745)
 
 - **Flows:**

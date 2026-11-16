@@ -358,3 +358,35 @@ The user asked: "did you tidy the layout?" The first pass had only fixed the row
   - The pick-up stop's `Dot` column now stretches to the stop height, with a dot plus a FILL-height 2 px line. The line runs from the green dot down to the drop-off stop.
   - The dots get 2 px top padding so they line up with the label text.
 - **V1:** already clean, no change.
+
+## Round 9: trip card proposal + add-ons ambiguity (16 Nov 2026)
+
+**PM (Westpoint Digital) comments on the V3 expanded success card:**
+1. "20-seater bus – missing bus size"
+2. "show if it's a very long text"
+3. Route not tidy / not centred / vertical line not full
+4. "must have add-on price for each trip"
+5. Add-ons tied per trip?
+
+The user asked for a **new page, a proposal only**, without updating the existing screens: page `🧪 Bus Booking — Proposal trip card & add-ons` (`9043:17412`). Restore point: "Before Bus Booking trip card proposal page (16 Nov 2026)".
+
+**Section 1 · Proposal success card** (`9043:17413`): Before `9043:17414` / Proposal `9043:17554`.
+- Rows below the route: No. of Passengers, **Bus Size** (its own row), **Add-Ons** as a label with one row per item and its price.
+- **Long names wrap:** item name FILL + `textAutoResize HEIGHT`, price hugs on the right. The example is a long "Luggage Truck (…)".
+- **Sub-total** with a breakdown line, e.g. "S$150 (20-seater) + S$20 peak + S$220 add-ons".
+- **Route column:**
+  - The pick-up pin and the drop-off dot sit in equal 16 px centred columns.
+  - The route line is an ABSOLUTE 2 px rectangle in the stops frame, from under the pin to the drop dot. The FILL approach kept stopping short because the Dot frame wouldn't stretch.
+- **Trip 2** gets the same rows: WiFi Connection S$50, Sub-total S$220.
+- **Grand Total:** S$610 + 9% GST = S$664.90.
+- The header was fixed from "Trip 1 (Return)" to "Trip 1".
+
+**Section 2 · Options** (`9043:17808`). The ticket leans towards A (Trip 1 / Trip 2 cards list "Add-ons", and "Sub-total = rates + add-ons").
+
+| Option | Frame | Content |
+|---|---|---|
+| A, per trip | `9043:17809` | "Trip 1 Add-Ons" block, and a "Return Trip Add-Ons" block under the return fields |
+| B, per booking: form | `9043:17943` | One "Add-Ons (for the whole booking)" block after the return fields |
+| B, per booking: success | `9043:18077` | Trip sub-totals are bus rate only (S$170 each); a separate "Add-Ons (whole booking)" card with the items and "Add-ons total S$270" sits above Grand Total |
+
+**Noticed, not changed:** the 2.5 form clone shows no Return Date field, only Pick-up Time. Check whether Production 2.5 lost it again.
