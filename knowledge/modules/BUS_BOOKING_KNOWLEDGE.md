@@ -416,3 +416,15 @@ Gaps against the Figma work:
 - **Form:** Trip 1 needs a single Remarks field, and the return trip needs a Remarks field.
 - **Proposal option A (add-ons per trip) is confirmed by the ticket.**
 - **Production 2.5 without Return Date matches the ticket.**
+
+**Section 3 · Trip card rows per ticket (16 Nov 2026):** `9043:18705` on the proposal page. Restore point: "Before Bus Booking trip card price rows proposal (16 Nov 2026)". It has two frames:
+- **Before** `9043:18706`.
+- **Proposal** `9043:18881`. Changes in this frame:
+  - One Remarks row per trip; the remarks under each point are hidden.
+  - A Trip Price row with its breakdown (rate + surcharge).
+  - An "Add-ons items" label and an Add-ons total row.
+  - Trip 2 is a clone of the Trip 1 card with the points reversed, so its drop-off point now shows.
+  - A Price card (`9043:19166`) with Total S$610 + GST S$54.90 = Grand Total S$664.90.
+- Production is not touched.
+- The form still needs a single Remarks for Trip 1 and a return Remarks field; not done yet.
+- "Production 2.5" means frame 2.5 "2 way on" (`8763:18518`): the Trip Details form with Return Trip switched on, on the Production Passenger page.

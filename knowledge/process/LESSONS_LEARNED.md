@@ -89,3 +89,4 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 | 3 Nov 2026 | PD Leave / Claims Style 2, Account quick actions | Labels wrapped because the columns hugged a 48 px icon. Make the columns equal-width (FILL) and the labels one line (HUG). Watch for typos in hand-made screens ("Contract Us"). |
 | 3 Nov 2026 | Bus Booking build | When tickets contradict each other (sales address, button label), build one reading, record the conflict in CHANGELOG Open items, and ask the PM. |
 - **Re-read the ticket before answering a 'what changes' question (16 Nov 2026).** Fetch the latest description; edits move fields around (for example, Return Date was removed and the remarks were merged).
+- **A cloned mobile frame keeps a fixed height (16 Nov 2026).** After adding rows, resize the frame to fit its content and move the NavigationBar down. Otherwise the bottom gets clipped. Check with a screenshot.
