@@ -16,6 +16,10 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **Bus Booking proposal (MOVE-4581), 16 Nov 2026:**
+  - Added section 4 `9046:21027`: the Option A form with one Remarks per trip.
+  - Removed the non-ticket breakdown lines from section 3.
+  - Asked for by the user ("buat proposal… supaya bisa memenuhi tiket").
 - **Bus Booking proposal (MOVE-4581), 16 Nov 2026:** added section 3 `9043:18705` to the proposal page. Its trip cards use one Remarks row, a Trip Price row and an Add-ons total row, Trip 2 shows both points, and a Price card shows Total, GST and Grand Total. Requested by the user to match the ticket edit of 16 Nov. Production was not changed.
 - **Bus Booking (MOVE-4581), 16 Nov 2026:** re-checked what Return Trip changes after the ticket edit of 16 Nov 15:48. There is no Return Date, the return is the same day, the return form has Pick-up Time, Remarks and Add-Ons, and each trip card has Trip Price, an add-ons total and a Sub-total. Recorded in BUS_BOOKING_KNOWLEDGE round 10. Figma was not changed yet; waiting for the user's decision.
 - **Why:** PM comments on bus size, long text, route alignment and add-on price per trip, plus the open question of whether add-ons belong to each trip or to the whole booking.

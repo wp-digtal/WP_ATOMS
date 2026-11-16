@@ -428,3 +428,17 @@ Gaps against the Figma work:
 - Production is not touched.
 - The form still needs a single Remarks for Trip 1 and a return Remarks field; not done yet.
 - "Production 2.5" means frame 2.5 "2 way on" (`8763:18518`): the Trip Details form with Return Trip switched on, on the Production Passenger page.
+
+**Section 4 · Option A form per ticket (16 Nov 2026):** `9046:21027`. It has two frames:
+- **Before** (a clone of `9043:17809`).
+- **Proposal** `9046:21170`:
+  - Trip 1 has one "Remarks" field below the points; the per-point remarks are removed.
+  - The return trip has its own Remarks field, between Pick-up Time and Return Trip Add-Ons.
+
+Correction to the earlier report: Option A's return date, return passenger field and Estimated price card were already **hidden** layers. My text dump only checked whether the direct parent was visible. Screenshot the frame before reporting anything as present.
+
+Per the user's agreement, the breakdown lines under Trip Price and Sub-total were removed from section 3. The ticket shows only the numbers.
+
+Add-ons are per trip, per the ticket:
+- Part 1 has two Add-Ons rows: Trip 1, and the return trip ("refer to row 8" = the same Items list).
+- Part 2 cards each show their own add-on items, an add-ons total and a Sub-total.
