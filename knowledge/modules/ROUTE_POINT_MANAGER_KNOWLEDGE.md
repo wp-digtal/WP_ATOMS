@@ -130,3 +130,28 @@ The user asked for one new page that holds every flow from every old page, rebui
 - The Linked Routes sub-table (ticket: accordion or modal) has no COMPASS component yet. Which form should it take?
 - The old table has "Last Updated by + Last Updated at"; the ticket only lists "Last Updated On". The new design kept both columns.
 - The old default page is search-first with no table; the new default shows the table, as the ticket asks.
+
+### 2.2 All flows built (16 Nov 2026)
+
+The user said "do all the rest". Every section has OLD at x 100 and NEW at x 1740 on page `14708:496103`.
+
+| Section | Rows (OLD / NEW ids) |
+|---|---|
+| `2 · Details (MOVE-738)` `14714:509225` | 2.1 Bus stop with linked routes: `14714:514366` / `14714:509226`. 2.2 Building with no linked routes, Delete enabled: `14714:515322` / `14714:515160` |
+| `3 · Create (MOVE-735)` `14714:516657` | 3.1 Others `14714:517143` / `14714:516658`. 3.2 Bus stop `14714:517816` / `14714:517371`. 3.3 Building `14714:518053` / `14714:518936`. 3.4 Confirm save modal `14714:518302` / `14714:519395`. 3.5 Created: drawer + success toast `14714:518540` / `14714:519866`. 3.6 Duplicate point "Unable to save point": NEW only, `14714:520564` |
+| `4 · Edit (MOVE-736)` `14714:521035` | 4.1 Bus stop, linked: Address / Landmark / Bus Stop Name disabled + error caption. `14714:521520` / `14714:521036`. 4.2 Building, linked: only Address locked. `14714:522499` / `14714:521777`. 4.3 Negative case "Unable to update … incomplete data": `14714:522750` / `14714:523012` |
+| `5 · Delete (MOVE-745)` `14714:523128`-ish | 5.1 "Delete point" Cancel / Delete (danger): `14714:523129` / `14714:524775`. 5.2 "Unable to delete point" + "View linked routes" link, Cancel only: `14714:523952` / `14714:525313` |
+| `6 · Change History (MOVE-739)` | NEW only, because the old page is empty: `14714:526020`. Columns Edit Type / Field Edited / Previous Input / New Input / Updated On (+ "by user" sub-line) |
+
+**How the NEW screens were made:**
+- **Details drawer:** the AM `Overlay + Drawer` on the NEW listing. Header buttons stacked above a wrapping title. The old map image is cloned from the old detail instance. `Group Content Cell` instances are re-texted. A Linked Routes sub-section uses `RT-Section Header` (that library set already has the variants "Route Point Detail", "Route Linked List" and "Route Detail") plus 4 COMPASS table rows.
+- **Create / Edit page:** the NEW listing frame with its content hidden, plus a white "Form card". The fields are AM form items cloned and re-texted (Address input, Landmark Type / Town / Bus Stop Name / Additional Details selects, Building Name / Point Description inputs), plus the map and an "Upload" button with helper text. The header has Cancel + Create / Save.
+- **Locked fields:** `Input`/select instance `State=Disabled`. The error is the form item's `Caption` property set to true, with the text "Not allowed to change coordinates of point currently in use by route(s)" and `Status=Error`.
+- **Modals:** the AM Unsuspend `Overlay + Modal`, re-texted. To hide a button, hide its parent instance. Danger buttons use `Danger=True`. Links inside the body use `setRangeFills` (colorPrimaryText) + underline.
+- **Dropdown menu items:** change them through `setProperties({Text…, State, Danger})`. Their text is a component property.
+
+**Deviations and open points, to confirm with the user:**
+- Change History has a filter button only. The ticket also asks for a search on Previous / New input and a date range, and the AM Activity filter bar it was cloned from doesn't show them.
+- 3.6 Duplicate point and 6.1 Change History have no old frame.
+- The Create success destination follows the old Finish (the new point opens in the details drawer, with a toast). The ticket doesn't specify it.
+- The Linked Routes sub-table in the **listing** (accordion / modal) is still not designed. It is shown inside the details drawer instead.

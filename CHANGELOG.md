@@ -14,6 +14,16 @@ minor).
 
 ## [Unreleased]
 
+### Added — Route Point Manager: all flows rebuilt side by side in COMPASS (Figma, 16 Nov 2026, MOVE-735/736/738/739/745)
+
+- **Flows:**
+  - Details drawer: with and without linked routes.
+  - Create page: Others / Bus stop / Building, confirm save, created + toast, duplicate point.
+  - Edit: locked fields per linked routes and landmark type, plus the negative case.
+  - Delete: not in use / in use.
+  - Change History (no old design existed).
+- **Open:** Change History search and date range, the listing Linked Routes sub-table, and confirming the create success destination.
+
 ### Added — Route Point Manager: COMPASS side-by-side page, Listing flow (Figma, 16 Nov 2026, MOVE-737)
 
 - **New page** in the Route Point Manager file. Old frames sit on the left, the COMPASS rebuild on the right.
