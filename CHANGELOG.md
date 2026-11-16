@@ -14,6 +14,11 @@ minor).
 
 ## [Unreleased]
 
+### Added — Route Point Manager knowledge base (16 Nov 2026, MOVE-131)
+
+- New `ROUTE_POINT_MANAGER_KNOWLEDGE.md`, a summary of tickets MOVE-735 / 736 / 737 / 738 / 739 / 745 and the old Figma file's pages.
+- Prepared for the COMPASS side-by-side redesign the user asked for.
+
 ### Added — Account Management business components draft (Figma, 16 Nov 2026)
 
 - **New page** `🧩 Draft Business Component`, built from Production 3.1 (which is unchanged), with the same rules as PD:
