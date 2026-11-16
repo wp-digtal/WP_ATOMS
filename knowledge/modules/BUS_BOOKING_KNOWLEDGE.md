@@ -390,3 +390,29 @@ The user asked for a **new page, a proposal only**, without updating the existin
 | B, per booking: success | `9043:18077` | Trip sub-totals are bus rate only (S$170 each); a separate "Add-Ons (whole booking)" card with the items and "Add-ons total S$270" sits above Grand Total |
 
 **Noticed, not changed:** the 2.5 form clone shows no Return Date field, only Pick-up Time. Check whether Production 2.5 lost it again.
+
+## Round 10: Return Trip re-check of MOVE-4581 (ticket updated 16 Nov 2026 15:48)
+
+What turning **Return Trip** on changes, per the current ticket:
+- **Part 1 form.** The toggle is off by default. When it is on, three fields appear:
+  - **Pick-up Time**: required; it must be later than the outbound pick-up time.
+  - **Remarks**: optional, max 240 characters.
+  - **Add-Ons**: the same as the Trip 1 add-ons.
+- **No Return Date field.** The return trip is the same day as Trip 1.
+- **No passenger field for the return.** It uses the Trip 1 passenger count and bus size.
+- **Return points are not inputs.** They are auto-reversed: Trip 2 pick-up = Trip 1 drop-off, and the other way round.
+- **Trip 1 has one Remarks field.** The separate pick-up and drop-off remarks are gone.
+- **Part 2 shows a "Trip 2 (Return)" card.** It has the same rows as Trip 1:
+  - Pick-up Time, Pick up point, Drop off point.
+  - Remarks ("-" when empty).
+  - Trip Price {rates}.
+  - Add-on items ("-" when empty) and Add-ons {total}.
+  - Sub-total.
+- **Price card.** Total is the sum of the trip sub-totals, plus GST 9%, giving the Grand Total.
+- **Pricing.** The return trip is priced by its own pick-up time (peak +$20, midnight +$30). The ticket's worked cases total $220, $240 and $270.
+
+Gaps against the Figma work:
+- **Proposal cards:** add the "Trip Price" and "Add-ons total" rows, and use one Remarks per trip.
+- **Form:** Trip 1 needs a single Remarks field, and the return trip needs a Remarks field.
+- **Proposal option A (add-ons per trip) is confirmed by the ticket.**
+- **Production 2.5 without Return Date matches the ticket.**

@@ -1,0 +1,1 @@
+- **Re-read the ticket before answering a 'what changes' question (16 Nov 2026).** Fetch the latest description; edits move fields around (for example, Return Date was removed and the remarks were merged).

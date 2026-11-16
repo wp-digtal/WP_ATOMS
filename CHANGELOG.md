@@ -16,6 +16,7 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **Bus Booking (MOVE-4581), 16 Nov 2026:** re-checked what Return Trip changes after the ticket edit of 16 Nov 15:48. There is no Return Date, the return is the same day, the return form has Pick-up Time, Remarks and Add-Ons, and each trip card has Trip Price, an add-ons total and a Sub-total. Recorded in BUS_BOOKING_KNOWLEDGE round 10. Figma was not changed yet; waiting for the user's decision.
 - **Why:** PM comments on bus size, long text, route alignment and add-on price per trip, plus the open question of whether add-ons belong to each trip or to the whole booking.
 - **What:** a new proposal page holds a fixed success card, plus Option A (per trip) and Option B (per booking) for the form and the success screen.
 - Existing screens are unchanged.
