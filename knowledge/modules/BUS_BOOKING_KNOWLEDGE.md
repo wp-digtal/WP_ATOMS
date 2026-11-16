@@ -453,3 +453,23 @@ Changes:
   - Trip 2: S$170 + S$0 = S$170.
 - **3.1 Price card.** It is titled "Price"; the Estimate chip and the per-trip/add-on lines are hidden. It shows Total S$410, GST S$36.90 and Grand Total S$446.90.
 - **3.4 / 3.4b success screens are unchanged.** The ticket only says "Trip summary: reference of the submitted trip details".
+
+**Form UI tidy-up in section `9046:21489` (16 Nov 2026, user: "make the form UI tidier and better")**
+
+Form frames (2.1–2.9):
+- Pick-up and drop-off are merged into one "Route block (Pick-up + Drop-off)" card with 12 px spacing between the two fields.
+- The "Add remarks for the driver" placeholder is now 14 px, the same size as typed text.
+- 2.6: the label "Pick-Up Time" was corrected to "Pick-up Time" (the ticket's spelling).
+
+2.5 (return trip on):
+- A divider now separates Trip 1 from the return section.
+- The return section has a "Trip 2 (Return)" title, using the same naming as Part 2.
+- The return Add-Ons is the same "Add-Ons + button" block used for an empty Trip 1.
+
+3.4 and 3.4b (success):
+- The body copy now follows the ticket: "Our sales team will contact you via email to confirm your booking and arrange payment." The title "Enquiry sent!" is kept.
+
+**Open question for the user:** in 3.5 (send failed), the primary button still says **Submit**.
+- The ticket's Part 4 table lists a "Retry" button next to the error message.
+- Biz req #5 says the user stays on Part 3 and sees a toaster.
+- Not changed: need to decide whether to rename Submit to Retry.

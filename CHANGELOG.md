@@ -16,6 +16,12 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **Bus Booking proposal form UI tidy (MOVE-4581), 16 Nov 2026:** tidied the form screens in section `9046:21489`, as the user asked.
+  - Merged pick-up and drop-off into one route card.
+  - Added the Trip 2 (Return) title and a divider.
+  - Matched the return Add-Ons block to the Trip 1 pattern.
+  - Corrected the label case and set the success copy to the ticket wording.
+  - Open: should 3.5 show Retry instead of Submit?
 - **Bus Booking proposal (MOVE-4581), 16 Nov 2026:** updated the pasted "Bus Booking Form" section `9046:21489` to the ticket, as the user asked.
   - Form: one Remarks per trip, plus return-trip Remarks.
   - Trip Summary cards: Trip Price, Add-ons total and Sub-total.
