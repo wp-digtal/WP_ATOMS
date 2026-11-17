@@ -266,3 +266,22 @@ Map technique for the full-map variants:
 - The Map frame is resized to 739.
 - Content is shifted up per sheet position so the bus and the next stops stay visible above the sheet: −230 for half, −60 for peek, −170 for the V5 card.
 - The Traffic toggle sits 12 px above the sheet or card.
+
+**Round 8c (17 Nov 2026): V7, long scroll with accordions.**
+
+The user asked where Trip Information goes in the bottom-sheet options. In V3 it is below the Route List and only reachable via V3c; in V4 it sits behind the Information tab. Routes can reach **20 points**, which buries it further.
+
+The user's idea, built as V7 (map 240):
+
+| Frame | Id | Content |
+|---|---|---|
+| V7a · default | `39825:25728` | Trip Details accordion card (radius 12, border) collapsed to "Trip Details / JK Attendant 6 · 13 Oct · 7:50 – 9:14 AM" plus a chevron. Route List header "Route List [20 Stops]" plus a chevron. Body: "● 2 stops completed · Show", then Stop 3 (open, heading-to), then Stop 4, then "Show 16 more stops ⌄" |
+| V7b · Trip Details expanded | `39825:26049` | |
+| V7c · Route List collapsed | `39825:26290` | The header keeps "Next: Stop 3 · Bukit Panjang Plaza · 8:06 AM · Move-off At : 10 mins" |
+
+Rules for long routes:
+- Fold completed stops.
+- Always show the next stop open, plus 1 more.
+- Fold the rest with a count.
+
+Gotcha: rows created inside a vertical auto-layout default to 100 px tall. Set them to HUG.
