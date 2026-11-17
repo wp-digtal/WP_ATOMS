@@ -599,3 +599,21 @@ Section docs:
 - Branches are shown as blue route labels under the source frame, not as long arrows (toggle ON → row 3, Next → 4.1/4.2, Submit ✓/✗).
 
 **Resolved (17 Nov 2026):** the user confirmed that the one-way screens do **not** use tabs; tabs appear only when Return trip is on. The rest stays as built for now.
+
+**One Remarks per booking + V3 summary style (17 Nov 2026, user decision, differs from the ticket).** Restore point: "Before Bus Booking one Remarks per booking (17 Nov 2026)".
+
+The user chose "Remarks once for the booking", so Remarks, Pax and Bus size are not per trip. The ticket has Remarks per trip and "No. of Passengers [Bus size]" per trip. This is a deliberate deviation, so tell the PM.
+
+- **Form (all frames in `9058:29985`):**
+  - Remarks moves to GENERAL, after No. of Passengers.
+  - The return Remarks is hidden.
+  - The trip-pane label "NOTES & ADD-ONS" becomes "ADD-ONS".
+  - 2.4's suggestions dropdown was repositioned.
+- **Trip Summary (4.1 `9061:35943`, replacing `9060:33878`; 4.2 `9058:33206`):** V3 card style from `8915:20457`.
+  - Header: "Trip Summary" with shared chips "20-seater bus · 18 Pax".
+  - A single Remarks card.
+  - Trip cards drop the Pax, Bus Size and Remarks rows, and get a chevron (up = expanded).
+  - The Price card has a breakdown: Trip 1 sub-total S$240, Trip 2 sub-total S$220, divider, Total S$460, GST S$41.40, Grand Total S$501.40. One-way: S$240 / S$21.60 / S$261.60.
+- **Enquiry sent (4.5 `9060:34250`):** same summary block.
+  - Cards are collapsed by default and show date·time, route and Sub-total.
+  - The Price breakdown is shown (user: "the total in Enquiry sent also needs a breakdown").
