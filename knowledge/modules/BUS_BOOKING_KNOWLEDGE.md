@@ -628,3 +628,22 @@ The user chose "Remarks once for the booking", so Remarks, Pax and Bus size are 
 - Branch notes use the reference "Arrow label" text (orange, 20 px) under the source frame.
 - The old blue docs texts and arrows were removed. Frame names keep the 🔵 prefix.
 - Rows now start at y = 600, 2180, 3966, 5837 and 7818 inside the section.
+
+**Spacing hierarchy on the form (17 Nov 2026).** The user said the spacing felt uniform: Content had one itemSpacing of 16 for everything.
+
+The form Content in all 13 form frames of `9058:29985` is now nested groups:
+- `Group · GENERAL` / `Group · Trip` (spacing 16) contain `Field set · <LABEL>` frames (spacing 8: section label → fields), and inside those `Fields` (spacing 16).
+- `Group · Return trip toggle` uses spacing 4 (toggle → helper).
+- Content spacing 24, with the dividers sitting between groups (24 / line / 24).
+- The pick-up and drop-off pair keeps 12.
+- The section label "ADD-ONS" is hidden because it duplicated the field title "Add-Ons".
+
+Rule for future forms (8pt, proximity):
+
+| Relationship | Spacing |
+|---|---|
+| Section label → its fields | 8 |
+| Related pair | 12 |
+| Field ↔ field | 16 |
+| Section ↔ section | 24 + divider |
+| Toggle → helper | 4 |

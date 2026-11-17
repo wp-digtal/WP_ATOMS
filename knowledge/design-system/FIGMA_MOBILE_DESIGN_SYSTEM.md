@@ -283,3 +283,16 @@ Techniques and gotchas from the Claims build:
 - **Simple illustrations** (no Integral illustration set): draw them with `figma.createVector()` + `vectorPaths` (stroke 6, round caps) and `createEllipse()` heads. Make one `createComponent()` per pose in a single call, then `combineAsVariants` in a second call.
 
 **Bridge timeouts on text edits (4 Nov 2026).** In the Bus Booking frames, calls that ran `loadFontAsync(t.fontName)` per node timed out three times; the edits half-applied. Preload fonts once as plain `{family:'Roboto', style}` objects, then touch **one frame per call**. A per-node font load with the `variationSettings` object is what hangs.
+
+### Form spacing hierarchy (user, 17 Nov 2026)
+Do not use one itemSpacing for a whole form. Nest the auto-layout so the spacing carries meaning (8pt grid, proximity):
+
+| Relationship | Spacing |
+|---|---|
+| Section label → its first field | 8 |
+| Related pair (e.g. pick-up ↔ drop-off) | 12 |
+| Field ↔ field in a section | 16 |
+| Section ↔ section | 24, with a divider between |
+| Toggle → its helper text | 4 |
+
+Do not stack a section label directly on a field title with the same name.
