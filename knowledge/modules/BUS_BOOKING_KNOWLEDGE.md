@@ -527,3 +527,16 @@ The user, acting as senior PD, said the Idea 2 UI is OK but the return trip make
 - The tabs are hand-built because Integral `Tab base` / `Tab Group` imports time out.
 - Gotcha: a node cloned with `f.parent.appendChild(f)` can land on the page instead of the section. Append it to the section explicitly.
 - Gotcha: instances moved out of a horizontal row keep a FIXED/stretched height. Set `layoutSizingVertical='HUG'` and `layoutSizingHorizontal='FILL'`.
+
+**Add-ons total in the 3 tab versions (17 Nov 2026).** The user asked for it: it is not in the ticket, but the user should know what their add-ons cost.
+
+Placement, as a senior PD call:
+- A row "Add-ons total (this trip) · S$xx.xx" inside each trip's Add-Ons block, under the chips. The total sits next to the items it adds up, and it is scoped to the active tab.
+- The toggle-off frame says just "Add-ons total".
+- V3 summary cards also get an "Add-ons S$xx.xx" line, so both trips' add-on costs are visible at once.
+
+Example data:
+- Trip 1: Meet and Greet + Drinking Water ×2 = S$70.00.
+- The Return tab frames now show a filled example, WiFi Connection = S$50.00. This shows the total is per trip.
+
+Watch-out: the PM previously removed the estimated price from step 1 (10 Nov). This row shows only the add-ons sum, which is already visible on the chips, not a trip price. Confirm with the PM if they object.
