@@ -598,4 +598,4 @@ Section docs:
 - Horizontal arrows inside each row.
 - Branches are shown as blue route labels under the source frame, not as long arrows (toggle ON → row 3, Next → 4.1/4.2, Submit ✓/✗).
 
-**Open:** the user said some frames in row 2 "still look old". I asked which (tabs on one-way? a specific element? the sheet backgrounds?) and am waiting for their answer.
+**Resolved (17 Nov 2026):** the user confirmed that the one-way screens do **not** use tabs; tabs appear only when Return trip is on. The rest stays as built for now.
