@@ -16,6 +16,10 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **Live Tracking layout exploration, round 2 (17 Nov 2026):**
+  - Added the missing states: Information tab, sheet peek and expanded, and the Route List tab in the sheet.
+  - Added 2 senior-PD options: V5 floating next-stop card, and V6 collapsing sticky map.
+  - Map content is scaled and offset so the bus stays visible above the sheets.
 - **Live Tracking driver web tracking layout exploration, 17 Nov 2026:** new page `39822:21991` with Current and 4 variants (short map, short map + tabs, full map + bottom sheet, bottom sheet + tabs). It responds to feedback that the map is too tall. Production is untouched.
 - **Live Tracking driver Route List, 17 Nov 2026:** the user's reference frame `39443:75528` (copy icon, single-open accordion, Move-off At, new colours) was applied to all other driver frames with a Sheet: mobile Location off and Photo, and web Live, Location off and Photo. Passenger is deferred; the code is not yet updated.
 - **Bus Booking trip card price breakdown, 17 Nov 2026:** added section `9065:37919` with Current and 3 versions (typographic hierarchy, tinted block + band, composition bar + chips), as the user asked. Waiting for the user to choose.

@@ -249,3 +249,20 @@ All variants are clones of the reference `39443:75528`:
 
 - Tab blue is #1677ff. Read from the "4 Stops" chip's parent, it came out empty, so it is set explicitly.
 - Waiting for the user to pick a variant.
+
+**Round 8b (17 Nov 2026): more states and 2 senior-PD options.** Added to section `39822:21992`, now titled "6 options, with states".
+
+| State | Id | Notes |
+|---|---|---|
+| V2b · Information tab | `39823:23542` | |
+| V3b · Sheet collapsed (peek, y660) | `39823:24005` | |
+| V3c · Sheet expanded (y96) | `39823:24299` | Also the target of V5 "View all 4 stops" |
+| V4b · Route List tab | `39823:23773` | |
+| **V5 · Floating "Next stop" card** | `39823:24775` | Full map; a white card holding a clone of visible Stop 3 (`39610:67038`) plus a "View all 4 stops" outline button; a driver pill with "Trip info" at the top. Rationale: while driving, the driver needs the next stop, not the full list |
+| **V6a / V6b · Collapsing map** | `39823:25108` / `39823:25334` | V6a = top of the page (current layout). V6b = scrolled: a 140 px sticky mini-map, an "Expand map" chip, and the Route List right under it. No new components needed (CSS sticky plus a height transition) |
+
+Map technique for the full-map variants:
+- Every map child (map instance, route vector, markers) is scaled ×1.5 about the origin, then shifted x −97.
+- The Map frame is resized to 739.
+- Content is shifted up per sheet position so the bus and the next stops stay visible above the sheet: −230 for half, −60 for peek, −170 for the V5 card.
+- The Traffic toggle sits 12 px above the sheet or card.
