@@ -647,3 +647,20 @@ Rule for future forms (8pt, proximity):
 | Field ↔ field | 16 |
 | Section ↔ section | 24 + divider |
 | Toggle → helper | 4 |
+
+**Ticket re-check, 17 Nov 2026.** No ticket edits since the last check: MOVE-4581 was last updated 16 Nov 15:48, MOVE-4569 on 12 Nov, MOVE-4582 on 11 Nov.
+
+Matching the full flow `9058:29985` against MOVE-4581 found four missing states. All four were added:
+
+| State | Frame | Id |
+|---|---|---|
+| Passengers above 49: "For more than 49 passengers, please email our sales team." (hint text set to wrap) | 2.8 | `9062:37357` |
+| Part 3 Submit with missing fields: "[Field label] is required." plus the error toaster | 4.7 | `9062:37737` |
+| Part 4 success toaster: "Bus booking submitted successfully." | 4.5 | `9060:34250` |
+| Cancel route label "Cancel → 1.2 (nothing sent, no data saved)" | under 2.1 | |
+
+Accepted deviations (user decisions):
+- One Remarks per booking (ticket: per trip).
+- Shared Pax / Bus size chips (ticket: per trip).
+- 3.5/4.6 keeps Submit (ticket Part 4 lists Retry).
+- Per-trip add-ons total and the Price breakdown are extra (not in the ticket).
