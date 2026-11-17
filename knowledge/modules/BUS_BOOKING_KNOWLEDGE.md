@@ -617,3 +617,14 @@ The user chose "Remarks once for the booking", so Remarks, Pax and Bus size are 
 - **Enquiry sent (4.5 `9060:34250`):** same summary block.
   - Cards are collapsed by default and show date·time, route and Sub-total.
   - The Price breakdown is shown (user: "the total in Enquiry sent also needs a breakdown").
+
+**Full flow section restyled to match the Production docs style `8763:16472` (17 Nov 2026).** Restore point: "Before full flow section restyle (17 Nov 2026)".
+
+- Section fill #444.
+- Rows use the `Docs/Big Title` instance (clone of `8763:20070`, Brief off as in the reference), placed 400 px above each row.
+- Each frame has a `Docs/Flow Label` (clone of `8763:20089`, Parent "Bus Booking", Current = step name) 90 px above it.
+- Frames are spaced 890 px apart.
+- Orange arrows are clones of `8763:20210`, weight 6. After replacing `vectorPaths`, set the end vertex `strokeCap='ARROW_LINES'` again with `setVectorNetworkAsync`.
+- Branch notes use the reference "Arrow label" text (orange, 20 px) under the source frame.
+- The old blue docs texts and arrows were removed. Frame names keep the 🔵 prefix.
+- Rows now start at y = 600, 2180, 3966, 5837 and 7818 inside the section.

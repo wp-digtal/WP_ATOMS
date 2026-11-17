@@ -16,6 +16,7 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **Bus Booking full flow section restyle, 17 Nov 2026:** section `9058:29985` now uses the Production docs style of `8763:16472`: dark #444 background, Docs/Big Title per row, Docs/Flow Label per frame, orange arrows and orange route labels. Requested by the user.
 - **Bus Booking, 17 Nov 2026 (user decisions):**
   - One Remarks per booking: the form moves it to GENERAL and the return Remarks is removed. This differs from the ticket.
   - Trip Summary and Enquiry sent use the V3 card style, with shared Bus size/Pax chips and one Remarks block.
