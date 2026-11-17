@@ -540,3 +540,41 @@ Example data:
 - The Return tab frames now show a filled example, WiFi Connection = S$50.00. This shows the total is per trip.
 
 Watch-out: the PM previously removed the estimated price from step 1 (10 Nov). This row shows only the add-ons sum, which is already visible on the chips, not a trip price. Confirm with the PM if they object.
+
+**Full flow in V1 segmented tabs (17 Nov 2026, in progress).**
+
+Section `🔵 Bus Booking — Full flow · V1 segmented tabs` is `9058:29985`, on the proposal page at y=25300. Restore point: "Before Bus Booking full flow V1 tabs (17 Nov 2026)". The user chose V1 and asked for the full flow. The Trip Summary must look like the "Enquiry sent" trip cards (`8915:20266`; the ticket-correct version is `9043:18881`).
+
+Built so far:
+
+| Row | Frame | Id |
+|---|---|---|
+| 1 Entry | 1.1 Home | `9058:29986` |
+| 1 Entry | 1.2 Enquiry | `9058:30065` |
+| 1 Entry | 1.3 Email | `9058:30116` |
+| 2 One-way | 2.1 empty | `9058:30626` |
+| 2 One-way | 2.2 date picker | `9058:31079` |
+| 2 One-way | 2.3 time picker | `9058:31326` |
+| 2 One-way | 2.4 auto-complete | `9058:31838` |
+| 2 One-way | 2.5 add-ons sheet | `9058:31513` |
+| 2 One-way | 2.6 filled | `9058:30150` |
+| 2 One-way | 2.7 errors + toaster | `9058:32410` |
+| 3 Return | 3.1 Outbound tab | `9058:30307` |
+| 3 Return | 3.2 Return tab | `9058:30463` |
+| 3 Return | 3.3 return time error (red dot on the Return segment) | `9058:32831` |
+| 4 Summary | 4.2 Trip Summary with return, started from `9043:18881` | `9058:33206` |
+
+4.2 still needs its data aligned:
+- Trip 1 add-ons S$70 (remove Luggage Truck), Sub-total S$240.
+- Trip 2 Sub-total S$220.
+- Price card: Total S$460, GST S$41.40, Grand Total S$501.40.
+
+Still to build:
+- Row 4: 4.1 one-way summary (Total S$240, GST S$21.60, Grand Total S$261.60), 4.3 Contact, 4.4 invalid email, 4.5 Success, 4.6 Failed.
+- Row 5: offline states.
+- Captions, arrows and the title block.
+
+Gotchas:
+- Empty inputs: copy the placeholder text and fills plus the boolean props from A1 `9048:25517`, matched by label.
+- Error inputs: `setProperties({State:'Error', Hint#…, Show hint text#…:true})`, then `layoutSizingVertical='HUG'`, then recompute the route rail gap.
+- The bridge dropped on a call that loaded fonts for every text node in a whole frame. Load only the nodes you edit.
