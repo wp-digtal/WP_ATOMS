@@ -16,6 +16,7 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **Live Tracking driver Route List, 17 Nov 2026:** the user's reference frame `39443:75528` (copy icon, single-open accordion, Move-off At, new colours) was applied to all other driver frames with a Sheet: mobile Location off and Photo, and web Live, Location off and Photo. Passenger is deferred; the code is not yet updated.
 - **Bus Booking trip card price breakdown, 17 Nov 2026:** added section `9065:37919` with Current and 3 versions (typographic hierarchy, tinted block + band, composition bar + chips), as the user asked. Waiting for the user to choose.
 - **Bus Booking ticket re-check (MOVE-4581), 17 Nov 2026:** there were no ticket edits.
   - Added the missing states: passengers above 49 (2.8), Part 3 missing-fields error and toaster (4.7), the success toaster on Enquiry sent, and the Cancel route.

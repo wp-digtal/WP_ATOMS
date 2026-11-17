@@ -200,3 +200,30 @@ The user found the requirement in the mobile tickets:
 To align with the driver app, show "Move-off at HH:MM" (scheduled + wait) only on points that have a wait time. Per §1a, apply it to both mobile and web, and to both driver and passenger.
 
 Status: reported to the user, waiting for go-ahead.
+
+### Round 7 (17 Nov 2026): driver Route List propagated from the user's reference
+
+The user's own updated frame **`39443:75528`** (Driver mobile, Live) is the correct structure:
+1. A copy icon on Bus Label (inside `Schedule Details`).
+2. A Route List accordion with **only one point open** (the heading-to stop: photo, pax chip, "Move-off At : 10 mins").
+3. A **"Move-off At"** pill on stops that have a wait time (replaces "Wait time N min"; MOVE-4222 / MOVE-4358).
+4. Updated colours.
+
+Restore point: "Before driver route list propagation (17 Nov 2026)".
+
+`Schedule Details` and `Route List (v2 …)` were cloned from the reference Sheet `39443:75552` into the Sheet of every other driver frame that has one:
+
+| Frame | Id |
+|---|---|
+| Mobile, Location off | `39443:75866` |
+| Mobile, Heading to stop with photo | `39547:15215` |
+| Web, Live | `39464:40767` |
+| Web, Location off | `39465:41400` |
+| Web, Heading to stop with photo | `39547:15767` |
+
+- The Link expired frames (`39443:75972`, `39465:42037`) have no Sheet, so nothing changed there.
+- Note: several older frame ids (`75633`, `75750`, web `40979`, `41195`) no longer exist. The current driver frames are the ones listed above.
+- Passenger frames: **deferred** (the user said "update nanti saja").
+- **Code** (`WebTrackingPage.tsx` still shows "Wait time N min"): **not updated yet**. Per §1a it should follow, so ask before changing it.
+
+Gotcha: the user labels the pill "Move-off At : 10 mins" (a duration). The ticket formula gives a clock time (scheduled + wait, e.g. 08:16 AM). Raise this with the user/PM before coding.
