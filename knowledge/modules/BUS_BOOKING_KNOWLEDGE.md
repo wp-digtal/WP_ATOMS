@@ -503,3 +503,27 @@ Waiting for the user to pick one. After that, all states get rebuilt in the chos
   - (e) A Cancel → Bus Booking Enquiry arrow.
 
 3.5 keeps **Submit** (user decision, 16 Nov).
+
+**Return trip with tabs, 3 versions (17 Nov 2026)**
+
+Section `🔵 Return trip with tabs — 3 versions` is `9057:27406`, on the proposal page, below the Idea 2 flows section `9048:25516`. Restore point: "Before return trip tabs versions (17 Nov 2026)".
+
+The user, acting as senior PD, said the Idea 2 UI is OK but the return trip makes the form a long scroll. Their concept: general fields fixed at the top; when the return toggle is on, a tab separates outbound and return. Frames I build get a 🔵 prefix and blue labels (user asked for blue names so they can tell which frames are mine).
+
+**Structure shared by all versions:**
+- GENERAL: Date and No. of Passengers, shared because the ticket has no return date or return passengers.
+- Return trip toggle, with the helper text "Return is on the same date…".
+- Tabs, shown only when the toggle is on.
+- Trip pane: Pick-up Time, ROUTE, Remarks, Add-Ons.
+- The return route uses `State=Disable` inputs, auto-reversed, with the helper text "Auto-filled from the outbound trip (reversed)".
+
+| Version | Outbound tab active | Return tab active | Tab style |
+|---|---|---|---|
+| V1 | `9057:27407` | `9057:27691` | Segmented pill showing each trip's time |
+| V2 | `9057:28013` | `9057:28219` | Underline tabs with a status badge (✓ complete, red dot on error) |
+| V3 | `9057:28511` | `9057:28713` | Summary cards (time + route) used as tabs |
+
+- Toggle off, same for all versions: `9057:28996`.
+- The tabs are hand-built because Integral `Tab base` / `Tab Group` imports time out.
+- Gotcha: a node cloned with `f.parent.appendChild(f)` can land on the page instead of the section. Append it to the section explicitly.
+- Gotcha: instances moved out of a horizontal row keep a FIXED/stretched height. Set `layoutSizingVertical='HUG'` and `layoutSizingHorizontal='FILL'`.
