@@ -181,3 +181,22 @@ Restore point: "Before route list v2 + photo state (26 Oct 2026)".
   - In driver mobile 2.1 (`39443:75528`), a new Route List body `39610:67003` ("Route List body v3 …") replaces the old body `39547:14855`, which is now hidden. Each stop is an auto-layout row: rail + header (name, time + pax chip) + photo. The heading-to stop has "Wait time 10 min".
   - The template was **not screenshot-verified** (the bridge dropped), and it is **not yet propagated** to the other live and photo frames.
   - Next session: verify it, then clone it to the driver/passenger mobile and web frames, and grow the frame heights.
+
+## Move-off time (checked 17 Nov 2026; source: mobile driver tickets)
+
+The user found the requirement in the mobile tickets:
+- **MOVE-4222** "[D] CR: Active Trip - Routelist" (Ready For QA): "Replace the displayed wait time with a 'Move-off At' time.
+  - **Formula: Move-off At = Point Scheduled Time + Wait Time.**
+  - It updates when the scheduled time or wait time changes.
+  - Reason: so the driver knows when to leave without calculating."
+- **MOVE-4358** "[D] CR: Upcoming Trip - Routelist" (UAT, last touched 17 Nov 2026):
+  - Each route-list point shows point no., address, arrival time and pax.
+  - "Move-off time: show the move-off time on the points where there is wait time."
+
+**Impact on Live Tracking web tracking.** It still shows the old wording:
+- Code: `WebTrackingPage.tsx` line ~448, `Wait time {STOP_WAIT_MIN} min`.
+- Figma: the Route List body `39610:67003` and the photo variants show "Wait time 10 min".
+
+To align with the driver app, show "Move-off at HH:MM" (scheduled + wait) only on points that have a wait time. Per §1a, apply it to both mobile and web, and to both driver and passenger.
+
+Status: reported to the user, waiting for go-ahead.
