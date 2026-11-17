@@ -16,6 +16,7 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **Bus Booking V2 tabs badge fix, 17 Nov 2026:** the status badge is now a 16px circle with a vector check. The text glyph '✓' had stretched it out of shape (user-reported bug).
 - **Bus Booking return trip tabs (MOVE-4581), 17 Nov 2026:** added section `9057:27406` with 3 versions (segmented, underline + status, summary cards), each with Outbound and Return tab states, plus a toggle-off frame. General fields (Date, Passengers) sit at the top. Asked for by the user to avoid the long scroll when the return is on. The frames carry a 🔵 prefix.
 - **Bus Booking form layout ideas (MOVE-4581), 16 Nov 2026:** added section `9048:24432` with Current, Idea 1 (grouped cards) and Idea 2 (sectioned + route timeline) for the user to choose from. Audited the ticket states; missing ones: the required-fields toaster, the return time error, the offline states, full-screen auto-complete and the Cancel arrow. The user decided 3.5 keeps Submit.
 - **Bus Booking proposal form UI tidy (MOVE-4581), 16 Nov 2026:** tidied the form screens in section `9046:21489`, as the user asked.
