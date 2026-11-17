@@ -664,3 +664,18 @@ Accepted deviations (user decisions):
 - Shared Pax / Bus size chips (ticket: per trip).
 - 3.5/4.6 keeps Submit (ticket Part 4 lists Retry).
 - Per-trip add-ons total and the Price breakdown are extra (not in the ticket).
+
+**Trip card price breakdown, 3 versions (17 Nov 2026).** Section `🔵 Trip card price breakdown — 3 versions` is `9065:37919` (y=34900), using the same docs style as the full flow. Restore point: "Before trip card price breakdown versions (17 Nov 2026)".
+
+The user said the price rows in the trip card "still don't look good" and asked for 3 versions: 1 proposed plus 2 more visual.
+
+| Version | Id | Design |
+|---|---|---|
+| Current | `9065:37920` | Today's card, for comparison |
+| V1 · Typographic hierarchy (proposed) | `9065:37972` | Add-ons total on its header row; items 12 px grey, indented, spacing 4; divider; Sub-total Bold 16 navy |
+| V2 · Tinted block + Sub-total band | `9065:38024` | Price lines in a #F2F4F7 block (radius 10); colour dot per add-on; Sub-total as a navy band with white text |
+| V3 · Composition bar + chips | `9065:38076` | Sub-total headline Bold 22; split bar Trip Price 71% / Add-ons 29% with legend; add-on items as `Chips/Normal` |
+
+Waiting for the user to pick one, then apply it to 4.1, 4.2 and 4.5.
+
+Gotcha: frames created inside an auto-layout parent default to a fixed 100 px height. Set `layoutSizingVertical='HUG'` on every new row.
