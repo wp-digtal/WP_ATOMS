@@ -16,6 +16,7 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **Bus Booking route line fix, 17 Nov 2026:** in the trip cards of 4.1, 4.2, 4.5 and the proposal frames `9043:18881` and `9043:17554`, the route line now runs from the pick-up pin to the drop-off dot. It used to run past the red dot (user-reported bug).
 - **Bus Booking full flow, V1 segmented tabs (MOVE-4569/4581), 17 Nov 2026:** section `9058:29985`, as the user asked (V1 chosen).
   - Rows: entry, one-way form states, return form states with tabs, Trip Summary in the Enquiry-sent card style, Contact, Result, and offline.
   - Added captions and arrows for dev.
