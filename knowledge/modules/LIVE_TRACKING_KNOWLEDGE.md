@@ -227,3 +227,25 @@ Restore point: "Before driver route list propagation (17 Nov 2026)".
 - **Code** (`WebTrackingPage.tsx` still shows "Wait time N min"): **not updated yet**. Per §1a it should follow, so ask before changing it.
 
 Gotcha: the user labels the pill "Move-off At : 10 mins" (a duration). The ticket formula gives a clock time (scheduled + wait, e.g. 08:16 AM). Raise this with the user/PM before coding.
+
+### Round 8 (17 Nov 2026): layout exploration for driver web tracking (mobile)
+
+**Feedback:** the map is too tall, so the info under it is hidden. The user also suggested putting the route points in a bottom sheet, or using tabs (Information | Route List).
+
+They asked for **a new page** "so it doesn't mess things up":
+- Page `🧪 Exploration — Driver web tracking layout (map / tabs / bottom sheet)` (`39822:21991`)
+- Section `39822:21992`
+- Restore point: "Before driver web tracking layout exploration (17 Nov 2026)"
+
+All variants are clones of the reference `39443:75528`:
+
+| Frame | Id | Layout |
+|---|---|---|
+| Current | `39822:21993` | Map 400 |
+| V1 · Short map | `39822:22220` | Map 240 (children shifted −95, Traffic toggle moved to the bottom), single scroll |
+| V2 · Short map + tabs | `39822:22447` | Hand-built underline tabs "Information \| Route List · 4 stops" under Driver; Route List active, Schedule Details hidden |
+| V3 · Full map + bottom sheet | `39822:22674` | 844 viewport, Sheet absolute at y430 with radius 16 and a shadow; Route List moved above Schedule Details |
+| V4 · Bottom sheet + tabs | `39822:22901` | V3 sheet + tabs; Information active, Route List hidden |
+
+- Tab blue is #1677ff. Read from the "4 Stops" chip's parent, it came out empty, so it is set explicitly.
+- Waiting for the user to pick a variant.
