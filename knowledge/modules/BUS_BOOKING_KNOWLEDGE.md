@@ -578,3 +578,24 @@ Gotchas:
 - Empty inputs: copy the placeholder text and fills plus the boolean props from A1 `9048:25517`, matched by label.
 - Error inputs: `setProperties({State:'Error', Hint#…, Show hint text#…:true})`, then `layoutSizingVertical='HUG'`, then recompute the route rail gap.
 - The bridge dropped on a call that loaded fonts for every text node in a whole frame. Load only the nodes you edit.
+
+**Full flow V1, completed (17 Nov 2026).** Added to section `9058:29985`.
+
+| Frame | Id | Notes |
+|---|---|---|
+| 4.1 Trip Summary, one-way | `9060:33878` | Price S$240 / S$21.60 / S$261.60 |
+| 4.2 Trip Summary, return | `9058:33206` | Data aligned: Trip 1 S$240, Trip 2 S$220, Price S$460 / S$41.40 / S$501.40 |
+| 4.3 Contact Information | `9060:34126` | |
+| 4.4 Invalid email | `9060:34188` | |
+| 4.5 Enquiry sent | `9060:34250` | Same card style, ticket copy |
+| 4.6 Submit failed | `9060:34455` | Keeps Submit |
+| 5.1 Offline banner | `9060:34682` | Content pushed down 32 px |
+| 5.2 Back online toast | `9060:34841` | |
+| 5.3 "Unable to access" pop-up | `9060:35001` | |
+
+Section docs:
+- Row titles and descriptions in blue Inter text.
+- Horizontal arrows inside each row.
+- Branches are shown as blue route labels under the source frame, not as long arrows (toggle ON → row 3, Next → 4.1/4.2, Submit ✓/✗).
+
+**Open:** the user said some frames in row 2 "still look old". I asked which (tabs on one-way? a specific element? the sheet backgrounds?) and am waiting for their answer.

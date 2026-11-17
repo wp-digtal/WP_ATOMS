@@ -16,6 +16,10 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **Bus Booking full flow, V1 segmented tabs (MOVE-4569/4581), 17 Nov 2026:** section `9058:29985`, as the user asked (V1 chosen).
+  - Rows: entry, one-way form states, return form states with tabs, Trip Summary in the Enquiry-sent card style, Contact, Result, and offline.
+  - Added captions and arrows for dev.
+  - Off-ticket: add-ons total per trip.
 - **Bus Booking return-trip tab versions, 17 Nov 2026:**
   - Added a per-trip "Add-ons total" row under the add-on chips in all versions, and an add-ons line in the V3 summary cards.
   - The Return tab frames now show a filled add-on example (S$50).
