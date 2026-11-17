@@ -286,3 +286,29 @@ Rules for long routes:
 
 Gotcha: rows created inside a vertical auto-layout default to 100 px tall. Set them to HUG.
 - **V7 consistency fix (17 Nov 2026, user feedback "why does the bottom one have no container").** The Route List is now a card like Trip Details (same border, radius 12, padding 12, fill) in V7a/b/c. The inner body's border was removed to avoid a double border. Rule: sibling accordions use the same container style.
+
+### Round 9 (18 Nov 2026): revision section from the product decision
+
+**Decision** (product chat, Daniel Roy):
+- Top: use **V7b**, the Trip Details accordion card, **expanded by default**.
+- Route List: keep the **V6a design**: full list, "4 Stops" chip, the heading-to stop open with photo, pax and Move-off At.
+
+**Location:** the user asked for a new section, so the existing ones are untouched.
+- Section `🔵 Driver web tracking — revision (Trip Details expanded card + V6a Route List)` is `39830:26698`.
+- Page "Web Tracking Links" (`39443:75324`), at x=16300 (right of "Web Tracking Links - Master" `39797:10669`).
+- Restore point: "Before driver web tracking revision section (18 Nov 2026)".
+
+**Frames.** Each is a clone of the current driver frame, with `Schedule Details` replaced by the V7b card from `39825:26049`:
+
+| Frame | Id |
+|---|---|
+| Mobile Live | `39830:26699` |
+| Mobile Location off | `39830:26926` |
+| Mobile Photo | `39830:27151` |
+| Web Live | `39830:27376` |
+| Web Location off | `39830:27632` |
+| Web Photo | `39830:27880` |
+
+- The Link expired frames have no panel, so they were not cloned.
+- **Code not updated yet:** `WebTrackingPage.tsx` still uses the old Trip Details and "Wait time" text.
+- **Passenger:** still deferred.
