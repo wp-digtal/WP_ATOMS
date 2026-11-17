@@ -679,3 +679,20 @@ The user said the price rows in the trip card "still don't look good" and asked 
 Waiting for the user to pick one, then apply it to 4.1, 4.2 and 4.5.
 
 Gotcha: frames created inside an auto-layout parent default to a fixed 100 px height. Set `layoutSizingVertical='HUG'` on every new row.
+
+**Chosen summary card applied (18 Nov 2026).** The user moved the full-flow section to Production Passenger as `9065:39462` and chose the card in frame `9092:45704` (card `9092:45705`): one card holding all trips, a Trip Price per trip, an Add-ons collapsible with a tinted item block, and a navy Sub-total band. Restore point: "Before Bus Booking summary card from chosen option (18 Nov 2026)".
+
+User decisions (18 Nov 2026):
+- **Summary:** add-ons for the whole booking are combined in one block.
+- **Enquiry sent:** trips stay as separate cards, and add-ons show only a total per trip.
+- **Sub-total:** recalculated from the real data (the mock said S$310).
+
+Frames updated:
+
+| Frame | Id | Content |
+|---|---|---|
+| 4.2 Summary, return | `9065:41437` | Mock card clone; Trip 2 time set to 05:30 PM; add-on items Meet and Greet S$40, Drinking Water ×2 S$30, WiFi Connection (Return) S$50 = **S$120**; Sub-total **S$460**; Price card trip sub-total rows hidden; Total S$460, GST S$41.40, Grand Total S$501.40 |
+| 4.1 Summary, one-way | `9065:42578` | Trip 2 block hidden; title "Trip 1"; add-ons S$70; Sub-total S$240; Grand Total S$261.60 |
+| 4.5 Enquiry sent | `9065:41790` | Separate cards, each showing Trip Price, Add-ons (total only) and Sub-total: Trip 1 170 / 70 / 240, Trip 2 170 / 50 / 220. Remarks card present |
+
+Remarks shows on both the Summary and Enquiry sent (the shared Remarks card under the Bus size/Pax chips).

@@ -16,6 +16,10 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **Bus Booking summary, 18 Nov 2026:** applied the user-chosen card `9092:45704`.
+  - 4.1 and 4.2: all trips in one card, combined add-ons, recalculated Sub-total.
+  - 4.5 Enquiry sent: separate trip cards with the add-ons total only.
+  - Remarks shown in both.
 - **Live Tracking V7, 17 Nov 2026:** the Route List accordion now has the same card container as Trip Details in all V7 states (user feedback on the inconsistency).
 - **Live Tracking layout exploration, round 3 (17 Nov 2026):** added V7, a long scroll with accordions, in 3 states. Trip Details collapses to a summary line. The Route List is designed for 20 stops: completed stops folded, next stop open, "Show 16 more stops". When the list is collapsed, its header keeps the next stop. This was the user's idea, raised because Trip Information is hard to find in the bottom-sheet options.
 - **Live Tracking layout exploration, round 2 (17 Nov 2026):**
