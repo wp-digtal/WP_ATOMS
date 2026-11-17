@@ -285,3 +285,4 @@ Rules for long routes:
 - Fold the rest with a count.
 
 Gotcha: rows created inside a vertical auto-layout default to 100 px tall. Set them to HUG.
+- **V7 consistency fix (17 Nov 2026, user feedback "why does the bottom one have no container").** The Route List is now a card like Trip Details (same border, radius 12, padding 12, fill) in V7a/b/c. The inner body's border was removed to avoid a double border. Rule: sibling accordions use the same container style.
