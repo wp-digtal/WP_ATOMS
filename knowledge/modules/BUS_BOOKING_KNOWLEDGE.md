@@ -748,3 +748,4 @@ Remarks shows on both the Summary and Enquiry sent (the shared Remarks card unde
   - Trip 2 Remarks reads "Main lobby, Tower 1. Same group, 6 large suitcases to load." in 3.2, 3.3, 4.2 (both) and 4.5.
   - The user said to ignore the missing Price card and the Trip naming.
 - **Label recommendation: "Subtotal"** (one word, the standard in Apple, Shopify and Stripe checkouts). Frames currently mix "Sub Total" and "Sub-total"; the ticket says "Sub-total". Waiting for the user's choice.
+- **Label decision (18 Nov 2026, user):** follow the ticket, **"Sub-total"**. All "Sub Total" labels in section `9065:39462` were renamed, 8 texts in 4.1, 4.2 (both), 4.5, `9131:48757` and `9131:48432`.
