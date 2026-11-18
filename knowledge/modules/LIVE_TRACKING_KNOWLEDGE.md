@@ -316,3 +316,7 @@ Gotcha: rows created inside a vertical auto-layout default to 100 px tall. Set t
   - The base is the **whole V7b frame `39825:26049`**, including the **240 px map**. Only the Route List comes from **V6a `39823:25108`**.
   - Fix: on the 3 revised mobile frames, the Map was replaced by a clone of the **current** original frame's Map (the user had since updated the originals, e.g. the `bi:cursor-fill` bus marker), then shortened to 240 (children y −95, Traffic toggle at the bottom), and the frame height re-fit.
   - Lesson: when the user says "use frame X but section Y from frame Z", take **everything else** from X, including the map height. When re-cloning, copy from the latest originals, not from older clones.
+- **Round 9 correction 2 (18 Nov 2026).**
+  - **Map:** every revised mobile frame uses the map of `39830:26699` (the Live revised frame), cloned into Location off `39830:26926` and Photo `39830:27151`.
+  - **Structure:** like V7b there are **2 accordions**. The Route List is now an accordion card too: the V7b card style (border, radius, padding), a chevron in the header, and "Route List" plus the chip grouped on the left. The content is still the V6a full 4-stop list, and the inner body border is removed.
+  - Applied to all 6 revised frames (mobile and web).
