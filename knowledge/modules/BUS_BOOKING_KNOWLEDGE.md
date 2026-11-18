@@ -725,3 +725,20 @@ Remarks shows on both the Summary and Enquiry sent (the shared Remarks card unde
   - The Grand Total bar on 4.3, 4.4, 4.6 and 4.7
 - The old values (S$170 trip price, Grand Total S$261.60 / S$446.90) did not add up.
 - Restore point: `Before Bus Booking price recalculation (18 Nov 2026)`.
+
+### Audit of `9065:39462` against MOVE-4569 / 4581 / 4582 (18 Nov 2026, report only, no Figma change)
+- **Ticket status:** no ticket edits since 16 Nov (MOVE-4581), 12 Nov (MOVE-4569) and 11 Nov (MOVE-4582).
+- **Pricing conflict.** The ticket rate card gives 18 pax = 20-seater = $150, and 08:00 / 17:30 are both peak (+$20), so each trip is $170. That was the old value. The user's 18 Nov rule "S$100 per trip" does not match the rate card; ask whether the sample should use a 13-seater or the ticket.
+- **Inconsistencies found:**
+  - Footer button: 3.2 / 3.3 use "Back", while 3.1 and the ticket use "Cancel".
+  - Route timeline: present on 3.1, missing on 3.2 / 3.3.
+  - Trip 2 add-ons: WiFi only (S$50) on 3.2 / 3.3, but Meet and Greet + Water + WiFi (S$120) on 4.2 / 4.5.
+  - Tab name: "Trip 1 · Main" on the form, "Trip 1 · Outbound" on the summary. The ticket calls them "Trip 1" / "Trip 2 (Return)".
+  - Sub-total label: "Sub Total" on `9105:46760`, "Sub-total" elsewhere.
+  - Intro copy: 4.6 says "We prefilled your details…", 4.3 / 4.7 say "Please check your name and email…".
+  - Duplicate 4.1 / 4.2 versions (`9105:46213`, `9105:46760`) sit beside `9065:41437`.
+- **Missing or off-ticket:**
+  - 4.6 Submit failed and 4.7 missing fields show Submit **disabled**. The ticket says Submit retries and shows the errors on tap, as Next does on 2.7.
+  - No Price card (Total / GST / Grand Total) is shown on 4.1 / 4.2, only the collapsed Grand Total bar, and there is no expanded state.
+  - The offline banner / pop-ups (biz req #6 / #5) are not in any frame.
+  - Trip 2 Remarks repeats the Trip 1 text.
