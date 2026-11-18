@@ -312,3 +312,7 @@ Gotcha: rows created inside a vertical auto-layout default to 100 px tall. Set t
 - The Link expired frames have no panel, so they were not cloned.
 - **Code not updated yet:** `WebTrackingPage.tsx` still uses the old Trip Details and "Wait time" text.
 - **Passenger:** still deferred.
+- **Round 9 correction (18 Nov 2026, user: "you are still wrong").**
+  - The base is the **whole V7b frame `39825:26049`**, including the **240 px map**. Only the Route List comes from **V6a `39823:25108`**.
+  - Fix: on the 3 revised mobile frames, the Map was replaced by a clone of the **current** original frame's Map (the user had since updated the originals, e.g. the `bi:cursor-fill` bus marker), then shortened to 240 (children y −95, Traffic toggle at the bottom), and the frame height re-fit.
+  - Lesson: when the user says "use frame X but section Y from frame Z", take **everything else** from X, including the map height. When re-cloning, copy from the latest originals, not from older clones.

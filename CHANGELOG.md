@@ -16,6 +16,7 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **Live Tracking driver revision fix, 18 Nov 2026:** the 3 mobile frames in `39830:26698` now use V7b's 240 px map, copied from the latest originals, with Trip Details expanded and the Route List from V6a. Fixes the user's correction.
 - **Live Tracking driver revision, 18 Nov 2026:** new section `39830:26698` with the 6 driver frames (mobile and web; Live, Location off, Photo). Trip Details is the V7b accordion card, expanded by default, and the Route List keeps V6a. This follows the product decision; the existing sections are untouched.
 - **Bus Booking summary, 18 Nov 2026:** applied the user-chosen card `9092:45704`.
   - 4.1 and 4.2: all trips in one card, combined add-ons, recalculated Sub-total.
