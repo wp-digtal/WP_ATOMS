@@ -16,6 +16,7 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **Bus Booking mobile (Figma), 18 Nov 2026:** row 2 now follows the 3.1 form (user feedback). 2.1 Empty was rebuilt with the 3.1 structure, and the Remarks placeholder colour was fixed in 2.1–2.5 and 2.7.
 - **Live Tracking (Figma), 18 Nov 2026:** the passenger mobile Route List card (Live, Photo and Offline frames) was replaced with a clone of the driver card `39847:29751`, as the user asked. Restore point: `Before passenger route list card match (18 Nov 2026)`.
 - **Live Tracking (Figma), 18 Nov 2026:** added the driver's blue location arrow (`bi:cursor-fill`) to the passenger mobile Live (`39443:75976`) and Photo (`39547:15501`) maps. User request: the passenger map should match the driver map.
 - **Live Tracking web tracking, 18 Nov 2026:** in `39443:75325` › Section 1, the approved revision style (240 map, 2 accordions) is applied to all driver and passenger frames.

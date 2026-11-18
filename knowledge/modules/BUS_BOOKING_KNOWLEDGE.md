@@ -696,3 +696,16 @@ Frames updated:
 | 4.5 Enquiry sent | `9065:41790` | Separate cards, each showing Trip Price, Add-ons (total only) and Sub-total: Trip 1 170 / 70 / 240, Trip 2 170 / 50 / 220. Remarks card present |
 
 Remarks shows on both the Summary and Enquiry sent (the shared Remarks card under the Bus size/Pax chips).
+
+### Row 2 form aligned to 3.1 (18 Nov 2026)
+- The reference form is `9065:39792` (3.1). The rule is the same layout with the return trip on or off; the only difference is that "off" swaps the Trip tabs for a divider.
+- The layout, top to bottom:
+  - GENERAL: Date, No. of Passengers, Remarks (once per booking)
+  - Return trip toggle
+  - Pick-up Time
+  - Route block, with the timeline dots and the Pick-up and Drop-off fields indented
+  - Divider
+  - Add-Ons
+- 2.1 Empty `9065:40127` was still the old layout: Trip 1 tab shown while off, Remarks below the route, no route timeline. Its Content was replaced with a clone of 2.2's Content.
+- The "Add remarks for the driver" placeholder was dark text. It now uses the same placeholder fill as the other inputs in 2.1–2.5 and 2.7.
+- Restore point: `Before Bus Booking 2.1 form match (18 Nov 2026)`.
