@@ -320,3 +320,27 @@ Gotcha: rows created inside a vertical auto-layout default to 100 px tall. Set t
   - **Map:** every revised mobile frame uses the map of `39830:26699` (the Live revised frame), cloned into Location off `39830:26926` and Photo `39830:27151`.
   - **Structure:** like V7b there are **2 accordions**. The Route List is now an accordion card too: the V7b card style (border, radius, padding), a chevron in the header, and "Route List" plus the chip grouped on the left. The content is still the V6a full 4-stop list, and the inner body border is removed.
   - Applied to all 6 revised frames (mobile and web).
+
+### Round 10 (18 Nov 2026, in progress): roll the approved revision into `39443:75325`, add the status requirements, remove the yellow bus
+
+The user approved the style of `39830:26698`. Target: section `39443:75325` › `Section 1` (`39646:74664`), which holds 16 frames. Restore point: "Before web tracking update from revision + req statuses (18 Nov 2026)".
+
+**Requirement statuses (user's "Req" notes):**
+- **Driver:**
+  - Before trip (more than 1 hr away): **Not active yet**.
+  - Trip starting (within 1 hr): driver, vehicle and trip info, including point, arrival time, remarks, pax count, the copy-bus-label icon and the move-off time.
+  - Trip ended: **Ended**.
+- **Passenger:**
+  - Before trip: **Not active yet**.
+  - Trip starting: driver, vehicle and trip info, including point, arrival time, remarks and bus label.
+  - **Driver online:** locations shown. **Driver offline:** locations hidden.
+  - Trip ended: **Ended**.
+
+**Existing frames:**
+- Driver: Live, Location off, Photo, and Link expired ("Trip has ended, tracking unavailable" = Ended). Mobile `75528`, `75866`, `15215`, `75972`; web `40767`, `41400`, `15767`, `42037`.
+- Passenger: Live with ETA, Driver offline, Photo, and Link expired. Mobile `75976`, `76088`, `15501`, `76202`; web `41596`, `41807`, `16122`, `42041`.
+- **Missing:** "Not active yet" for both driver and passenger, mobile and web. The passenger trip-info / route list (points + arrival time) was hidden by an earlier review and must come back per this requirement.
+
+**Yellow bus:** the user says there is no yellow-bus condition, so remove it.
+- Done on web: the `Bus (unscaled, from Map component)` frames are removed from web driver Live/Photo and passenger Live/Photo.
+- Mobile check is pending (the bridge dropped).
