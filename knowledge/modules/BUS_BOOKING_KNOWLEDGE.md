@@ -742,3 +742,9 @@ Remarks shows on both the Summary and Enquiry sent (the shared Remarks card unde
   - No Price card (Total / GST / Grand Total) is shown on 4.1 / 4.2, only the collapsed Grand Total bar, and there is no expanded state.
   - The offline banner / pop-ups (biz req #6 / #5) are not in any frame.
   - Trip 2 Remarks repeats the Trip 1 text.
+- **Audit fixes (18 Nov 2026, user-approved).** Restore point: `Before Bus Booking 4.6 / remarks / copy fixes (18 Nov 2026)`.
+  - 4.6 Submit is swapped to Primary/Active (retry by tapping Submit).
+  - 4.6 intro copy now matches 4.3: "Please check your name and email…".
+  - Trip 2 Remarks reads "Main lobby, Tower 1. Same group, 6 large suitcases to load." in 3.2, 3.3, 4.2 (both) and 4.5.
+  - The user said to ignore the missing Price card and the Trip naming.
+- **Label recommendation: "Subtotal"** (one word, the standard in Apple, Shopify and Stripe checkouts). Frames currently mix "Sub Total" and "Sub-total"; the ticket says "Sub-total". Waiting for the user's choice.
