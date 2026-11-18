@@ -16,6 +16,9 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **Live Tracking web tracking, 18 Nov 2026:** in `39443:75325` › Section 1, the approved revision style (240 map, 2 accordions) is applied to all driver and passenger frames.
+  - Yellow bus marker removed.
+  - Added Not active yet frames (2.5/3.5/4.5/5.5); Link expired is renamed Ended, per the user's status requirements.
 - **Live Tracking driver revision, 18 Nov 2026 (2nd correction):** all revised mobile frames use the map of `39830:26699`. Route List is now an accordion card like V7b (2 accordions), still holding the V6a list, on all 6 frames.
 - **Live Tracking driver revision fix, 18 Nov 2026:** the 3 mobile frames in `39830:26698` now use V7b's 240 px map, copied from the latest originals, with Trip Details expanded and the Route List from V6a. Fixes the user's correction.
 - **Live Tracking driver revision, 18 Nov 2026:** new section `39830:26698` with the 6 driver frames (mobile and web; Live, Location off, Photo). Trip Details is the V7b accordion card, expanded by default, and the Route List keeps V6a. This follows the product decision; the existing sections are untouched.

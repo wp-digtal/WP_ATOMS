@@ -344,3 +344,21 @@ The user approved the style of `39830:26698`. Target: section `39443:75325` › 
 **Yellow bus:** the user says there is no yellow-bus condition, so remove it.
 - Done on web: the `Bus (unscaled, from Map component)` frames are removed from web driver Live/Photo and passenger Live/Photo.
 - Mobile check is pending (the bridge dropped).
+- **Round 10 done (18 Nov 2026).** The user rightly pointed out the first pass had not updated the frames (only the web bus icons). Applied in `Section 1` `39646:74664`:
+  - **Driver mobile** (`75528`, `75866`, `15215`): Map and Sheet replaced by clones from the revision frames `39830:26699/26926/27151`, so each has the 240 map and 2 accordions.
+  - **Driver web** (`40767`, `41400`, `15767`): Sheet replaced by clones from `39830:27376/27632/27880`. The web map is kept, minus the bus.
+  - **Passenger** (mobile `75976`, `76088`, `15501`; web `41596`, `41807`, `16122`):
+    - Trip Details is the V7b card (copy icon hidden, since copy is driver-only).
+    - The Route List is a card with a chevron and `clipsContent`, and keeps the passenger content (no pax or Move-off).
+    - Mobile map is 240.
+    - Driver offline keeps the location hidden and "ETA Unavailable".
+  - **Yellow bus removed:** the `Bus (unscaled, from Map component)` frames on 4 web frames.
+    - **Mistake + fix:** a colour-based search deleted the *map image instances* on the 3 passenger mobile frames, because the map raster contains orange. They were restored from `39822:21993`'s map instance at (0, −110).
+    - Lesson: never delete by colour inside a map; match by name.
+    - The small orange glyph left on the map is a bus-stop POI baked into the map image, not our marker.
+  - **New "Not active yet" frames**, cloned from the Ended frames, text "Not active yet. Tracking starts 1 hour before the trip (from 6:50 AM).":
+    - 2.5 driver mobile `39847:31652`
+    - 3.5 passenger mobile `39847:31656`
+    - 4.5 driver web `39847:31660`
+    - 5.5 passenger web `39847:31664`
+  - "Link expired" frames and flow labels are renamed **"Ended"** to match the requirement.
