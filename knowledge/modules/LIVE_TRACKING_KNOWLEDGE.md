@@ -362,3 +362,9 @@ The user approved the style of `39830:26698`. Target: section `39443:75325` › 
     - 4.5 driver web `39847:31660`
     - 5.5 passenger web `39847:31664`
   - "Link expired" frames and flow labels are renamed **"Ended"** to match the requirement.
+
+### Round 11: blue location arrow on the passenger map (18 Nov 2026)
+- The user asked for the passenger map to show the same blue arrow as the driver map.
+- Cloned the driver's `bi:cursor-fill` (`39847:29655`, 73×73 at 177,112, with its accuracy circle) into the Map of passenger mobile Live `39443:75976` and Photo `39547:15501`.
+- It sits under the Traffic toggle, so the toggle stays on top.
+- Driver-offline and "not active yet" frames get no arrow.

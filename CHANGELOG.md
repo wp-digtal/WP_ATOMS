@@ -16,6 +16,7 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **Live Tracking (Figma), 18 Nov 2026:** added the driver's blue location arrow (`bi:cursor-fill`) to the passenger mobile Live (`39443:75976`) and Photo (`39547:15501`) maps. User request: the passenger map should match the driver map.
 - **Live Tracking web tracking, 18 Nov 2026:** in `39443:75325` › Section 1, the approved revision style (240 map, 2 accordions) is applied to all driver and passenger frames.
   - Yellow bus marker removed.
   - Added Not active yet frames (2.5/3.5/4.5/5.5); Link expired is renamed Ended, per the user's status requirements.
