@@ -709,3 +709,19 @@ Remarks shows on both the Summary and Enquiry sent (the shared Remarks card unde
 - 2.1 Empty `9065:40127` was still the old layout: Trip 1 tab shown while off, Remarks below the route, no route timeline. Its Content was replaced with a clone of 2.2's Content.
 - The "Add remarks for the driver" placeholder was dark text. It now uses the same placeholder fill as the other inputs in 2.1–2.5 and 2.7.
 - Restore point: `Before Bus Booking 2.1 form match (18 Nov 2026)`.
+
+### Price recalculation (18 Nov 2026, user rule)
+- **Trip price is S$100 per trip:** one-way is S$100, round trip is S$200.
+- **Sample data:**
+  - Trip 1 add-ons: Meet and Greet S$40 + Drinking Water ×2 S$30 = S$70, so the Trip 1 sub-total is S$170.
+  - Trip 2 add-ons: the same plus WiFi S$50 = S$120, so the Trip 2 sub-total is S$220.
+- **GST is 9% of trip price + add-ons:**
+  - One-way: 100 + 70 = 170, GST 15.30, Grand Total **S$185.30**.
+  - Round trip: 200 + 190 = 390, GST 35.10, Grand Total **S$425.10**.
+- **Frames updated:**
+  - 4.1 `9105:46213`
+  - 4.2 `9065:41437` and `9105:46760`
+  - 4.5 `9065:41790` (Total Trip Price S$200, Total Add-ons S$190, GST S$35.10)
+  - The Grand Total bar on 4.3, 4.4, 4.6 and 4.7
+- The old values (S$170 trip price, Grand Total S$261.60 / S$446.90) did not add up.
+- Restore point: `Before Bus Booking price recalculation (18 Nov 2026)`.
