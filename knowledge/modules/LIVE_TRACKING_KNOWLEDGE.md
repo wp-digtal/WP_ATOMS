@@ -368,3 +368,7 @@ The user approved the style of `39830:26698`. Target: section `39443:75325` › 
 - Cloned the driver's `bi:cursor-fill` (`39847:29655`, 73×73 at 177,112, with its accuracy circle) into the Map of passenger mobile Live `39443:75976` and Photo `39547:15501`.
 - It sits under the Traffic toggle, so the toggle stays on top.
 - Driver-offline and "not active yet" frames get no arrow.
+- **Round 11b (18 Nov 2026):** the passenger mobile Route List card now matches the driver's card `39847:29751`: no inner border, navy "Heading to" row, pax count, Move-off chip, and the stop photo. The old cards are hidden and renamed `(old, hidden) …`. New cards:
+  - Live `39443:75976` → `39848:31696`
+  - Photo `39547:15501` → `39848:31809`
+  - Offline `39443:76088` → `39848:31932`
