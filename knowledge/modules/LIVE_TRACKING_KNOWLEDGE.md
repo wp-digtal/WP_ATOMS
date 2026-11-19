@@ -385,3 +385,10 @@ Restore point: `Before Live Tracking user feedback round (19 Nov 2026)`. Section
   2. Driver web Live `39464:40767` and Photo `39547:15767` have a **gap in the route line** between stops 2 and 3, where the yellow bus was removed. No web frame has the blue arrow.
   3. The call icon ✆ shows on passenger offline (mobile and web) and on passenger web Live and Photo, but not on passenger **mobile** Live `39443:75976` or Photo `39547:15501`.
   4. The possible leftover yellow mark on the map of `39547:15501` (reported 18 Nov) has not been resolved.
+- **Passenger web Route List updated (19 Nov 2026, user OK on point 1; point 3 call icon ignored).** Each frame got a clone of the driver web card `39847:30486`, and its old card was hidden as `(old, hidden) …`:
+  - Live `39465:41596` → `39860:74979`
+  - Offline `39465:41807` → `39860:75092`
+  - Photo `39547:16122` → `39860:75205`
+  - On Photo this removes "Wait time" and "Navigate here".
+  - Live and Offline were 1024 tall and clipped the taller card, so they are now 1150 tall, the same as Photo, with the Details panel grown by 126.
+  - Restore point: `Before passenger web route list update (19 Nov 2026)`.
