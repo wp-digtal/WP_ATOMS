@@ -112,3 +112,41 @@ The PM says the ticket is still thin, but the key info is there.
 - **Missing required fields:** error toast plus field errors.
 - **Cancel, or browser back/refresh:** nothing is saved; return to details.
 - **Copy** comes from the copy master list (Lark), which we cannot open, so use `{{Refer to copy master}}` placeholders the way the file already does.
+
+## Figma build, round 1 (19 Nov 2026)
+Section `43004:150983` "🔵 Payroll — Listing · Pay Slip Details · Edit (MOVE-3411: 4479 / 4481 / 4482)" is on 🏭 Production at x=48637, to the right of the Personal Dashboard section. Restore point: `Before Payroll section build (19 Nov 2026)`.
+
+| Row | Frame | Node | What it shows |
+|---|---|---|---|
+| 1 Listing | 1.1 Default | `43004:150984` | Oct 2026, 8 columns, status tags, sorted by Last Updated On |
+| | 1.2 Filter open | `43004:154957` | Eligibility (multi), Hiring Company, Department (search), Status |
+| | 1.3 Empty | `43004:169677` | Nov 2026 toggled, slips not generated |
+| 2 Details | 2.1 Pending | `43004:172381` | Edit + Actions, breakdowns collapsed, summary card |
+| | 2.2 Actions + expanded | `43004:181900` | Confirm Pay Slip / Download / View Change History; allowances table; other deductions empty state |
+| | 2.3 Confirmed | `43004:186111` | Edit disabled + tooltip; Work Pass Holder, so no CPF card |
+| 3 Edit | 3.1 Default | `43004:194711` | Editable vs disabled fields, new allowance (Sales commission $300) + deduction (Loan repayment $50) rows, totals auto-updated |
+| | 3.2 Errors | `43004:199476` | Error toast plus field errors (Date of Payment, Employer CPF, "Others" item name) |
+| | 3.3 Saved | `43004:203877` | Back on details, totals updated, success toast |
+
+**How it was built:**
+- **Listing.** A clone of Old Leave "Leave Listing" `33037:30187`. The `Leave Employee` instance was detached, and 2 columns were added by cloning cells. Status uses the cell's `Tag / Status` (Warning = Pending Confirmation, Success = Confirmed).
+- **Month toggle.** A clone of the Leave Profile year bar (`Frame 194`).
+- **Filter.** A clone of the Leave Listing filter dropdown, detached, with the group duplicated to 2×2 fields.
+- **Details.** Built on a clone of "Profile Detail Pages" `39049:74913`, with `HR General Screen` detached.
+  - Cards are hand-built auto-layout frames styled like the profile cards.
+  - Fields are **`Content Cell` (31014:46623)** instances, the same component the PD claim drawer uses.
+  - Header: status tag `Tag / Status` (Warning / Success); `RT-Details Action Button 2.0` for Actions; `Buttons` (Primary) for Edit, set to `State=Disabled` on Confirmed.
+  - The tooltip is cloned from the PD Cancel-disabled tooltip.
+- **Edit.** Fields use `_Form / Form Item / Vertical` (InputNumber / Select / DatePicker), cloned from the PD Submit Claim drawer.
+  - Disabled fields use `State=Disabled` with the steppers hidden. Required fields use `Mark=Required`; optional ones use `Mark=Optional`.
+  - Error toast: swap `Toaster Pop-up Message` to a `Status=Error` variant, because the plain Status prop has no Error variant for this Type.
+- **Sample data (Ahmad Fauzi, Citizen):**
+  - Basic $3,200 + allowances $450 (Monthly performance incentive $200 F, Standby $150 F, Cash incentive $100 U) = Gross $3,650.
+  - Deductions: CPF $730 + GMI $70 = $800, so Net $2,850. Employer CPF $620.50; total CPF $1,350.50.
+  - After the edit: allowances $750, Gross $3,950, Deductions $850, Net $3,100.
+
+**Open items:**
+- **Ask the PM:** MOVE-4482 says the status "remains 'confirmed'" after Save, but Edit is only allowed while Pending Confirmation. Figma keeps Pending Confirmation.
+- **Copy master (Lark):** the toast, tooltip and empty-state copy uses `{{Refer to copy master}}` placeholders.
+- **Not built yet:** the Confirm Pay Slip modal and the View Change History drawer (other tickets); the Download result; the "Others" option shown with its saved name.
+- **CPF in edit:** CPF is not recalculated when allowances change, because it is its own editable field per the ticket.

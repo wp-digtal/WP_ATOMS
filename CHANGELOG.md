@@ -16,6 +16,7 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **Payroll (Figma), 19 Nov 2026:** new section `43004:150983` in the Payroll file with 9 frames: listing (default / filter / empty), pay slip details (pending / actions + breakdowns / confirmed), edit (default / errors / saved), per MOVE-4479/4481/4482. Open question: status after Save (MOVE-4482 says 'confirmed').
 - **Bus Booking mobile (Figma), 19 Nov 2026:** textarea character counters (x / 240) moved to the right side, below the input, in all 48 places in the flow (reviewer feedback).
 - **Live Tracking (Figma), 19 Nov 2026:** the passenger web Route List (Live, Offline and Photo frames) now uses the driver card, with pax counts and Move-off. Live and Offline frames are 1150 tall to fit it.
 - **Live Tracking (Figma), 19 Nov 2026:** applied end-user feedback in Section 1: labels renamed to Instruction for Driver / Company, Trip Details reordered, company name under the driver removed on web, and pax counts shown on every stop.
