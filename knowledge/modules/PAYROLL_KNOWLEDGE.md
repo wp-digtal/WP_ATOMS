@@ -281,3 +281,12 @@ Restore point: `Before Payroll options cleanup (19 Nov 2026)`.
    - Contract also has a side summary card next to a form card (`43013:409766`). This is the edit-page twin of the Split summary.
 
 **Pending:** the collapse → table replacement on the 14 detail frames. The bridge dropped mid-task, so it needs a re-pair.
+- **Done (19 Nov 2026, after re-pair):**
+  - The Collapse was replaced on 11 detail frames: A3.3, A4.1–4.3, B2.1–2.3, B3.3, B4.1–4.3.
+  - Each card now has a grey subtitle ("Allowances" / "Other Deductions") and the table shown directly, or the empty state.
+  - Data per employee:
+    - Ahmad: 3 allowances, no other deductions.
+    - Citra: Monthly performance incentive $400 F and Cash incentive $200 U.
+    - After the edit: Sales commission $300 added, and Loan repayment $50.
+  - Edit allowance rows (A3.1/3.2, B3.1/3.2) now have 3 columns: Item, Allowance Type (disabled Fixed/Unfixed), Amount.
+- **A2.1 / A2.2 / A2.3 were not in the file at this point**, together with their labels and arrows. I did not delete them. The user was asked whether to rebuild them.
