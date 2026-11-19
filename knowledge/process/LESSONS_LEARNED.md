@@ -121,3 +121,5 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 - (19 Nov 2026) Caption (Docs/Flow Label) to frame spacing: 48 px, not 16.
 
 - **19 Nov 2026 — When a spec conflicts with user feedback, show both.** The ticket said "collapsed by default" but the user had asked for inline tables. Building a separate collapse row from the same shared Collapse component let the user compare without undoing the earlier round.
+
+- **19 Nov 2026 — Filter popover inputs show no focus state.** User: inputs inside the filter box stay Default (grey border), never Active/blue. In `Table Filter Multiselect` the nested `Select` needs `{Active:'No', Placement:'-'}` together (Active alone has no matching variant); then re-grey placeholder text (black 25%).
