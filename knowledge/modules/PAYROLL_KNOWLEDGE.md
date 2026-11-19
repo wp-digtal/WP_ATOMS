@@ -204,3 +204,40 @@ Section `43004:150983` "🔵 Payroll — Listing · Pay Slip Details · Edit (MO
 - **Visibility:** only confirmed slips are shown.
 - **Permission:** "manage own dashboard", own slips only.
 - **Where to build:** the Personal Dashboard section is no longer in the Payroll file, so it needs the PD file `1FCRdGhHru6czP5P6h06kH` (re-pair).
+
+## Consistency check + 2 exploration options (19 Nov 2026)
+The user added reference sections from other modules to the Payroll page:
+- `43013:214417` Account Management
+- `43013:241094` Employee: listing, details page, contract details, `Modal / Confirmation`
+- `43013:407799` Customer Contracts
+
+Their feedback was: "many designs inconsistent, AI made new layouts". Rule: **build detail pages only from the shared components below, never hand-built cards.**
+
+**Reference patterns (shared components):**
+| Pattern | Component / node | Where used |
+|---|---|---|
+| Detail card, 4-col label/value grid | `Content Detail Pages` (Type `Default 2.0` / `Default`), cells `RT-Details Content` / `Detail Label with Body`, value `Text` instance prop `Text#1233:72` | Employee Details, Contract Details |
+| Card with summary table on the right (invoice-style) | `Content Detail Pages` Type `Split` (Table Cell prop `Text Content#533:310`) | Contract |
+| Additional Information (4 cols, relative "1 month ago") | `Content Detail Pages` Type `Additional Information` | all detail pages |
+| Collapsible breakdown | `Collapse` › `_Collapse / Collapse Item` (`Header#13259:590`, `Collapsed=True`) | Contract "Job Scope" |
+| KPI tiles | `Highlights Card Grid` › `Highlights Card` | Customer Contracts listing |
+| Confirm modal | `Modal / Confirmation` (warning icon, title, text, Cancel / Confirm) | Employee |
+| Edit form card | Container with 3-col `_Form / Form Item` inputs (e.g. Payment Details `43013:409846`) | Contract edit |
+
+**Gaps in my rows 2–4 against these patterns:**
+- They use hand-built cards with radius 24 and a 2-col `Content Cell` grid; the reference uses `Content Detail Pages` with a 4-col grid.
+- The side summary card is hand-built; the reference is the `Split` variant.
+- The breakdown toggle is a blue text link; the reference uses `Collapse`.
+- Additional Information has no relative time.
+- The confirm modal is built from the Edit Leave Entitlement modal; the reference is `Modal / Confirmation`.
+- The Edit page uses a 2-col form; the reference uses 3-col form containers.
+
+**Options built (row 5 of `43004:150983`).** Restore point: `Before Payroll details consistency options (19 Nov 2026)`.
+- **5.A** `43013:541083`: Basic Information as the `Split` card, with Gross / Deductions / Net in the right table. Then Default 2.0 cards for Gross, Deductions and CPF; Collapse for the breakdowns; and the reference Additional Information card.
+- **5.B** `43013:546739`: `Highlights Card Grid` (Gross / Deductions / Net tiles) on top. Basic Information as a Default 2.0 card, then the same cards as 5.A.
+- **Gotchas:**
+  - The `Content Detail Pages` main component is remote, so its variant list can't be read. Clone an instance and `setProperties({Type})` to preview a variant.
+  - Its title Style prop only accepts "Only Title".
+  - Detaching a card is the only way to append a Collapse inside it.
+  - Editing many Table Cell texts by `characters` timed out; set the instance property `Text Content#533:310` instead.
+- **Next step:** once the user picks A or B, rebuild rows 2–4 (details, edit, confirm) on that pattern. Also swap the confirm modal to `Modal / Confirmation`, and the edit form to 3-col form containers.
