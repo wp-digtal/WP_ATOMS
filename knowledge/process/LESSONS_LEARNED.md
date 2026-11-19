@@ -113,3 +113,4 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 - (18 Nov 2026) For copy and labels, the user prefers the ticket wording over general product conventions. Recommend, but default to the ticket.
 - (19 Nov 2026) Feedback rounds from screenshots of comments: map each comment to a node pattern (label text, child order, hidden chip), then sweep all sibling frames with one call per few frames, and screenshot one mobile and one web frame.
 - (19 Nov 2026) After swapping in a taller card, screenshot the whole frame. A fixed-height panel clips silently, so grow the frame to match its sibling's height.
+- (19 Nov 2026) Mobile textarea counter goes right-aligned under the field (reviewer convention). Font must be loaded even to change textAlignHorizontal.

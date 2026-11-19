@@ -749,3 +749,4 @@ Remarks shows on both the Summary and Enquiry sent (the shared Remarks card unde
   - The user said to ignore the missing Price card and the Trip naming.
 - **Label recommendation: "Subtotal"** (one word, the standard in Apple, Shopify and Stripe checkouts). Frames currently mix "Sub Total" and "Sub-total"; the ticket says "Sub-total". Waiting for the user's choice.
 - **Label decision (18 Nov 2026, user):** follow the ticket, **"Sub-total"**. All "Sub Total" labels in section `9065:39462` were renamed, 8 texts in 4.1, 4.2 (both), 4.5, `9131:48757` and `9131:48432`.
+- **Character counter on the right (19 Nov 2026, user + reviewer chat: "usually it's on the right side").** All 48 "x / 240" counters in `9065:39462` are now right-aligned (`textAlignHorizontal RIGHT`, FILL width), below the textarea. This supersedes the earlier left-aligned Driver-Claims style. Restore point: `Before Bus Booking counter right-align (19 Nov 2026)`.
