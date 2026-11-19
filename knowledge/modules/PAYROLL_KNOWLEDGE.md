@@ -241,3 +241,30 @@ Their feedback was: "many designs inconsistent, AI made new layouts". Rule: **bu
   - Detaching a card is the only way to append a Collapse inside it.
   - Editing many Table Cell texts by `characters` timed out; set the instance property `Text Content#533:310` instead.
 - **Next step:** once the user picks A or B, rebuild rows 2–4 (details, edit, confirm) on that pattern. Also swap the confirm modal to `Modal / Confirmation`, and the edit form to 3-col form containers.
+
+## Full-flow options A and B (19 Nov 2026, user clarification)
+The user wanted the **whole flow rebuilt twice**, not just 2 detail frames: "buat lagi sama persis semuanya tapi dengan konsistensi yang lebih terjaga". Restore point: `Before Payroll full-flow options A/B (19 Nov 2026)`. Both options sit at the bottom of section `43004:150983`, each with a Big Title, a caption per frame, and arrows.
+
+| | Option A (summary in Split card) | Option B (summary as Highlights tiles) |
+|---|---|---|
+| Row 1 Listing | A1.1 `43018:575939`, A1.2 `43018:576096`, A1.3 `43018:576261` (same as rows 1.x) | B1.1 `43018:626162`, B1.2 `43018:626319`, B1.3 `43018:626484` + Highlights tiles (Pending / Confirmed / Total Net) like Employee Listing |
+| Row 2 Details | A2.1 `43018:576420`, A2.2 `43018:576683` (Actions + Collapse open + table), A2.3 `43018:576946` (Confirmed, no CPF) | B2.1 `43018:626643`, B2.2 `43018:626836`, B2.3 `43018:627052` |
+| Row 3 Edit | A3.1 `43018:591356`, A3.2 `43018:601043` (errors, Others name), A3.3 `43018:607744` (saved) | B3.1 `43018:627247`, B3.2 `43018:627410`, B3.3 `43018:627575` |
+| Row 4 Confirm | A4.1 `43018:612934` (`Modal / Confirmation`), A4.2 `43018:613151` (Confirmed On / By row), A4.3 `43018:618314` | B4.1 `43018:627769`, B4.2 `43018:627973`, B4.3 `43018:628167` |
+
+**Edit pattern (both options) = Employee "Compensation & Benefits" edit:**
+- Container cards (clone of `I43013:242716;37125:16039`) with a GRID of `_Form / Form Item / Vertical`, 3 columns.
+  - `Type=Text` input props: `Text#515:158`, `Prefix#515:58`, `Prefix Text#515:133`, `State`, `Status`.
+  - Caption: `_Input / Input Caption` `Text#533:0`.
+- Allowance and deduction rows come from `Monthly Fixed Allowance` Variant3, detached: select + amount + red delete, then "+ Add Allowance".
+  - Auto-generated rows: select disabled, amount editable, delete hidden.
+  - "Others" adds a required name input underneath.
+- Option A edit also lists Gross / Deductions / Net as disabled inputs in Basic Information (ticket table). Option B shows them as tiles instead.
+
+**Gotchas:**
+- GRID containers keep each child's cell. After removing items, re-place them with `setGridChildPosition(row, col)`. Moving onto an occupied cell throws, so place into free cells first.
+- `gridRowCount` can't be set while auto-tracks = ROWS.
+- Form items switched from Radio Group to `Type=Text` don't show their value. Clone a working Text item instead.
+- Cloned 5.A frames still carried the hidden old body; delete it so `findOne` doesn't hit old cards.
+
+**Open:** the user picks A or B. The old rows 1–4 and row 5 stay as history until then.
