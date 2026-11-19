@@ -170,3 +170,37 @@ Section `43004:150983` "🔵 Payroll — Listing · Pay Slip Details · Edit (MO
 9. **Typo in 4482 §2.3.** It says "table of allowances breakdown" in the Deductions section.
 10. **Permission names.** The permission is still "xx", and 4481 biz req 3/4 are empty.
 11. **Return to Listing.** Should it keep the selected month, filters and search?
+
+## MOVE-4486 Confirm Pay Slip (ticket updated 19 Nov 2026 15:48; built the same day)
+**Ticket:**
+- The action lives under Actions on the details page and is enabled only while Pending Confirmation. Otherwise it is disabled with a tooltip.
+- Opens a confirm modal (copy master).
+- **Confirm:** the modal closes, the user stays on details, the status becomes Confirmed, a success toast shows, and Confirmed On / By appear in Additional Information. The employee can then see the slip on their personal dashboard (MOVE-3953).
+- **Cancel / X / click outside:** the modal closes and nothing changes.
+- **Permissions:** the same as viewing details.
+- **This answers PM question 1:** the status changes only through Confirm, so an edit keeps Pending Confirmation.
+
+**Figma, row 4 of section `43004:150983`** (renamed to include 4486). Restore point: `Before Payroll confirm pay slip row (19 Nov 2026)`.
+- **4.1 Modal** `43008:191547`. Built from 2.1 with an absolute 45% overlay. The modal is the detached `Edit Leave Entitlement` modal (`39101:60550`) retitled, with Cancel / Confirm.
+  - **Gotcha:** the page frame is HORIZONTAL auto-layout, so the overlay and modal need `layoutPositioning='ABSOLUTE'`.
+- **4.2 Confirmed** `43008:194762`. Tag Confirmed, Edit disabled, success toast. A "Confirmed On / Confirmed By" row is added at the top of Additional Information.
+- **4.3 Already confirmed** `43008:198551`. Actions are open with Confirm Pay Slip greyed out, plus a tooltip.
+
+## MOVE-3953 Personal Dashboard: Pay Slips (ticket updated 19 Nov 2026 16:09) — NOT BUILT YET
+**Ticket:**
+- **Navigation:** in the PD side nav, select "Pay Slips". It is a listing page only.
+- **Columns:**
+  - Pay Slip Period ("1st – last day of month")
+  - Basic Salary
+  - Gross Salary
+  - Deductions
+  - Net Salary
+  - Confirmed On
+  - A download icon (MOVE-3954)
+- **Table rules:** 10 per page, sorted by period newest first, no manual sort, no search, no separate date range.
+- **Filters:**
+  - Month: multi-select Jan–Dec, matching any year.
+  - Year: multi-select. The ticket asks the PM "how does a year filter work? indefinite options?"
+- **Visibility:** only confirmed slips are shown.
+- **Permission:** "manage own dashboard", own slips only.
+- **Where to build:** the Personal Dashboard section is no longer in the Payroll file, so it needs the PD file `1FCRdGhHru6czP5P6h06kH` (re-pair).
