@@ -711,3 +711,8 @@ during the next Figma-vs-code comparison pass.
 - **Tag:** the cell's built-in `Tag / Status` only has `Status=Default`, so swap it with `swapComponent(main)`. Get `main` from `getMainComponentAsync()` on a top-level instance of the wanted tag, e.g. the drawer header's status tag; that call was quick. After the swap, set `Status`, and turn `Select#…` off or a dropdown chevron appears.
 - **Throughput:** one routine of header clone + 10 row cells + resize ran fine on 4 full-page frames per call.
 - **Timeout:** 6 drawer frames per call with `skipInvisibleInstanceChildren=false` timed out at 32 s, though most of the work still landed. Keep that flag `true` and handle hidden cells via `children` directly.
+
+### Reading Figma comments (19 Nov 2026)
+- `mcp__Figma_Southleft__figma_get_comments` (Desktop Bridge) fails with 401 "Invalid token", because it needs a REST personal access token.
+- **Use the official Figma MCP `get_comments` instead** (`mcp__Figma__get_comments`, with `fileKey` plus the filters `resolved:false`, `rootOnly`, `nodeId`, `threadId`). It works without a token. It returns the message, author, date and the node the comment is pinned to.
+- Reading only; replying to or resolving comments is not available. Tested on Payroll (0 open threads) and Personal Dashboard (open threads returned).
