@@ -296,3 +296,9 @@ User asked for a version with the breakdowns inside a Collapse (MOVE-4481 "expan
 - Big Title `43024:690964`. AC.1 `43024:690968` (A, collapsed) → AC.2 `43024:691562` (A, expanded); BC.1 `43024:692156` → BC.2 `43024:692761`.
 - Collapse is the shared `Collapse` cloned from the Employee module (`_Collapse / Collapse Item`, `Header#13259:590`, `Collapsed`). Headers: "Allowances (3)", "Other Deductions (0)".
 - Restore point: "Before Payroll collapse variant row (19 Nov 2026)". Inline vs collapse is still a PM decision.
+
+### Multi-value reference patterns found (19 Nov 2026)
+User asked to look for "dynamic, multiple data" patterns in other modules (Jira + the Production sections dropped into the Payroll file).
+- **Customer Contract → `Other Charges Form 2.0`** (`43013:409765`, section `43013:407799`, Edit Price flow). A table-style form: header row (Item Description / Quantity / Unit Price / Amount / Item Remarks), one input row per item, a computed Amount column, a section total on the title line ("Other Charges … $0"), and a full-width "+ Add other charges" button under the last row. Closest match for the allowance / other-deduction breakdowns.
+- Jira hits: MOVE-4581 Bus Booking "+ Add-Ons" (multiple add-ons); MOVE-3610 Add Shift Pattern (row sets driven by "Repeat every x weeks", not free add); MOVE-3930 Customer Contract "add more active date".
+- Current Payroll edit (A3/B3) uses a plain form-item grid with a small "+ Add Allowance" button and row delete icons. Pending user decision: switch to the Other Charges table pattern.
