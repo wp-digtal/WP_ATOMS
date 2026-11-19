@@ -716,3 +716,4 @@ during the next Figma-vs-code comparison pass.
 - `mcp__Figma_Southleft__figma_get_comments` (Desktop Bridge) fails with 401 "Invalid token", because it needs a REST personal access token.
 - **Use the official Figma MCP `get_comments` instead** (`mcp__Figma__get_comments`, with `fileKey` plus the filters `resolved:false`, `rootOnly`, `nodeId`, `threadId`). It works without a token. It returns the message, author, date and the node the comment is pinned to.
 - Reading only; replying to or resolving comments is not available. Tested on Payroll (0 open threads) and Personal Dashboard (open threads returned).
+- **Flow Label gap (19 Nov 2026, user):** the gap between a `Docs/Flow Label` caption and its frame is **48 px** (3× the old 16 px). Applied to all 38 labels in Payroll section `43004:150983`.
