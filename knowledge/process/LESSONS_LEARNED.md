@@ -125,3 +125,5 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 - **19 Nov 2026 — Filter popover inputs show no focus state.** User: inputs inside the filter box stay Default (grey border), never Active/blue. In `Table Filter Multiselect` the nested `Select` needs `{Active:'No', Placement:'-'}` together (Active alone has no matching variant); then re-grey placeholder text (black 25%).
 
 - **19 Nov 2026 — Table headers stay on one line; no leftover sorted-column grey.** Widen the column (and every body cell in that column) instead of letting a header wrap, and check sibling frames that share the table. Payroll listing widths: 150/205/115×4/170/170 (=1155). Clear the 6% black `Header` fill left from a sorted/hover state.
+
+- **19 Nov 2026 — Empty states carry the COMPASS icon.** Table empty state = COMPASS `Empty / Image` (set `43013:214391` in the Payroll file, variant Image=2) above the copy, centred, gap 8. `importComponentSetByKeyAsync('ac29cc9196a4854e88f97e0fb812a26009c5a6c3')` resolves locally here, so no timeout. Never ship a text-only empty state.
