@@ -268,3 +268,16 @@ The user wanted the **whole flow rebuilt twice**, not just 2 detail frames: "bua
 - Cloned 5.A frames still carried the hidden old body; delete it so `findOne` doesn't hit old cards.
 
 **Open:** the user picks A or B. The old rows 1–4 and row 5 stay as history until then.
+
+### User feedback on options A/B (19 Nov 2026), in progress
+Restore point: `Before Payroll options cleanup (19 Nov 2026)`.
+1. **Listing removed from A and B** (A1.x / B1.x frames, labels and arrows deleted). Done.
+2. **No Collapse on detail pages.** Reference detail pages (Employee Details "Dependants" / "Vocational Licences", Contract "Trips") show the table directly, under a small grey subtitle inside the card. Replace the Collapse with subtitle + table.
+   - This overrides MOVE-4481's "expandable table, default collapsed". Flag it to the PM.
+3. **Detail rows are always 4 columns.** When a card has fewer fields, keep the empty cells (opacity 0), never let the cells stretch. Done on all A/B detail frames.
+4. **Multi-value allowance / deduction entry.** The closest reference is Employee edit `Monthly Fixed Allowance`: select + amount + red delete + "+ Add Allowance"; "Others" adds a name input.
+   - A second reference is Contract "Trips" (`43013:410220`): a table with an editable "$" price column, view / remove actions, and "Sub-total" beside the title.
+   - The ticket needs Item / Allowance Type / Amount, so add a disabled Allowance Type column.
+   - Contract also has a side summary card next to a form card (`43013:409766`). This is the edit-page twin of the Split summary.
+
+**Pending:** the collapse → table replacement on the 14 detail frames. The bridge dropped mid-task, so it needs a re-pair.
