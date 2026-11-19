@@ -380,3 +380,8 @@ Restore point: `Before Live Tracking user feedback round (19 Nov 2026)`. Section
 - **Driver name subtext:** "Westpoint Transit Pte Ltd" under the driver name is hidden on web (Driver and Passenger web frames). Mobile showed only the ID.
 - **Pax count example:** the hidden `Pax chip` on every stop is now visible: 10, 6, 8, 4. This applies in the driver frames and in the passenger mobile frames that use the driver card.
 - **Open item:** passenger **web** frames (`39465:41596`, `39465:41807`, `39547:16122`) still use the old route-list card, with no pax chips and the old style.
+- **Section 1 miss-check (19 Nov 2026, report only):**
+  1. Passenger **web** frames `39465:41596`, `39465:41807`, `39547:16122` still use the old Route List: bright blue, no pax, no Move-off. On `16122` it also shows "Wait time 2 min" and "Navigate here".
+  2. Driver web Live `39464:40767` and Photo `39547:15767` have a **gap in the route line** between stops 2 and 3, where the yellow bus was removed. No web frame has the blue arrow.
+  3. The call icon ✆ shows on passenger offline (mobile and web) and on passenger web Live and Photo, but not on passenger **mobile** Live `39443:75976` or Photo `39547:15501`.
+  4. The possible leftover yellow mark on the map of `39547:15501` (reported 18 Nov) has not been resolved.
