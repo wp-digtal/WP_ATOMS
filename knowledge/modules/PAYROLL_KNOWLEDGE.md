@@ -150,3 +150,23 @@ Section `43004:150983` "🔵 Payroll — Listing · Pay Slip Details · Edit (MO
 - **Copy master (Lark):** the toast, tooltip and empty-state copy uses `{{Refer to copy master}}` placeholders.
 - **Not built yet:** the Confirm Pay Slip modal and the View Change History drawer (other tickets); the Download result; the "Others" option shown with its saved name.
 - **CPF in edit:** CPF is not recalculated when allowances change, because it is its own editable field per the ticket.
+
+### PM questions, full list (19 Nov 2026)
+1. **Status after Save.** MOVE-4482 §3 says "remains as 'confirmed'", but §1 allows Edit only while Pending Confirmation.
+2. **Copy master entries needed:**
+   - Listing empty month.
+   - Allowances empty.
+   - Other deductions empty.
+   - Edit-disabled tooltip.
+   - Save success toast.
+   - Missing-fields toast.
+   - Field error text.
+3. **Mode of Payment options.** Only the default "Bank Transfer" is given.
+4. **Gross / Deductions / Net placement on Edit.** 4482 lists them in the basic info table, while 4481 puts them in a side summary card; Figma uses the summary card on both.
+5. **Employee CPF on Edit.** Is it recalculated when gross changes, or manual only? The ticket implies manual only.
+6. **Default month when drivers and non-drivers are generated on different dates.** From 26 Nov the latest period holds non-drivers only until 5 Dec.
+7. **Date of Payment validation.** Can it be in the past or before the period? Any limit?
+8. **Saved "Others" name.** The ticket writes "others (text)" in lowercase; confirm the display casing.
+9. **Typo in 4482 §2.3.** It says "table of allowances breakdown" in the Deductions section.
+10. **Permission names.** The permission is still "xx", and 4481 biz req 3/4 are empty.
+11. **Return to Listing.** Should it keep the selected month, filters and search?
