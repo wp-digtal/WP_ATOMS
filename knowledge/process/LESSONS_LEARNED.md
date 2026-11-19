@@ -119,3 +119,5 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 - (19 Nov 2026) Consistency feedback: "AI makes new layouts". Before building any HR web page, find the same page type in another module on the page (detail page → Employee / Contract Details, modal → `Modal / Confirmation`, KPI → Highlights Card) and build from those shared component instances. Never build hand-made cards, even when they look similar. Report gaps against the reference before proposing options.
 - (19 Nov 2026) 'Buat eksplorasi option' on an existing flow means rebuilding the WHOLE flow per option (every row and state), not one representative frame. Ask if unsure, but default to the full set.
 - (19 Nov 2026) Caption (Docs/Flow Label) to frame spacing: 48 px, not 16.
+
+- **19 Nov 2026 — When a spec conflicts with user feedback, show both.** The ticket said "collapsed by default" but the user had asked for inline tables. Building a separate collapse row from the same shared Collapse component let the user compare without undoing the earlier round.

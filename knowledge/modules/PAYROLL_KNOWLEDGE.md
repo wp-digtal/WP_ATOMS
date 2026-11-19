@@ -290,3 +290,9 @@ Restore point: `Before Payroll options cleanup (19 Nov 2026)`.
     - After the edit: Sales commission $300 added, and Loan repayment $50.
   - Edit allowance rows (A3.1/3.2, B3.1/3.2) now have 3 columns: Item, Allowance Type (disabled Fixed/Unfixed), Amount.
 - **A2.1 / A2.2 / A2.3 were not in the file at this point**, together with their labels and arrows. I did not delete them. The user was asked whether to rebuild them.
+
+### Collapse variant row (19 Nov 2026)
+User asked for a version with the breakdowns inside a Collapse (MOVE-4481 "expandable, default collapsed"), next to the inline option.
+- Big Title `43024:690964`. AC.1 `43024:690968` (A, collapsed) → AC.2 `43024:691562` (A, expanded); BC.1 `43024:692156` → BC.2 `43024:692761`.
+- Collapse is the shared `Collapse` cloned from the Employee module (`_Collapse / Collapse Item`, `Header#13259:590`, `Collapsed`). Headers: "Allowances (3)", "Other Deductions (0)".
+- Restore point: "Before Payroll collapse variant row (19 Nov 2026)". Inline vs collapse is still a PM decision.
