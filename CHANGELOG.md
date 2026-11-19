@@ -16,6 +16,7 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **19 Nov 2026 — Payroll 1.1–1.3 listing table:** header on one line (Employment Eligibility widened to 205), grey sorted fill removed from Status header (user feedback).
 - **19 Nov 2026 — Payroll 1.2 filter: removed focus state** from the 4 filter inputs (user feedback).
 - **19 Nov 2026 — Payroll Figma: collapse variant row (MOVE-4481).** Added AC.1/AC.2 and BC.1/BC.2 in section `43004:150983`: allowance and other-deduction tables inside the shared Collapse, closed by default then opened, with flow labels and arrows. Requested by the user to compare against the inline tables; the choice stays open for PM.
 - **Payroll (Figma), 19 Nov 2026:** rebuilt the full flow twice (Option A: Split summary; Option B: Highlights tiles), 12 frames each (listing, details, edit, confirm). Both are built only from other modules' shared components: Content Detail Pages, Collapse, Modal / Confirmation, Employee edit form + Monthly Fixed Allowance rows, Highlights Card.
