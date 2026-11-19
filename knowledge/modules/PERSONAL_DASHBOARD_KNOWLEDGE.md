@@ -782,3 +782,12 @@ Restore point: "Before V1 tabs on PD Leave/Claims + arrow cleanup (11 Nov 2026)"
   - A sweep of all 54 frames now finds no visible page header other than 124 px.
 - **Rule for this file:** the page header is always 124 px, with breadcrumb at 24,24 and title row at 24,62. Detail type (title + buttons, as on Home) and Default type (title only, as on the V1 frames) are both allowed.
 
+
+### Check: "Remarks beside Trip" on the own Claim Details drawer (19 Nov 2026, report only)
+- Done on the 4 own-drawer frames for Toll (ERP) CL20260016: Trip at x788 and Remarks at x1108, on the same row (y450).
+  - `41092:305164`
+  - Cancel modal `41092:307743`
+  - Reason filled `41092:307953`
+  - Cancelled `41092:309614`
+- `41214:258823` (Pending Payment, Carpark) has no Trip field, so Remarks keeps its own row.
+- The approver drawers `41092:314570` and `41092:330231` still have Trip (right column) and Remarks (left, next row) on separate rows. That is outside the comment's scope ("own"); ask whether to align them.
