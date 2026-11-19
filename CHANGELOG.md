@@ -16,6 +16,7 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **Live Tracking (Figma), 19 Nov 2026:** applied end-user feedback in Section 1: labels renamed to Instruction for Driver / Company, Trip Details reordered, company name under the driver removed on web, and pax counts shown on every stop.
 - **Bus Booking mobile (Figma), 18 Nov 2026:** prices recalculated to the user's rule (S$100 per trip; one-way S$185.30 and round trip S$425.10 incl. 9% GST) in every Trip Summary, Contact and Enquiry-sent frame.
 - **Bus Booking mobile (Figma), 18 Nov 2026:** row 2 now follows the 3.1 form (user feedback). 2.1 Empty was rebuilt with the 3.1 structure, and the Remarks placeholder colour was fixed in 2.1–2.5 and 2.7.
 - **Live Tracking (Figma), 18 Nov 2026:** the passenger mobile Route List card (Live, Photo and Offline frames) was replaced with a clone of the driver card `39847:29751`, as the user asked. Restore point: `Before passenger route list card match (18 Nov 2026)`.

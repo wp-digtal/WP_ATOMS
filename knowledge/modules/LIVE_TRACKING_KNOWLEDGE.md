@@ -372,3 +372,11 @@ The user approved the style of `39830:26698`. Target: section `39443:75325` › 
   - Live `39443:75976` → `39848:31696`
   - Photo `39547:15501` → `39848:31809`
   - Offline `39443:76088` → `39848:31932`
+
+### Round 12: end-user feedback on the new design (19 Nov 2026)
+Restore point: `Before Live Tracking user feedback round (19 Nov 2026)`. Section `39646:74664`, comments from Westpoint Digital:
+- **Labels:** "Trip Remarks" is now **"Instruction for Driver"** and "Customer" is now **"Company"**, in all 12 frames with Trip Details.
+- **Trip Details order** ("arrange as such"): Bus Label → Date | Time → Instruction for Driver → Company.
+- **Driver name subtext:** "Westpoint Transit Pte Ltd" under the driver name is hidden on web (Driver and Passenger web frames). Mobile showed only the ID.
+- **Pax count example:** the hidden `Pax chip` on every stop is now visible: 10, 6, 8, 4. This applies in the driver frames and in the passenger mobile frames that use the driver card.
+- **Open item:** passenger **web** frames (`39465:41596`, `39465:41807`, `39547:16122`) still use the old route-list card, with no pax chips and the old style.
