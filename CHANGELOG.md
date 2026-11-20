@@ -16,6 +16,7 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **20 Nov 2026 — PD Pay Slips listing (MOVE-3953)** built in the PD file: Default, Filter open (Month/Year) and Empty frames, named with the 🟢 prefix at the user's request. Year filter question stays open for the PM.
 - **19 Nov 2026 — Payroll 1.3 empty state:** added COMPASS `Empty / Image` icon above the copy (user feedback).
 - **19 Nov 2026 — Payroll 1.1–1.3 listing table:** header on one line (Employment Eligibility widened to 205), grey sorted fill removed from Status header (user feedback).
 - **19 Nov 2026 — Payroll 1.2 filter: removed focus state** from the 4 filter inputs (user feedback).

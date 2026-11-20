@@ -791,3 +791,12 @@ Restore point: "Before V1 tabs on PD Leave/Claims + arrow cleanup (11 Nov 2026)"
   - Cancelled `41092:309614`
 - `41214:258823` (Pending Payment, Carpark) has no Trip field, so Remarks keeps its own row.
 - The approver drawers `41092:314570` and `41092:330231` still have Trip (right column) and Remarks (left, next row) on separate rows. That is outside the comment's scope ("own"); ask whether to align them.
+
+## Pay Slips listing (MOVE-3953) — built 20 Nov 2026
+Row "Pay Slips Listing (MOVE-3953)" at the bottom of section `41091:22331`. All three frames were cloned from `🟢 PD - Claims - My Claims, filter open` (`41195:180732`):
+- `41299:65948` Default: nav "Pay Slip" is active, there are no tabs or Submit Claim button, and the Last Updated date range and search are hidden. The filter button is kept. Columns: Pay Slip Period 210, Basic 150, Gross 150, Deductions 150, Net 150, Confirmed On 190 (date + relative time), Download 155 (`Table / Table cell` Type=Icon with COMPASS `Icon / DownloadOutlined`). Sort=No on every header.
+- `41299:69425` Filter open: the popover shows Month and Year (multi-select). The third filter item is hidden.
+- `41299:69896` Empty: COMPASS `Empty / Image` (Image=2) above the copy-master text.
+- Restore point: "Before PD Pay Slips listing (20 Nov 2026)".
+- Gotcha: `importComponentByKeyAsync` for DownloadOutlined timed out at 25 s and 45 s, but the swap was still applied afterwards. Screenshot before retrying.
+- Open item: the ticket's own Year filter question ("indefinite options?") is still with the PM.

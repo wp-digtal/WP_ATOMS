@@ -186,7 +186,7 @@ Section `43004:150983` "🔵 Payroll — Listing · Pay Slip Details · Edit (MO
 - **4.2 Confirmed** `43008:194762`. Tag Confirmed, Edit disabled, success toast. A "Confirmed On / Confirmed By" row is added at the top of Additional Information.
 - **4.3 Already confirmed** `43008:198551`. Actions are open with Confirm Pay Slip greyed out, plus a tooltip.
 
-## MOVE-3953 Personal Dashboard: Pay Slips (ticket updated 19 Nov 2026 16:09) — NOT BUILT YET
+## MOVE-3953 Personal Dashboard: Pay Slips (ticket updated 19 Nov 2026 16:09) — BUILT 20 Nov 2026 (PD file)
 **Ticket:**
 - **Navigation:** in the PD side nav, select "Pay Slips". It is a listing page only.
 - **Columns:**
