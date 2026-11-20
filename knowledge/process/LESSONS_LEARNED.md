@@ -129,3 +129,5 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 - **19 Nov 2026 — Empty states carry the COMPASS icon.** Table empty state = COMPASS `Empty / Image` (set `43013:214391` in the Payroll file, variant Image=2) above the copy, centred, gap 8. `importComponentSetByKeyAsync('ac29cc9196a4854e88f97e0fb812a26009c5a6c3')` resolves locally here, so no timeout. Never ship a text-only empty state.
 
 - **20 Nov 2026 — Frames for the user to check get the 🟢 prefix.** "Green frame name" means the 🟢 emoji prefix, which is already used across the PD file. Figma can't colour a frame title, so don't use 🔵 in that file.
+
+- **20 Nov 2026 — Inputs in default and filter-open states are always empty (standing rule, the user had agreed it earlier but it was never written down).** Every input shows only its grey placeholder: "Select", "Search …" or "Select <field>". Never put example values like "Citizen, Permanent Resident" in it, and never use dark text that reads as filled. Show filled values only in a frame whose caption says it is a filled state. Check every input in a frame before calling it done.
