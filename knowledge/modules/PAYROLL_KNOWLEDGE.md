@@ -392,3 +392,4 @@ None of MOVE-4479 / 4481 / 4482 / 4486 / 3953 / 3954 has been edited since 19 No
   - Row 3: old 3.1–3.3 and their labels deleted. The new 3.1 (ex-A3.1), 3.2 and 3.3 moved to positions 1–3, and the arrows were re-placed.
   - Restore point: "Before replacing old Payroll edit/confirm frames (23 Nov 2026)".
   - Noticed afterwards: the user is still editing S1. It now has a "Hide allowances breakdown (3)" toggle row (collapse pattern) above the allowances table. That change is not yet in S2–S7 or 4.x.
+- 23 Nov (user): in-page table empty states (Allowances, Other Deductions) are text-only, like the PD Leave Approvals table. Removed the Empty / Image icon from S1–S7, 3.3 and 4.1–4.3, and refit the frame heights (S1 skipped because the user is editing it). The listing empty states 1.3 and 1.4 keep the icon.

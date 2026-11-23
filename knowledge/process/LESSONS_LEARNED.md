@@ -126,7 +126,7 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 
 - **19 Nov 2026 — Table headers stay on one line; no leftover sorted-column grey.** Widen the column (and every body cell in that column) instead of letting a header wrap, and check sibling frames that share the table. Payroll listing widths: 150/205/115×4/170/170 (=1155). Clear the 6% black `Header` fill left from a sorted/hover state.
 
-- **19 Nov 2026 — Empty states carry the COMPASS icon.** Table empty state = COMPASS `Empty / Image` (set `43013:214391` in the Payroll file, variant Image=2) above the copy, centred, gap 8. `importComponentSetByKeyAsync('ac29cc9196a4854e88f97e0fb812a26009c5a6c3')` resolves locally here, so no timeout. Never ship a text-only empty state.
+- **19 Nov 2026 — Empty states carry the COMPASS icon.** Table empty state = COMPASS `Empty / Image` (set `43013:214391` in the Payroll file, variant Image=2) above the copy, centred, gap 8. `importComponentSetByKeyAsync('ac29cc9196a4854e88f97e0fb812a26009c5a6c3')` resolves locally here, so no timeout. Never ship a text-only empty state for a **page-level** list. Correction (user, 23 Nov): a table **inside a detail page** uses a text-only empty state, the same as PD Leave Approvals "There are currently no leave applications pending your approval". The icon belongs only to listing pages.
 
 - **20 Nov 2026 — Frames for the user to check get the 🟢 prefix.** "Green frame name" means the 🟢 emoji prefix, which is already used across the PD file. Figma can't colour a frame title, so don't use 🔵 in that file.
 
