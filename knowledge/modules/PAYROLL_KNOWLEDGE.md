@@ -357,3 +357,8 @@ None of MOVE-4479 / 4481 / 4482 / 4486 / 3953 / 3954 has been edited since 19 No
    - Ticket typo: on Save the status "remains as 'confirmed'". It should be pending; PM question.
 4. **View Change History drawer:** an action exists, but there is no drawer (no ticket spec seen).
 5. **3954 Download:** the ticket description is still empty.
+- 23 Nov follow-up:
+  - #1 was already done by the user: the 1.2 inputs are fully empty.
+  - #2 added as 1.4 `43091:48755` "No results", cloned from 1.3. Copy: "no pay slips match your search or filters".
+  - #3 (overtime) is on hold.
+  - #4 is in progress. 1.3 and 1.4 empty states have no icon; re-adding COMPASS Empty / Image failed because the bridge dropped.
