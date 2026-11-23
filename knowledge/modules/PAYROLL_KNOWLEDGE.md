@@ -387,3 +387,8 @@ None of MOVE-4479 / 4481 / 4482 / 4486 / 3953 / 3954 has been edited since 19 No
   - Overtime (#3, on hold).
   - Collapse vs inline (#9, PM).
   - "remains as confirmed" typo (#10, PM).
+- 23 Nov: old-layout frames in section `43004:150983` replaced.
+  - Row 4: 4.1 `43096:59732`, 4.2 `43096:60006` and 4.3 `43096:60263`, cloned from S3/S4/S5.
+  - Row 3: old 3.1–3.3 and their labels deleted. The new 3.1 (ex-A3.1), 3.2 and 3.3 moved to positions 1–3, and the arrows were re-placed.
+  - Restore point: "Before replacing old Payroll edit/confirm frames (23 Nov 2026)".
+  - Noticed afterwards: the user is still editing S1. It now has a "Hide allowances breakdown (3)" toggle row (collapse pattern) above the allowances table. That change is not yet in S2–S7 or 4.x.
