@@ -362,3 +362,7 @@ None of MOVE-4479 / 4481 / 4482 / 4486 / 3953 / 3954 has been edited since 19 No
   - #2 added as 1.4 `43091:48755` "No results", cloned from 1.3. Copy: "no pay slips match your search or filters".
   - #3 (overtime) is on hold.
   - #4 is in progress. 1.3 and 1.4 empty states have no icon; re-adding COMPASS Empty / Image failed because the bridge dropped.
+- #4 done (23 Nov):
+  - The COMPASS `Empty / Image` set had been removed from the file. Re-imported by key as `43092:49131` (fast).
+  - Icon added to the 1.3 and 1.4 empty states and to the Other Deductions empty state in S1–S6. Those frames were resized to hug their content.
+  - New S7 `43092:49246`: Dedi Kurniawan, Pending, no allowances. Allowances "-", allowances table empty state, Gross 3,600 / Deductions 790 (CPF 720 + GMI 70) / Net 2,810, Employer CPF 612.
