@@ -16,6 +16,7 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **23 Nov 2026 — Payroll: user's breakdown accordion (Hide … breakdown (n) + sub-total) applied** to Allowances and Other Deductions on all detail frames in `43004:150983` (MOVE-4481).
 - **23 Nov 2026 — Payroll:** rows 3–4 of `43004:150983` now use the S1 detail layout. 4.1–4.3 are re-cloned from S3–S5, the old 3.1–3.3 are removed, and the new edit frames moved into place (user: 'masih menggunakan yang lama').
 - **23 Nov 2026 — Payroll review pass:** listing highlight cards in 1.2–1.4 changed from leftover Roster copy to Payroll copy. 1.3 month set to Nov. 3.2 date placeholder removed.
 - **23 Nov 2026 — Payroll:** money format unified ($x,xxx.00). Edit 3.2 (errors + Others manual input) and 3.3 (saved, totals updated) rebuilt in the new layout (MOVE-4482). PM question raised on the 'remains as confirmed' typo.

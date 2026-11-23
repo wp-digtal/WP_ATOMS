@@ -393,3 +393,6 @@ None of MOVE-4479 / 4481 / 4482 / 4486 / 3953 / 3954 has been edited since 19 No
   - Restore point: "Before replacing old Payroll edit/confirm frames (23 Nov 2026)".
   - Noticed afterwards: the user is still editing S1. It now has a "Hide allowances breakdown (3)" toggle row (collapse pattern) above the allowances table. That change is not yet in S2–S7 or 4.x.
 - 23 Nov (user): in-page table empty states (Allowances, Other Deductions) are text-only, like the PD Leave Approvals table. Removed the Empty / Image icon from S1–S7, 3.3 and 4.1–4.3, and refit the frame heights (S1 skipped because the user is editing it). The listing empty states 1.3 and 1.4 keep the icon.
+- 23 Nov: **the breakdown accordion is decided.** It is the user's frame "Expandable breakdown (expanded)" `43096:59657` in S1: ▾ + "Hide allowances breakdown (n)" in blue link style on the left, "Allowances Sub-total: $x" on the right, on a grey strip above the table.
+  - Applied to Allowances and Other Deductions in S1–S7, 3.3 and 4.1–4.3, with the count taken from the visible rows and the old label rows hidden.
+  - Collapsed state ("View … breakdown", table hidden) is not drawn yet. The ticket says default collapsed.
