@@ -141,3 +141,5 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 - **23 Nov 2026 — When the user builds an example, copy it exactly, wording included.** I had added a "Sub-total:" prefix from the Invoice reference. The user's example used only the amount, so the example wins over the reference. "Rapikan" can mean layout only or a rebuild: ask before replacing frames I didn't create.
 
 - **23 Nov 2026 — Bulk text edits inside the Invoice summary instance time out.** Several frames per call hit 40 s. Do one frame per call, then re-count before retrying, because earlier calls often applied part of the work. Detail values in `Content Detail` cells are `Text#1233:72` props on the inner `Text` instance; set them with `setProperties`, not by editing characters.
+
+- **23 Nov 2026 — When the user edits one frame of a row, check its siblings.** The user put Payroll highlight cards on 1.1, but 1.2–1.4 still showed Roster copy. Clones of user-edited frames can also revert a value, e.g. the 1.3 month went back to Oct. Screenshot every frame in the row during a review, not just the ones I changed.

@@ -377,3 +377,13 @@ None of MOVE-4479 / 4481 / 4482 / 4486 / 3953 / 3954 has been edited since 19 No
     - Rows added to both tables. Last Updated On is the save time. Success toast. Status stays Pending.
   - The old 3.1–3.3 frames are kept in the row as history.
 - PM question #10 (MOVE-4482 biz req 3): "No change to pay slip status (remains as 'confirmed')" contradicts biz req 1, which only allows edit when status is Pending. Assumed to mean "remains as pending confirmation".
+- Review pass (23 Nov), fixes:
+  - 1.2, 1.3 and 1.4 highlight cards still had Roster copy ("Unassigned standby…"). They now match 1.1: "Pending Confirmation (Previous Month / Current Month)", with counts 14/10 (1.2, 1.4) and 14/0 (1.3).
+  - The 1.3 month was back to Oct; set to Nov 2026 so it matches the empty-state copy.
+  - Removed the "Select date" placeholder in 3.2 (empty-input rule).
+- Still open after the review:
+  - Rows 3/4 hold old-layout 3.1–3.3 and 4.1–4.3 next to the new frames.
+  - Confirmed On/By on Pending (#5).
+  - Overtime (#3, on hold).
+  - Collapse vs inline (#9, PM).
+  - "remains as confirmed" typo (#10, PM).
