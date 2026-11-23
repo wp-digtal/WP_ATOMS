@@ -16,6 +16,7 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **23 Nov 2026 — Payroll:** money format unified ($x,xxx.00). Edit 3.2 (errors + Others manual input) and 3.3 (saved, totals updated) rebuilt in the new layout (MOVE-4482). PM question raised on the 'remains as confirmed' typo.
 - **23 Nov 2026 — Payroll ticket-gap fixes:** 1.4 No results frame (MOVE-4479). COMPASS empty icon on the 1.3, 1.4 and Other Deductions empty states. New S7 shows the allowances empty state (MOVE-4481). Overtime-pay format is on hold at the user's request.
 - **23 Nov 2026 — Payroll: Gross Salary / Deductions headers use title left + amount right** (user's A3.1 example; Daniel's comment). Applied to A3.1 Deductions, S1–S6 and E1, and dropped the 'Sub-total:' prefix. Section `43004:150983` tidied (layout only): A3.1 moved into row 3, rows re-spaced.
 - **23 Nov 2026 — Payroll details: S1 summary layout chosen; related states S2–S6 built** (Actions open, Confirm modal, Confirmed + Confirmed On/By + toast, Already confirmed tooltip, Work Pass Holder without CPF) in section `43080:32650`. All data is Payroll data.

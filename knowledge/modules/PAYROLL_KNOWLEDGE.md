@@ -366,3 +366,14 @@ None of MOVE-4479 / 4481 / 4482 / 4486 / 3953 / 3954 has been edited since 19 No
   - The COMPASS `Empty / Image` set had been removed from the file. Re-imported by key as `43092:49131` (fast).
   - Icon added to the 1.3 and 1.4 empty states and to the Other Deductions empty state in S1–S6. Those frames were resized to hug their content.
   - New S7 `43092:49246`: Dedi Kurniawan, Pending, no allowances. Allowances "-", allowances table empty state, Gross 3,600 / Deductions 790 (CPF 720 + GMI 70) / Net 2,810, Employer CPF 612.
+- #6, #7, #8 done (23 Nov):
+  - **#6:** money format unified to "$3,650.00" (no space after $) in S1–S7 and E1. Edit-form inputs keep the `$` prefix as a separate element.
+  - **#7/#8, frame 3.2** `43093:50009`: cloned from A3.1.
+    - Date of Payment and Employer's CPF are empty with error captions.
+    - Allowance row 4 shows Item = "Others" with a required manual-name input underneath (error).
+    - Error toast copied from the old 3.2.
+  - **#7/#8, frame 3.3** `43093:50750`: cloned from S1.
+    - Totals updated: Gross 3,950 (allowances 750, including Sales commission 300), Deductions 850 (Other Deductions 50, Loan repayment), Net 3,100.
+    - Rows added to both tables. Last Updated On is the save time. Success toast. Status stays Pending.
+  - The old 3.1–3.3 frames are kept in the row as history.
+- PM question #10 (MOVE-4482 biz req 3): "No change to pay slip status (remains as 'confirmed')" contradicts biz req 1, which only allows edit when status is Pending. Assumed to mean "remains as pending confirmation".
