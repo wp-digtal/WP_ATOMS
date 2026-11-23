@@ -16,6 +16,7 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **23 Nov 2026 — Payroll: Gross Salary / Deductions headers use title left + amount right** (user's A3.1 example; Daniel's comment). Applied to A3.1 Deductions, S1–S6 and E1, and dropped the 'Sub-total:' prefix. Section `43004:150983` tidied (layout only): A3.1 moved into row 3, rows re-spaced.
 - **23 Nov 2026 — Payroll details: S1 summary layout chosen; related states S2–S6 built** (Actions open, Confirm modal, Confirmed + Confirmed On/By + toast, Already confirmed tooltip, Work Pass Holder without CPF) in section `43080:32650`. All data is Payroll data.
 - **23 Nov 2026 — Payroll edit: Gross Salary / Deductions totals right-aligned** (Daniel's comment, ref Invoice Detail). New section `43080:38802`, frame E1.
 - **23 Nov 2026 — Payroll details summary layout (Daniel's comment on 2.1):** new section `43080:32650`, S1 frame. Basic Information and the Invoice-style Summary sit on top, sections below are full width, and section and table headers show Sub-total on the right. Reference: Invoice Detail.

@@ -137,3 +137,5 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 - **23 Nov 2026 — Check the container's layout mode before inserting a cloned header.** `layoutSizingHorizontal='FILL'` throws in a non-auto-layout parent, and the clone stays half-placed on top of the title. Inspect the parent first, and delete any half-applied node before retrying.
 
 - **23 Nov 2026 — When the user picks a frame, re-read it first.** They had hand-edited S1 (2×2 Basic Information, a 3-row summary) before saying "we'll use this". Clone the frame as it is now, not as I left it. Then rebuild every related state from that base, taking only the header and overlays from the old frames.
+
+- **23 Nov 2026 — When the user builds an example, copy it exactly, wording included.** I had added a "Sub-total:" prefix from the Invoice reference. The user's example used only the amount, so the example wins over the reference. "Rapikan" can mean layout only or a rebuild: ask before replacing frames I didn't create.

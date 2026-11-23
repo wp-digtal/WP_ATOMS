@@ -330,3 +330,13 @@ The user picked S1 `43080:32651` as the details layout. Before the round they ha
   - Editing Detail Body text inside the Content Detail card can change its font weight, so copy `fontName` from a sibling body.
   - A fixed-width body wraps; set it to HUG.
 - The old frames 2.x / 4.x in `43004:150983` are now superseded (kept as history).
+
+### Totals header = title left, plain amount right (user example, 23 Nov 2026)
+The user hand-built the pattern on A3.1 Gross Salary: a HORIZONTAL SPACE_BETWEEN container `43018:596535` holding "Gross Salary" and "$3,950.00", both Inter Semi Bold 16. There is **no "Sub-total:" prefix**.
+- Applied to A3.1 Deductions ("$850.00") by cloning that container.
+- Removed the "Sub-total: $ " prefix in S1–S6 and E1. In E1 the amount stays right-aligned (container width − 16 − text width).
+- Table labels ("Allowances Sub-total: $ …") keep their wording.
+- Section `43004:150983` was tidied (layout only, user's choice):
+  - A3.1 now sits in row 3 after 3.3.
+  - Rows 1–4 are spaced 500 px apart and the section is resized.
+  - No frames were deleted. Rows 3 and 4 still hold the old-layout 3.x / 4.x frames.
