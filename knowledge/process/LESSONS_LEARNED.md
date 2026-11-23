@@ -131,3 +131,5 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 - **20 Nov 2026 — Frames for the user to check get the 🟢 prefix.** "Green frame name" means the 🟢 emoji prefix, which is already used across the PD file. Figma can't colour a frame title, so don't use 🔵 in that file.
 
 - **20 Nov 2026 — Inputs in default and filter-open states are always empty (standing rule, the user had agreed it earlier but it was never written down).** Every input shows only its grey placeholder: "Select", "Search …" or "Select <field>". Never put example values like "Citizen, Permanent Resident" in it, and never use dark text that reads as filled. Show filled values only in a frame whose caption says it is a filled state. Check every input in a frame before calling it done.
+
+- **23 Nov 2026 — "Take reference from module X" means reuse X's containers, but keep this module's data.** For Daniel's Invoice Detail reference I cloned the Invoice summary card and its header frames (title + Sub-total) and refilled them with Payroll values in a new section. Editing six cell texts in one call timed out, so edit one or two per call.

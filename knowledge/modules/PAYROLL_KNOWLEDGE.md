@@ -302,3 +302,13 @@ User asked to look for "dynamic, multiple data" patterns in other modules (Jira 
 - **Customer Contract → `Other Charges Form 2.0`** (`43013:409765`, section `43013:407799`, Edit Price flow). A table-style form: header row (Item Description / Quantity / Unit Price / Amount / Item Remarks), one input row per item, a computed Amount column, a section total on the title line ("Other Charges … $0"), and a full-width "+ Add other charges" button under the last row. Closest match for the allowance / other-deduction breakdowns.
 - Jira hits: MOVE-4581 Bus Booking "+ Add-Ons" (multiple add-ons); MOVE-3610 Add Shift Pattern (row sets driven by "Repeat every x weeks", not free add); MOVE-3930 Customer Contract "add more active date".
 - Current Payroll edit (A3/B3) uses a plain form-item grid with a small "+ Add Allowance" button and row delete icons. Pending user decision: switch to the Other Charges table pattern.
+
+### Summary layout from Daniel's comment on 2.1 (23 Nov 2026)
+Comment: keep the Gross / Deductions / Net summary format, but the sections below should not be narrowed to line up with it. Take the Subcon Payment / Invoices module as the reference (Invoice Detail `43080:10042`).
+- New section `43080:32650`. Frame S1 `43080:32651` is cloned from B2.1 and keeps all Payroll data.
+- Top row: Basic Information card on the left, set to fill height. On the right, the summary card is a clone of the Invoice `Invoice/Content Detail` instance. It lists Basic Salary, Allowances and Unpaid Leave, then **Gross Salary**, then Deductions, then **Net Salary**.
+- Every section below is full width. The Highlights card row is hidden.
+- Section header comes from the Invoice "Adjustment Details" header frame: title on the left, "Sub-total: $ x" on the right.
+- Table label comes from the Invoice "Trips" header frame: "Allowances" with "Allowances Sub-total: $ 450.00" on the right. The same is done for Other Deductions.
+- Restore point: "Before Payroll details summary layout (23 Nov 2026)".
+- Not done yet: the other states (Actions open, Confirmed) and the edit page in this layout. The Basic Information card has spare height next to the taller summary card.
