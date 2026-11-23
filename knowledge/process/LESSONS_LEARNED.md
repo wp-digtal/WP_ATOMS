@@ -135,3 +135,5 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 - **23 Nov 2026 — "Take reference from module X" means reuse X's containers, but keep this module's data.** For Daniel's Invoice Detail reference I cloned the Invoice summary card and its header frames (title + Sub-total) and refilled them with Payroll values in a new section. Editing six cell texts in one call timed out, so edit one or two per call.
 
 - **23 Nov 2026 — Check the container's layout mode before inserting a cloned header.** `layoutSizingHorizontal='FILL'` throws in a non-auto-layout parent, and the clone stays half-placed on top of the title. Inspect the parent first, and delete any half-applied node before retrying.
+
+- **23 Nov 2026 — When the user picks a frame, re-read it first.** They had hand-edited S1 (2×2 Basic Information, a 3-row summary) before saying "we'll use this". Clone the frame as it is now, not as I left it. Then rebuild every related state from that base, taking only the header and overlays from the old frames.

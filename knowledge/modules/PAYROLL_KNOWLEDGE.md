@@ -318,3 +318,15 @@ Comment on the edit page: "can the amount for gross salary and deductions align 
 - New section `43080:38802`, frame E1 `43080:38803`. It is cloned from A3.1, because the B3.x frames are no longer in the file.
 - The title now reads only "Gross Salary" / "Deductions". A separate text "Sub-total: $ 3,950.00" / "Sub-total: $ 850.00" sits on the right, in the Invoice sub-total text style. Its right edge lines up with the input column.
 - The title container is not auto-layout, so the sub-total is placed by x. Re-place it if the card width changes.
+
+### Chosen layout: S1 summary layout, related states updated (23 Nov 2026)
+The user picked S1 `43080:32651` as the details layout. Before the round they had tidied it by hand: Basic Information is now a 2×2 grid, and the summary shows only Gross / Deductions / Net. The related states were rebuilt from S1 in section `43080:32650`. Each one takes the header and overlays from its old frame:
+- S2 `43084:13147`: Actions open. Taken from 2.2.
+- S3 `43084:21679`: Confirm modal and overlay, with the overlay resized to the frame. Taken from 4.1.
+- S4 `43084:25789`: Confirmed. Status tag, Edit disabled, success toast. Additional Information row 2 (hidden in the Content Detail card) now shows Confirmed On / Confirmed By, and Last Updated On is the confirm time. Taken from 4.2.
+- S5 `43084:29893`: Already confirmed. Confirm Pay Slip disabled with tooltip. Same slip (Ahmad Fauzi). Taken from 4.3.
+- S6 `43084:34127`: Confirmed Work Pass Holder (Citra Dewi). The CPF card is hidden and Employee's CPF shows "-". Values: Gross 2,880, Deductions 100, Net 2,780, allowances 300 + 180. There is a tooltip on the disabled Edit button. Taken from 2.3.
+- Gotchas:
+  - Editing Detail Body text inside the Content Detail card can change its font weight, so copy `fontName` from a sibling body.
+  - A fixed-width body wraps; set it to HUG.
+- The old frames 2.x / 4.x in `43004:150983` are now superseded (kept as history).
