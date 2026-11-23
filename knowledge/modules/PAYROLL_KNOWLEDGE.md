@@ -340,3 +340,20 @@ The user hand-built the pattern on A3.1 Gross Salary: a HORIZONTAL SPACE_BETWEEN
   - A3.1 now sits in row 3 after 3.3.
   - Rows 1–4 are spaced 500 px apart and the section is resized.
   - No frames were deleted. Rows 3 and 4 still hold the old-layout 3.x / 4.x frames.
+
+### Ticket re-check (23 Nov 2026)
+None of MOVE-4479 / 4481 / 4482 / 4486 / 3953 / 3954 has been edited since 19 Nov. Gaps against the current frames:
+1. **4479:** the filter placeholders still need fixing (the always-empty rule). No "no results" state, e.g. a filter by a department outside the user's permission.
+2. **4481:**
+   - No frame shows the Overtime pay "$100.00 (5 hrs)" format.
+   - No empty state for the Allowances table.
+   - The Other Deductions empty state has no COMPASS icon.
+   - Confirmed On / By is not shown on Pending slips. The ticket lists them as fields; show "-"?
+   - Money format is inconsistent: "$ 3,650.00" in the Summary vs "$3,650.00" everywhere else.
+   - "Expandable, default collapsed" tables vs the inline tables the user chose (still open).
+3. **4482:**
+   - The edit frames still use the old layout. 3.2 error and 3.3 saved are not on the S/E layout.
+   - The "Others → manual text input" option appears only in 3.2.
+   - Ticket typo: on Save the status "remains as 'confirmed'". It should be pending; PM question.
+4. **View Change History drawer:** an action exists, but there is no drawer (no ticket spec seen).
+5. **3954 Download:** the ticket description is still empty.
