@@ -16,6 +16,7 @@ minor).
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)
 
+- **23 Nov 2026 — Payroll edit: Gross Salary / Deductions totals right-aligned** (Daniel's comment, ref Invoice Detail). New section `43080:38802`, frame E1.
 - **23 Nov 2026 — Payroll details summary layout (Daniel's comment on 2.1):** new section `43080:32650`, S1 frame. Basic Information and the Invoice-style Summary sit on top, sections below are full width, and section and table headers show Sub-total on the right. Reference: Invoice Detail.
 - **20 Nov 2026 — PD Pay Slips listing (MOVE-3953)** built in the PD file: Default, Filter open (Month/Year) and Empty frames, named with the 🟢 prefix at the user's request. Year filter question stays open for the PM.
 - **19 Nov 2026 — Payroll 1.3 empty state:** added COMPASS `Empty / Image` icon above the copy (user feedback).

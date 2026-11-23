@@ -312,3 +312,9 @@ Comment: keep the Gross / Deductions / Net summary format, but the sections belo
 - Table label comes from the Invoice "Trips" header frame: "Allowances" with "Allowances Sub-total: $ 450.00" on the right. The same is done for Other Deductions.
 - Restore point: "Before Payroll details summary layout (23 Nov 2026)".
 - Not done yet: the other states (Actions open, Confirmed) and the edit page in this layout. The Basic Information card has spare height next to the taller summary card.
+
+### Edit page: totals right-aligned (Daniel comment, 23 Nov 2026)
+Comment on the edit page: "can the amount for gross salary and deductions align right, take ref from invoice module".
+- New section `43080:38802`, frame E1 `43080:38803`. It is cloned from A3.1, because the B3.x frames are no longer in the file.
+- The title now reads only "Gross Salary" / "Deductions". A separate text "Sub-total: $ 3,950.00" / "Sub-total: $ 850.00" sits on the right, in the Invoice sub-total text style. Its right edge lines up with the input column.
+- The title container is not auto-layout, so the sub-total is placed by x. Re-place it if the card width changes.
