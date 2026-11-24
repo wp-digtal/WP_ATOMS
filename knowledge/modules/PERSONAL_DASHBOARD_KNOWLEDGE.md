@@ -802,7 +802,7 @@ Row "Pay Slips Listing (MOVE-3953)" at the bottom of section `41091:22331`. All 
 - Open item: the ticket's own Year filter question ("indefinite options?") is still with the PM.
 
 ## 24 Nov 2026: pagination, Recent Activity ideation, BC audit
-- **Pagination rule (user):** match Pay Slips `41299:65948`: `< [1] > 10 / page`. Only the **current** page is the bordered `InputNumber`. Other pages are plain `_Pagination / Pagination Item / Number` (no border).
+- **Pagination rule (user):** match Pay Slips `41299:65948`: `< [1] > 10 / page`. Only the **current** page is the bordered `InputNumber`. Other pages are plain `_Pagination / Pagination Item / Number` (no border). The wrapper holding Pagination Wrapper + `10 / page` Select must be **HUG, MIN, spacing 16**, so `>` sits close to the select. 107 wrappers were FIXED + SPACE_BETWEEN, which left a wide gap; fixed 24 Nov.
   - Fixed 70 footers in section `41091:22331` and 8 in `PD/Table`: extra InputNumbers hidden, Number items shown with the value.
 - **Ideation section** `41351:304995` (Daniel's comment: differentiate leave / claims / pay slip / action):
   - A `41351:304996` icon + colour (tinted card, coloured icon badge).
