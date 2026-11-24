@@ -12,6 +12,11 @@ minor).
 
 ---
 
+## 24 Nov 2026 — ATOM BC: info box beside each non-COMPASS component
+
+- Added 28 colour-coded info boxes next to the components that still use old libraries. Each box lists the offending sub-components, so the user does not have to check each component by hand (user request).
+- Re-flowed and re-stacked the zone sections to make room. No component was edited.
+
 ## 24 Nov 2026 — Route Point Manager: listing flow rebuilt NEW-above-OLD (MOVE-737, MOVE-967)
 
 - Rebuilt section 1 of the COMPASS side-by-side page as 6 flow rows (keyword, multi landmark, linked routes, combined, no result, listing filter), 18 COMPASS frames, each with its old frame directly below.

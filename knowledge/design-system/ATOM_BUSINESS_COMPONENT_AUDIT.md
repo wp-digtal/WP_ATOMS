@@ -100,3 +100,22 @@ At the user's request, a reading frame `445:73994` ("🟢 ℹ️ Additional info
 - Each entry gives the non-COMPASS sub-components with instance counts, the COMPASS instance count, and the local BCs it is built from.
 - It was generated from the key-based check (`mainComponent.parent.key` against COMPASS keys). Re-run that check before you trust it after library changes.
 - Note: by key, Frontend Only App is mixed (it uses Anchor and Trip Form from another library), not fully COMPASS.
+
+## Per-component info boxes (24 Nov 2026)
+
+The user asked for a note next to every component that still uses an old library, so they don't have to inspect each one by hand. Restore point: "Before info boxes next to non-COMPASS components (24 Nov 2026)".
+
+- **28 boxes**, each a frame named `ℹ️ Info — <component>`. Each box sits 40 px to the right of its component, inside the same section.
+  - Red ⚠️: the component uses no COMPASS at all.
+  - Yellow 🟡: the component mixes COMPASS with other libraries. Frontend Only App is one of these, even though it sits in the ✅ zone.
+  - Blue ℹ️: the component is built only from local business components, or drawn by hand. It inherits the status of its parts.
+- **What each box lists:**
+  - the non-COMPASS sub-components, with instance counts;
+  - the number of COMPASS instances;
+  - the local business components it is built from;
+  - a "Fix:" hint.
+- **Layout changes:**
+  - Each zone section was re-flowed into rows: component, box, then a 200 px gap. Rows wrap at 9200 px.
+  - The sections were re-stacked with a 600 px gap.
+  - The summary frame `445:73994` was moved to the right of the widest section.
+- The boxes are a snapshot. After swapping a sub-component, re-run the key-based check and update or delete the box.
