@@ -12,6 +12,10 @@ minor).
 
 ---
 
+## 24 Nov 2026 — ATOM BC: info frame listing non-COMPASS components
+
+- Added frame `445:73994` in the ATOM Business Component file. It lists every component that is not fully COMPASS and the sub-components it uses from other libraries (user request: additional info for their audit). No components were changed.
+
 ## [Unreleased]
 
 ### Added — Bus Booking: proposal page for trip card fixes + add-ons per trip vs per booking (Figma, 16 Nov 2026, MOVE-4581)

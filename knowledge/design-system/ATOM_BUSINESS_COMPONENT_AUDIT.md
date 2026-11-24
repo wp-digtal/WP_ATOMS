@@ -92,3 +92,11 @@ Restore point: "Before tidy-up: merge pages + COMPASS zones (24 Nov 2026)". **No
 8. `443:73993` 📎 Usage examples & working frames. Holds the non-component instances and sample screens from the old sections and from the Table and Guidance pages.
 
 The 4 old sections (Business Component, Sales, Individual Component, Header Set Component) were emptied and removed.
+
+## Additional-info frame (24 Nov 2026)
+
+At the user's request, a reading frame `445:73994` ("🟢 ℹ️ Additional info — Components not using COMPASS") sits on page `0:1`, 400 px to the right of the zone sections. It is a plain frame, not a component.
+- It lists the 33 components that are not fully COMPASS: ⚠️ 22 with no COMPASS, 🟡 5 mixed, ℹ️ 6 built only from local BCs or by hand.
+- Each entry gives the non-COMPASS sub-components with instance counts, the COMPASS instance count, and the local BCs it is built from.
+- It was generated from the key-based check (`mainComponent.parent.key` against COMPASS keys). Re-run that check before you trust it after library changes.
+- Note: by key, Frontend Only App is mixed (it uses Anchor and Trip Form from another library), not fully COMPASS.
