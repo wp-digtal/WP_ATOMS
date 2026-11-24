@@ -815,3 +815,10 @@ Row "Pay Slips Listing (MOVE-3953)" at the bottom of section `41091:22331`. All 
   - PD/Table columns and footers match Production. Remarks is hidden in both.
   - PD/Drawer text content matches Production for Apply Leave Empty, Submit Claim Empty and Claim Details (Own) Pending.
   - Gaps: no **Pay Slips** table variant (Default / Empty), and no Claims Empty variants. Recent Activity Card is waiting on the ideation decision.
+- **BC duplicate (24 Nov, user chose "add Pay Slips, then duplicate"):**
+  - Added `PD/Table` variants Type=Pay Slips Default `41352:307019` and Empty `41352:307212`, cloned from Production.
+  - New section `41352:307466` "🟢 Personal Dashboard — rebuilt with PD business components" sits below the original. All 152 children were cloned in batches. The 3 local components ("Local Components" row: Header Bar, Profile Dropdown, Activity Card) were removed from the copy, so no main components are duplicated.
+  - **Tables:** 44 hand-built tables replaced with `PD/Table` instances. The variant was picked from the header columns (first column + Claim No. / Validity Period), the card title (Pending Approval / History), and Empty when no rows are visible. The original sibling footer was removed. 39 tables inside other instances were skipped because they are already component-driven.
+  - **Drawers:** 31 drawers inside `Drawer overlay` replaced with `PD/Drawer` instances, matched by visible-text Jaccard ≥ 0.9. Skipped "Reject Leave (approver) – Reason …" (0.81, no matching variant).
+  - Restore point: "Before PD section duplicate with business components (24 Nov 2026)".
+  - Visual check pending (the bridge dropped).
