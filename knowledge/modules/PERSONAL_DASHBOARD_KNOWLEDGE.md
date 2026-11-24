@@ -824,3 +824,7 @@ Row "Pay Slips Listing (MOVE-3953)" at the bottom of section `41091:22331`. All 
   - Visual check pending (the bridge dropped).
   - Visual check (24 Nov): Claims Approvals filter-open, Apply Leave Empty, Leave Approvals tab, Pay Slips and Home look right.
   - Fix after the check: 8 old footers named "Table Footer (pagination, 5 per page – …)" were not direct siblings of the table, so they showed a second pagination row. Removed them; the PD/Table instance footer stays.
+- Ideation round 2 (user: "colours too loud, keep colour but less intense"). Second row in `41351:304995`, all on white cards with a softer palette (AntD 5/6: #4096FF, #9254DE, #13A8A8, #FA8C16):
+  - D `41356:72219`: colour only on the icon, 8% tint badge.
+  - E `41356:72613`: 3 px left accent bar plus grey icon.
+  - F `41356:73007`: 8 px colour dot before the title, no icon.

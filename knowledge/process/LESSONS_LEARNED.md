@@ -145,3 +145,5 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 - **23 Nov 2026 — When the user edits one frame of a row, check its siblings.** The user put Payroll highlight cards on 1.1, but 1.2–1.4 still showed Roster copy. Clones of user-edited frames can also revert a value, e.g. the 1.3 month went back to Oct. Screenshot every frame in the row during a review, not just the ones I changed.
 
 - **24 Nov 2026 — When swapping a hand-built block for a business component, look for its satellites one or two levels up and match names by prefix.** The PD Leave footers were named "Table Footer (pagination…)" and sat beside the table's wrapper, so an exact-name sibling check missed them and left double pagination. Screenshot a sample of every block type after a bulk swap.
+
+- **24 Nov 2026 — Status/type colour on cards: tinted card backgrounds read as too loud.** The user's direction is to keep colour but low-intensity: white card, colour on a small element (icon, edge accent or dot), with AntD 5/6 shades rather than full tints.
