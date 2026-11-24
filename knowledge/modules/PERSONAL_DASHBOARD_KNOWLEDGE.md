@@ -800,3 +800,18 @@ Row "Pay Slips Listing (MOVE-3953)" at the bottom of section `41091:22331`. All 
 - Restore point: "Before PD Pay Slips listing (20 Nov 2026)".
 - Gotcha: `importComponentByKeyAsync` for DownloadOutlined timed out at 25 s and 45 s, but the swap was still applied afterwards. Screenshot before retrying.
 - Open item: the ticket's own Year filter question ("indefinite options?") is still with the PM.
+
+## 24 Nov 2026: pagination, Recent Activity ideation, BC audit
+- **Pagination rule (user):** match Pay Slips `41299:65948`: `< [1] > 10 / page`. Only the **current** page is the bordered `InputNumber`. Other pages are plain `_Pagination / Pagination Item / Number` (no border).
+  - Fixed 70 footers in section `41091:22331` and 8 in `PD/Table`: extra InputNumbers hidden, Number items shown with the value.
+- **Ideation section** `41351:304995` (Daniel's comment: differentiate leave / claims / pay slip / action):
+  - A `41351:304996` icon + colour (tinted card, coloured icon badge).
+  - B `41351:305306` icon only (grey badge).
+  - C `41351:305616` colour only.
+  - Palette (AntD presets): leave blue, claims purple, pay slip cyan, action ("pending your approval") orange.
+  - Icons come from instances already in the file: Calendar `3022:47731`, Mail `3076:115919`, ExclamationCircleFilled `3004:4551`. Claims is a hand-built "$", because COMPASS imports (Wallet/Dollar) time out at 55 s in this file.
+  - The Activity Cards in the idea frames are detached.
+- **BC audit before duplicating section 41091:22331:**
+  - PD/Table columns and footers match Production. Remarks is hidden in both.
+  - PD/Drawer text content matches Production for Apply Leave Empty, Submit Claim Empty and Claim Details (Own) Pending.
+  - Gaps: no **Pay Slips** table variant (Default / Empty), and no Claims Empty variants. Recent Activity Card is waiting on the ideation decision.
