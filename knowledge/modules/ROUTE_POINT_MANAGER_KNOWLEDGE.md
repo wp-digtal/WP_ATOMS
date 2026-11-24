@@ -155,3 +155,47 @@ The user said "do all the rest". Every section has OLD at x 100 and NEW at x 174
 - 3.6 Duplicate point and 6.1 Change History have no old frame.
 - The Create success destination follows the old Finish (the new point opens in the details drawer, with a toast). The ticket doesn't specify it.
 - The Linked Routes sub-table in the **listing** (accordion / modal) is still not designed. It is shown inside the details drawer instead.
+
+### 2.3 Flow tidy-up: NEW above OLD, one frame per state (24 Nov 2026)
+
+The user asked to tidy the flows, keep COMPASS, re-check the tickets, and put the old frames **directly below** the new ones. The new layout must match the old one; only the components change. Restore point: "Before Route Point Manager COMPASS flow tidy-up (24 Nov 2026)".
+
+**Agreed with the user:**
+- One new frame per unique state. Duplicate old frames that differ only in data are not rebuilt.
+- Each flow is one row: NEW (🟢, COMPASS) on top, steps left → right with arrows, and the OLD clone directly below its pair.
+- Each row has a title, notes and per-frame captions.
+
+**Ticket re-check:** the MOVE-131 children now also include:
+- **MOVE-967 "Landing Page":** the listing shows 0 results until the user searches or filters, with the prompt "Use the search bar or filters to view results". This confirms the old search-first landing page. The earlier NEW 1.1 (table shown straight away) was wrong and has been removed.
+- MOVE-936: bus stop / taxi stand list changes. Still "To Define Tasks", so nothing to design yet.
+- MOVE-2135 QA and MOVE-2311 UAT: empty templates.
+
+**Section `1 · Listing (MOVE-737, MOVE-967)` `14720:518806`, at x 0 / y 0.** It replaces the old side-by-side section 1. Rows are 2800 apart; NEW is at row y + 260 and OLD at y + 1454.
+
+| Row | NEW steps |
+|---|---|
+| 1.1 Keyword | Landing focused `14719:478095` → typing + suggestions `14720:478428` → keyword selected `14720:491820` → result + tags + Clear All `14720:493130` |
+| 1.2 Multi landmark | Dropdown open `14720:495417` → Bus Stop + Roadside `14720:497391` → result `14720:499453` |
+| 1.3 Linked routes | Open `14720:500745` → Yes `14720:502704` → result `14720:504676` |
+| 1.4 Combined | Filled card `14720:508701` → result `14720:510611` (the old 9-step row repeats the earlier states) |
+| 1.5 No result | Landing inline error `14720:511903`; listing "No data" `14708:505393` |
+| 1.6 Filter on the listing | Popover, All Landmark `14720:513756` → Bus Stop only `14720:515716` → result `14720:517530` |
+
+**How the screens were built:**
+- **Landing search card:** a hand-made container frame (fill #fafafa, stroke, shadow) holding COMPASS `Input`, `Button` (Primary) and 2 × `Select`. It sits inside the table's `Empty state` frame, with the "No data" image hidden.
+- **Suggestions / landmark / linked menus:** a clone of the COMPASS `Dropdown Menu` instance found inside the Date Selector (path `…2301:16742`). Items are set through `Text#507:55` and `State` (Hover / Selected).
+- **Result layout, to match the old one:**
+  - `Leave/Filter` is detached into "Filter row" so the CTA "Create new Route Point" sits on the same row as Filter Bar 3.0.
+  - Below it is a tags row with `Tag / Basic` (Variant=Closeable) on the left and Clear All on the right.
+- **Popover multi-select:** set the COMPASS `Select` to `Active=Yes, Placement=Bottom`, the inner `_Select / Select Input` to `Type=Multiple, State=Filled`, and the menu items to `State=Selected Multiple`.
+
+**Gotchas:**
+- On the COMPASS `Input`, `setProperties({State})` reports the new value but can leave the old variant in place: Focused stayed blue. Use `swapComponent(sibling variant)` and then re-set the text.
+- A cloned header CTA keeps `layoutPositioning = ABSOLUTE`. Set it to `AUTO` after moving it into an auto-layout row.
+- `getNodeByIdAsync` on a library icon and `createInstance` from a remote component timed out ("Unable to establish connection"). Clone an existing instance instead.
+
+**Deviations:**
+- The search input has no left search icon. No COMPASS SearchOutlined swap was available without a library import.
+- The no-result copy is corrected: "can't found" → "can't find".
+
+**Still to do:** Details, Create, Edit, Delete and Change History need the same NEW-above-OLD treatment.

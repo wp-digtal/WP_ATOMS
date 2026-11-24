@@ -12,6 +12,13 @@ minor).
 
 ---
 
+## 24 Nov 2026 — Route Point Manager: listing flow rebuilt NEW-above-OLD (MOVE-737, MOVE-967)
+
+- Rebuilt section 1 of the COMPASS side-by-side page as 6 flow rows (keyword, multi landmark, linked routes, combined, no result, listing filter), 18 COMPASS frames, each with its old frame directly below.
+- Why: the user wants the old and new UI compared with the same layout, only the components changed.
+- The ticket re-read found MOVE-967 (landing page must show 0 results until the user searches). The earlier table-first default was therefore wrong and has been removed.
+- Open items: Details, Create, Edit, Delete and History are still in the earlier side-by-side layout. Pending the user's review of section 1.
+
 ## 24 Nov 2026 — ATOM BC: info frame listing non-COMPASS components
 
 - Added frame `445:73994` in the ATOM Business Component file. It lists every component that is not fully COMPASS and the sub-components it uses from other libraries (user request: additional info for their audit). No components were changed.
