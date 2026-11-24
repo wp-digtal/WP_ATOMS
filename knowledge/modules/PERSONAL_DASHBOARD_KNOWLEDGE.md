@@ -822,3 +822,5 @@ Row "Pay Slips Listing (MOVE-3953)" at the bottom of section `41091:22331`. All 
   - **Drawers:** 31 drawers inside `Drawer overlay` replaced with `PD/Drawer` instances, matched by visible-text Jaccard ≥ 0.9. Skipped "Reject Leave (approver) – Reason …" (0.81, no matching variant).
   - Restore point: "Before PD section duplicate with business components (24 Nov 2026)".
   - Visual check pending (the bridge dropped).
+  - Visual check (24 Nov): Claims Approvals filter-open, Apply Leave Empty, Leave Approvals tab, Pay Slips and Home look right.
+  - Fix after the check: 8 old footers named "Table Footer (pagination, 5 per page – …)" were not direct siblings of the table, so they showed a second pagination row. Removed them; the PD/Table instance footer stays.
