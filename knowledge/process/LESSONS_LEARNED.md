@@ -147,3 +147,5 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 - **24 Nov 2026 — When swapping a hand-built block for a business component, look for its satellites one or two levels up and match names by prefix.** The PD Leave footers were named "Table Footer (pagination…)" and sat beside the table's wrapper, so an exact-name sibling check missed them and left double pagination. Screenshot a sample of every block type after a bulk swap.
 
 - **24 Nov 2026 — Status/type colour on cards: tinted card backgrounds read as too loud.** The user's direction is to keep colour but low-intensity: white card, colour on a small element (icon, edge accent or dot), with AntD 5/6 shades rather than full tints.
+
+- **24 Nov 2026 — "Does it use COMPASS?" must be checked by component key, not name.** Several libraries publish same-named components: Tag/Status, Text, Button, Form Label, icons. Get the COMPASS keys with `search_design_system` restricted to the COMPASS libraryKey, then compare `mainComponent.parent.key` of top-level instances. In the ATOM Business Component file, 28 of 33 components looked like COMPASS but use other libraries.

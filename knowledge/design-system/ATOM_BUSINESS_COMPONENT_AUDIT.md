@@ -1,0 +1,94 @@
+# ATOM Business Component file audit (24 Nov 2026)
+
+File `ZpEYnJ4POb86CDMAM3BWCG` ("💎 ATOM - Business Component"). Pages:
+- Tidy Up On Progress `0:1`
+- Table `168:5996`
+- Sidebar `215:1085` (empty)
+- Guidance `34:12163`
+
+**User rules for this round:**
+- Change no component. Only tidy the layout.
+- Merge the 4 pages into 1.
+- Isolate the components that don't use COMPASS so the user can audit them.
+- Call out the atomic ones.
+
+## Inventory (33 components / sets)
+**Atomic (small, single purpose):**
+- Tab/Tab Item `240:15025` and `424:16514`
+- Tab/Tab Group `240:15032` and `424:16506`
+- Detail Drawer Status `42:12620`
+- Content Type `68:22361`
+- Title Detail Pages `31:25533`
+- Content Cell `240:14314`
+- Group Content Cell `240:14278`
+- BusCom-Header Text `1:5560`
+- BusCom-Details Button 2.0 `1:5676`
+- BusCom-Details Action Button 2.0 `1:5656`
+- Filter Selected 3.0 `40:15976`
+- Table Header Buttons `44:28754`
+- Custom Component `27:99304`
+
+**Composite:**
+- BusCom-HeaderWrapper `143:5467`
+- BusCom-Detail Header Content `1:5587`
+- Filter Bar 3.0 `21:9490`
+- Table Filter Dropdown 2.0 `44:15720` and `424:16538`
+- Table Filter with Buttons 2.0 `44:15777`
+- Content Detail Pages `27:99317`
+- Detail Page Template 2.0 `240:14948`
+- Detail Pages Template – Old `27:101141`
+- Drawers Template `240:14993`
+- Sales/Row Content `240:14372`
+- Date Selector `293:12713`
+- Inspection Item `114:4957`
+- Feedback `117:4961`
+- GPS Tracking `136:5461`, GPS Tracking/Map `119:5562`, GPS Tracking/Bottom Panel `133:6423`
+- Frontend Only App `227:16626`
+
+**Duplicates (same name, two masters):**
+- Tab/Tab Item
+- Tab/Tab Group
+- Table Filter Dropdown 2.0
+
+## Library check (method)
+For every top-level library instance inside each component, the component (set) **key** was compared with COMPASS keys returned by `search_design_system` restricted to the COMPASS library (`lk-d71fb0e8…`).
+- Names alone are not enough: e.g. "Tag / Status" exists in 5 libraries.
+- The file mostly uses same-named components from other libraries: "Components and styles", "ATOMS Design System (DO NOT TOUCH)", "Table Templates", "Details Templates".
+- Examples:
+  - Tag/Status `f3f4d98…` (not COMPASS `20e2672c…`)
+  - Icon/EditOutlined `243ab6b3…` (not `caeae4e1…`)
+  - Form Label Vertical `910d6343…` (not `d2001aa9…`)
+  - Text, Button `da2f6b04…`, Avatar, Badge, Title, Input, Select Menu, Radio, Checkbox, Switch
+- COMPASS keys found in use:
+  - Form/Form Item/Vertical `0c33a938…`
+  - Breadcrumb `545741c7…`
+  - Button `300259f9…`
+  - Icon/QuestionCircle `be46587c…`
+  - Tag/Status `20e2672c…`
+  - BC/Group Content Cell `3ea3fe2e…`
+
+**Result (COMPASS / other-library top-level instances):**
+- Mostly COMPASS: only **Frontend Only App** (30/2).
+- Partly COMPASS:
+  - Content Cell (9/6)
+  - Sales/Row Content (30/220)
+  - Table Filter Dropdown 2.0 `44:15720` (16/41)
+  - BusCom-HeaderWrapper (7/24)
+- **No COMPASS at all:** every other component that holds library instances.
+
+## Tidy-up done (24 Nov 2026; user chose "3 zones by status")
+Restore point: "Before tidy-up: merge pages + COMPASS zones (24 Nov 2026)". **No component was edited**; nodes were only moved.
+
+**Pages:** one page left, renamed `💎 Business Components` (`0:1`). The Table, Sidebar (empty) and Guidance pages were removed after their content moved.
+
+**Sections, stacked top to bottom with a 600 px gap:**
+1. `443:73986` ✅ COMPASS · Composite: Frontend Only App.
+2. `443:73987` 🟡 Mixed · Atomic: Content Cell.
+3. `443:73988` 🟡 Mixed · Composite: HeaderWrapper, Table Filter Dropdown 2.0 `44:15720`, Sales/Row Content.
+4. `443:73989` ⚠️ Non-COMPASS · Atomic. 14 components, including both duplicate Tab sets.
+5. `443:73990` ⚠️ Non-COMPASS · Header, Filter & Date. Includes the duplicate Table Filter Dropdown `424:16538`.
+6. `443:73991` ⚠️ Non-COMPASS · Detail Pages & Drawers.
+7. `443:73992` ⚠️ Non-COMPASS · Operations: Inspection, Feedback, GPS.
+8. `443:73993` 📎 Usage examples & working frames. Holds the non-component instances and sample screens from the old sections and from the Table and Guidance pages.
+
+The 4 old sections (Business Component, Sales, Individual Component, Header Set Component) were emptied and removed.
