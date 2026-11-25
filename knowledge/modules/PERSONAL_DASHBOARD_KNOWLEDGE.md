@@ -936,3 +936,19 @@ The user asked for a new page at the bottom of the file, with all the work done 
 - The rows of the copied table had different cell counts. Address cells as first, second and last, not by index.
 - The table frame had a fixed height, which clipped row 6. Set it to HUG.
 - The side nav needs FILL height after the frame height changes.
+
+### Sidebar = Side Navbar component `41412:54544` (user, 26 Nov 2026)
+The user pointed to `Side Navbar` `41412:54544` (🏭 Production) as the correct sidebar component. The PD frames used **detached** `PD Side Navbar` frames, copies of that component with overrides.
+- Restore point: "Before PD sidebar swap to Side Navbar component (26 Nov 2026)".
+- **Replaced with instances: 67 frames.**
+  - 51 in section `41091:22331`.
+  - 4 on the Home v2 page `41406:31411`.
+  - 12 in the ideation section `41351:304995`.
+- **Overrides on each instance:**
+  - Hide the Navbar Items (profile/notifications) block, the 5 submenus and the first Menu Items group. Show the second Menu Items group.
+  - Set its first 4 Navigation Items from the old frame: Text, Icon Name, State (Active on the current page), name, visibility. Hide the rest.
+  - Copy the Sidebar Icon visibility from the old frame.
+- **Other frames:**
+  - "PD Entry - Workspace" `41108:278794` used another component (`3076:116632`). It was swapped to `41412:54544` and keeps its workspace menu.
+  - The 2 filter-popover frames have no sidebar, which is correct.
+- **Rule:** never detach the sidebar again. Use an instance of `41412:54544` and set the Navigation Item props.
