@@ -858,3 +858,14 @@ The product team kept **D** (white card, colour only on the icon, 8 % tint badge
   - One-line list rows: icon + title (300 px), subject (300 px), date (fill), then a "Review" link on pending rows.
   - Pending rows are sorted to the top. Rows have a 1 px bottom divider and no card borders.
 - The pay slip icon was changed from MailOutlined to FileTextOutlined to match the "document" rule.
+
+**Layout concepts J / K / L (25 Nov 2026).** The user asked to explore other layouts, thinking about purpose and readability. They sit in row 3 of section `41351:304995`, at y 3600.
+- **J `41386:160134`: two columns.**
+  - Left: "Needs your action", stacked cards with a Review link and the status tag hidden.
+  - Right: "Your activity".
+  - Both columns are visible at once.
+- **K `41386:163325`: tabs.** "Needs your action (6)" is open by default, with "Your activity (6)" as the second tab. Each tab holds one I-style list. The tabs are hand-built in COMPASS Tabs style (blue 2 px underline, count badge).
+- **L `41386:167457`: summary tiles as quick filters.**
+  - Tiles: Needs your action 6 (selected, orange), My leave 3, My claims 2, My pay slips 1.
+  - Under the tiles, an I-style list filtered by the selected tile.
+- **Gotcha:** count badges built as auto-layout frames stretch to the row height. Set `primaryAxisSizingMode` and `counterAxisSizingMode` to `AUTO` (HUG) on the badge and on its parent.
