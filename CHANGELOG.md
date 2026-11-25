@@ -12,6 +12,11 @@ minor).
 
 ---
 
+## 25 Nov 2026 — Live Tracking 2.0: Component page tidied into sections + audit
+
+- Grouped the 7 component sets and 2 loose images into 5 sections, and added audit boxes next to each component plus a Production findings section. No component edited (user request: tidy only, findings next to the components).
+- Open item: the fixes (renaming `Property 1`, removing Card Trip Version=Default, the off-module Sales components on Production, detached copies) need the user's approval.
+
 ## 25 Nov 2026 — ATOM BC: Library=COMPASS variants for the ⚠️ Atomic section
 
 - Added a `Library` variant property to the 13 atomic sets. Old variants are kept as `Library=Old`; new `Library=COMPASS` variants have their sub-components swapped to COMPASS (user request: same components, so they should map 1:1).

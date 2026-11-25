@@ -160,3 +160,15 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
   - Add a `Library=Old/COMPASS` variant property rather than editing in place, so existing instances keep working.
   - The first library import is slow (about 50 s); give that call a 150 s timeout. Later imports are fast.
   - After swapping, compare Old and COMPASS screenshots. Variant names can differ: Tag / Status has its own value set. Pair the layers by path, never by `findAll` order.
+
+- **Component audit checklist (25 Nov 2026, Live Tracking):**
+  - Default `Property 1` / `Variant2` names.
+  - Single-variant sets.
+  - Duplicate versions still used in production.
+  - Impossible or missing variant combos.
+  - Overlapping booleans.
+  - Casing that differs between related components.
+  - Placeholder text ("String value").
+  - Default or arrow layer names.
+  - Library of top-level instances (key-checked).
+  - Production usage: which variants are used or unused, detached copies (frames with a component's name outside any instance), and off-module local components.

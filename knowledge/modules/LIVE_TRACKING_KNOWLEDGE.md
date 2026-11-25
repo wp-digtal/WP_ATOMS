@@ -392,3 +392,53 @@ Restore point: `Before Live Tracking user feedback round (19 Nov 2026)`. Section
   - On Photo this removes "Wait time" and "Navigate here".
   - Live and Offline were 1024 tall and clipped the taller card, so they are now 1150 tall, the same as Photo, with the Details panel grown by 126.
   - Restore point: `Before passenger web route list update (19 Nov 2026)`.
+
+## 🧩 Component page: tidy-up and audit (25 Nov 2026)
+
+The user asked for the page `27480:45104` to be tidied into sections without breaking any component, then for an audit against 🏭 Production, with the findings placed next to each component. No component was edited. Restore point: "Before Component page tidy-up + audit notes (25 Nov 2026)".
+
+**Sections, stacked from y = 0:**
+
+| Section | Id | Contents |
+|---|---|---|
+| 🧩 Atoms | `39880:89166` | Tag `39043:12858`, Button `39046:13578`, LiveTrackingFilter `39046:13590` |
+| 🧱 Card | `39880:89186` | Card Trip `39044:13020` |
+| 🗺️ Map | `39880:89197` | Map `39048:40152` |
+| 🧭 Templates | `39880:89204` | Live Tracking Drawer `39156:31174`, LiveTracking Listing Page `39211:250483` |
+| 🖼️ Reference images | `39880:89218` | image 1, image 2 (not components) |
+| ⚠️ Found on Production | `39880:89221` | Page-level findings |
+
+Each component has a `🔎 Audit — <name>` box: 🔴 for variant or library errors, 🟡 for naming issues.
+
+**Main findings:**
+- **Default property name `Property 1`:**
+  - Card Trip: values Late +/−/0, Late OP …, On Time …, Offline.
+  - Map: Default / Zoomed.
+  - Drawer: a single-variant set.
+  - Listing Page: `Variant2`.
+- **Card Trip:**
+  - `Version=Default` duplicates every 2.0 state, but is still used 2× in Production.
+  - Offline exists only for one combination.
+  - The combination "On Time −" + "Late Other" is a mismatch.
+  - The booleans overlap: SOS / SOS 2.0, and Online / Offline.
+  - 56 layers have default names, 38 are named with "→", 55 are hidden.
+  - "String value" placeholder text is left in 2 variants.
+- **Naming:**
+  - Tag "Will Be Late" vs Card Trip "Will be Late".
+  - Tag value "0 Min", and the unclear property name `Items`.
+  - Button `isActive` is camelCase.
+  - The set name "Button" clashes with COMPASS Button.
+  - LiveTrackingFilter uses `Status=True/False` for what is a toggle.
+- **Old libraries:**
+  - Drawer uses the old ATOM BC Drawers Template.
+  - Listing Page uses BusCom-HeaderWrapper, Filter Bar 3.0 and the old `_Form / Form Item / Vertical`.
+  - Tag, Card Trip (Button, Tag/Status) and the icons already use COMPASS.
+- **Production:**
+  - The "Local Component" section `29013:26612` holds 13 unrelated Sales / Quotation sets.
+  - Detached copies of Listing Page and LiveTrackingFilter are used instead of instances.
+  - Unused variants: Card Trip 15/25, Tag SOS and 0 Min, Listing Page Variant2.
+  - Loose images.
+
+**Method:** variant names come from `componentPropertyDefinitions`. Library keys of the top-level instances in each variant were checked against COMPASS with `search_design_system`. Production usage was scanned in chunks of the Production section's 165 children, skipping nodes inside instances so that "detached" means a frame with a component's name that is not an instance.
+
+**Open:** fixing each finding means editing components, and every fix needs the user's go-ahead.
