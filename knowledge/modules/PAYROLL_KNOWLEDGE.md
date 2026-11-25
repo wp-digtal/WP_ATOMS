@@ -396,3 +396,12 @@ None of MOVE-4479 / 4481 / 4482 / 4486 / 3953 / 3954 has been edited since 19 No
 - 23 Nov: **the breakdown accordion is decided.** It is the user's frame "Expandable breakdown (expanded)" `43096:59657` in S1: ▾ + "Hide allowances breakdown (n)" in blue link style on the left, "Allowances Sub-total: $x" on the right, on a grey strip above the table.
   - Applied to Allowances and Other Deductions in S1–S7, 3.3 and 4.1–4.3, with the count taken from the visible rows and the old label rows hidden.
   - Collapsed state ("View … breakdown", table hidden) is not drawn yet. The ticket says default collapsed.
+
+### Edit page: summary card like the details page (Daniel comment, 25 Nov 2026)
+Comment on Edit Pay Slip: "update layout for gross salary, deductions, and net salary in basic information to be same as details page layout (it should retain price summary UI). They are auto update fields. See edit customer contract page on UAT for the summary behaviour."
+- **Remove** the disabled Gross Salary / Deductions / Net Salary inputs from the Basic Information card on the edit page.
+- **Add the same top row as details S1 `43080:32651`:**
+  - Left: Basic Information card, fill height, 2×2 grid. Fields: Hiring Company, Pay Slip Period, Date of Payment, Mode of Payment.
+  - Right: summary card, a copy of the S1 summary (`Invoice/Content Detail` clone). It shows Gross Salary, Deductions and Net Salary. These are read-only and recalculate live when Basic Salary, Allowances, Unpaid Leave or Deductions change. The edit-page twin of this pattern is the Customer Contract side summary `43013:409766`.
+- Sections below stay full width.
+- Done by hand by the user: the Desktop Bridge was not available.
