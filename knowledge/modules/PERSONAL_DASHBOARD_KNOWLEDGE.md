@@ -847,3 +847,14 @@ The product team kept **D** (white card, colour only on the icon, 8 % tint badge
    | Any leave / claim / pay slip pending your approval | Orange |
 
 - **Next step, not done yet:** build the merged variant on the D/E base. The icon uses its type glyph with the colour tint; the accent applies only to pending-your-approval items.
+
+**New ideas G / H / I (25 Nov 2026).** All three follow the product rules. They sit in row 2 of section `41351:304995`, below D and E.
+- **G `41386:149448`: rules applied to the grid.**
+  - Type icon in a 24 px badge with a 10 % tint. The icons are COMPASS CalendarOutlined (local copy `3022:47731`), DollarOutlined `41386:149446` and FileTextOutlined `41386:149444`. Both COMPASS icons were imported with `importComponentByKeyAsync`; a retry took 31 s.
+  - Colours: leave `#1677FF`, claim `#722ED1`, pay slip `#52C41A`, pending your approval `#FA8C16`.
+  - Pending-your-approval items get a 3 px orange `Accent` rectangle (absolute, left, stretch).
+- **H `41386:152661`: purpose first.** Two groups: "Needs your action" (orange count badge), then "Your activity" (grey count badge). Each group is its own wrap grid.
+- **I `41386:156919`: readability.**
+  - One-line list rows: icon + title (300 px), subject (300 px), date (fill), then a "Review" link on pending rows.
+  - Pending rows are sorted to the top. Rows have a 1 px bottom divider and no card borders.
+- The pay slip icon was changed from MailOutlined to FileTextOutlined to match the "document" rule.
