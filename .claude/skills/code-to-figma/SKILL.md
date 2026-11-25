@@ -169,6 +169,32 @@ A section without these is not done, however complete the frames are. The detail
 - a `Docs/Flow Label` on **every** frame (user, 20 Oct 2026);
 - the frame recipe chosen by screen category (listing / detail page / drawer = context page + standalone 684 drawers / modal = page + overlay + modal → result page → updated drawer).
 
+
+## 4b. Worksheet standard ("lembar kerja", user, 26 Nov 2026)
+
+When the user asks to move finished screens into a **worksheet** (lembar kerja), copy the format of the Personal Dashboard worksheet (PD file `41091:22331`; copy in RPM file `14724:32844`). The user plans to ask for this again for other modules.
+
+**Process, in order:**
+1. **Redesign side by side first.** For each state, the NEW COMPASS frame goes on top and the OLD frame directly below it, with the same layout; only the components change. The user reviews this.
+2. **Then build the worksheet.** Clone the approved NEW frames into the worksheet section. Clone, never move, so the side-by-side page stays as a reference.
+
+**Worksheet layout:**
+- **Section fill:** the dark grey of the reference section. Copy `fills` from it.
+- **Pink banner `Docs/Big Title`** (Size=Small), one per screen or flow group. Set its visible text node to the group title plus the ticket keys, e.g. "Create Route Point (MOVE-735)".
+- **Black label `Docs/Flow Label`** (Size=Small, IsState=False), one above every frame. Set `Current Flow#44:4` to the trigger or state, e.g. "Click Create → confirm modal".
+- **Spacing**, with the banner at y = Y:
+  - first label row at Y + 489;
+  - frame at label y + 109;
+  - frames 1640 px apart (1440 width + 200 gap);
+  - next row at frame bottom + 300;
+  - next group banner 100 px below the last row.
+- **Red arrow** `Arrow → next state`: a vector of 160 px, stroke 4, colour (0.9, 0.28, 0.30), `ARROW_LINES` end cap. Place it at frame right + 20 and frame y + 400, between consecutive steps of one flow. Do not put arrows between alternative states, such as landmark variants or empty and no-result states.
+  - Cross-group arrows use the same vector resized in width, for example "click a row → Details drawer".
+- **Columns:** a wide group (the listing) on the left. The other groups stack in columns to the right, 500 px apart: details and create; then edit, delete and history.
+- **Frame names:** `🟢 <MOD> - <Screen> - <State> (<TICKET>)`.
+- **Order of groups:** listing, then details, create, edit, delete, history.
+- Save a restore point first. Build one group per bridge call. Screenshot the section at the end.
+
 ## 5. Verify
 
 - `figma_capture_screenshot` every new or changed frame and read it. Check:

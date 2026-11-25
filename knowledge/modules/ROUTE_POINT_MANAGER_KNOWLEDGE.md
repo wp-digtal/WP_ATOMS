@@ -199,3 +199,21 @@ The user asked to tidy the flows, keep COMPASS, re-check the tickets, and put th
 - The no-result copy is corrected: "can't found" → "can't find".
 
 **Still to do:** Details, Create, Edit, Delete and Change History need the same NEW-above-OLD treatment.
+
+### 2.4 Worksheet built (26 Nov 2026)
+The COMPASS frames were cloned into the worksheet **Section 7** `14724:113616`, on the side-by-side page. The format copies the PD worksheet `14724:32844`; the standard is in the `code-to-figma` skill §4b. Restore point: "Before RPM worksheet build in Section 7 (26 Nov 2026)".
+
+**Groups:**
+
+| Column | Group | Content |
+|---|---|---|
+| 1 (x 357) | Listing (MOVE-967 / 737) | 6 flow rows, 17 frames |
+| 2 (x 7417) | Details Drawer (738) | 2 states |
+| 2 | Create (735) | 3 landmark variants; confirm → created flow; duplicate modal |
+| 3 (x 12837) | Edit (736) | 2 locked-field states + incomplete data |
+| 3 | Delete (745) | not in use / in use |
+| 3 | Change History (739) | 1 frame |
+
+- Cross-group arrows: Listing result → Details drawer, and Details → Edit.
+- Frames are named `🟢 RPM - <Screen> - <State> (MOVE-xxx)`.
+- The side-by-side sections are left intact.

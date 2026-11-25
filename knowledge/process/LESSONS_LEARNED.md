@@ -172,3 +172,11 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
   - Default or arrow layer names.
   - Library of top-level instances (key-checked).
   - Production usage: which variants are used or unused, detached copies (frames with a component's name outside any instance), and off-module local components.
+
+- **Worksheet format (user standard, 26 Nov 2026):** after the side-by-side review, finished screens go into a worksheet in the PD worksheet format:
+  - a pink `Docs/Big Title` per group;
+  - a black `Docs/Flow Label` per frame;
+  - red arrows between the steps of a flow;
+  - frames 1640 px apart on a dark section.
+
+  Clone into the worksheet; never move, so the side-by-side reference stays intact. The full recipe is in the code-to-figma skill §4b; reuse it for every module.
