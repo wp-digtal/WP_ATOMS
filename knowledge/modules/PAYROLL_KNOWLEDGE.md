@@ -417,3 +417,17 @@ Comment on Edit Pay Slip: "update layout for gross salary, deductions, and net s
   - Daniel's comment conflicts with it, unless he means the auto-generated rows. Those are not editable, so they read better as plain text (or a disabled input) than as a disabled dropdown.
   - Ask the PM or Daniel which one he means.
 - **Real design gap from the 24 Nov edit:** Mode of Payment is drawn as a dropdown on the edit page. It must become a text input.
+
+### Item = text input, applied (user decision, 26 Nov 2026)
+The user decided to follow Daniel's comment: the Allowances and Other Deductions **Item** fields are text inputs, not dropdowns. **This deviates from MOVE-4482**, which still says "single-select dropdown". Ask the PM to update the ticket.
+- Restore point: "Before Item dropdown to text input on edit pay slip (26 Nov 2026)".
+- **How:** `_Form / Form Item / Vertical` was switched from Type=Select to Type=Text. The inner `Input` keeps the old text, State (Disabled or Filled) and Status, and the label (Item, required mark) is re-applied. Prefix and suffix are off.
+- **Frames:**
+  - 3.1 `43128:155456`: 4 allowance items and 1 deduction item.
+  - 3.1 in section `43018:591356`: the same 5 fields.
+  - 3.2 `43093:50009`: 3 auto-generated items and Loan Repayment. The "Others → manual text" row had its Others select hidden, so only the empty required text input in error state ("Item name is required.") remains.
+  - 3.3 has no item fields.
+- **Not changed:**
+  - Hiring Company.
+  - Allowance Type, a hidden filter select.
+  - Mode of Payment. Per the 24 Nov ticket edit it should be a text input; this is pending the user's go-ahead.

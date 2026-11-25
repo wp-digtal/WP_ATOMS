@@ -12,6 +12,12 @@ minor).
 
 ---
 
+## 26 Nov 2026 — Payroll edit: Item fields dropdown → text input
+
+- Allowances and Other Deductions Item fields on edit frames 3.1 (×2) and 3.2 are now text inputs, with state and values kept.
+- Why: Daniel's comment, confirmed by the user. MOVE-4482 still says dropdown; the deviation is logged in the KB for the PM.
+- Open item: Mode of Payment → text input (MOVE-4482, 24 Nov edit), awaiting the go-ahead.
+
 ## 25 Nov 2026 — Live Tracking 2.0: Component page tidied into sections + audit
 
 - Grouped the 7 component sets and 2 loose images into 5 sections, and added audit boxes next to each component plus a Production findings section. No component edited (user request: tidy only, findings next to the components).
