@@ -952,3 +952,15 @@ The user pointed to `Side Navbar` `41412:54544` (🏭 Production) as the correct
   - "PD Entry - Workspace" `41108:278794` used another component (`3076:116632`). It was swapped to `41412:54544` and keeps its workspace menu.
   - The 2 filter-popover frames have no sidebar, which is correct.
 - **Rule:** never detach the sidebar again. Use an instance of `41412:54544` and set the Navigation Item props.
+
+### Home v2: "View more" on Leave Balances, 2 proposals (26 Nov 2026)
+The user asked for two proposals for what "View more" opens: a drawer or a modal. Both sit next to Home v2 `41412:48458`, in row y 6900 of section `41351:304995`.
+- **Ticket note:** MOVE-3949 says "View more" navigates to the Leave page and auto-scrolls to Leave Balances. Both proposals keep a "Go to Leave page" exit, so the ticket path stays possible.
+- **Option A, Drawer `41412:119810`:**
+  - The `Employee` balance drawer (from 41195:165899) is detached. Title "Leave Balances" with subtitle "1 Jan 2026 - 31 Dec 2026". The header buttons and the old sections are hidden.
+  - Table: the home Leave Balances table cloned, with 6 leave types (Annual, Medical, Childcare, Hospitalisation, Compassionate, Marriage). Validity Period is hidden (shown in the subtitle and a note). Leave Type column is 176 px.
+  - A "Go to Leave page →" link sits under the table.
+- **Option B, Modal `41412:128720`:**
+  - The same content in an 880 px centred modal (overlay centred, radius 8), with the Validity Period column shown.
+  - Footer: Close (Default) and "Go to Leave page" (Primary), both COMPASS Buttons cloned from the header CTA.
+- The leave figures beyond Annual and Medical are sample data.
