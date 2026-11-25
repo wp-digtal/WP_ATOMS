@@ -828,3 +828,22 @@ Row "Pay Slips Listing (MOVE-3953)" at the bottom of section `41091:22331`. All 
   - D `41356:72219`: colour only on the icon, 8% tint badge.
   - E `41356:72613`: 3 px left accent bar plus grey icon.
   - F `41356:73007`: 8 px colour dot before the title, no icon.
+
+### Recent Activity ideation: product team decision (25 Nov 2026)
+The product team kept **D** (white card, colour only on the icon, 8 % tint badge) and **E** (white card, 3 px colour accent on the left, grey icon). A, B, C and F were removed from section `41351:304995`. D and E moved up to the first row. Restore point: "Before trimming Recent Activity ideation to D + E (25 Nov 2026)".
+
+**Final rules from product, to merge into one design:**
+1. **The icon depends on the activity type only.**
+   - Leave: calendar. Claims: $. Pay slip: document.
+   - The icon is the same for your own activity ("Leave approved") and for "Leave pending your approval".
+2. **The left accent only appears when the item is pending your approval.** Your own activity has no accent.
+3. **The colour depends on the type and on the approval state:**
+
+   | Item | Colour |
+   |---|---|
+   | Own leave | Blue |
+   | Own claim | Purple |
+   | Own pay slip | Green |
+   | Any leave / claim / pay slip pending your approval | Orange |
+
+- **Next step, not done yet:** build the merged variant on the D/E base. The icon uses its type glyph with the colour tint; the accent applies only to pending-your-approval items.
