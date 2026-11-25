@@ -12,6 +12,14 @@ minor).
 
 ---
 
+## 25 Nov 2026 — ATOM BC: Library=COMPASS variants for the ⚠️ Atomic section
+
+- Added a `Library` variant property to the 13 atomic sets. Old variants are kept as `Library=Old`; new `Library=COMPASS` variants have their sub-components swapped to COMPASS (user request: same components, so they should map 1:1).
+- Judgment calls:
+  - Old Text and Sub-header components are detached to plain text.
+  - Old Tag / Status values are mapped onto COMPASS's 5 statuses, with the text kept.
+- Open item: Group Content Cell waits on Content Cell (🟡 zone).
+
 ## 24 Nov 2026 — ATOM BC: info box beside each non-COMPASS component
 
 - Added 28 colour-coded info boxes next to the components that still use old libraries. Each box lists the offending sub-components, so the user does not have to check each component by hand (user request).

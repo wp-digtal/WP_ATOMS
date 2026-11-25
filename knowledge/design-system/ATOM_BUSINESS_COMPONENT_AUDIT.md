@@ -119,3 +119,63 @@ The user asked for a note next to every component that still uses an old library
   - The sections were re-stacked with a 600 px gap.
   - The summary frame `445:73994` was moved to the right of the widest section.
 - The boxes are a snapshot. After swapping a sub-component, re-run the key-based check and update or delete the box.
+
+## COMPASS variants: ⚠️ Atomic section `443:73989` (24–25 Nov 2026)
+
+The user asked for a new variant on each component, with the old sub-components swapped for COMPASS. They also wanted the old version kept.
+
+**The pattern:**
+- Every set gets a new variant property, `Library`.
+- Each existing variant is renamed to `…, Library=Old` and left unchanged, so existing instances keep working.
+- Each variant is cloned below as `…, Library=COMPASS`. Its sub-instances are swapped with `swapComponent`, matching by variant name first, then by the best-matching property set. Overrides survive the swap.
+
+**Importing COMPASS sets:**
+- `importComponentSetByKeyAsync` takes about 50 s the first time. Once one set is cached, the others take about 1 s.
+- Set ids are saved in `figma.root` plugin data `compassSets`:
+
+  | Set | Id |
+  |---|---|
+  | Button | `225:6126` |
+  | Badge / Basic | `240:13049` |
+  | Tag / Basic | `448:74203` |
+  | Tag / Status | `240:10366` |
+  | Avatar | `240:13061` |
+  | Title | `225:5999` |
+  | Dropdown Menu | `448:74230` |
+  | Dropdown Menu Item | `240:11377` |
+  | Dropdown Divider | `448:74222` |
+  | Select Input | `227:12640` |
+
+**Done:**
+- Table Header Buttons
+- Tab/Tab Item ×2
+- Tab/Tab Group ×2: uses the local Tab Item with `Library=COMPASS`
+- Detail Drawer Status
+- Content Type
+- Title Detail Pages
+- Group Content Cell
+- BusCom-Header Text
+- BusCom-Details Action Button 2.0
+- BusCom-Details Button 2.0
+- Filter Selected 3.0
+
+Custom Component is hand-built and has nothing to swap.
+
+**Rules decided along the way:**
+- The old `Text` and `Sub-header` components have no COMPASS equivalent. When they are top-level they are detached to plain text. Nested ones are left alone.
+- The `Buttons` and `Table Header Button` wrappers are replaced by their inner Button, swapped to COMPASS Button.
+- COMPASS `Tag / Status` only has Success / Processing / Error / Warning / Default. The mapping used is:
+
+  | Old status | COMPASS status |
+  |---|---|
+  | Active | Success |
+  | Suspended | Warning |
+  | Pending Approval | Processing |
+  | Pending Information | Default |
+  | Deactivated | Error |
+
+  The tag text is kept. Pair Old and COMPASS layers by **layer path**, not by list order: hidden tags shift the order, and the first attempt mislabelled the tags and an avatar.
+
+**Open:** Group Content Cell still uses the local Content Cell from the 🟡 zone. Convert Content Cell next, then set it to `Library=COMPASS` here.
+
+The info boxes in this section are now green ("✅ Library=COMPASS variant added"). Each box sits next to its set, and the section has been re-flowed.

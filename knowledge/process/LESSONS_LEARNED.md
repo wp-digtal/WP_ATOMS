@@ -155,3 +155,8 @@ The user, 5 Nov 2026: *"jadikan setiap proses itu sebuah pembelajaran, ambil apa
 - **"Same layout, only the components change" (24 Nov 2026, Route Point Manager):** a redesign comparison must copy the old screen's structure: element positions, which row the CTA sits on, the landing behaviour. Do not "improve" the flow. Re-read the epic's full child list as well, not only the tickets in the KB: MOVE-967 (search-first landing) was missing from the KB, and that made the earlier table-first default wrong.
 
 - **Auto-layout boxes built by script (24 Nov 2026):** `frame.resize(w, h)` switches the frame's primary axis to FIXED, so the children get clipped. Set `primaryAxisSizingMode = 'AUTO'` again after the content has been appended. Audit notes are easiest to use when they sit next to the item itself, not only in a summary frame. Re-flow the section so the notes have room instead of overlapping.
+
+- **Making COMPASS versions of library components (25 Nov 2026):**
+  - Add a `Library=Old/COMPASS` variant property rather than editing in place, so existing instances keep working.
+  - The first library import is slow (about 50 s); give that call a 150 s timeout. Later imports are fast.
+  - After swapping, compare Old and COMPASS screenshots. Variant names can differ: Tag / Status has its own value set. Pair the layers by path, never by `findAll` order.
