@@ -895,3 +895,44 @@ The product team kept **D** (white card, colour only on the icon, 8 % tint badge
 - Click a highlight to open the Leave or Claims details page on the **Approvals tab**.
 
 **Impact on the ideation:** ideas D–L, which mix pending-your-approval items into Recent Activity, are superseded. The product colour/accent rules for "pending your approval" now belong to the Highlights tiles. The closest concept is L: tiles on top, then a list. Recent Activity becomes a plain table of own finished activity.
+
+### Home v2 page built per MOVE-3949 (25 Nov) + MOVE-3956 (25 Nov 2026)
+The user asked for a new page at the bottom of the file, with all the work done there. Page `41406:31411`, "🏠 Home v2 — MOVE-3949 + MOVE-3956 (25 Nov 2026)". It was cloned from Idea G and restructured.
+
+**Frames, 1640 px apart:**
+
+| Frame | Id | State |
+|---|---|---|
+| A | `41406:31412` | Approver of leave and claims: 2 highlights |
+| B | `41406:39161` | Leave approver only: 1 highlight |
+| C | `41406:40372` | Not an approver: no highlights row |
+| D | `41406:41582` | No recent activity: text-only empty state "No recent activity in the last 7 days" (copy is a placeholder; the copy master list is not accessible) |
+
+**Order in each frame:**
+1. Highlights.
+2. Leave Balances + My Next Leave.
+3. Recent Activity table.
+
+**Highlights row (hand-built):**
+- Each tile is a white card (radius 16) with a 40 px orange-tint icon badge. The icons are COMPASS Calendar and Dollar.
+- Each tile has a label, a count (28 Semi Bold) and a "View approvals →" link to the Approvals tab.
+- Tiles are FILL, so one tile spans the full width when the user approves only one type.
+
+**Recent Activity table:**
+- It reuses the hidden detached Leave Applications table.
+- Columns: Activity 200 px | Description FILL | Status 200 px. The status is a COMPASS Tag / Status:
+
+  | Status | Tag colour |
+  |---|---|
+  | Approved | Success |
+  | Rejected | Error |
+  | Cancelled | Default |
+  | New | Processing |
+
+- The descriptions use the ticket formats.
+- The card grid and the "Show less" link are hidden.
+
+**Gotchas:**
+- The rows of the copied table had different cell counts. Address cells as first, second and last, not by index.
+- The table frame had a fixed height, which clipped row 6. Set it to HUG.
+- The side nav needs FILL height after the frame height changes.
