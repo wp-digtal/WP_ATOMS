@@ -405,3 +405,15 @@ Comment on Edit Pay Slip: "update layout for gross salary, deductions, and net s
   - Right: summary card, a copy of the S1 summary (`Invoice/Content Detail` clone). It shows Gross Salary, Deductions and Net Salary. These are read-only and recalculate live when Basic Salary, Allowances, Unpaid Leave or Deductions change. The edit-page twin of this pattern is the Customer Contract side summary `43013:409766`.
 - Sections below stay full width.
 - Done by hand by the user: the Desktop Bridge was not available.
+
+### "Item is text input, not dropdown" (Daniel comment, 25 Nov 2026), checked against the ticket
+- MOVE-4482 was edited on 24 Nov 2026 at 22:52. The diff changes field types only:
+  - Date of Payment → date picker.
+  - **Mode of Payment → text input.**
+  - The number fields (Unpaid Leave, CPF, SHG, GMI, Advance, Incident Penalties, Employer CPF) → number input, $, 2 dp.
+- The allowance **Item** column was **not** changed. It is still "Single-select dropdown (Sales commission / Performance bonus / Leave encashment / Others → manual text)". The deduction Item is still "Loan repayment / Others".
+- **Verdict:**
+  - The design follows the ticket for new rows.
+  - Daniel's comment conflicts with it, unless he means the auto-generated rows. Those are not editable, so they read better as plain text (or a disabled input) than as a disabled dropdown.
+  - Ask the PM or Daniel which one he means.
+- **Real design gap from the 24 Nov edit:** Mode of Payment is drawn as a dropdown on the edit page. It must become a text input.
