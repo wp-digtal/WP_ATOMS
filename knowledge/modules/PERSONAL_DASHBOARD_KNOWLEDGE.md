@@ -869,3 +869,29 @@ The product team kept **D** (white card, colour only on the icon, 8 % tint badge
   - Tiles: Needs your action 6 (selected, orange), My leave 3, My claims 2, My pay slips 1.
   - Under the tiles, an I-style list filtered by the selected tile.
 - **Gotcha:** count badges built as auto-layout frames stretch to the row height. Set `primaryAxisSizingMode` and `counterAxisSizingMode` to `AUTO` (HUG) on the badge and on its parent.
+
+## Ticket change 25 Nov 2026: MOVE-3949 rewritten + new MOVE-3956 Highlights
+**MOVE-3949 (edited 25 Nov 16:06):**
+- **Recent Activity is now a TABLE, not cards.** Columns: Activity | Description | Status.
+- **Status values:**
+  - Leave: Approved / Rejected / Cancelled.
+  - Claim: Approved / Rejected / Cancelled.
+  - Pay slip: New.
+- **Removed from Recent Activity:**
+  - Leave pending approval, Claim pending approval, Claim pending payment, Claim paid.
+  - Every "pending your approval" item. These move to MOVE-3956 Highlights.
+- **Description formats:**
+  - Leave: "[Annual Leave] 1 Dec 2026 - 5 Dec 2026".
+  - Claim: "[Carpark] 1 Dec 2026 - $5.60".
+  - Pay slip: the pay slip **period**, "1 Dec 2026 - 31 Dec 2026", instead of "Month Year".
+- **Visibility:** an item shows for 7 days from the date it reached the shown status. A pay slip shows for 7 days from when it was **confirmed** (MOVE-4486), not from when it was generated.
+- **Row click:** leave or claim opens the details drawer. A pay slip opens the pay slip details page (MOVE-3953); this is no longer KIV.
+- **Section order in the ticket:** Leave balances, then My next leave, then Recent activity.
+- The old activity-card table and the UI reference image were removed.
+
+**MOVE-3956 Personal Dashboard Highlights (new, "To Define Tasks"):**
+- Two highlights: "Leave pending my approval" and "Claims pending my approval".
+- Each is shown only if the user is a listed approver of that type for another employee. With no approver role, there are no highlights.
+- Click a highlight to open the Leave or Claims details page on the **Approvals tab**.
+
+**Impact on the ideation:** ideas D–L, which mix pending-your-approval items into Recent Activity, are superseded. The product colour/accent rules for "pending your approval" now belong to the Highlights tiles. The closest concept is L: tiles on top, then a list. Recent Activity becomes a plain table of own finished activity.
